@@ -1,3 +1,25 @@
+# Security
+login:
+    pattern: /secured/login
+    defaults: { _controller: MilleEtangsRandonneesBundle:Security:login }
+
+login_check:
+    pattern: /secured/login_check
+    defaults: { _controller: MilleEtangsRandonneesBundle:Security:loginCheck }
+
+logout:
+    pattern: /secured/logout
+    defaults: { _controller: MilleEtangsRandonneesBundle:Security:logout }
+
+admin_menu:
+    pattern: /secured/menu
+    defaults: { _controller: MilleEtangsRandonneesBundle:Security:menu }
+
+create_randonnee:
+    pattern: /secured/randonnees/create
+    defaults: { _controller: MilleEtangsRandonneesBundle:Security:createRandonnee }
+
+# Website
 home:
     pattern:  /
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:index }

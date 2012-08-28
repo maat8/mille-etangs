@@ -47,6 +47,31 @@ class Randonnee
 	 */
 	protected $duree_vtt;
 
+    /**
+     * @ORM\Column(type="integer")
+     * @Assert\Min(0)
+     */
+    //protected $distance;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @Assert\Min(0)
+     */
+    //protected $denivele_positif;
+
+
+    /**
+     * @ORM\PrePersist
+     */
+    /*public function setUpdatededValue()
+    {
+        $this->updated = new \DateTime();
+    }
+
+    public function setSlug()
+    {
+        $this->updated = new \DateTime();
+    }*/
 
     /**
      * Get id
