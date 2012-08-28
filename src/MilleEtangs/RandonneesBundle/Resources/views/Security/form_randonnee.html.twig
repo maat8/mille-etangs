@@ -1,0 +1,9 @@
+{% extends "MilleEtangsRandonneesBundle::layout.html.twig" %}
+
+{% block body %}
+<form action="{{ path('create_randonnee') }}" method="POST">
+	{{ form_widget(form) }}
+	{{ form_rest(form) }}
+	<input type="submit" value="enregistrer" />
+</form>
+{% endblock %}

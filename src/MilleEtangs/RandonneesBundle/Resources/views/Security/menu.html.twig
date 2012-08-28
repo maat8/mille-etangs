@@ -1,0 +1,18 @@
+{% extends "MilleEtangsRandonneesBundle::layout.html.twig" %}
+
+{% block body %}
+<h2>Administation</h2>
+
+<h3>Gestion des articles</h3>
+<ul>
+	<li>Ajouter un article</li>
+</ul>
+
+<h3>Gestion des parcours</h3>
+<ul>
+	{% for rando in randonnees %}
+		<li>{{ rando.getName() }}</li>
+	{% endfor %}
+	<li><a href="{{ path('create_randonnee') }}">Ajouter un parcours</a></li>
+</ul>
+{% endblock %}
