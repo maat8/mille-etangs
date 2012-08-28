@@ -1,0 +1,15 @@
+{% extends 'MilleEtangsRandonneesBundle::layout.html.twig' %}
+
+{% block title %}Randonnées VTT | {{ parent()}}{% endblock %}
+
+{% block body %}
+	<h2>Randonnées</h2>
+
+	<ul>
+	{% for randonnee in randonnees %}
+		<li><a href="{{ path('randonnee', {'slug': randonnee.getSlug()}) }}">{{ randonnee.getName() }}</a></li>
+	{% else %}
+		<li>Il n'y a pas de randonnées actuellement !</li>
+	{% endfor %}
+	</ul>
+{% endblock %}

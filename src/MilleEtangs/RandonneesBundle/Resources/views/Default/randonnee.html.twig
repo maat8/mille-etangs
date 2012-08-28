@@ -1,0 +1,14 @@
+{% extends 'MilleEtangsRandonneesBundle::layout.html.twig' %}
+
+{% block title %}{{ randonnee.name}} | {{ parent()}}{% endblock %}
+
+{% block body %}
+	<h2>{{ randonnee.getName() }}</h2>
+
+	<p>{{ randonnee.getDescription() }}</p>
+
+	<p>Durée VTT : {{ randonnee.getDureeVtt() }} min</p>
+
+	<a href='{{ randonnee.getEndomondoLink() }}'>Endomondo</a>
+
+{% endblock %}

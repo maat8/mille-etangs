@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8" />
+	<title>{% block title %}Randonnées aux Mille étangs{% endblock %}</title>
+ 
+	<link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/inuit.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css1/igloos.css') }}" type="text/css" />
+</head>
+ 
+<body id="index">
+<header id="banner" class="body">
+    <h1><a href="{{ path("home") }}">Randonnées aux Mille étangs</a></h1>
+    <nav><ul>
+    <li class="active"><a href="#">actualités</a></li>
+	<li><a href="{{ path("randonnees") }}">randonnées</a></li>
+	<li><a href="{{ path("evenements") }}">évènements</a></li>
+	<li><a href="{{ path("hebergement") }}">hébergement</a></li>
+	<li><a href="{{ path("restauration") }}">restauration</a></li>
+    </ul></nav>
+</header>
+
+<div class="wrapper body">
+<aside id="sidebar">
+	<div class="sidebar_block">
+		<h3>Conseils</h3>
+		<div class="sidebar_content">Content</div>
+	</div>
+	<div class="sidebar_block">
+		<h3>Publicité</h3>
+		<div class="sidebar_content">Content</div>
+	</div>
+	<div class="sidebar_block">
+		<h3>Contact</h3>
+		<div class="sidebar_content">Content</div>
+	</div>
+</aside>
+
+<section id="content" class="grid-8">
+{% block body %}Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.
+
+
+Vivamus fermentum semper porta. Nunc diam velit, adipiscing ut tristique vitae, sagittis vel odio. Maecenas convallis ullamcorper ultricies. Curabitur ornare, ligula semper consectetur sagittis, nisi diam iaculis velit, id fringilla sem nunc vel mi. Nam dictum, odio nec pretium volutpat, arcu ante placerat erat, non tristique elit urna et turpis. Quisque mi metus, ornare sit amet fermentum et, tincidunt et orci. Fusce eget orci a orci congue vestibulum. Ut dolor diam, elementum et vestibulum eu, porttitor vel elit. Curabitur venenatis pulvinar tellus gravida ornare. Sed et erat faucibus nunc euismod ultricies ut id justo. Nullam cursus suscipit nisi, et ultrices justo sodales nec. Fusce venenatis facilisis lectus ac semper. Aliquam at massa ipsum. Quisque bibendum purus convallis nulla ultrices ultricies. Nullam aliquam, mi eu aliquam tincidunt, purus velit laoreet tortor, viverra pretium nisi quam vitae mi. Fusce vel volutpat elit. Nam sagittis nisi dui.{% endblock %}
+</section>
+<div class="clear"></div>
+</div>
+
+<footer id="contentinfo">
+<div id="footer-wrapper" class="body">
+	<div class="links-mille-etangs">
+        <h2>1000 étangs</h2>
+		<ul>
+			<li><a href="http://www.les1000etangs.com">office de tourisme</a></li>	
+			<li><a href="http://www.cc-1000etangs.fr/">communauté de communes</a></li>	
+		</ul>
+    </div>
+    <div class="links-vtt">
+        <h2>vtt</h2>
+		<ul>
+			<li><a href="">vtt fc</a></li>	
+			<li><a href="">vetete</a></li>	
+		</ul>
+    </div>
+    <div class="links-marche">
+        <h2>vtt</h2>
+		<ul>
+			<li><a href="">rando.com</a></li>	
+		</ul>
+    </div>
+    <div class="social">
+		<h2>social</h2>
+		<ul>
+			<li><a href="mailto:">mail</a></li>
+			<li><a rel="me" href="http://facebook.com">facebook</a></li>
+			<li><a rel="alternate" href="rss.xml">rss</a></li>
+		</ul>
+    </div>
+    <div class="clear"></div>
+</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+home:
+    pattern:  /
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:index }
+
+randonnees:    
+    pattern:  /randonnees
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:randonnees }
+
+randonnee:    
+    pattern:  /randonnees/{slug}
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:randonnee }
+
+evenements:    
+    pattern:  /evenements
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:evenements }
+
+hebergement:    
+    pattern:  /hebergement
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:hebergement }
+
+restauration:    
+    pattern:  /restauration
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:restauration }
