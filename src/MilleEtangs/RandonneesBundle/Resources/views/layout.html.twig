@@ -13,28 +13,37 @@
 <header id="banner" class="body">
     <h1><a href="{{ path("home") }}">Randonnées aux Mille étangs</a></h1>
     <nav><ul>
-    <li class="active"><a href="#">actualités</a></li>
-	<li><a href="{{ path("randonnees") }}">randonnées</a></li>
-	<li><a href="{{ path("evenements") }}">évènements</a></li>
-	<li><a href="{{ path("hebergement") }}">hébergement</a></li>
-	<li><a href="{{ path("restauration") }}">restauration</a></li>
+    	{% set route = app.request.get('_route') %}
+	    <li class="{% if route == "home" %}active{% endif %}"><a href="{{ path("home") }}">actualités</a></li>
+		<li class="{% if route == "randonnees" %}active{% endif %}"><a href="{{ path("randonnees") }}">randonnées</a></li>
+		<li class="{% if route == "evenements" %}active{% endif %}"><a href="{{ path("evenements") }}">évènements</a></li>
+		<li class="{% if route == "hebergement" %}active{% endif %}"><a href="{{ path("hebergement") }}">hébergement</a></li>
+		<li class="{% if route == "restauration" %}active{% endif %}"><a href="{{ path("restauration") }}">restauration</a></li>
     </ul></nav>
 </header>
 
 <div class="wrapper body">
 <aside id="sidebar">
+	{% block sidebar_block1 %}
 	<div class="sidebar_block">
 		<h3>Conseils</h3>
 		<div class="sidebar_content">Content</div>
 	</div>
+	{% endblock %}
+
+	{% block sidebar_block2 %}
 	<div class="sidebar_block">
 		<h3>Publicité</h3>
 		<div class="sidebar_content">Content</div>
 	</div>
+	{% endblock %}
+
+	{% block sidebar_block3 %}
 	<div class="sidebar_block">
 		<h3>Contact</h3>
 		<div class="sidebar_content">Content</div>
 	</div>
+	{% endblock %}
 </aside>
 
 <section id="content" class="grid-8">

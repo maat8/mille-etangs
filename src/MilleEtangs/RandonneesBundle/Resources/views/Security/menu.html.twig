@@ -11,7 +11,7 @@
 <h3>Gestion des parcours</h3>
 <ul>
 	{% for rando in randonnees %}
-		<li>{{ rando.getName() }}</li>
+		<li>{{ rando.getNom() }}</li>
 	{% endfor %}
 	<li><a href="{{ path('create_randonnee') }}">Ajouter un parcours</a></li>
 </ul>

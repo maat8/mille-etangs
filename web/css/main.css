@@ -30,12 +30,10 @@ h2, h3, h4, h5, h6 {
 a {outline: 0;}
 a img {border: 0px; text-decoration: none;}
 a:link, a:visited {
-	color: #C74350;
 	padding: 0 1px;
 	text-decoration: underline;
 }
 a:hover, a:active {
-	background-color: #C74350;
 	color: #fff;
 	text-decoration: none;
 	text-shadow: 1px 1px 1px #333;
@@ -221,7 +219,7 @@ footer ul {
 }
 
 footer li {
-    	order-bottom: 1px solid #FFFFFF;
+    	border-bottom: 1px solid #FFFFFF;
 }
 
 footer a {
@@ -231,7 +229,7 @@ footer a {
 }
 
 footer a:link, footer :visited {
-    	border-bottom: 1px solid #F4E3E3;
+    	border-bottom: 1px solid #D4D4D4;
     	color: #444444;
     	display: block;
     	padding: 0.3em 0.25em;

@@ -3,30 +3,20 @@
 namespace MilleEtangs\RandonneesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use MilleEtangs\RandonneesBundle\Entity\Randonnee;
+use MilleEtangs\RandonneesBundle\Entity\Parcours;
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {
+
         return $this->render('MilleEtangsRandonneesBundle:Default:index.html.twig');
     }
 
     public function randonneesAction()
     {
-        /*$rando = new Randonnee();
-        $rando->setName("Peugeux");
-        $rando->setSlug("peugeux");
-        $rando->setDureeVtt(120);
-        $rando->setDescription("Autour de Saint Bresson...");
-        $rando->setEndomondoLink("http://www.endomondo.com/tracks/146");
-
-        $em = $this->get('doctrine')->getEntityManager();
-        $em->persist($rando);
-        $em->flush();*/
-
         $randonnees = $this->get('doctrine')
-            ->getRepository('MilleEtangsRandonneesBundle:Randonnee')
+            ->getRepository('MilleEtangsRandonneesBundle:Parcours')
             ->findAll();
 
     	return $this->render('MilleEtangsRandonneesBundle:Default:randonnees.html.twig', array(
@@ -37,7 +27,7 @@ class DefaultController extends Controller
     public function randonneeAction($slug)
     {
         $randonnee = $this->get('doctrine')
-            ->getRepository('MilleEtangsRandonneesBundle:Randonnee')
+            ->getRepository('MilleEtangsRandonneesBundle:Parcours')
             ->findOneBySlug($slug);        
 
     	return $this->render('MilleEtangsRandonneesBundle:Default:randonnee.html.twig', array(
