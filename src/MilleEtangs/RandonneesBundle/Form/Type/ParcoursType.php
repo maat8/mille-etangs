@@ -17,6 +17,7 @@ class ParcoursType extends AbstractType
 			->add('nom', 'text')
 			->add('slug', 'text', array('required' => false))
             ->add('description', 'textarea', array('attr' => array('class' => "tinymce")))
+            ->add('description', 'textarea')
             ->add('duree_vtt', 'text')
             ->add('denivele_positif', 'text')
             ->add('distance', 'text')

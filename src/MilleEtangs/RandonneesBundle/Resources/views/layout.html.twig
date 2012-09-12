@@ -19,9 +19,9 @@
     	{% set route = app.request.get('_route') %}
 	    <li class="{% if route == "home" %}active{% endif %}"><a href="{{ path("home") }}">actualités</a></li>
 	    <li class=""><a href="{{ path("milleEtangs") }}">les mille étangs</a></li>
-		<li class="{% if route == "randonnees" %}active{% endif %}"><a href="{{ path("randonnees", {type:"a-pied"}) }}">à pied</a></li>
-		<li class=""><a href="">en vtt</a></li>
-		<li class=""><a href="">à cheval</a></li>
+		<li class=""><a href="{{ path("randonnees", {'type':"a-pied"}) }}">à pied</a></li>
+		<li class=""><a href="{{ path("randonnees", {'type':"en-vtt"}) }}">en vtt</a></li>
+		<li class=""><a href="{{ path("randonnees", {'type':"a-cheval"}) }}">à cheval</a></li>
     </ul></nav>
 </header>
 
@@ -54,7 +54,6 @@
 		<div class="sidebar_content">Content</div>
 	</div>
 	{% endblock %}
-
 </aside>
 
 <section id="content" class="grid-8">
