@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Security\Core\SecurityContext;
 
-use MilleEtangs\RandonneesBundle\Entity\Randonnee;
+use MilleEtangs\RandonneesBundle\Entity\Parcours;
 
 class SecurityController extends Controller 
 {
@@ -54,7 +54,7 @@ class SecurityController extends Controller
     public function menuAction()
     {
     	$randonnees = $this->get('doctrine')
-            ->getRepository('MilleEtangsRandonneesBundle:Randonnee')
+            ->getRepository('MilleEtangsRandonneesBundle:Parcours')
             ->findAll();
 
     	return $this->render("MilleEtangsRandonneesBundle:Security:menu.html.twig", array(
@@ -64,8 +64,8 @@ class SecurityController extends Controller
 
     public function createRandonneeAction()
     {
-    	$randonnee = new Randonnee();
-    	$form =  $this->get('form.factory')->create("randonnee", $randonnee);
+    	$randonnee = new Parcours();
+    	$form =  $this->get('form.factory')->create("parcours", $randonnee);
 
         if ("POST" === $this->getRequest()->getMethod()){
             $form->bind($this->getRequest());

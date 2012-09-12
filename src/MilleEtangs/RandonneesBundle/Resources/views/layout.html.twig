@@ -6,35 +6,55 @@
  
 	<link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('css/inuit.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset('css1/igloos.css') }}" type="text/css" />
+	{% block stylesheets %}{% endblock %}
+
+	<script type="text/javascript" src="{{ asset('js/jquery-1.8.0.min.js') }}"></script>
+	{% block javascripts %}{% endblock %}
 </head>
  
 <body id="index">
 <header id="banner" class="body">
     <h1><a href="{{ path("home") }}">Randonnées aux Mille étangs</a></h1>
     <nav><ul>
-    <li class="active"><a href="#">actualités</a></li>
-	<li><a href="{{ path("randonnees") }}">randonnées</a></li>
-	<li><a href="{{ path("evenements") }}">évènements</a></li>
-	<li><a href="{{ path("hebergement") }}">hébergement</a></li>
-	<li><a href="{{ path("restauration") }}">restauration</a></li>
+    	{% set route = app.request.get('_route') %}
+	    <li class="{% if route == "home" %}active{% endif %}"><a href="{{ path("home") }}">actualités</a></li>
+	    <li class=""><a href="{{ path("milleEtangs") }}">les mille étangs</a></li>
+		<li class="{% if route == "randonnees" %}active{% endif %}"><a href="{{ path("randonnees", {type:"a-pied"}) }}">à pied</a></li>
+		<li class=""><a href="">en vtt</a></li>
+		<li class=""><a href="">à cheval</a></li>
     </ul></nav>
 </header>
 
 <div class="wrapper body">
 <aside id="sidebar">
+	{% block sidebar_block1 %}
 	<div class="sidebar_block">
 		<h3>Conseils</h3>
 		<div class="sidebar_content">Content</div>
 	</div>
+	{% endblock %}
+
+	{% block sidebar_block2 %}
 	<div class="sidebar_block">
 		<h3>Publicité</h3>
 		<div class="sidebar_content">Content</div>
 	</div>
+	{% endblock %}
+
+	{% block sidebar_block3 %}
 	<div class="sidebar_block">
-		<h3>Contact</h3>
+		<h3>Restauration</h3>
 		<div class="sidebar_content">Content</div>
 	</div>
+	{% endblock %}
+
+	{% block sidebar_block4 %}
+	<div class="sidebar_block">
+		<h3>Hébergement</h3>
+		<div class="sidebar_content">Content</div>
+	</div>
+	{% endblock %}
+
 </aside>
 
 <section id="content" class="grid-8">
@@ -74,9 +94,13 @@ Vivamus fermentum semper porta. Nunc diam velit, adipiscing ut tristique vitae, 
 			<li><a href="mailto:">mail</a></li>
 			<li><a rel="me" href="http://facebook.com">facebook</a></li>
 			<li><a rel="alternate" href="rss.xml">rss</a></li>
+			<li><a href="">partenaires</a></li>
 		</ul>
     </div>
     <div class="clear"></div>
+</div>
+<div id="subfooter">
+	<a href="">copyright</a> - <a href="">plan de site</a> - 
 </div>
 </footer>
 

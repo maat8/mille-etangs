@@ -24,13 +24,21 @@ home:
     pattern:  /
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:index }
 
+randonnees_type:    
+    pattern:  /randonnees/{type}
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:randonnees }
+
 randonnees:    
     pattern:  /randonnees
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:randonnees }
 
 randonnee:    
-    pattern:  /randonnees/{slug}
+    pattern:  /randonnees/{type}/{slug}
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:randonnee }
+
+milleEtangs:    
+    pattern:  /les-mille-etangs
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:milleEtangs }
 
 evenements:    
     pattern:  /evenements

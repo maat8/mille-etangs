@@ -1,14 +1,20 @@
 {% extends 'MilleEtangsRandonneesBundle::layout.html.twig' %}
 
-{% block title %}{{ randonnee.name}} | {{ parent()}}{% endblock %}
+{% block title %}{{ randonnee.getNom() }} | {{ parent()}}{% endblock %}
 
 {% block body %}
-	<h2>{{ randonnee.getName() }}</h2>
+	<h2>{{ randonnee.getNom() }}</h2>
 
 	<p>{{ randonnee.getDescription() }}</p>
 
+	<p>Distance : {{ randonnee.getDistance() }} km</p>
+
 	<p>Durée VTT : {{ randonnee.getDureeVtt() }} min</p>
 
-	<a href='{{ randonnee.getEndomondoLink() }}'>Endomondo</a>
+	<p>Dénivelé positif : {{ randonnee.getDenivelePositif() }} m</p>
+
+	{% if(randonnee.getEndomondoLink() is not null) %}
+		<a href='{{ randonnee.getEndomondoLink() }}'>Endomondo</a>
+	{% endif %}
 
 {% endblock %}

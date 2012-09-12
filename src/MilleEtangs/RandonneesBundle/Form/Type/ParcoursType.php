@@ -7,18 +7,20 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 
-class RandonneeType extends AbstractType
+class ParcoursType extends AbstractType
 {
-	const CUSTOMER_CLASS = 'MilleEtangs\RandonneesBundle\Entity\Randonnee';
+	const CUSTOMER_CLASS = 'MilleEtangs\RandonneesBundle\Entity\Parcours';
 
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('name', 'text')
-			->add('slug', 'text')
-            ->add('description', 'textarea')
+			->add('nom', 'text')
+			->add('slug', 'text', array('required' => false))
+            ->add('description', 'textarea', array('attr' => array('class' => "tinymce")))
             ->add('duree_vtt', 'text')
-            ->add('endomondo_link', 'text')
+            ->add('denivele_positif', 'text')
+            ->add('distance', 'text')
+            ->add('endomondo_link', 'text', array('required' => false))
         ;
 	}
 
@@ -31,6 +33,6 @@ class RandonneeType extends AbstractType
 
 	public function getName()
 	{
-		return 'randonnee';
+		return 'parcours';
 	}
 }
