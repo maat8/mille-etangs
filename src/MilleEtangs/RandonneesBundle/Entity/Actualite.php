@@ -12,5 +12,7 @@ class Actualite extends EntityBase
 	 */
 	protected $message;
 
-	
+	/*
+		categories actus = event, parcours, divers, partenaires,
+	*/
 }

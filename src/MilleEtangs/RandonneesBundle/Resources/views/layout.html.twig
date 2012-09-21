@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<title>{% block title %}Randonnées aux Mille étangs{% endblock %}</title>
+	<title>{% block title %}Randonnées aux Mille Étangs{% endblock %}</title>
  	<meta charset="utf-8" />
 
 	<meta name="description" content="Parcours de randonnées aux Mille Etangs" />
@@ -17,7 +17,7 @@
  
 <body id="index">
 <header id="banner" class="body">
-    <h1><a href="{{ path("home") }}">Randonnées aux Mille étangs</a></h1>
+    <h1><a href="{{ path("home") }}">Randonnées aux Mille Étangs</a></h1>
     <nav><ul>
     	{% set route = app.request.get('_route') %}
 	    <li class="{% if route == "home" %}active{% endif %}"><a href="{{ path("home") }}">actualités</a></li>
