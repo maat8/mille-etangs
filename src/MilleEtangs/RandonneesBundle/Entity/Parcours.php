@@ -6,74 +6,67 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MilleEtangs\RandonneesBundle\Repository\ParcoursRepository")
  * @ORM\Table(name="parcours")
+ * @ORM\HasLifecycleCallbacks
  */
-class Parcours
+class Parcours extends EntityBase
 {
-	/**
-	 * @ORM\Id
-	 * @ORM\Column(type="integer")
-	 * @ORM\GeneratedValue(strategy="AUTO")
-	 */
-	protected $id;
 
 	/**
 	 * @ORM\Column(type="string", length=255)
 	 */
-	protected $slug;
-
-	/**
-	 * @ORM\Column(type="string", length=255, nullable=true)
-	 */
 	protected $nom;
 
-	/**
-	 * @ORM\Column(type="text")
-	 * @Assert\NotBlank
-	 */
-	protected $description;
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $teaser;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $acces;
 
 	/**
-	 * @ORM\Column(type="string", length=512, nullable=true)
+	 * @ORM\Column(type="text", nullable=true)
 	 */
-	protected $endomondo_link;
+	protected $description;
 
 	/**
      * @ORM\Column(type="integer")
 	 * @Assert\Min(0)
 	 */
-	protected $duree_vtt;
+	protected $duree_vtt = 0;
 
     /**
      * @ORM\Column(type="integer")
      * @Assert\Min(0)
      */
-    protected $distance;
+    protected $duree_cheval = 0;
 
     /**
-     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Column(type="integer")
      * @Assert\Min(0)
      */
-    protected $denivele_positif;
+    protected $duree_marche = 0;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="integer")
+     * @Assert\Min(0)
      */
-    protected $created;
+    protected $distance = 0;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Min(0)
      */
-    protected $updated;
+    protected $denivele_positif = 0;
 
     /**
-     * @ORM\PrePersist
+     * @ORM\Column(type="string", length=512, nullable=true)
      */
-    public function setUpdatededValue()
-    {
-        $this->updated = new \DateTime();
-    }
+    protected $endomondo_link;
 
     /**
      * Get id
@@ -313,5 +306,97 @@ class Parcours
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Set teaser
+     *
+     * @param string $teaser
+     * @return Parcours
+     */
+    public function setTeaser($teaser)
+    {
+        $this->teaser = $teaser;
+    
+        return $this;
+    }
+
+    /**
+     * Get teaser
+     *
+     * @return string 
+     */
+    public function getTeaser()
+    {
+        return $this->teaser;
+    }
+
+    /**
+     * Set acces
+     *
+     * @param string $acces
+     * @return Parcours
+     */
+    public function setAcces($acces)
+    {
+        $this->acces = $acces;
+    
+        return $this;
+    }
+
+    /**
+     * Get acces
+     *
+     * @return string 
+     */
+    public function getAcces()
+    {
+        return $this->acces;
+    }
+
+    /**
+     * Set duree_cheval
+     *
+     * @param integer $dureeCheval
+     * @return Parcours
+     */
+    public function setDureeCheval($dureeCheval)
+    {
+        $this->duree_cheval = $dureeCheval;
+    
+        return $this;
+    }
+
+    /**
+     * Get duree_cheval
+     *
+     * @return integer 
+     */
+    public function getDureeCheval()
+    {
+        return $this->duree_cheval;
+    }
+
+    /**
+     * Set duree_marche
+     *
+     * @param integer $dureeMarche
+     * @return Parcours
+     */
+    public function setDureeMarche($dureeMarche)
+    {
+        $this->duree_marche = $dureeMarche;
+    
+        return $this;
+    }
+
+    /**
+     * Get duree_marche
+     *
+     * @return integer 
+     */
+    public function getDureeMarche()
+    {
+        return $this->duree_marche;
     }
 }

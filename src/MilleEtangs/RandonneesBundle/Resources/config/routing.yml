@@ -51,3 +51,15 @@ hebergement:
 restauration:    
     pattern:  /restauration
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:restauration }
+
+partenaires:    
+    pattern:  /partenaires
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:partenaires }
+
+contact:    
+    pattern:  /contact
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:contact }
+
+sitemap:    
+    pattern:  /sitemap
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:sitemap }

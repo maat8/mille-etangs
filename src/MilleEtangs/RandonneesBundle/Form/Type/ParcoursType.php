@@ -15,10 +15,12 @@ class ParcoursType extends AbstractType
 	{
 		$builder
 			->add('nom', 'text')
-			->add('slug', 'text', array('required' => false))
-            ->add('description', 'textarea', array('attr' => array('class' => "tinymce")))
-            ->add('description', 'textarea')
+            ->add('teaser', 'textarea', array('required' => false))
+            ->add('acces', 'textarea', array('required' => false))
+            ->add('description', 'textarea', array('required' => false))
             ->add('duree_vtt', 'text')
+            ->add('duree_marche', 'text')
+            ->add('duree_cheval', 'text')
             ->add('denivele_positif', 'text')
             ->add('distance', 'text')
             ->add('endomondo_link', 'text', array('required' => false))

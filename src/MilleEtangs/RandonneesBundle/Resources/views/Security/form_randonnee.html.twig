@@ -8,11 +8,13 @@
 <script type="text/javascript">
 tinyMCE.init({
         mode : "textareas",
-        theme : "simple"
+        theme : "advanced"
 });
 </script>
 <form action="{{ path('create_randonnee') }}" method="POST">
+	{{ form_errors(form) }}
 	{{ form_widget(form) }}
+
 	{{ form_rest(form) }}
 	<input type="submit" value="enregistrer" />
 </form>

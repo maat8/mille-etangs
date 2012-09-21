@@ -17,9 +17,9 @@ class DefaultController extends Controller
     {
         $randonnees = $this->get('doctrine')
             ->getRepository('MilleEtangsRandonneesBundle:Parcours')
-            ->findAll();
+            ->findAllVtt();
 
-    	return $this->render('MilleEtangsRandonneesBundle:Default:randonnees.html.twig', array(
+    	return $this->render("MilleEtangsRandonneesBundle:Default:randonnees_{$type}.html.twig", array(
             'randonnees' => $randonnees
         ));	
     }
@@ -53,5 +53,10 @@ class DefaultController extends Controller
     public function milleEtangsAction()
     {
         return $this->render('MilleEtangsRandonneesBundle:Default:mille_etangs.html.twig');
+    }
+
+    public function partenairesAction()
+    {
+        return $this->render('MilleEtangsRandonneesBundle:Default:partenaires.html.twig');
     }
 }

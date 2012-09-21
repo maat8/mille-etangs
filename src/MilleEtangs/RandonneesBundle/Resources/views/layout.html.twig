@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<meta charset="utf-8" />
 	<title>{% block title %}Randonnées aux Mille étangs{% endblock %}</title>
- 
+ 	<meta charset="utf-8" />
+
+	<meta name="description" content="Parcours de randonnées aux Mille Etangs" />
+ 	<meta name="keywords" content="randonnées, randonnée, mille étangs, étangs, vosges saonoises, itinéraires, parcours" />
+ 	<meta name="robots" content="follow,index" />
 	<link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('css/inuit.css') }}" type="text/css" />
 	{% block stylesheets %}{% endblock %}
@@ -19,9 +22,9 @@
     	{% set route = app.request.get('_route') %}
 	    <li class="{% if route == "home" %}active{% endif %}"><a href="{{ path("home") }}">actualités</a></li>
 	    <li class=""><a href="{{ path("milleEtangs") }}">les mille étangs</a></li>
-		<li class=""><a href="{{ path("randonnees", {'type':"a-pied"}) }}">à pied</a></li>
-		<li class=""><a href="{{ path("randonnees", {'type':"en-vtt"}) }}">en vtt</a></li>
-		<li class=""><a href="{{ path("randonnees", {'type':"a-cheval"}) }}">à cheval</a></li>
+		<li class=""><a href="{{ path("randonnees_type", {'type':"marche"}) }}">à pied</a></li>
+		<li class=""><a href="{{ path("randonnees_type", {'type':"vtt"}) }}">à vtt</a></li>
+		<li class=""><a href="{{ path("randonnees_type", {'type':"cheval"}) }}">à cheval</a></li>
     </ul></nav>
 </header>
 
@@ -44,14 +47,14 @@
 	{% block sidebar_block3 %}
 	<div class="sidebar_block">
 		<h3>Restauration</h3>
-		<div class="sidebar_content">Content</div>
+		<div class="sidebar_content"><a href="{{ path("restauration") }}">Découvrez les auberges et les restaurants locaux</a></div>
 	</div>
 	{% endblock %}
 
 	{% block sidebar_block4 %}
 	<div class="sidebar_block">
 		<h3>Hébergement</h3>
-		<div class="sidebar_content">Content</div>
+		<div class="sidebar_content"><a href="{{ path("hebergement") }}">Gîtes et chambres d'hôtes pour vous accueillir en toute convivialité</a></div>
 	</div>
 	{% endblock %}
 </aside>
@@ -70,36 +73,36 @@ Vivamus fermentum semper porta. Nunc diam velit, adipiscing ut tristique vitae, 
 	<div class="links-mille-etangs">
         <h2>1000 étangs</h2>
 		<ul>
-			<li><a href="http://www.les1000etangs.com">office de tourisme</a></li>	
-			<li><a href="http://www.cc-1000etangs.fr/">communauté de communes</a></li>	
+			<li><a href="http://www.les1000etangs.com" rel="nofollow">office de tourisme</a></li>	
+			<li><a href="http://www.cc-1000etangs.fr/" rel="nofollow">communauté de communes</a></li>	
 		</ul>
     </div>
     <div class="links-vtt">
         <h2>vtt</h2>
 		<ul>
-			<li><a href="">vtt fc</a></li>	
-			<li><a href="">vetete</a></li>	
+			<li><a href="http://www.randofc.fr" rel="nofollow">Rando FC</a></li>	
+			<li><a href="http://www.vetete.com" rel="nofollow">Vetete.com</a></li>
+			<li><a href="http://www.ffc.fr/a_VTT/Actualites_vtt/index.asp" rel="nofollow">FFC</a></li>
 		</ul>
     </div>
     <div class="links-marche">
-        <h2>vtt</h2>
+        <h2>randonnées</h2>
 		<ul>
-			<li><a href="">rando.com</a></li>	
+			<li><a href="http://http://www.ffrandonnee.fr">FF randonnée</a></li>	
 		</ul>
     </div>
     <div class="social">
 		<h2>social</h2>
 		<ul>
-			<li><a href="mailto:">mail</a></li>
-			<li><a rel="me" href="http://facebook.com">facebook</a></li>
-			<li><a rel="alternate" href="rss.xml">rss</a></li>
-			<li><a href="">partenaires</a></li>
+			<li><a href="mailto:contact@randos-mille-etangs.com">mail</a></li>
+			<li><a href="{{ path("contact") }}">contact</a></li>
+			<li><a href="{{ path("partenaires") }}">partenaires</a></li>
 		</ul>
     </div>
     <div class="clear"></div>
 </div>
 <div id="subfooter">
-	<a href="">copyright</a> - <a href="">plan de site</a> - 
+	<a href="#top">haut de la page</a> - copyright - <a href="{{ path("sitemap") }}">plan de site</a>
 </div>
 </footer>
 
