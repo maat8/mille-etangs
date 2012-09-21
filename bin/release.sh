@@ -12,7 +12,7 @@ cp -R * .git "$tempDir"
 
 # Clean
 cd $tempDir
-git clean -fdx --exclude=vendor --exclude=app/config/parameters.ini
+git clean -fdx --exclude=vendor --exclude=app/config/parameters.yml
 mkdir app/cache app/logs web/uploads web/media
 
 # Update project
