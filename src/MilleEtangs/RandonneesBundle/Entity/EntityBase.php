@@ -18,6 +18,11 @@ class EntityBase
      */
     protected $id;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $nom;
+
 	/**
 	 * @ORM\Column(type="string", length=255, nullable=true)
 	 */
@@ -52,5 +57,107 @@ class EntityBase
             $this->created = new \DateTime();
         $this->updated = new \DateTime();
         $this->slug = $this->generateSlug($this->nom);
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Parcours
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Parcours
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Actualite
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Actualite
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }

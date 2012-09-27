@@ -13,11 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Parcours extends EntityBase
 {
 
-	/**
-	 * @ORM\Column(type="string", length=255)
-	 */
-	protected $nom;
-
     /**
      * @ORM\Column(type="text", nullable=true)
      */
@@ -67,62 +62,6 @@ class Parcours extends EntityBase
      * @ORM\Column(type="string", length=512, nullable=true)
      */
     protected $endomondo_link;
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string 
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     * @return Parcours
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-    
-        return $this;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Parcours
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
 
     /**
      * Set description
@@ -194,29 +133,6 @@ class Parcours extends EntityBase
     }
 
     /**
-     * Set nom
-     *
-     * @param string $nom
-     * @return Parcours
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-    
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
-     * @return string 
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
      * Set distance
      *
      * @param integer $distance
@@ -260,52 +176,6 @@ class Parcours extends EntityBase
     public function getDenivelePositif()
     {
         return $this->denivele_positif;
-    }
-
-    /**
-     * Set created
-     *
-     * @param \DateTime $created
-     * @return Parcours
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-    
-        return $this;
-    }
-
-    /**
-     * Get created
-     *
-     * @return \DateTime 
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * Set updated
-     *
-     * @param \DateTime $updated
-     * @return Parcours
-     */
-    public function setUpdated($updated)
-    {
-        $this->updated = $updated;
-    
-        return $this;
-    }
-
-    /**
-     * Get updated
-     *
-     * @return \DateTime 
-     */
-    public function getUpdated()
-    {
-        return $this->updated;
     }
 
     /**
