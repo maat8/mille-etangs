@@ -3,6 +3,8 @@
 namespace MilleEtangs\RandonneesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+
 use MilleEtangs\RandonneesBundle\Entity\Parcours;
 
 class DefaultController extends Controller
@@ -58,5 +60,14 @@ class DefaultController extends Controller
     public function partenairesAction()
     {
         return $this->render('MilleEtangsRandonneesBundle:Default:partenaires.html.twig');
+    }
+
+    public function sitemapAction($_format = null){
+        // Pages statiques
+
+        // Pages dynamiques : parcours, actualités, catégories
+
+        $format = $_format ?: "html";
+        return $this->render("MilleEtangsRandonneesBundle:Default:sitemap.{$format}.twig");
     }
 }

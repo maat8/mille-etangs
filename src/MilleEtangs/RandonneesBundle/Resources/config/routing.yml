@@ -19,6 +19,18 @@ create_randonnee:
     pattern: /secured/randonnees/create
     defaults: { _controller: MilleEtangsRandonneesBundle:Security:createRandonnee }
 
+update_randonnee:
+    pattern: /secured/randonnees/update/{id}
+    defaults: { _controller: MilleEtangsRandonneesBundle:Security:updateRandonnee }
+
+create_actualite:
+    pattern: /secured/actualites/create
+    defaults: { _controller: MilleEtangsRandonneesBundle:Security:createActualite }
+
+update_actualite:
+    pattern: /secured/actualites/update/{id}
+    defaults: { _controller: MilleEtangsRandonneesBundle:Security:updateActualite }
+
 # Website
 home:
     pattern:  /
@@ -63,3 +75,9 @@ contact:
 sitemap:    
     pattern:  /sitemap
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:sitemap }
+
+sitemap_xml:    
+    pattern:  /sitemap.{_format}
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:sitemap }
+    requirements:
+      _format:  html|xml

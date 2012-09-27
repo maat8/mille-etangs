@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\Security\Core\SecurityContext;
 
 use MilleEtangs\RandonneesBundle\Entity\Parcours;
+use MilleEtangs\RandonneesBundle\Entity\Actualite;
 
 class SecurityController extends Controller 
 {
@@ -57,8 +58,13 @@ class SecurityController extends Controller
             ->getRepository('MilleEtangsRandonneesBundle:Parcours')
             ->findAll();
 
+        $actualites = $this->get('doctrine')
+            ->getRepository('MilleEtangsRandonneesBundle:Actualite')
+            ->findAll();
+
     	return $this->render("MilleEtangsRandonneesBundle:Security:menu.html.twig", array(
-    		'randonnees' => $randonnees
+    		'randonnees' => $randonnees,
+            'actualites' => $actualites
     	));
     }
 
@@ -75,6 +81,9 @@ class SecurityController extends Controller
                 $em->persist($randonnee);
                 $em->flush();
 
+                $session = $this->getRequest()->getSession();
+                $session->setFlash("succes", "Le parcours a bien été créé");
+
                 return $this->redirect($this->generateUrl('admin_menu'));
             }
         }
@@ -84,13 +93,97 @@ class SecurityController extends Controller
         ));
     }
 
-    public function updateRandonneeAction($randonneeId = null)
+    public function updateRandonneeAction($id = null)
     {
+        if (is_numeric($id)){
+            $parcours = $this->get('doctrine')
+                ->getRepository("MilleEtangsRandonneesBundle:Parcours")
+                ->findOneById($id)
+            ;
+        }
+        $form =  $this->get('form.factory')->create("parcours", $parcours);
 
+        if ("POST" === $this->getRequest()->getMethod()){
+            $form->bind($this->getRequest());
+
+            if($form->isValid()){
+                $em = $this->get('doctrine')->getEntityManager();
+                $em->flush();
+
+                $session = $this->getRequest()->getSession();
+                $session->setFlash("succes", "Le parcours a bien été sauvegardé");
+
+                return $this->redirect($this->generateUrl('admin_menu'));
+            }
+        }
+
+        return $this->render("MilleEtangsRandonneesBundle:Security:form_randonnee.html.twig", array(
+            'form' => $form->createView()
+        ));
     }
 
     public function deleteRandonneeAction()
     {
 
+    }
+
+    public function createActualiteAction()
+    {
+        $actualite = new Actualite();
+        
+        $form =  $this->get('form.factory')->create("actualite", $actualite);
+
+        if ("POST" === $this->getRequest()->getMethod()){
+            $form->bind($this->getRequest());
+
+            if($form->isValid()){
+                $em = $this->get('doctrine')->getEntityManager();
+                $em->persist($actualite);
+                $em->flush();
+
+                $session = $this->getRequest()->getSession();
+                $session->setFlash("succes", "L'actualité a bien été créée");
+
+                return $this->redirect($this->generateUrl('admin_menu'));
+            }
+        }
+
+        return $this->render("MilleEtangsRandonneesBundle:Security:form_actualite.html.twig", array(
+            'form' => $form->createView()
+        ));
+    }
+
+    public function updateActualiteAction($id = null)
+    {
+        if (is_numeric($id)) {
+            $actualite = $this->get('doctrine')
+                ->getRepository('MilleEtangsRandonneesBundle:Actualite')
+                ->findOneById($id)
+            ;
+        }
+
+        if (!$actualite) {
+
+        }
+
+        $form =  $this->get('form.factory')->create("actualite", $actualite);
+
+        if ("POST" === $this->getRequest()->getMethod()){
+            $form->bind($this->getRequest());
+
+            if($form->isValid()){
+                $em = $this->get('doctrine')->getEntityManager();
+                $em->flush();
+
+                $session = $this->getRequest()->getSession();
+                $session->setFlash("succes", "L'actualité a bien été sauvegardée");
+
+                return $this->redirect($this->generateUrl('admin_menu'));
+            }
+        }
+
+        return $this->render("MilleEtangsRandonneesBundle:Security:form_actualite.html.twig", array(
+            'form' => $form->createView()
+        ));
     }
 }

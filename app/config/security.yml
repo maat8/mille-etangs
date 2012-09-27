@@ -31,6 +31,9 @@ security:
             form_login:
                 check_path: /secured/login_check
                 login_path: /secured/login
+                always_use_default_target_path: false
+                default_target_path:            /secured/menu
+                #use_referer:                    false
             logout:
                 path:   /secured/logout
                 target: /

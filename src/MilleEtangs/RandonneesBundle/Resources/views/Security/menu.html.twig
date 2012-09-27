@@ -3,15 +3,22 @@
 {% block body %}
 <h2>Administation</h2>
 
+<div class="success">{{ app.session.getFlash('succes') }}</div>
+
+<div class="error">{{ app.session.getFlash('erreur') }}</div>
+
 <h3>Gestion des articles</h3>
 <ul>
-	<li>Ajouter un article</li>
+	{% for actu in actualites %}
+		<li><a href="{{ path('update_actualite', {id: actu.getId()}) }}">{{ actu.getNom() }}</a></li>
+	{% endfor %}
+	<li><a href="{{ path('create_actualite') }}">Ajouter un article</a></li>
 </ul>
 
 <h3>Gestion des parcours</h3>
 <ul>
 	{% for rando in randonnees %}
-		<li>{{ rando.getNom() }}</li>
+		<li><a href="{{ path('update_randonnee', {id: rando.getId()}) }}">{{ rando.getNom() }}</a></li>
 	{% endfor %}
 	<li><a href="{{ path('create_randonnee') }}">Ajouter un parcours</a></li>
 </ul>

@@ -55,4 +55,9 @@ class Categorie extends EntityBase
     {
         return $this->articles;
     }
+
+    public function __toString()
+    {
+        return $this->getNom();
+    }
 }

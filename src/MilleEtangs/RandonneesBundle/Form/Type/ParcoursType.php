@@ -14,6 +14,7 @@ class ParcoursType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
+			->add('id', 'hidden')
 			->add('nom', 'text')
             ->add('teaser', 'textarea', array('required' => false))
             ->add('acces', 'textarea', array('required' => false))

@@ -70,10 +70,23 @@ class EntityBase
     }
 
     /**
+     * Set id
+     *
+     * @param integer $id
+     * @return Entity
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    
+        return $this;
+    }
+
+    /**
      * Set nom
      *
      * @param string $nom
-     * @return Parcours
+     * @return Entity
      */
     public function setNom($nom)
     {
@@ -106,7 +119,7 @@ class EntityBase
      * Set slug
      *
      * @param string $slug
-     * @return Parcours
+     * @return Entity
      */
     public function setSlug($slug)
     {
