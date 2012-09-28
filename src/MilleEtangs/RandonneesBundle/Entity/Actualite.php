@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Constraint as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MilleEtangs\RandonneesBundle\Repository\ActualiteRepository")
  * @ORM\Table(name="actualites")
  * @ORM\HasLifecycleCallbacks
  */
@@ -22,6 +22,16 @@ class Actualite extends EntityBase
 	 * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
 	*/
 	protected $categorie;
+
+    /** 
+     * @ORM\Column(type="date")
+    */
+    protected $publication;
+
+    public function __construct()
+    {
+        $this->publication = new \DateTime();
+    }
 
     /**
      * Set message
@@ -67,5 +77,28 @@ class Actualite extends EntityBase
     public function getCategorie()
     {
         return $this->categorie;
+    }
+
+    /**
+     * Set publication
+     *
+     * @param \Date $publication
+     * @return Actualite
+     */
+    public function setPublication($publication = null)
+    {
+        $this->publication = $publication;
+    
+        return $this;
+    }
+
+    /**
+     * Get publication
+     *
+     * @return \Date
+     */
+    public function getPublication()
+    {
+        return $this->publication;
     }
 }

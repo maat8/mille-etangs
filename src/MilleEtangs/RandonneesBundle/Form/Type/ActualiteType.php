@@ -17,6 +17,7 @@ class ActualiteType extends AbstractType
 			->add('categorie')
 			->add('nom', 'text')
             ->add('message', 'textarea', array('required' => false))
+            ->add('publication', 'date')
         ;
 	}
 

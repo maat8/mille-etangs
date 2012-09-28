@@ -1,1 +1,8 @@
 {% extends 'MilleEtangsRandonneesBundle::layout.html.twig' %}
+
+{% block body %}
+	{% for actu in actualites %}
+		{% include "MilleEtangsRandonneesBundle:Actualite:view.html.twig" with {"actu":actu} only %}
+	{% endfor %}
+
+{% endblock %}

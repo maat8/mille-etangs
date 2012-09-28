@@ -5,11 +5,25 @@
 {% block body %}
 	<h2>{{ randonnee.getNom() }}</h2>
 
-	<p>{{ randonnee.getDescription() }}</p>
+	<p>{{ randonnee.getTeaser()|raw }}</p>
+
+	<p>{{ randonnee.getAcces()|raw }}</p>
+
+	<p>{{ randonnee.getDescription()|raw }}</p>
 
 	<p>Distance : {{ randonnee.getDistance() }} km</p>
 
-	<p>Durée VTT : {{ randonnee.getDureeVtt() }} min</p>
+	{% if randonnee.getDureeVtt() > 0 %}
+		<p>Durée VTT : {{ randonnee.getDureeVtt() }} min</p>
+	{% endif %}
+
+	{% if randonnee.getDureeMarche() > 0 %}
+		<p>Durée à pied : {{ randonnee.getDureeMarche() }} min</p>
+	{% endif %}
+
+	{% if randonnee.getDureeCheval() > 0 %}
+		<p>Durée à cheval : {{ randonnee.getDureeCheval() }} min</p>
+	{% endif %}
 
 	<p>Dénivelé positif : {{ randonnee.getDenivelePositif() }} m</p>
 

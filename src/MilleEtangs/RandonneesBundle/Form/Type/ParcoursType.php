@@ -25,6 +25,7 @@ class ParcoursType extends AbstractType
             ->add('denivele_positif', 'text')
             ->add('distance', 'text')
             ->add('endomondo_link', 'text', array('required' => false))
+            ->add('publie', 'checkbox', array('required' => false))
         ;
 	}
 

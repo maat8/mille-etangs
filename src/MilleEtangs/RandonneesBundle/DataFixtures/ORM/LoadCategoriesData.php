@@ -4,6 +4,7 @@ namespace MilleEtangs\RandonneesBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+
 use MilleEtangs\RandonneesBundle\Entity\Categorie;
 
 class LoadCategoriesData implements FixtureInterface

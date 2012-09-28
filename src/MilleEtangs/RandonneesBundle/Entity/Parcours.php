@@ -63,6 +63,11 @@ class Parcours extends EntityBase
      */
     protected $endomondo_link;
 
+    /** 
+     * @ORM\Column(type="boolean")
+    */
+    protected $publie;
+
     /**
      * Set description
      *
@@ -268,5 +273,28 @@ class Parcours extends EntityBase
     public function getDureeMarche()
     {
         return $this->duree_marche;
+    }
+
+    /**
+     * Set publie
+     *
+     * @param integer $publie
+     * @return Parcours
+     */
+    public function setPublie($publie)
+    {
+        $this->publie = $publie;
+    
+        return $this;
+    }
+
+    /**
+     * Get publie
+     *
+     * @return integer 
+     */
+    public function getPublie()
+    {
+        return $this->publie;
     }
 }

@@ -11,8 +11,9 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-
-        return $this->render('MilleEtangsRandonneesBundle:Default:index.html.twig');
+        return $this->render('MilleEtangsRandonneesBundle:Default:index.html.twig', array(
+            'actualites' => $this->get('doctrine')->getRepository('MilleEtangsRandonneesBundle:Actualite')->findAllActualitesPubliees()
+        ));
     }
 
     public function randonneesAction($type = null)
