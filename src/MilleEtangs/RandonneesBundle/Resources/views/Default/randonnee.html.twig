@@ -7,25 +7,27 @@
 
 	<p>{{ randonnee.getTeaser()|raw }}</p>
 
+	<h5>Accès</h5>
 	<p>{{ randonnee.getAcces()|raw }}</p>
 
+	<h5>Description</h5>
 	<p>{{ randonnee.getDescription()|raw }}</p>
 
-	<p>Distance : {{ randonnee.getDistance() }} km</p>
+	<p>Distance <strong>{{ (randonnee.getDistance()/1000) }} km</strong></p>
 
 	{% if randonnee.getDureeVtt() > 0 %}
-		<p>Durée VTT : {{ randonnee.getDureeVtt() }} min</p>
+		<p>Durée VTT <strong>{{ randonnee.getDureeVtt() }} minutes</strong></p>
 	{% endif %}
 
 	{% if randonnee.getDureeMarche() > 0 %}
-		<p>Durée à pied : {{ randonnee.getDureeMarche() }} min</p>
+		<p>Durée à pied <strong>{{ randonnee.getDureeMarche() }} min</strong></p>
 	{% endif %}
 
 	{% if randonnee.getDureeCheval() > 0 %}
-		<p>Durée à cheval : {{ randonnee.getDureeCheval() }} min</p>
+		<p>Durée à cheval <strong>{{ randonnee.getDureeCheval() }} min</strong></p>
 	{% endif %}
 
-	<p>Dénivelé positif : {{ randonnee.getDenivelePositif() }} m</p>
+	<p>Dénivelé positif <strong>{{ randonnee.getDenivelePositif() }} m</strong></p>
 
 	{% if(randonnee.getEndomondoLink() is not null) %}
 		<a href='{{ randonnee.getEndomondoLink() }}'>Endomondo</a>
