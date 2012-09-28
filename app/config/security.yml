@@ -5,17 +5,23 @@ jms_security_extra:
 security:
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
+        MilleEtangs\RandonneesBundle\Entity\User: 
+            algorithm:        sha512
+            encode-as-base64: true
+            iterations:       5
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
-        in_memory:
-            memory:
-                users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        #in_memory:
+        #    memory:
+        #        users:
+        #            user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+        #            admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        entity:
+            entity: {class: "MilleEtangs\RandonneesBundle\Entity\User", property: "username"}
 
     firewalls:
         dev:
