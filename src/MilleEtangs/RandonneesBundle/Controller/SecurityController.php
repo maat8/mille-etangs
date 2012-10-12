@@ -204,7 +204,7 @@ class SecurityController extends Controller
                 $em->flush();
 
                 $session = $this->getRequest()->getSession();
-                $session->setFlash("succes", "L'image' a bien été uploadée");
+                $session->setFlash("succes", "L'image' a bien été uploadée : " . $image->getWebPath());
 
                 return $this->redirect($this->generateUrl('admin_menu'));
             }
