@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Security\Core\SecurityContext;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 use MilleEtangs\RandonneesBundle\Entity\Parcours;
 use MilleEtangs\RandonneesBundle\Entity\Actualite;
 
@@ -143,6 +145,9 @@ class SecurityController extends Controller
 
                 $session = $this->getRequest()->getSession();
                 $session->setFlash("succes", "L'actualité a bien été créée");
+
+                // Upload picture
+                $form['picture']->getData()->move($dir, $someNewFilename);
 
                 return $this->redirect($this->generateUrl('admin_menu'));
             }

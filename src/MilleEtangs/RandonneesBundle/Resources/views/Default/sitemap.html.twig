@@ -3,6 +3,36 @@
 {% block title %}Plan du site | {{ parent()}}{% endblock %}
 
 {% block body %}
-Plan du site
+<h2>Plan du site</h2>
+
+<ul>
+	<li><a href="{{ path('home') }}">Accueil</a></li>
+	<li><a href="{{ path('milleEtangs') }}">Les mille étangs</a></li>
+	<li><a href="{{ path('hebergement') }}">Hébergement</a></li>
+	<li><a href="{{ path('restauration') }}">Restauration</a></li>
+	<li><a href="{{ path('contact') }}">Contact</a></li>
+</ul>
+
+<h3><a href="{{ path('randonnees_type', {'type':'vtt'} )}}">Randonnées VTT</a></h3>
+<ul>
+	{% for rando in randonneesVtt %}
+		<li><a href="{{ path('randonnee', {'slug':rando.getSlug()}) }}">{{ rando.getNom() }}</a></li>
+	{% endfor %}
+</ul>
+
+<h3><a href="{{ path('randonnees_type', {'type':'marche'} )}}">Randonnées à pied</a></h3>
+<ul>
+	{% for rando in randonneesMarche %}
+		<li><a href="{{ path('randonnee', {'slug':rando.getSlug()}) }}">{{ rando.getNom() }}</a></li>
+	{% endfor %}
+</ul>
+
+<h3><a href="{{ path('randonnees_type', {'type':'cheval'} )}}">Randonnées à cheval</a></h3>
+<ul>
+	{% for rando in randonneesCheval %}
+		<li><a href="{{ path('randonnee', {'slug':rando.getSlug()}) }}">{{ rando.getNom() }}</a></li>
+	{% endfor %}
+</ul>
 	
 {% endblock %}
+

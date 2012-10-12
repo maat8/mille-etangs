@@ -20,7 +20,7 @@ class DefaultController extends Controller
     {
         $randonnees = $this->get('doctrine')
             ->getRepository('MilleEtangsRandonneesBundle:Parcours')
-            ->findAllVtt();
+            ->findAllByType($type);
 
     	return $this->render("MilleEtangsRandonneesBundle:Default:randonnees_{$type}.html.twig", array(
             'randonnees' => $randonnees
@@ -64,11 +64,24 @@ class DefaultController extends Controller
     }
 
     public function sitemapAction($_format = null){
-        // Pages statiques
+        // Pages dynamiques : parcours
+        $randonneesVtt = $this->get('doctrine')
+            ->getRepository('MilleEtangsRandonneesBundle:Parcours')
+            ->findAllVtt();
 
-        // Pages dynamiques : parcours, actualités, catégories
+        $randonneesMarche = $this->get('doctrine')
+            ->getRepository('MilleEtangsRandonneesBundle:Parcours')
+            ->findAllMarche();
+
+        $randonneesCheval = $this->get('doctrine')
+            ->getRepository('MilleEtangsRandonneesBundle:Parcours')
+            ->findAllCheval();
 
         $format = $_format ?: "html";
-        return $this->render("MilleEtangsRandonneesBundle:Default:sitemap.{$format}.twig");
+        return $this->render("MilleEtangsRandonneesBundle:Default:sitemap.{$format}.twig", array(
+            'randonneesVtt' => $randonneesVtt,
+            'randonneesCheval' => $randonneesCheval,
+            'randonneesMarche' => $randonneesMarche
+        ));
     }
 }

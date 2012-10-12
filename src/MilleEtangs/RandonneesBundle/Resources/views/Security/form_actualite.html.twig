@@ -11,7 +11,7 @@ tinyMCE.init({
         theme : "advanced"
 });
 </script>
-<form action="" method="POST">
+<form action="" method="POST" {{ form_enctype(form) }}>
 	{{ form_errors(form) }}
 	{{ form_widget(form) }}
 

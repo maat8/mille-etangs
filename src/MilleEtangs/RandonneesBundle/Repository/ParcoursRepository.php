@@ -26,4 +26,17 @@ class ParcoursRepository extends EntityRepository
             ->createQuery('SELECT p FROM MilleEtangsRandonneesBundle:Parcours p WHERE p.duree_cheval > 0 AND p.publie = true ORDER BY p.nom ASC')
             ->getResult();
     }
+
+    public function findAllByType($type)
+    {
+        switch($type){
+            case 'cheval':
+                return $this->findAllCheval();
+            case 'marche':
+                return $this->findAllMarche();
+            case 'vtt':
+            default:
+                return $this->findAllVtt();
+        }
+    }
 }

@@ -1,2 +1,48 @@
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+		xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+{% set url = "http://www.randos-mille-etangs.fr" %}
+	<url>
+        <loc>{{ url }}</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>{{ url }}{{ path('milleEtangs') }}</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+	<url>
+        <loc>{{ url }}{{ path('randonnees_type', {'type':'vtt'}) }}</loc>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>{{ url }}{{ path('randonnees_type', {'type':'pied'}) }}</loc>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>{{ url }}{{ path('randonnees_type', {'type':'cheval'}) }}</loc>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>{{ url }}{{ path('hebergement') }}</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>{{ url }}{{ path('restauration') }}</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>{{ url }}{{ path('hebergement') }}</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>{{ url }}{{ path('contact') }}</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    {% for rando in randonneesVtt %}
+	    <url>
+	        <loc>{{ url }}{{ path('randonnee', {'slug':rando.getSlug()}) }}</loc>
+	        <changefreq>monthly</changefreq>
+	    </url>
+    {% endfor %}
 </urlset>

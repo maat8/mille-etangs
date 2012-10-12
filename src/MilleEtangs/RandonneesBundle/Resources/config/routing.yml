@@ -45,7 +45,7 @@ randonnees:
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:randonnees }
 
 randonnee:    
-    pattern:  /randonnees/{type}/{slug}
+    pattern:  /randonnee/{slug}
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:randonnee }
 
 milleEtangs:    
