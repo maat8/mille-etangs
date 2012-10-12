@@ -1,0 +1,252 @@
+    html{
+    	background:url('/images/body_background.jpg') repeat scroll center top #FCF7EC;
+    }
+
+    body {
+    	font-size: 87.5%; /* Base font size: 14px */
+    	font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    	line-height: 1.429;
+    	text-align: left;
+    }
+
+    .body {
+        clear: both;
+        margin: 0 auto;
+        width: 940px;
+    }
+
+    h2 {font-size: 1.571em}	/* 22px */
+    h3 {font-size: 1.429em}	/* 20px */
+    h4 {font-size: 1.286em}	/* 18px */
+    h5 {font-size: 1.143em}	/* 16px */
+    h6 {font-size: 1em}	/* 14px */
+     
+    h2, h3, h4, h5, h6 {
+    	font-weight: 400;
+    	line-height: 1.1;
+    	margin-bottom: .8em;
+    }
+
+    a {outline: 0;}
+    a img {border: 0px; text-decoration: none;}
+    a:link, a:visited {
+    	padding: 0 1px;
+    	text-decoration: none;
+        color:black;
+    }
+    a:hover, a:active {
+        color:black;
+        text-decoration: none;
+    }
+     
+
+    p {margin-bottom: 1.143em;}
+    * p:last-child {margin-bottom: 0;}
+     
+    strong, b {font-weight: bold;}
+    em, i {font-style: italic;}
+     
+    ::-moz-selection {background: #F6CF74; color: #fff;}
+    ::selection {background: #F6CF74; color: #fff;}
+     
+
+    ul {
+    	list-style: outside disc;
+    	margin: 1em 0 1.5em 1.5em;
+    }
+     
+    ol {
+    	list-style: outside decimal;
+    	margin: 1em 0 1.5em 1.5em;
+    }
+     
+    dl {margin: 0 0 1.5em 0;}
+    dt {font-weight: bold;}
+    dd {margin-left: 1.5em;}
+     
+    blockquote {font-style: italic;}
+    cite {}
+     
+    q {}
+     
+    /* Tables */
+    table {margin: .5em auto 1.5em auto; width: 98%;}
+     
+    thead th {padding: .5em .4em; text-align: left;}
+    thead td {}
+
+    tbody td {padding: .5em .4em;}
+    tbody th {}
+
+    tbody .alt td {}
+    tbody .alt th {}
+
+    tfoot th {}
+    tfoot td {}
+
+    #banner {
+    	margin: 0 auto;
+    	padding: 2.5em 0 0 0;
+    }
+     
+    #banner h1 {font-size: 3.571em; line-height: .8;}
+    #banner h1 a:link, #banner h1 a:visited {
+    	color: #422615;
+    	display: block;
+    	font-weight: bold;
+    	margin: 0 0 .6em .2em;
+    	text-decoration: none;
+    }
+
+    #banner h1 a:hover, #banner h1 a:active {
+    	background: none;
+    	text-shadow: none;
+    }
+
+    #banner nav {
+        background: none repeat scroll 0 0 #A3B153;
+        border-radius: 2px;
+        font-size: 1.143em;
+        height: 40px;
+        line-height: 30px;
+        margin: 0 auto 20px auto;
+        padding: 0;
+        text-align: center;
+    }
+
+    #banner nav ul {
+        list-style: none outside none;
+        margin: 0 auto;
+        padding:0;
+    }
+
+    #banner nav li {
+        display: inline;
+        float: left;
+        margin: 0;
+        width:20%;
+    }
+
+    #banner nav a:hover, #banner nav a:active, #banner nav .active a:link, #banner nav .active a:visited {
+        background: none repeat scroll 0 0 #74823B;
+        color: #FFFFFF;
+        text-shadow: none !important;
+    }
+
+    #banner nav li:first-child a {
+        border-bottom-left-radius: 2px;
+        border-top-left-radius: 2px;
+    }
+
+    #banner nav li:last-child a {
+        border-bottom-right-radius: 2px;
+        border-top-right-radius: 2px;
+    }
+
+    #banner nav a{
+        color: #FFFFFF;
+        display: block;
+        height: 30px;
+        padding: 5px 1.5em;
+        text-decoration: none;
+        font-weight:bold;
+        text-transform:uppercase;
+        font-size:14px;
+    }
+
+    aside#sidebar{
+        width:25%;
+        float:left;
+    }
+
+    aside#sidebar div.sidebar_block{
+        background: none repeat scroll 0 0 rgba(153, 141, 80, 0.25);
+        margin-bottom: 20px;
+        border-radius:2px;
+    }
+
+    aside#sidebar h3{
+        background: none repeat scroll 0 0 rgba(153, 141, 80, 0.75);
+        color:#fff;
+        padding: 5px 5px 5px 10px;
+        margin:0;
+        font-size:14px;
+        font-weight: bold;
+    }
+    aside#sidebar .sidebar_content{
+        padding:10px;
+    }
+
+    aside#sidebar .sidebar_content a{
+        text-decoration: none;
+        color:black;
+    }
+
+    section#content {
+        background: #fff;
+        margin-bottom:20px;
+        overflow: hidden;
+        display:block;
+        float:left;
+        padding:10px;
+        border-radius:2px;
+        width:70%;
+        margin-left:20px;
+    }
+
+    footer{
+    	background:url('../images/footer_background.jpg') repeat scroll center top #717D35;
+    	margin-top:20px;
+    	border-top:3px solid #422615;
+        padding-bottom: 15px;
+    }
+
+    footer #footer-wrapper{
+    	margin-top:20px;
+    }
+
+    footer div[class="social"], footer div[class="links-mille-etangs"], footer div[class="links-vtt"], footer div[class="links-marche"]  {
+        width: 210px;
+    	float:left;
+    	margin-right:20px;
+    }
+
+    footer h2 {
+        	color: #fff;
+        	font-size: 1.429em;
+        	margin-bottom: 0.25em;
+        	padding: 0 3px;
+    }
+
+    footer ul {
+        	list-style: none outside none;
+        	margin: 0;
+    }
+
+    footer li {
+        	border-bottom: 1px solid #FFFFFF;
+    }
+
+    footer a {
+        	background-position: 3px 6px;
+        	background-repeat: no-repeat;
+        	padding-left: 25px;
+    }
+
+    footer a:link, footer :visited {
+        	border-bottom: 1px solid #D4D4D4;
+        	color: #444444;
+        	display: block;
+        	padding: 0.3em 0.25em;
+        	text-decoration: none;
+    }
+
+    footer #subfooter{
+        padding:10px;
+        text-align: center
+    }
+
+    footer #subfooter a{
+        display:inline;
+        border:0;
+    }
