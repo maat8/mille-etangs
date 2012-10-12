@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use MilleEtangs\RandonneesBundle\Entity\Parcours;
 use MilleEtangs\RandonneesBundle\Entity\Actualite;
+use MilleEtangs\RandonneesBundle\Entity\Image;
 
 class SecurityController extends Controller 
 {
@@ -146,9 +147,6 @@ class SecurityController extends Controller
                 $session = $this->getRequest()->getSession();
                 $session->setFlash("succes", "L'actualité a bien été créée");
 
-                // Upload picture
-                $form['picture']->getData()->move($dir, $someNewFilename);
-
                 return $this->redirect($this->generateUrl('admin_menu'));
             }
         }
@@ -188,6 +186,31 @@ class SecurityController extends Controller
         }
 
         return $this->render("MilleEtangsRandonneesBundle:Security:form_actualite.html.twig", array(
+            'form' => $form->createView()
+        ));
+    }
+
+    public function uploadPictureAction()
+    {
+        $image = new Image();
+        $form =  $this->get('form.factory')->create("image", $image);
+
+        if ("POST" === $this->getRequest()->getMethod()){
+            $form->bind($this->getRequest());
+
+            if($form->isValid()){
+                $em = $this->get('doctrine')->getEntityManager();
+                $em->persist($image);
+                $em->flush();
+
+                $session = $this->getRequest()->getSession();
+                $session->setFlash("succes", "L'image' a bien été uploadée");
+
+                return $this->redirect($this->generateUrl('admin_menu'));
+            }
+        }
+
+        return $this->render("MilleEtangsRandonneesBundle:Security:form_image.html.twig", array(
             'form' => $form->createView()
         ));
     }

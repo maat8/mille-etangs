@@ -11,11 +11,13 @@ tinyMCE.init({
         theme : "advanced"
 });
 </script>
-<form action="" method="POST" {{ form_enctype(form) }}>
+
+<form action="" method="POST">
 	{{ form_errors(form) }}
 	{{ form_widget(form) }}
 
 	{{ form_rest(form) }}
+	<a href="{{ path('upload_picture') }}">Charger une image</a><br />
 	<input type="submit" value="enregistrer" />
 </form>
 {% endblock %}

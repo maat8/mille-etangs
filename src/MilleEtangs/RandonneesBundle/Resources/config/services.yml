@@ -14,4 +14,7 @@ services:
         class: MilleEtangs\RandonneesBundle\Form\Type\ActualiteType
         tags:
             - {name: form.type, alias: actualite}
-
+    form_image: 
+        class: MilleEtangs\RandonneesBundle\Form\Type\ImageType
+        tags:
+            - {name: form.type, alias: image}

@@ -31,6 +31,10 @@ update_actualite:
     pattern: /secured/actualites/update/{id}
     defaults: { _controller: MilleEtangsRandonneesBundle:Security:updateActualite }
 
+upload_picture:
+    pattern: /secured/upload_picture
+    defaults: { _controller: MilleEtangsRandonneesBundle:Security:uploadPicture}
+
 # Website
 home:
     pattern:  /

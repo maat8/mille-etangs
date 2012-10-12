@@ -1,5 +1,5 @@
     html{
-    	background:url('/images/body_background.jpg') repeat scroll center top #FCF7EC;
+    	background:url('../../images/body_background.jpg') repeat scroll center top #FCF7EC;
     }
 
     body {
@@ -195,7 +195,7 @@
     }
 
     footer{
-    	background:url('../images/footer_background.jpg') repeat scroll center top #717D35;
+    	background:url('../../images/footer_background.jpg') repeat scroll center top #717D35;
     	margin-top:20px;
     	border-top:3px solid #422615;
         padding-bottom: 15px;
