@@ -1,8 +1,27 @@
 {% extends 'MilleEtangsRandonneesBundle::layout.html.twig' %}
 
-{% block body %}
-	{% for actu in actualites %}
-		{% include "MilleEtangsRandonneesBundle:Actualite:view.html.twig" with {"actu":actu} only %}
-	{% endfor %}
+{% block precontent %}
+    <div id="home_news">
+        <img class="news_background" src="/images/header.jpg" />
+        <div class="news_text">
+    	{% for actu in actualites %}
+    		{% include "MilleEtangsRandonneesBundle:Actualite:view.html.twig" with {"actu":actu} only %}
+    	{% endfor %}
+        </div>
+    </div>
+{% endblock %}
 
+{% block body %}
+    <div id="home_text">
+        <h2>Destination nature</h2>
+        <p></p>
+    </div>
+    <div id="home_links">
+        <div id="home_mille_etangs">
+        </div>
+        <div id="home_vtt">
+        </di>
+        <div id="home_randonnees">
+        </div>
+    </div>
 {% endblock %}

@@ -17,11 +17,9 @@ mkdir app/cache app/logs web/uploads web/media
 
 # Update project
 cd $tempDir
-./bin/vendors install
-#php bin/build_bootstrap.php
 
 # Generate CSS/JS
-#./app/console assetic:dump web/ --env=prod --no-debug
+./app/console assetic:dump web/ --env=prod --no-debug
 
 # Remove non-needed files
 rm -Rf app/cache/* app/logs/*

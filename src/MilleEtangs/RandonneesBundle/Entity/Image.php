@@ -22,6 +22,8 @@ class Image extends EntityBase
      */
     public $file;
 
+    // TODO : rajouter des champs alt & title
+
     public function getAbsolutePath()
     {
         return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
@@ -52,6 +54,7 @@ class Image extends EntityBase
     {
         if (null !== $this->file) {
             // do whatever you want to generate a unique name
+            // TODO : créer un slug pour avoir un nom correct
             $this->path = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
         }
     }

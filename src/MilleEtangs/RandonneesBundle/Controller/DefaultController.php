@@ -6,13 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 use MilleEtangs\RandonneesBundle\Entity\Parcours;
+use MilleEtangs\RandonneesBundle\Entity\Actualite;
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {
         return $this->render('MilleEtangsRandonneesBundle:Default:index.html.twig', array(
-            'actualites' => $this->get('doctrine')->getRepository('MilleEtangsRandonneesBundle:Actualite')->findAllActualitesPubliees()
+            'actualites' => $this->get('doctrine')->getRepository('MilleEtangsRandonneesBundle:Actualite')->findLastActualitesPubliees(1)
         ));
     }
 
@@ -36,6 +37,17 @@ class DefaultController extends Controller
     	return $this->render('MilleEtangsRandonneesBundle:Default:randonnee.html.twig', array(
             'randonnee' => $randonnee
         ));	
+    }
+
+    public function actualitesAction()
+    {
+        $actualites = $this->get('doctrine')
+            ->getRepository('MilleEtangsRandonneesBundle:Actualite')
+            ->findLastActualitesPubliees(10);        
+
+        return $this->render('MilleEtangsRandonneesBundle:Default:actualites.html.twig', array(
+            'actualites' => $actualites
+        ));
     }
 
     public function evenementsAction()

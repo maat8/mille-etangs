@@ -4,6 +4,9 @@ cd "$DIR"
 
 rm -Rf app/cache/* app/logs/*
 
+mkdir web/uploads
+chmod 777 web/uploads
+
 if [ ! -f "app/config/parameters.yml" ]; then
 cp app/config/parameters.yml-dist app/config/parameters.yml
 fi

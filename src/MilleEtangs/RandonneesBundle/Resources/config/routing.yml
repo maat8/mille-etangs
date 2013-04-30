@@ -44,9 +44,9 @@ randonnees_type:
     pattern:  /randonnees/{type}
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:randonnees }
 
-randonnees:    
-    pattern:  /randonnees
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:randonnees }
+#randonnees:    
+#    pattern:  /randonnees
+#    defaults: { _controller: MilleEtangsRandonneesBundle:Default:randonnees }
 
 randonnee:    
     pattern:  /randonnee/{slug}
@@ -59,6 +59,10 @@ milleEtangs:
 evenements:    
     pattern:  /evenements
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:evenements }
+
+actualites:    
+    pattern:  /actualites
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:actualites }
 
 hebergement:    
     pattern:  /hebergement

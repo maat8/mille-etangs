@@ -3,6 +3,7 @@
 <head>
 	<title>{% block title %}Randonnées aux Mille Étangs{% endblock %}</title>
  	<meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
 	<meta name="description" content="Parcours de randonnées et aux Mille Etangs" />
  	<meta name="keywords" content="randonnées, randonnée, randos, mille étangs, 1000 étangs, étangs, vosges saonoises, itinéraires, parcours, balades, vtt, vélo, vélo tout terrain, marche, randonneurs, marcheurs, cheval, faucogney, mélisey, servance" />
  	<meta name="robots" content="follow,index" />
@@ -14,94 +15,92 @@
  
 <body id="index">
 <header id="banner" class="body">
-    <h1><a href="{{ path("home") }}">Randonnées aux Mille Étangs</a></h1>
-    <nav><ul>
-    	{% set route = app.request.get('_route') %}
-	    <li class="{% if route == "home" %}active{% endif %}"><a href="{{ path("home") }}">actualités</a></li>
-	    <li class=""><a href="{{ path("milleEtangs") }}">les mille étangs</a></li>
-		<li class=""><a href="{{ path("randonnees_type", {'type':"marche"}) }}">à pied</a></li>
-		<li class=""><a href="{{ path("randonnees_type", {'type':"vtt"}) }}">à vtt</a></li>
-		<li class=""><a href="{{ path("randonnees_type", {'type':"cheval"}) }}">à cheval</a></li>
-    </ul></nav>
+    <nav>
+        <ul>
+            {% set route = app.request.get('_route') %}
+            <li class="{% if route == "home" %}active{% endif %}"><a href="{{ path("home") }}">accueil</a></li>
+            <li class="{% if route == "actualites" %}active{% endif %}"><a href="{{ path("actualites") }}">actualités</a></li>
+            <li class="{% if route == "milleEtangs" %}active{% endif %}"><a href="{{ path("milleEtangs") }}">les mille étangs</a></li>
+            <li class=""><a href="{{ path("randonnees_type", {'type':"marche"}) }}">à pied</a></li>
+            <li class=""><a href="{{ path("randonnees_type", {'type':"vtt"}) }}">à vtt</a></li>
+            <!--<li class=""><a href="{{ path("randonnees_type", {'type':"cheval"}) }}">à cheval</a></li>-->
+        </ul>
+    </nav>
+    <div id="header_title"><p></strong><a href="{{ path("home") }}">Randonnées aux Mille Étangs</a></strong><p></div>
 </header>
 
 <div class="wrapper body">
-<aside id="sidebar">
-	{% block sidebar_block1 %}
-	<div class="sidebar_block">
-		<h3>Conseils</h3>
-		<div class="sidebar_content">Content</div>
-	</div>
-	{% endblock %}
 
-	{% block sidebar_block2 %}
-	<div class="sidebar_block">
-		<h3>Publicité</h3>
-		<div class="sidebar_content">Content</div>
-	</div>
-	{% endblock %}
-
-	{% block sidebar_block3 %}
-	<div class="sidebar_block">
-		<h3>Restauration</h3>
-		<div class="sidebar_content"><a href="{{ path("restauration") }}">Découvrez les auberges et les restaurants locaux</a></div>
-	</div>
-	{% endblock %}
-
-	{% block sidebar_block4 %}
-	<div class="sidebar_block">
-		<h3>Hébergement</h3>
-		<div class="sidebar_content"><a href="{{ path("hebergement") }}">Gîtes et chambres d'hôtes pour vous accueillir en toute convivialité</a></div>
-	</div>
-	{% endblock %}
-</aside>
+<div id="precontent">
+{% block precontent %}{% endblock %}
+</div>
 
 <section id="content" class="grid-8">
-{% block body %}404 - Hey you shouldn't see this !
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.
-
-
-Vivamus fermentum semper porta. Nunc diam velit, adipiscing ut tristique vitae, sagittis vel odio. Maecenas convallis ullamcorper ultricies. Curabitur ornare, ligula semper consectetur sagittis, nisi diam iaculis velit, id fringilla sem nunc vel mi. Nam dictum, odio nec pretium volutpat, arcu ante placerat erat, non tristique elit urna et turpis. Quisque mi metus, ornare sit amet fermentum et, tincidunt et orci. Fusce eget orci a orci congue vestibulum. Ut dolor diam, elementum et vestibulum eu, porttitor vel elit. Curabitur venenatis pulvinar tellus gravida ornare. Sed et erat faucibus nunc euismod ultricies ut id justo. Nullam cursus suscipit nisi, et ultrices justo sodales nec. Fusce venenatis facilisis lectus ac semper. Aliquam at massa ipsum. Quisque bibendum purus convallis nulla ultrices ultricies. Nullam aliquam, mi eu aliquam tincidunt, purus velit laoreet tortor, viverra pretium nisi quam vitae mi. Fusce vel volutpat elit. Nam sagittis nisi dui.{% endblock %}
+{% block body %}
+    404 - Hey you shouldn't see this !
+{% endblock %}
 </section>
+
+<aside id="sidebar">
+    {% block sidebar_block1 %}
+    <div class="sidebar_block">
+        <h6>Conseils</h6>
+        <div class="sidebar_content">Content</div>
+    </div>
+    {% endblock %}
+
+    {% block sidebar_block2 %}
+    <div class="sidebar_block">
+        <div class="sidebar_block">
+            <h6>Hébergement</h6>
+            <div class="sidebar_content"><a href="{{ path("hebergement") }}">Gîtes et chambres d'hôtes pour vous accueillir en toute convivialité</a></div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block sidebar_block3 %}
+    <div class="sidebar_block">
+        <h6>Restauration</h6>
+        <div class="sidebar_content"><a href="{{ path("restauration") }}">Découvrez les auberges et les restaurants locaux</a></div>
+    </div>
+    {% endblock %}
+
+    {% block sidebar_block4 %}
+    {% endblock %}
+</aside>
 <div class="clear"></div>
 </div>
 
 <footer id="contentinfo">
 <div id="footer-wrapper" class="body">
-	<div class="links-mille-etangs">
-        <h2>1000 étangs</h2>
-		<ul>
-			<li><a href="http://www.les1000etangs.com" rel="nofollow">office de tourisme</a></li>	
-			<li><a href="http://www.cc-1000etangs.fr/" rel="nofollow">communauté de communes</a></li>	
-		</ul>
+    <div id="footer_logo">
+        <div id="footer_mentions">
+            <a href="#top">Haut de la page</a><br />
+            Randonnées aux Mille Étangs<br />
+            Tous droits réservés 2012 - 2013<br />
+            <a href="">Mentions légales</a><br />
+            <a href="{{ path("sitemap") }}">Plan de site</a>
+        </div>
     </div>
-    <div class="links-vtt">
-        <h2>vtt</h2>
-		<ul>
-			<li><a href="http://www.randofc.fr" rel="nofollow">Rando FC</a></li>	
-			<li><a href="http://www.vetete.com" rel="nofollow">Vetete.com</a></li>
-			<li><a href="http://www.ffc.fr/a_VTT/Actualites_vtt/index.asp" rel="nofollow">FFC</a></li>
-		</ul>
+	<div id="footer_menu">
+        <ul>
+            <li>Accueil</li>
+            <li>Actualités</li>
+            <li>Les Milles étangs</li>
+            <li>Randonnées en VTT</li>
+            <li>Randonnées à pied</li>
+        </ul>
     </div>
-    <div class="links-marche">
-        <h2>randonnées</h2>
+    <div id="footer_social">
+		<span>Restez connectés</span>
 		<ul>
-			<li><a href="http://http://www.ffrandonnee.fr">FF randonnée</a></li>	
-		</ul>
-    </div>
-    <div class="social">
-		<h2>social</h2>
-		<ul>
-			<li><a href="mailto:contact@randos-mille-etangs.com">mail</a></li>
-			{* <li><a href="{{ path("contact") }}">contact</a></li> *}
-			<li><a href="{{ path("partenaires") }}">partenaires</a></li>
+			<li><a href="" class="facebook"></a></li>
+            <li><a href="" class="twitter"></a></li>
+            <li><a href="" class="googleplus"></a></li>
+            <li><a href="" class="rss"></a></li>
 		</ul>
     </div>
     <div class="clear"></div>
-</div>
-<div id="subfooter">
-	<a href="#top">haut de la page</a> - copyright - <a href="{{ path("sitemap") }}">plan de site</a>
 </div>
 </footer>
 

@@ -1,7 +1,9 @@
 {% extends "MilleEtangsRandonneesBundle::layout.html.twig" %}
 
 {% block javascripts %}
-	<script type="text/javascript" src="{{ asset('js/tiny_mce/tiny_mce.js') }}"></script>
+	{% javascripts "@MilleEtangsRandonneesBundle/Resources/assets/js/jquery-1.8.0.min.js" %}
+        <script type="text/javascript" src="{{ asset(asset_url) }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 {% block body %}
