@@ -4,17 +4,22 @@
     <div id="home_news">
         <img class="news_background" src="/images/header.jpg" />
         <div class="news_text">
-    	{% for actu in actualites %}
-    		{% include "MilleEtangsRandonneesBundle:Actualite:view.html.twig" with {"actu":actu} only %}
-    	{% endfor %}
+        	<div>
+                <h3>Circuit de la Mer</h3>
+                <p>Découvrez les Mille Etangs en parcourant le plateau en passant par La Mer et Beulotte Saint Laurent.</p>
+            </div>
         </div>
     </div>
 {% endblock %}
 
 {% block body %}
     <div id="home_text">
+        <h2>Actualités</h2>
+        {% for actu in actualites %}
+            {% include "MilleEtangsRandonneesBundle:Actualite:view.html.twig" with {"actu":actu} only %}
+        {% endfor %}
+
         <h2>Destination nature</h2>
-        <p></p>
     </div>
     <div id="home_links">
         <div id="home_mille_etangs">

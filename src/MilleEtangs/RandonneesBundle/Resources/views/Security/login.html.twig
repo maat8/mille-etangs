@@ -1,9 +1,9 @@
-{% extends "MilleEtangsRandonneesBundle::layout.html.twig" %}
+{% extends "MilleEtangsRandonneesBundle:Security:layout.html.twig" %}
 
 {% block body %}
 <form action="{{ path('login_check') }}" method="POST">
 	{{ form_widget(form) }}
 	{{ form_rest(form) }}
-	<input type="submit" value="login" />
+	<input type="submit" value="login" class="btn btn-large btn-primary" />
 </form>
 {% endblock %}

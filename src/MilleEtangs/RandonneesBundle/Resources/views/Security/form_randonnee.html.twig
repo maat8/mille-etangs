@@ -1,8 +1,6 @@
-{% extends "MilleEtangsRandonneesBundle::layout.html.twig" %}
+{% extends "MilleEtangsRandonneesBundle:Security:layout.html.twig" %}
 
-{% block javascripts %}
-	<script type="text/javascript" src="{{ asset('js/tiny_mce/tiny_mce.js') }}"></script>
-{% endblock %}
+<script type="text/javascript" src="{{ asset('js/tiny_mce/tiny_mce.js') }}"></script>
 
 {% block body %}
 <script type="text/javascript">
@@ -17,6 +15,6 @@ tinyMCE.init({
 	{{ form_widget(form) }}
 
 	{{ form_rest(form) }}
-	<input type="submit" value="enregistrer" />
+	<input type="submit" value="enregistrer" class="btn btn-large btn-primary" />
 </form>
 {% endblock %}

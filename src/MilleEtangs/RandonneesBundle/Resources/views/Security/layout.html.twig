@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Randonnées aux 1000 étangs</title>
+    {% stylesheets "@MilleEtangsRandonneesBundle/Resources/assets/css/bootstrap.min.css" %}
+        <link href="{{ asset(asset_url) }}" rel="stylesheet" />
+    {% endstylesheets %}
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"><a href="">Menu</a></span>
+          <span class="icon-bar"><a href="">Nouvel article</a></span>
+          <span class="icon-bar"><a href="">Nouveau parcours</a></span>
+        </button>
+        <a class="navbar-brand" href="{{ path("home") }}">Randonnées aux Mille Etangs</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="{{ path("admin_menu") }}">Index</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Actualités <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ path("create_actualite") }}">Nouvelle actualité</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Liste</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Parcours <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ path("create_randonnee") }}">Nouveau parcours</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Liste</a></li>
+            </ul>
+          </li>
+        </ul>
+         <p class="navbar-text navbar-right">Signed in as admin</p>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top:80px;">      
+    {% block body %}{% endblock %}
+    </div>
+
+    {% javascripts "@MilleEtangsRandonneesBundle/Resources/assets/js/jquery-1.8.0.min.js" "@MilleEtangsRandonneesBundle/Resources/assets/js/bootstrap.min.js" %}
+    <script type="text/javascript" src="{{ asset(asset_url) }}"></script>
+{% endjavascripts %}
+</body>
+</html>

@@ -14,94 +14,92 @@
 </head>
  
 <body id="index">
-<header id="banner" class="body">
-    <nav>
-        <ul>
-            {% set route = app.request.get('_route') %}
-            <li class="{% if route == "home" %}active{% endif %}"><a href="{{ path("home") }}">accueil</a></li>
-            <li class="{% if route == "actualites" %}active{% endif %}"><a href="{{ path("actualites") }}">actualités</a></li>
-            <li class="{% if route == "milleEtangs" %}active{% endif %}"><a href="{{ path("milleEtangs") }}">les mille étangs</a></li>
-            <li class=""><a href="{{ path("randonnees_type", {'type':"marche"}) }}">à pied</a></li>
-            <li class=""><a href="{{ path("randonnees_type", {'type':"vtt"}) }}">à vtt</a></li>
-            <!--<li class=""><a href="{{ path("randonnees_type", {'type':"cheval"}) }}">à cheval</a></li>-->
-        </ul>
-    </nav>
-    <div id="header_title"><p></strong><a href="{{ path("home") }}">Randonnées aux Mille Étangs</a></strong><p></div>
-</header>
+    <div class="container">
+        <header id="banner" class="col-md-12">
+            <nav>
+                <ul>
+                    {% set route = app.request.get('_route') %}
+                    <li class="{% if route == "home" %}active{% endif %}"><a href="{{ path("home") }}">accueil</a></li>
+                    <li class="{% if route == "actualites" %}active{% endif %}"><a href="{{ path("actualites") }}">actualités</a></li>
+                    <li class="{% if route == "milleEtangs" %}active{% endif %}"><a href="{{ path("milleEtangs") }}">les mille étangs</a></li>
+                    <li class=""><a href="{{ path("randonnees_type", {'type':"marche"}) }}">à pied</a></li>
+                    <li class=""><a href="{{ path("randonnees_type", {'type':"vtt"}) }}">à vtt</a></li>
+                </ul>
+            </nav>
+            <div id="header_title"><p></strong><a href="{{ path("home") }}">Randonnées aux<br />Mille Étangs</a></strong><p></div>
+        </header>
 
-<div class="wrapper body">
-
-<div id="precontent">
-{% block precontent %}{% endblock %}
-</div>
-
-<section id="content" class="grid-8">
-{% block body %}
-    404 - Hey you shouldn't see this !
-{% endblock %}
-</section>
-
-<aside id="sidebar">
-    {% block sidebar_block1 %}
-    <div class="sidebar_block">
-        <h6>Conseils</h6>
-        <div class="sidebar_content">Content</div>
-    </div>
-    {% endblock %}
-
-    {% block sidebar_block2 %}
-    <div class="sidebar_block">
-        <div class="sidebar_block">
-            <h6>Hébergement</h6>
-            <div class="sidebar_content"><a href="{{ path("hebergement") }}">Gîtes et chambres d'hôtes pour vous accueillir en toute convivialité</a></div>
+        <div id="precontent" class="col-md-12">
+        {% block precontent %}{% endblock %}
         </div>
+
+        <section id="content" class="col-md-8">
+        {% block body %}
+            404 - Hey you shouldn't see this !
+        {% endblock %}
+        </section>
+
+        <aside id="sidebar" class="col-md-4">
+            {% block sidebar_block1 %}
+            <div class="sidebar_block">
+                <h6>Conseils</h6>
+                <div class="sidebar_content">Content</div>
+            </div>
+            {% endblock %}
+
+            {% block sidebar_block2 %}
+            <div class="sidebar_block">
+                <div class="sidebar_block">
+                    <h6>Hébergement</h6>
+                    <div class="sidebar_content"><a href="{{ path("hebergement") }}">Gîtes et chambres d'hôtes pour vous accueillir en toute convivialité</a></div>
+                </div>
+            </div>
+            {% endblock %}
+
+            {% block sidebar_block3 %}
+            <div class="sidebar_block">
+                <h6>Restauration</h6>
+                <div class="sidebar_content"><a href="{{ path("restauration") }}">Découvrez les auberges et les restaurants locaux</a></div>
+            </div>
+            {% endblock %}
+
+            {% block sidebar_block4 %}
+            {% endblock %}
+        </aside>
+        <div class="clear"></div>
     </div>
-    {% endblock %}
 
-    {% block sidebar_block3 %}
-    <div class="sidebar_block">
-        <h6>Restauration</h6>
-        <div class="sidebar_content"><a href="{{ path("restauration") }}">Découvrez les auberges et les restaurants locaux</a></div>
-    </div>
-    {% endblock %}
-
-    {% block sidebar_block4 %}
-    {% endblock %}
-</aside>
-<div class="clear"></div>
-</div>
-
-<footer id="contentinfo">
-<div id="footer-wrapper" class="body">
-    <div id="footer_logo">
-        <div id="footer_mentions">
-            <a href="#top">Haut de la page</a><br />
-            Randonnées aux Mille Étangs<br />
-            Tous droits réservés 2012 - 2013<br />
-            <a href="">Mentions légales</a><br />
-            <a href="{{ path("sitemap") }}">Plan de site</a>
+<footer>
+    <div class="container">
+        <div id="footer_logo" class="col-md-6">
+            <div id="footer_mentions">
+                <a href="#top">Haut de la page</a><br />
+                Randonnées aux Mille Étangs<br />
+                Tous droits réservés 2012 - 2013<br />
+                <a href="">Mentions légales</a><br />
+                <a href="{{ path("sitemap") }}">Plan de site</a>
+            </div>
         </div>
+    	<div id="footer_menu" class="col-md-3">
+            <ul>
+                <li>Accueil</li>
+                <li>Actualités</li>
+                <li>Les Milles étangs</li>
+                <li>Randonnées en VTT</li>
+                <li>Randonnées à pied</li>
+            </ul>
+        </div>
+        <div id="footer_social" class="col-md-3">
+    		<span>Restez connectés</span>
+    		<ul>
+    			<li><a href="" class="facebook"></a></li>
+                <li><a href="" class="twitter"></a></li>
+                <li class="clearfix"><a href="" class="googleplus"></a></li>
+                <li><a href="" class="rss"></a></li>
+    		</ul>
+        </div>
+        <div class="clearfix"></div>
     </div>
-	<div id="footer_menu">
-        <ul>
-            <li>Accueil</li>
-            <li>Actualités</li>
-            <li>Les Milles étangs</li>
-            <li>Randonnées en VTT</li>
-            <li>Randonnées à pied</li>
-        </ul>
-    </div>
-    <div id="footer_social">
-		<span>Restez connectés</span>
-		<ul>
-			<li><a href="" class="facebook"></a></li>
-            <li><a href="" class="twitter"></a></li>
-            <li><a href="" class="googleplus"></a></li>
-            <li><a href="" class="rss"></a></li>
-		</ul>
-    </div>
-    <div class="clear"></div>
-</div>
 </footer>
 
 {% include "MilleEtangsRandonneesBundle::javascripts.html.twig" %}
