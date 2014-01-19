@@ -3,5 +3,8 @@
 {% block title %}Actualités | {{ parent()}}{% endblock %}
 
 {% block body %}
-    
+    <h2>Actualités</h2>
+    {% for actu in actualites %}
+        {% include "MilleEtangsRandonneesBundle:Actualite:view.html.twig" with {"actu":actu} only %}
+    {% endfor %}    
 {% endblock %}

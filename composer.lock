@@ -3,20 +3,20 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "afc6baf146c90af8c0a03c5a34d71d0b",
+    "hash": "d1b3ce2e12a4af2d8f2e4386a427583b",
     "packages": [
         {
             "name": "doctrine/annotations",
-            "version": "v1.1.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "40db0c96985aab2822edbc4848b3bd2429e02670"
+                "reference": "a11349d39d85bef75a71bd69bd604ac4fb993f03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/40db0c96985aab2822edbc4848b3bd2429e02670",
-                "reference": "40db0c96985aab2822edbc4848b3bd2429e02670",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/a11349d39d85bef75a71bd69bd604ac4fb993f03",
+                "reference": "a11349d39d85bef75a71bd69bd604ac4fb993f03",
                 "shasum": ""
             },
             "require": {
@@ -29,7 +29,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.2.x-dev"
                 }
             },
             "autoload": {
@@ -43,9 +43,10 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Wage",
+                    "name": "Jonathan H. Wage",
                     "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/"
+                    "homepage": "http://www.jwage.com/",
+                    "role": "Creator"
                 },
                 {
                     "name": "Guilherme Blanco",
@@ -61,7 +62,7 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes M. Schmitt",
+                    "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
                     "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -74,20 +75,20 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2013-06-16 21:33:03"
+            "time": "2013-12-20 21:39:07"
         },
         {
             "name": "doctrine/cache",
-            "version": "v1.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "2c9761ff1d13e188d5f7378066c1ce2882d7a336"
+                "reference": "36c4eee5051629524389da376ba270f15765e49f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/2c9761ff1d13e188d5f7378066c1ce2882d7a336",
-                "reference": "2c9761ff1d13e188d5f7378066c1ce2882d7a336",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/36c4eee5051629524389da376ba270f15765e49f",
+                "reference": "36c4eee5051629524389da376ba270f15765e49f",
                 "shasum": ""
             },
             "require": {
@@ -96,10 +97,14 @@
             "conflict": {
                 "doctrine/common": ">2.2,<2.4"
             },
+            "require-dev": {
+                "phpunit/phpunit": ">=3.7",
+                "satooshi/php-coveralls": "~0.6"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.4.x-dev"
                 }
             },
             "autoload": {
@@ -115,7 +120,8 @@
                 {
                     "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/"
+                    "homepage": "http://www.jwage.com/",
+                    "role": "Creator"
                 },
                 {
                     "name": "Guilherme Blanco",
@@ -143,7 +149,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2013-08-07 16:04:25"
+            "time": "2013-12-18 17:21:03"
         },
         {
             "name": "doctrine/collections",
@@ -151,12 +157,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/collections.git",
-                "reference": "bcb53776a096a0c64579cc8d8ec0db62f1109fbc"
+                "reference": "e6d8f1240e10f268c8e8c30e9e88a12853f84695"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/collections/zipball/bcb53776a096a0c64579cc8d8ec0db62f1109fbc",
-                "reference": "bcb53776a096a0c64579cc8d8ec0db62f1109fbc",
+                "url": "https://api.github.com/repos/doctrine/collections/zipball/e6d8f1240e10f268c8e8c30e9e88a12853f84695",
+                "reference": "e6d8f1240e10f268c8e8c30e9e88a12853f84695",
                 "shasum": ""
             },
             "require": {
@@ -179,9 +185,10 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Wage",
+                    "name": "Jonathan H. Wage",
                     "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/"
+                    "homepage": "http://www.jwage.com/",
+                    "role": "Creator"
                 },
                 {
                     "name": "Guilherme Blanco",
@@ -197,7 +204,7 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes M. Schmitt",
+                    "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
                     "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -210,7 +217,7 @@
                 "collections",
                 "iterator"
             ],
-            "time": "2013-08-29 16:56:45"
+            "time": "2014-01-01 23:58:38"
         },
         {
             "name": "doctrine/common",
@@ -292,12 +299,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/data-fixtures.git",
-                "reference": "b4a135c7db56ecc4602b54a2184368f440cac33e"
+                "reference": "4a81be009d8437326acfcdd68888d1c5b8e2fb40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/b4a135c7db56ecc4602b54a2184368f440cac33e",
-                "reference": "b4a135c7db56ecc4602b54a2184368f440cac33e",
+                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/4a81be009d8437326acfcdd68888d1c5b8e2fb40",
+                "reference": "4a81be009d8437326acfcdd68888d1c5b8e2fb40",
                 "shasum": ""
             },
             "require": {
@@ -331,7 +338,8 @@
                 {
                     "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/"
+                    "homepage": "http://www.jwage.com/",
+                    "role": "Creator"
                 }
             ],
             "description": "Data Fixtures for all Doctrine Object Managers",
@@ -339,7 +347,7 @@
             "keywords": [
                 "database"
             ],
-            "time": "2013-07-10 17:04:07"
+            "time": "2013-12-02 21:23:23"
         },
         {
             "name": "doctrine/dbal",
@@ -347,12 +355,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "814e53d0c538a995e3a36452710d4c039f6c2723"
+                "reference": "1b90a2eb0868292a1f56eb49f7f1b0421e925123"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/814e53d0c538a995e3a36452710d4c039f6c2723",
-                "reference": "814e53d0c538a995e3a36452710d4c039f6c2723",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/1b90a2eb0868292a1f56eb49f7f1b0421e925123",
+                "reference": "1b90a2eb0868292a1f56eb49f7f1b0421e925123",
                 "shasum": ""
             },
             "require": {
@@ -380,7 +388,8 @@
                 {
                     "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/"
+                    "homepage": "http://www.jwage.com/",
+                    "role": "Creator"
                 },
                 {
                     "name": "Guilherme Blanco",
@@ -404,7 +413,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2013-09-08 07:51:49"
+            "time": "2014-01-05 09:00:29"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -482,12 +491,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
-                "reference": "c811f96f0cf83b997e3a3ed037cac729bbe3e803"
+                "reference": "42ac886c2c669d793dc9d6258a7296edb0d5e933"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/c811f96f0cf83b997e3a3ed037cac729bbe3e803",
-                "reference": "c811f96f0cf83b997e3a3ed037cac729bbe3e803",
+                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/42ac886c2c669d793dc9d6258a7296edb0d5e933",
+                "reference": "42ac886c2c669d793dc9d6258a7296edb0d5e933",
                 "shasum": ""
             },
             "require": {
@@ -499,7 +508,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1.x-dev"
+                    "dev-master": "2.2.x-dev"
                 }
             },
             "autoload": {
@@ -531,7 +540,7 @@
                 "Fixture",
                 "persistence"
             ],
-            "time": "2013-09-05 11:23:37"
+            "time": "2013-12-31 08:56:10"
         },
         {
             "name": "doctrine/inflector",
@@ -539,12 +548,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "8b4b3ccec7aafc596e2fc1e593c9f2e78f939c8c"
+                "reference": "a81c334f2764b09e2f13a55cfd8fe3233946f728"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/8b4b3ccec7aafc596e2fc1e593c9f2e78f939c8c",
-                "reference": "8b4b3ccec7aafc596e2fc1e593c9f2e78f939c8c",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/a81c334f2764b09e2f13a55cfd8fe3233946f728",
+                "reference": "a81c334f2764b09e2f13a55cfd8fe3233946f728",
                 "shasum": ""
             },
             "require": {
@@ -569,7 +578,8 @@
                 {
                     "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/"
+                    "homepage": "http://www.jwage.com/",
+                    "role": "Creator"
                 },
                 {
                     "name": "Guilherme Blanco",
@@ -587,7 +597,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -599,7 +609,7 @@
                 "singularize",
                 "string"
             ],
-            "time": "2013-04-10 16:14:30"
+            "time": "2013-12-21 19:19:50"
         },
         {
             "name": "doctrine/lexer",
@@ -607,12 +617,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
-                "reference": "bc0e1f0cc285127a38c6c8ea88bc5dba2fd53e94"
+                "reference": "f12a5f74e5f4a9e3f558f3288504e121edfad891"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/bc0e1f0cc285127a38c6c8ea88bc5dba2fd53e94",
-                "reference": "bc0e1f0cc285127a38c6c8ea88bc5dba2fd53e94",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/f12a5f74e5f4a9e3f558f3288504e121edfad891",
+                "reference": "f12a5f74e5f4a9e3f558f3288504e121edfad891",
                 "shasum": ""
             },
             "require": {
@@ -644,9 +654,9 @@
                     "email": "roman@code-factory.org"
                 },
                 {
-                    "name": "Johannes M. Schmitt",
+                    "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -656,32 +666,32 @@
                 "lexer",
                 "parser"
             ],
-            "time": "2013-03-07 12:15:25"
+            "time": "2013-12-20 21:39:00"
         },
         {
             "name": "doctrine/orm",
-            "version": "dev-master",
+            "version": "2.4.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "bb7f18ced76a553b00be563bed934c86d99afb73"
+                "reference": "7b8f09ee4afb2b0f73f0a5de265153a40cb1dede"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/bb7f18ced76a553b00be563bed934c86d99afb73",
-                "reference": "bb7f18ced76a553b00be563bed934c86d99afb73",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/7b8f09ee4afb2b0f73f0a5de265153a40cb1dede",
+                "reference": "7b8f09ee4afb2b0f73f0a5de265153a40cb1dede",
                 "shasum": ""
             },
             "require": {
                 "doctrine/collections": "~1.1",
-                "doctrine/dbal": ">=2.4-beta,<2.5-dev",
+                "doctrine/dbal": "~2.4",
                 "ext-pdo": "*",
                 "php": ">=5.3.2",
-                "symfony/console": "2.*"
+                "symfony/console": "~2.0"
             },
             "require-dev": {
                 "satooshi/php-coveralls": "dev-master",
-                "symfony/yaml": "2.1"
+                "symfony/yaml": "~2.1"
             },
             "suggest": {
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
@@ -693,7 +703,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5.x-dev"
+                    "dev-master": "2.4.x-dev"
                 }
             },
             "autoload": {
@@ -709,7 +719,8 @@
                 {
                     "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/"
+                    "homepage": "http://www.jwage.com/",
+                    "role": "Creator"
                 },
                 {
                     "name": "Guilherme Blanco",
@@ -731,7 +742,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2013-09-10 22:54:40"
+            "time": "2014-01-02 22:51:07"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -739,12 +750,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jdorn/sql-formatter.git",
-                "reference": "7045fde3163d5a4ea6ec32e409a7dcf00779e204"
+                "reference": "8859d664737492d313c34796731b35eca851b362"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jdorn/sql-formatter/zipball/7045fde3163d5a4ea6ec32e409a7dcf00779e204",
-                "reference": "7045fde3163d5a4ea6ec32e409a7dcf00779e204",
+                "url": "https://api.github.com/repos/jdorn/sql-formatter/zipball/8859d664737492d313c34796731b35eca851b362",
+                "reference": "8859d664737492d313c34796731b35eca851b362",
                 "shasum": ""
             },
             "require": {
@@ -781,28 +792,33 @@
                 "highlight",
                 "sql"
             ],
-            "time": "2013-09-02 17:19:28"
+            "time": "2013-11-27 22:51:13"
         },
         {
             "name": "jms/aop-bundle",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "target-dir": "JMS/AopBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/JMSAopBundle.git",
-                "reference": "8ef7db0043188f58da18f931937008f95b308921"
+                "reference": "93f41ab85ed409430bc3bab2e0b7c7677f152aa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSAopBundle/zipball/8ef7db0043188f58da18f931937008f95b308921",
-                "reference": "8ef7db0043188f58da18f931937008f95b308921",
+                "url": "https://api.github.com/repos/schmittjoh/JMSAopBundle/zipball/93f41ab85ed409430bc3bab2e0b7c7677f152aa8",
+                "reference": "93f41ab85ed409430bc3bab2e0b7c7677f152aa8",
                 "shasum": ""
             },
             "require": {
-                "jms/cg": "1.0.0",
+                "jms/cg": "1.*",
                 "symfony/framework-bundle": "2.*"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "JMS\\AopBundle": ""
@@ -825,26 +841,31 @@
                 "annotations",
                 "aop"
             ],
-            "time": "2012-01-02 20:50:26"
+            "time": "2013-07-29 09:34:26"
         },
         {
             "name": "jms/cg",
-            "version": "1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/cg-library.git",
-                "reference": "ce8ef43dd6bfe6ce54e5e9844ab71be2343bf2fc"
+                "reference": "3d2881f2faec15a632b2c7ad9646f836dd71ba21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/cg-library/zipball/ce8ef43dd6bfe6ce54e5e9844ab71be2343bf2fc",
-                "reference": "ce8ef43dd6bfe6ce54e5e9844ab71be2343bf2fc",
+                "url": "https://api.github.com/repos/schmittjoh/cg-library/zipball/3d2881f2faec15a632b2c7ad9646f836dd71ba21",
+                "reference": "3d2881f2faec15a632b2c7ad9646f836dd71ba21",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "CG\\": "src/"
@@ -852,7 +873,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Apache"
+                "Apache2"
             ],
             "authors": [
                 {
@@ -866,7 +887,7 @@
             "keywords": [
                 "code generation"
             ],
-            "time": "2012-01-02 20:40:52"
+            "time": "2013-12-26 12:09:20"
         },
         {
             "name": "jms/di-extra-bundle",
@@ -1307,6 +1328,61 @@
             "time": "2013-06-02 16:44:58"
         },
         {
+            "name": "sonata-project/intl-bundle",
+            "version": "2.1.x-dev",
+            "target-dir": "Sonata/IntlBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sonata-project/SonataIntlBundle.git",
+                "reference": "8226a28087927bdc7e3bfacdd6dc0ae0c2459ae3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/8226a28087927bdc7e3bfacdd6dc0ae0c2459ae3",
+                "reference": "8226a28087927bdc7e3bfacdd6dc0ae0c2459ae3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-intl": "*",
+                "symfony/dependency-injection": "2.*",
+                "symfony/http-kernel": "2.*",
+                "symfony/locale": "2.*",
+                "symfony/templating": "2.*",
+                "twig/twig": "*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Sonata\\IntlBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Rabaix",
+                    "email": "thomas.rabaix@sonata-project.org",
+                    "homepage": "http://sonata-project.org"
+                },
+                {
+                    "name": "Sonata Community",
+                    "homepage": "https://github.com/sonata-project/SonataIntlBundle/contributors"
+                }
+            ],
+            "description": "Symfony SonataIntlBundle",
+            "homepage": "http://sonata-project.org/bundles/intl",
+            "keywords": [
+                "date",
+                "intl",
+                "number",
+                "sonata",
+                "time"
+            ],
+            "time": "2013-08-23 14:14:49"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v4.2.2",
             "source": {
@@ -1626,12 +1702,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig-extensions.git",
-                "reference": "f5b0c84f3699e494c84ee627d7d583e115d2c4a2"
+                "reference": "0fdc8ca874d415b65c7a0d31376cac9c9ed775af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/f5b0c84f3699e494c84ee627d7d583e115d2c4a2",
-                "reference": "f5b0c84f3699e494c84ee627d7d583e115d2c4a2",
+                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/0fdc8ca874d415b65c7a0d31376cac9c9ed775af",
+                "reference": "0fdc8ca874d415b65c7a0d31376cac9c9ed775af",
                 "shasum": ""
             },
             "require": {
@@ -1665,7 +1741,7 @@
                 "i18n",
                 "text"
             ],
-            "time": "2013-07-02 11:21:55"
+            "time": "2013-11-27 18:19:39"
         },
         {
             "name": "twig/twig",
@@ -1673,12 +1749,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "4001f81a179e3971377ce1ac51b4ff9ea851b8ce"
+                "reference": "ae89c8853582f074c1e8f26ac3b67b2c4fff2609"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/4001f81a179e3971377ce1ac51b4ff9ea851b8ce",
-                "reference": "4001f81a179e3971377ce1ac51b4ff9ea851b8ce",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/ae89c8853582f074c1e8f26ac3b67b2c4fff2609",
+                "reference": "ae89c8853582f074c1e8f26ac3b67b2c4fff2609",
                 "shasum": ""
             },
             "require": {
@@ -1687,7 +1763,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.14-dev"
+                    "dev-master": "1.15-dev"
                 }
             },
             "autoload": {
@@ -1714,7 +1790,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-09-08 15:21:02"
+            "time": "2014-01-08 07:21:35"
         }
     ],
     "packages-dev": [

@@ -3,9 +3,9 @@
 {% block body %}
 <h2>Administation</h2>
 
-<div class="success">{{ app.session.getFlash('succes') }}</div>
+<p class="alert alert-success">{{ app.session.getFlash('succes') }}</p>
 
-<div class="error">{{ app.session.getFlash('erreur') }}</div>
+<div class="alert alert-danger">{{ app.session.getFlash('erreur') }}</div>
 
 <h3>Gestion des articles</h3>
 <ul>

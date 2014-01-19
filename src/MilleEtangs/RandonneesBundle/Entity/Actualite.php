@@ -18,7 +18,7 @@ class Actualite extends EntityBase
 	protected $message;
 
 	/**	
-	 * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="Actualite")
+	 * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="actualites")
 	 * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
 	*/
 	protected $categorie;

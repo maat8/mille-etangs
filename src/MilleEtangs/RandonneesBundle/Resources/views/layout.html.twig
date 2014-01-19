@@ -33,17 +33,17 @@
         {% block precontent %}{% endblock %}
         </div>
 
-        <section id="content" class="col-md-8">
+        <section id="content" class="col-md-9">
         {% block body %}
             404 - Hey you shouldn't see this !
         {% endblock %}
         </section>
 
-        <aside id="sidebar" class="col-md-4">
+        <aside id="sidebar" class="col-md-3">
             {% block sidebar_block1 %}
             <div class="sidebar_block">
                 <h6>Conseils</h6>
-                <div class="sidebar_content">Content</div>
+                <div class="sidebar_content"><a href="{{ path("conseils") }}">Nos conseils pour bien préparer votre sortie</a></div>
             </div>
             {% endblock %}
 
@@ -71,7 +71,7 @@
 
 <footer>
     <div class="container">
-        <div id="footer_logo" class="col-md-6">
+        <div id="footer_logo" class="col-md-5">
             <div id="footer_mentions">
                 <a href="#top">Haut de la page</a><br />
                 Randonnées aux Mille Étangs<br />
@@ -82,20 +82,20 @@
         </div>
     	<div id="footer_menu" class="col-md-3">
             <ul>
-                <li>Accueil</li>
-                <li>Actualités</li>
-                <li>Les Milles étangs</li>
-                <li>Randonnées en VTT</li>
-                <li>Randonnées à pied</li>
+                <li><a href="{{ path("home") }}">Accueil</a></li>
+                <li><a href="{{ path("actualites") }}">Actualités</a></li>
+                <li><a href="{{ path("milleEtangs") }}">Les Milles étangs</a></li>
+                <li><a href="{{ path("randonnees_type", {'type':"vtt"}) }}">Randonnées en VTT</a></li>
+                <li><a href="{{ path("randonnees_type", {'type':"marche"}) }}">Randonnées à pied</a></li>
             </ul>
         </div>
         <div id="footer_social" class="col-md-3">
     		<span>Restez connectés</span>
     		<ul>
-    			<li><a href="" class="facebook"></a></li>
-                <li><a href="" class="twitter"></a></li>
-                <li class="clearfix"><a href="" class="googleplus"></a></li>
-                <li><a href="" class="rss"></a></li>
+    			<li><a href="#" class="facebook"></a></li>
+                <li><a href="#" class="twitter"></a></li>
+                <li class="clearfix"><a href="#" class="googleplus"></a></li>
+                <li><a href="{{ path("rss") }}" class="rss"></a></li>
     		</ul>
         </div>
         <div class="clearfix"></div>

@@ -1,5 +1,5 @@
 <div>
 	<h3>{{ actu.getNom() }}</h3>
-	<small>{{ actu.getPublication().format("j F Y") }}</small>
+	<small>{{ actu.getPublication() | format_date }}</small><br/>
 	{{ actu.getMessage()|raw }}
 </div>

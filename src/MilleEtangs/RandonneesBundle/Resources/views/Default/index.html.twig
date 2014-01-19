@@ -2,11 +2,11 @@
 
 {% block precontent %}
     <div id="home_news">
-        <img class="news_background" src="/images/header.jpg" />
+        <img class="news_background" src="/images/mille_etangs.jpg" />
         <div class="news_text">
         	<div>
                 <h3>Circuit de la Mer</h3>
-                <p>Découvrez les Mille Etangs en parcourant le plateau en passant par La Mer et Beulotte Saint Laurent.</p>
+                <p>Découvrez les Mille Etangs en parcourant le plateau en passant par les villages de La Mer et de Beulotte Saint Laurent.</p>
             </div>
         </div>
     </div>
@@ -14,10 +14,12 @@
 
 {% block body %}
     <div id="home_text">
-        <h2>Actualités</h2>
+        <h2>Actualité</h2>
         {% for actu in actualites %}
             {% include "MilleEtangsRandonneesBundle:Actualite:view.html.twig" with {"actu":actu} only %}
         {% endfor %}
+        <br />
+        <a href="{{ path("actualites") }}">Voir les autres actualités</a>
 
         <h2>Destination nature</h2>
     </div>

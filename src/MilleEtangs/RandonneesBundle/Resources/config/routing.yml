@@ -76,6 +76,10 @@ partenaires:
     pattern:  /partenaires
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:partenaires }
 
+conseils:    
+    pattern:  /conseils
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:conseils }
+
 contact:    
     pattern:  /contact
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:contact }
@@ -89,3 +93,7 @@ sitemap_xml:
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:sitemap }
     requirements:
       _format:  html|xml
+
+rss:    
+    pattern:  /rss.xml
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:rss }

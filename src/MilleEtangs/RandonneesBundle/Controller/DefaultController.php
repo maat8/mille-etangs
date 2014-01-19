@@ -75,6 +75,11 @@ class DefaultController extends Controller
         return $this->render('MilleEtangsRandonneesBundle:Default:partenaires.html.twig');
     }
 
+    public function conseilsAction()
+    {
+        return $this->render('MilleEtangsRandonneesBundle:Default:conseils.html.twig');
+    }
+
     public function sitemapAction($_format = null){
         // Pages dynamiques : parcours
         $randonneesVtt = $this->get('doctrine')
@@ -94,6 +99,11 @@ class DefaultController extends Controller
             'randonneesVtt' => $randonneesVtt,
             'randonneesCheval' => $randonneesCheval,
             'randonneesMarche' => $randonneesMarche
+        ));
+    }
+
+    public function rssAction(){
+        return $this->render("MilleEtangsRandonneesBundle:Default:rss.html.twig", array(
         ));
     }
 }
