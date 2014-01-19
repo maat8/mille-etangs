@@ -44,10 +44,21 @@ doctrine:
         user:     %database_user%
         password: %database_password%
         charset:  UTF8
-
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
+
+doctrine_mongodb:
+  connections:
+    default:
+      server: %mongodb_server%
+      options: {}
+  default_database: mille_etangs
+  document_managers:
+    default:
+      mappings:
+        MilleEtangsRandonneesBundle: ~
+      metadata_cache_driver: array
 
 # Swiftmailer Configuration
 swiftmailer:

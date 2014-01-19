@@ -19,7 +19,9 @@
         "sensio/framework-extra-bundle": "2.1.*",
         "sensio/generator-bundle": "2.1.*",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
-        "sonata-project/intl-bundle":" 2.1.*"
+        "sonata-project/intl-bundle":" 2.1.*",
+        "doctrine/mongodb-odm-bundle" : "dev-master",
+        "squizlabs/php_codesniffer" : "1.*"
     },
     "scripts": {
         "post-install-cmd": [
