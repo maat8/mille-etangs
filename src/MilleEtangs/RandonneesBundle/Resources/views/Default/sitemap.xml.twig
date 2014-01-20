@@ -12,37 +12,35 @@
         <changefreq>monthly</changefreq>
     </url>
 	<url>
-        <loc>{{ url }}{{ path('randonnees_type', {'type':'vtt'}) }}</loc>
+        <loc>{{ url }}{{ path('itinearies_type', {'type':'bike'}) }}</loc>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>{{ url }}{{ path('randonnees_type', {'type':'pied'}) }}</loc>
+        <loc>{{ url }}{{ path('itinearies_type', {'type':'hike'}) }}</loc>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>{{ url }}{{ path('randonnees_type', {'type':'cheval'}) }}</loc>
-        <changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>{{ url }}{{ path('hebergement') }}</loc>
+        <loc>{{ url }}{{ path('accomodations') }}</loc>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>{{ url }}{{ path('restauration') }}</loc>
-        <changefreq>monthly</changefreq>
-    </url>
-    <url>
-        <loc>{{ url }}{{ path('hebergement') }}</loc>
+        <loc>{{ url }}{{ path('restaurants') }}</loc>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>{{ url }}{{ path('contact') }}</loc>
         <changefreq>monthly</changefreq>
     </url>
-    {% for rando in randonneesVtt %}
+    {% for itineary in itineariesBike %}
 	    <url>
-	        <loc>{{ url }}{{ path('randonnee', {'slug':rando.getSlug()}) }}</loc>
+	        <loc>{{ url }}{{ path('itineary', {'slug':itineary.getSlug()}) }}</loc>
 	        <changefreq>monthly</changefreq>
 	    </url>
+    {% endfor %}
+    {% for itineary in itineariesHike %}
+        <url>
+            <loc>{{ url }}{{ path('itineary', {'slug':itineary.getSlug()}) }}</loc>
+            <changefreq>monthly</changefreq>
+        </url>
     {% endfor %}
 </urlset>

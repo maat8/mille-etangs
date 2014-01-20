@@ -29,13 +29,13 @@ class Itineary extends BaseDocument
      * @ODM\Field(type="int")
      * @Assert\Min(0)
      */
-    protected $bike_length = 0;
+    protected $bikeLength = 0;
 
     /**
      * @ODM\Field(type="int")
      * @Assert\Min(0)
      */
-    protected $hike_length = 0;
+    protected $hikeLength = 0;
 
     /**
      * @ODM\Field(type="int")
@@ -52,7 +52,7 @@ class Itineary extends BaseDocument
     /**
      * @ODM\Field(type="string")
      */
-    protected $endomondo_link;
+    protected $endomondoLink;
 
     /** 
      * @ODM\Field(type="boolean")
@@ -83,49 +83,49 @@ class Itineary extends BaseDocument
     }
 
     /**
-     * Set endomondo_link
+     * Set endomondoLink
      *
      * @param string $endomondoLink
      * @return Itineary
      */
     public function setEndomondoLink($endomondoLink)
     {
-        $this->endomondo_link = $endomondoLink;
+        $this->endomondoLink = $endomondoLink;
     
         return $this;
     }
 
     /**
-     * Get endomondo_link
+     * Get endomondoLink
      *
      * @return string 
      */
     public function getEndomondoLink()
     {
-        return $this->endomondo_link;
+        return $this->endomondoLink;
     }
 
     /**
-     * Set bike_length
+     * Set bikeLength
      *
      * @param integer $bikeLength
      * @return Itineary
      */
     public function setBikeLength($bikeLength)
     {
-        $this->bike_length = $bikeLength;
+        $this->bikeLength = $bikeLength;
     
         return $this;
     }
 
     /**
-     * Get bike_length
+     * Get bikeLength
      *
      * @return integer 
      */
     public function getBikeLength()
     {
-        return $this->bike_length;
+        return $this->bikeLength;
     }
 
     /**
@@ -221,26 +221,26 @@ class Itineary extends BaseDocument
     }
 
     /**
-     * Set hike_length
+     * Set hikeLength
      *
      * @param integer $hikeLength
      * @return Itineary
      */
     public function setHikeLength($hikeLength)
     {
-        $this->hike_length = $hikeLength;
+        $this->hikeLength = $hikeLength;
     
         return $this;
     }
 
     /**
-     * Get hike_length
+     * Get hikeLength
      *
      * @return integer 
      */
     public function getHikeLength()
     {
-        return $this->hike_length;
+        return $this->hikeLength;
     }
 
     /**
