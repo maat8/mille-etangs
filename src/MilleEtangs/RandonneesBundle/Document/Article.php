@@ -6,7 +6,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /** 
- * @ODM\Document(collection="articles")
+ * @ODM\Document(collection="articles", repositoryClass="MilleEtangs\RandonneesBundle\Repository\ArticleRepository")
  */
 class Article extends BaseDocument
 {
@@ -17,6 +17,7 @@ class Article extends BaseDocument
 
     /** 
      * @ODM\Field(type="date")
+     * @ODM\Index
     */
     protected $publication;
 

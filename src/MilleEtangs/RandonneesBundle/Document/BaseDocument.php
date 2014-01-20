@@ -4,10 +4,10 @@ namespace MilleEtangs\RandonneesBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bundle\DoctrineMongoDBBundle\Validator\Constraints\Unique as MongoDBUnique;
 
 /**
  * @ODM\MappedSuperclass
+ * @ODM\HasLifecycleCallbacks
  */
 abstract class BaseDocument
 {
@@ -35,6 +35,18 @@ abstract class BaseDocument
      * @ODM\Field(type="timestamp")
      */
     protected $updated;
+
+    /**
+     * @ODM\PrePersist()
+     * @ODM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        if(is_null($this->created))        
+            $this->created = time();
+        $this->updated = time();
+        $this->slug = $this->generateSlug($this->name);
+    }
 
     protected function generateSlug($string)
     {

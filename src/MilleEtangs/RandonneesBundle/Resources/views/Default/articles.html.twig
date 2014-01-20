@@ -4,7 +4,7 @@
 
 {% block body %}
     <h2>Actualités</h2>
-    {% for actu in actualites %}
-        {% include "MilleEtangsRandonneesBundle:Actualite:view.html.twig" with {"actu":actu} only %}
+    {% for article in articles %}
+        {% include "MilleEtangsRandonneesBundle:Article:view.html.twig" with {"article":article} only %}
     {% endfor %}    
 {% endblock %}

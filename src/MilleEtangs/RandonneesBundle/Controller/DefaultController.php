@@ -12,57 +12,60 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
+        $articles = $this->get('doctrine_mongodb')->getRepository('MilleEtangsRandonneesBundle:Article')
+            ->findLastPublishedArticles(1);
+
         return $this->render('MilleEtangsRandonneesBundle:Default:index.html.twig', array(
-            'actualites' => $this->get('doctrine')->getRepository('MilleEtangsRandonneesBundle:Actualite')->findLastActualitesPubliees(1)
+            'articles' => $articles
         ));
     }
 
-    public function randonneesAction($type = null)
+    public function itineariesAction($type = null)
     {
-        $randonnees = $this->get('doctrine')
-            ->getRepository('MilleEtangsRandonneesBundle:Parcours')
+        $itinearies = $this->get('doctrine_mongodb')
+            ->getRepository('MilleEtangsRandonneesBundle:Itineary')
             ->findAllByType($type);
 
-    	return $this->render("MilleEtangsRandonneesBundle:Default:randonnees_{$type}.html.twig", array(
-            'randonnees' => $randonnees
+    	return $this->render("MilleEtangsRandonneesBundle:Default:itinearies_{$type}.html.twig", array(
+            'itinearies' => $itinearies
         ));	
     }
 
-    public function randonneeAction($slug)
+    public function itinearyAction($slug)
     {
-        $randonnee = $this->get('doctrine')
-            ->getRepository('MilleEtangsRandonneesBundle:Parcours')
+        $itineary = $this->get('doctrine_mongodb')
+            ->getRepository('MilleEtangsRandonneesBundle:Itineary')
             ->findOneBySlug($slug);        
 
-    	return $this->render('MilleEtangsRandonneesBundle:Default:randonnee.html.twig', array(
-            'randonnee' => $randonnee
+    	return $this->render('MilleEtangsRandonneesBundle:Default:itineary.html.twig', array(
+            'itineary' => $itineary
         ));	
     }
 
-    public function actualitesAction()
+    public function articlesAction()
     {
-        $actualites = $this->get('doctrine')
-            ->getRepository('MilleEtangsRandonneesBundle:Actualite')
-            ->findLastActualitesPubliees(10);        
+        $articles = $this->get('doctrine_mongodb')
+            ->getRepository('MilleEtangsRandonneesBundle:Article')
+            ->findLastPublishedArticles(10);        
 
-        return $this->render('MilleEtangsRandonneesBundle:Default:actualites.html.twig', array(
-            'actualites' => $actualites
+        return $this->render('MilleEtangsRandonneesBundle:Default:articles.html.twig', array(
+            'articles' => $articles
         ));
     }
 
-    public function evenementsAction()
+    public function eventsAction()
     {
-        return $this->render('MilleEtangsRandonneesBundle:Default:evenements.html.twig');
+        return $this->render('MilleEtangsRandonneesBundle:Default:events.html.twig');
     }
 
-    public function hebergementAction()
+    public function accomodationsAction()
     {
-        return $this->render('MilleEtangsRandonneesBundle:Default:hebergement.html.twig');
+        return $this->render('MilleEtangsRandonneesBundle:Default:accomodations.html.twig');
     }
 
-    public function restaurationAction()
+    public function restaurantsAction()
     {
-        return $this->render('MilleEtangsRandonneesBundle:Default:restauration.html.twig');
+        return $this->render('MilleEtangsRandonneesBundle:Default:restaurants.html.twig');
     }
 
     public function milleEtangsAction()
@@ -70,29 +73,24 @@ class DefaultController extends Controller
         return $this->render('MilleEtangsRandonneesBundle:Default:mille_etangs.html.twig');
     }
 
-    public function partenairesAction()
+    public function partnersAction()
     {
-        return $this->render('MilleEtangsRandonneesBundle:Default:partenaires.html.twig');
+        return $this->render('MilleEtangsRandonneesBundle:Default:partners.html.twig');
     }
 
-    public function conseilsAction()
+    public function adviceAction()
     {
-        return $this->render('MilleEtangsRandonneesBundle:Default:conseils.html.twig');
+        return $this->render('MilleEtangsRandonneesBundle:Default:advice.html.twig');
     }
 
     public function sitemapAction($_format = null){
-        // Pages dynamiques : parcours
         $randonneesVtt = $this->get('doctrine')
-            ->getRepository('MilleEtangsRandonneesBundle:Parcours')
+            ->getRepository('MilleEtangsRandonneesBundle:Itineary')
             ->findAllVtt();
 
         $randonneesMarche = $this->get('doctrine')
-            ->getRepository('MilleEtangsRandonneesBundle:Parcours')
+            ->getRepository('MilleEtangsRandonneesBundle:Itineary')
             ->findAllMarche();
-
-        $randonneesCheval = $this->get('doctrine')
-            ->getRepository('MilleEtangsRandonneesBundle:Parcours')
-            ->findAllCheval();
 
         $format = $_format ?: "html";
         return $this->render("MilleEtangsRandonneesBundle:Default:sitemap.{$format}.twig", array(

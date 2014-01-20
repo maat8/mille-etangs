@@ -1,0 +1,32 @@
+{% extends 'MilleEtangsRandonneesBundle::layout.html.twig' %}
+
+{% block title %}{{ itineary.getName() }} | {{ parent()}}{% endblock %}
+
+{% block body %}
+	<h2>{{ itineary.getName() }}</h2>
+
+	<p>{{ itineary.getTeaser()|raw }}</p>
+
+	<h5>Accès</h5>
+	<p>{{ itineary.getAccess()|raw }}</p>
+
+	<h5>Description</h5>
+	<p>{{ itineary.getDescription()|raw }}</p>
+
+	<p>Distance <strong>{{ (itineary.getDistance()/1000) }} km</strong></p>
+
+	{% if itineary.getBikeLength() > 0 %}
+		<p>Durée VTT <strong>{{ itineary.getBikeLength() }} minutes</strong></p>
+	{% endif %}
+
+	{% if itineary.getHikeLength() > 0 %}
+		<p>Durée à pied <strong>{{ itineary.getHikeLength() }} min</strong></p>
+	{% endif %}
+
+	<p>Dénivelé positif <strong>{{ itineary.getIncline() }} m</strong></p>
+
+	{% if(itineary.getEndomondoLink() is not null) %}
+		<a href='{{ itineary.getEndomondoLink() }}'>Endomondo</a>
+	{% endif %}
+
+{% endblock %}

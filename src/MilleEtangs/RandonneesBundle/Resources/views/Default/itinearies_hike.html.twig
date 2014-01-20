@@ -6,8 +6,8 @@
 	<h2>Randonnées</h2>
 
 	<ul>
-	{% for randonnee in randonnees %}
-		<li><a href="{{ path('randonnee', {'slug': randonnee.getSlug()}) }}">{{ randonnee.getNom() }}</a></li>
+	{% for itineary in itinearies %}
+		<li><a href="{{ path('itineary', {'slug': itineary.getSlug()}) }}">{{ itineary.getName() }}</a></li>
 	{% else %}
 		<li>Il n'y a pas de randonnées actuellement !</li>
 	{% endfor %}

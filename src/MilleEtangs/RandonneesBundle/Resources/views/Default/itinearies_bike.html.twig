@@ -4,14 +4,14 @@
 
 {% block sidebar_block1 %}
 	<div class="sidebar_block">
-		<h3>Conseils VTT</h3>
+		<h6>Conseils VTT</h6>
 		<div class="sidebar_content">Avant de partir en balade, venez lire nos conseils pour une sortie réussie !</div>
 	</div>
 {% endblock %}
 
 {% block sidebar_block3 %}
 	<div class="sidebar_block">
-		<h3>La base VTT</h3>
+		<h6>La base VTT</h6>
 		<div class="sidebar_content">Content</div>
 	</div>
 {% endblock %}
@@ -20,8 +20,8 @@
 	<h2>Randonnées</h2>
 
 	<ul>
-	{% for randonnee in randonnees %}
-		<li><a href="{{ path('randonnee', {'slug': randonnee.getSlug()}) }}">{{ randonnee.getNom() }}</a></li>
+	{% for itineary in itinearies %}
+		<li><a href="{{ path('itineary', {'slug': itineary.getSlug()}) }}">{{ itineary.getName() }}</a></li>
 	{% else %}
 		<li>Il n'y a pas de randonnées actuellement !</li>
 	{% endfor %}

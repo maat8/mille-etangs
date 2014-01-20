@@ -13,7 +13,7 @@ class LoadItinearyData implements FixtureInterface
     {
         $itineary = new Itineary();
         $itineary->setName('Circuit de la mer');
-        $itineary->setTeaser('Découvrez les Mille Etangs en parcourant le plateau en passant par les villages de La Mer et de Beulotte Saint Laurent.');
+        $itineary->setTeaser('Découvrez les Mille Etangs en parcourant le plateau depuis le village de La Mer.');
         $itineary->setAccess('A partir de Faucogney, prenez ...');
         $itineary->setBikeLength(120);
         $itineary->setDistance(17000);

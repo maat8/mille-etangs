@@ -40,45 +40,41 @@ home:
     pattern:  /
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:index }
 
-randonnees_type:    
+itinearies_type:    
     pattern:  /randonnees/{type}
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:randonnees }
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:itinearies }
 
-#randonnees:    
-#    pattern:  /randonnees
-#    defaults: { _controller: MilleEtangsRandonneesBundle:Default:randonnees }
-
-randonnee:    
+itineary:    
     pattern:  /randonnee/{slug}
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:randonnee }
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:itineary }
 
 milleEtangs:    
     pattern:  /les-mille-etangs
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:milleEtangs }
 
-evenements:    
+events:    
     pattern:  /evenements
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:evenements }
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:events }
 
 articles:    
     pattern:  /articles
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:articles }
 
-hebergement:    
+accomodations:    
     pattern:  /hebergement
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:hebergement }
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:accomodations }
 
-restauration:    
+restaurants:    
     pattern:  /restauration
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:restauration }
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:restaurants }
 
-partenaires:    
+partners:    
     pattern:  /partenaires
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:partenaires }
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:partners }
 
-conseils:    
+advice:    
     pattern:  /conseils
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:conseils }
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:advice }
 
 contact:    
     pattern:  /contact
