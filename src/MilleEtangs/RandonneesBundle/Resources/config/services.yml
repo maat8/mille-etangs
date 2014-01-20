@@ -6,14 +6,14 @@ services:
         class: MilleEtangs\RandonneesBundle\Form\Type\LoginType
         tags:
             - {name: form.type, alias: login}
-    form_randonnee:
-        class: MilleEtangs\RandonneesBundle\Form\Type\ParcoursType
+    form_itineary:
+        class: MilleEtangs\RandonneesBundle\Form\Type\ItinearyType
         tags:
-            - {name: form.type, alias: parcours}
-    form_actualite:
-        class: MilleEtangs\RandonneesBundle\Form\Type\ActualiteType
+            - {name: form.type, alias: itineary}
+    form_article:
+        class: MilleEtangs\RandonneesBundle\Form\Type\ArticleType
         tags:
-            - {name: form.type, alias: actualite}
+            - {name: form.type, alias: article}
     form_image: 
         class: MilleEtangs\RandonneesBundle\Form\Type\ImageType
         tags:
