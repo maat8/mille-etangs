@@ -31,14 +31,18 @@ update_article:
     pattern: /secured/articles/update/{id}
     defaults: { _controller: MilleEtangsRandonneesBundle:Security:updateArticle }
 
-upload_picture:
-    pattern: /secured/upload_picture
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:uploadPicture}
+upload_image:
+    pattern: /secured/upload_image
+    defaults: { _controller: MilleEtangsRandonneesBundle:Security:uploadImage}
 
 # Website
 home:
     pattern:  /
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:index }
+
+render_image:
+    pattern: /images/{id}
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:renderImage}
 
 itinearies_type:    
     pattern:  /randonnees/{type}

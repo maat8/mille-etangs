@@ -84,24 +84,37 @@ class DefaultController extends Controller
     }
 
     public function sitemapAction($_format = null){
-        $randonneesVtt = $this->get('doctrine')
+        $itineariesBike = $this->get('doctrine_mongodb')
             ->getRepository('MilleEtangsRandonneesBundle:Itineary')
-            ->findAllVtt();
+            ->findAllBike();
 
-        $randonneesMarche = $this->get('doctrine')
+        $itineariesHike = $this->get('doctrine_mongodb')
             ->getRepository('MilleEtangsRandonneesBundle:Itineary')
-            ->findAllMarche();
+            ->findAllHike();
 
         $format = $_format ?: "html";
         return $this->render("MilleEtangsRandonneesBundle:Default:sitemap.{$format}.twig", array(
-            'randonneesVtt' => $randonneesVtt,
-            'randonneesCheval' => $randonneesCheval,
-            'randonneesMarche' => $randonneesMarche
+            'itineariesHike' => $itineariesHike,
+            'itineariesBike' => $itineariesBike
         ));
     }
 
     public function rssAction(){
         return $this->render("MilleEtangsRandonneesBundle:Default:rss.html.twig", array(
         ));
+    }
+
+    public function renderImageAction($id = null)
+    {
+        if(!is_null($id)){
+            $image = $this->get('doctrine_mongodb')
+                ->getRepository('MilleEtangsRandonneesBundle:Image')
+                ->findOneById($id);
+
+            if(!is_null($image)){                
+                header('Content-type: '.$image->getMimeType().';');
+                print $image->getFile()->getBytes();
+            }
+        }
     }
 }

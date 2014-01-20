@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use MilleEtangs\RandonneesBundle\Document\Itineary;
 use MilleEtangs\RandonneesBundle\Document\Article;
+use MilleEtangs\RandonneesBundle\Document\Image;
 
 class SecurityController extends Controller 
 {
@@ -84,7 +85,7 @@ class SecurityController extends Controller
                 $dm->flush();
 
                 $session = $this->getRequest()->getSession();
-                $session->setFlash("succes", "Le parcours a bien été créé");
+                $session->setFlash("success", "Le parcours a bien été créé");
 
                 return $this->redirect($this->generateUrl('admin_menu'));
             }
@@ -149,7 +150,7 @@ class SecurityController extends Controller
                 $em->flush();
 
                 $session = $this->getRequest()->getSession();
-                $session->setFlash("succes", "L'article a bien été créée");
+                $session->setFlash("success", "L'article a bien été créée");
 
                 return $this->redirect($this->generateUrl('admin_menu'));
             }
@@ -195,21 +196,25 @@ class SecurityController extends Controller
         ));
     }
 
-    /*public function uploadPictureAction()
+    public function uploadImageAction()
     {
         $image = new Image();
         $form =  $this->get('form.factory')->create("image", $image);
 
         if ("POST" === $this->getRequest()->getMethod()){
             $form->bind($this->getRequest());
-
             if($form->isValid()){
-                $em = $this->get('doctrine')->getEntityManager();
-                $em->persist($image);
-                $em->flush();
+                $dm = $this->get('doctrine_mongodb')->getManager();
+                $upload = $this->getRequest()->files->get('image');
+                $image = new Image();
+                $image->setFile($upload['file']->getPathName());
+                $image->setFilename($upload['file']->getClientOriginalName());
+                $image->setMimeType($upload['file']->getMimeType());
+                $dm->persist($image);
+                $dm->flush();
 
                 $session = $this->getRequest()->getSession();
-                $session->setFlash("succes", "L'image a bien été uploadée : " . $image->getWebPath());
+                $session->setFlash("success", "L'image a bien été uploadée : " . $image->getId());
 
                 return $this->redirect($this->generateUrl('admin_menu'));
             }
@@ -218,5 +223,5 @@ class SecurityController extends Controller
         return $this->render("MilleEtangsRandonneesBundle:Security:form_image.html.twig", array(
             'form' => $form->createView()
         ));
-    }*/
+    }
 }

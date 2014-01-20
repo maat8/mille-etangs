@@ -8,13 +8,12 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ImageType extends AbstractType
 {
-	const CUSTOMER_CLASS = 'MilleEtangs\RandonneesBundle\Entity\Image';
+	const CUSTOMER_CLASS = 'MilleEtangs\RandonneesBundle\Document\Image';
 
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder
-			->add('nom')
-			->add('file')
+		$builder	
+			->add('file', 'file')
         ;
 	}
 
