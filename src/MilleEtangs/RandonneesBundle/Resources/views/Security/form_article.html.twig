@@ -15,22 +15,17 @@ tinyMCE.init({
 </script>
 
 <form action="" method="POST" class="form-horizontal">
+
     <div class="form-group">
-    	{{ form_errors(form.categorie) }}
-        {{ form_label(form.categorie) }}
-        {{ form_widget(form.categorie, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.name) }}
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
     </div>
 
     <div class="form-group">
-        {{ form_errors(form.nom) }}
-        {{ form_label(form.nom) }}
-        {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
-    </div>
-
-    <div class="form-group">
-        {{ form_errors(form.message) }}
-        {{ form_label(form.message) }}
-        {{ form_widget(form.message, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.content) }}
+        {{ form_label(form.content) }}
+        {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
     </div>
 
     <div class="form-group">
@@ -42,7 +37,8 @@ tinyMCE.init({
 	{{ form_rest(form) }}
 
     <div class="form-group">
-	   <input type="submit" value="Enregistrer" class="btn btn-primary btn-lg" />
+	   <input type="submit" value="Save" name="save" class="btn btn-primary btn-lg" />
+       <input type="submit" value="Delete" name="delete" class="btn btn-primary btn-lg" />
     </div>
 </form>
 {% endblock %}

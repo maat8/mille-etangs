@@ -15,21 +15,21 @@ admin_menu:
     pattern: /secured/menu
     defaults: { _controller: MilleEtangsRandonneesBundle:Security:menu }
 
-create_randonnee:
-    pattern: /secured/randonnees/create
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:createRandonnee }
+create_itineary:
+    pattern: /secured/itineary/create
+    defaults: { _controller: MilleEtangsRandonneesBundle:Security:createItineary }
 
-update_randonnee:
-    pattern: /secured/randonnees/update/{id}
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:updateRandonnee }
+update_itineary:
+    pattern: /secured/itineary/update/{id}
+    defaults: { _controller: MilleEtangsRandonneesBundle:Security:updateItineary }
 
-create_actualite:
-    pattern: /secured/actualites/create
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:createActualite }
+create_article:
+    pattern: /secured/articles/create
+    defaults: { _controller: MilleEtangsRandonneesBundle:Security:createArticle }
 
-update_actualite:
-    pattern: /secured/actualites/update/{id}
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:updateActualite }
+update_article:
+    pattern: /secured/articles/update/{id}
+    defaults: { _controller: MilleEtangsRandonneesBundle:Security:updateArticle }
 
 upload_picture:
     pattern: /secured/upload_picture
@@ -60,9 +60,9 @@ evenements:
     pattern:  /evenements
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:evenements }
 
-actualites:    
-    pattern:  /actualites
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:actualites }
+articles:    
+    pattern:  /articles
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:articles }
 
 hebergement:    
     pattern:  /hebergement

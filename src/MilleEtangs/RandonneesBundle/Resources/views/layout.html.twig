@@ -20,7 +20,7 @@
                 <ul>
                     {% set route = app.request.get('_route') %}
                     <li class="{% if route == "home" %}active{% endif %}"><a href="{{ path("home") }}">accueil</a></li>
-                    <li class="{% if route == "actualites" %}active{% endif %}"><a href="{{ path("actualites") }}">actualités</a></li>
+                    <li class="{% if route == "articles" %}active{% endif %}"><a href="{{ path("articles") }}">actualités</a></li>
                     <li class="{% if route == "milleEtangs" %}active{% endif %}"><a href="{{ path("milleEtangs") }}">les mille étangs</a></li>
                     <li class=""><a href="{{ path("randonnees_type", {'type':"marche"}) }}">à pied</a></li>
                     <li class=""><a href="{{ path("randonnees_type", {'type':"vtt"}) }}">à vtt</a></li>
@@ -83,7 +83,7 @@
     	<div id="footer_menu" class="col-md-3">
             <ul>
                 <li><a href="{{ path("home") }}">Accueil</a></li>
-                <li><a href="{{ path("actualites") }}">Actualités</a></li>
+                <li><a href="{{ path("articles") }}">Actualités</a></li>
                 <li><a href="{{ path("milleEtangs") }}">Les Milles étangs</a></li>
                 <li><a href="{{ path("randonnees_type", {'type':"vtt"}) }}">Randonnées en VTT</a></li>
                 <li><a href="{{ path("randonnees_type", {'type':"marche"}) }}">Randonnées à pied</a></li>

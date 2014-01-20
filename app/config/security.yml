@@ -5,7 +5,7 @@ jms_security_extra:
 security:
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
-        MilleEtangs\RandonneesBundle\Entity\User: 
+        MilleEtangs\RandonneesBundle\Document\User: 
             algorithm:        sha512
             encode-as-base64: true
             iterations:       5
@@ -20,8 +20,8 @@ security:
         #        users:
         #            user:  { password: userpass, roles: [ 'ROLE_USER' ] }
         #            admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
-        entity:
-            entity: {class: "MilleEtangs\RandonneesBundle\Entity\User", property: "username"}
+        document_members:
+            mongodb: {class: "MilleEtangs\RandonneesBundle\Document\User", property: "username"}
 
     firewalls:
         dev:

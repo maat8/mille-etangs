@@ -8,9 +8,8 @@ use Symfony\Component\Security\Core\SecurityContext;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-use MilleEtangs\RandonneesBundle\Entity\Parcours;
-use MilleEtangs\RandonneesBundle\Entity\Actualite;
-use MilleEtangs\RandonneesBundle\Entity\Image;
+use MilleEtangs\RandonneesBundle\Document\Itineary;
+use MilleEtangs\RandonneesBundle\Document\Article;
 
 class SecurityController extends Controller 
 {
@@ -57,32 +56,32 @@ class SecurityController extends Controller
 
     public function menuAction()
     {
-    	$randonnees = $this->get('doctrine')
-            ->getRepository('MilleEtangsRandonneesBundle:Parcours')
+    	$itinearies = $this->get('doctrine_mongodb')
+            ->getRepository('MilleEtangsRandonneesBundle:Itineary')
             ->findAll();
 
-        $actualites = $this->get('doctrine')
-            ->getRepository('MilleEtangsRandonneesBundle:Actualite')
+        $articles = $this->get('doctrine_mongodb')
+            ->getRepository('MilleEtangsRandonneesBundle:Article')
             ->findAll();
 
     	return $this->render("MilleEtangsRandonneesBundle:Security:menu.html.twig", array(
-    		'randonnees' => $randonnees,
-            'actualites' => $actualites
+    		'articles' => $articles,
+            'itinearies' => $itinearies
     	));
     }
 
-    public function createRandonneeAction()
+    public function createItinearyAction()
     {
-    	$randonnee = new Parcours();
-    	$form =  $this->get('form.factory')->create("parcours", $randonnee);
+    	$itineary = new Itineary();
+    	$form =  $this->get('form.factory')->create("itineary", $itineary);
 
         if ("POST" === $this->getRequest()->getMethod()){
             $form->bind($this->getRequest());
 
             if($form->isValid()){
-                $em = $this->get('doctrine')->getEntityManager();
-                $em->persist($randonnee);
-                $em->flush();
+                $dm = $this->get('doctrine_mongodb')->getManager();
+                $dm->persist($itineary);
+                $dm->flush();
 
                 $session = $this->getRequest()->getSession();
                 $session->setFlash("succes", "Le parcours a bien été créé");
@@ -91,36 +90,41 @@ class SecurityController extends Controller
             }
         }
 
-        return $this->render("MilleEtangsRandonneesBundle:Security:form_randonnee.html.twig", array(
+        return $this->render("MilleEtangsRandonneesBundle:Security:form_itineary.html.twig", array(
             'form' => $form->createView()
         ));
     }
 
-    public function updateRandonneeAction($id = null)
+    public function updateItinearyAction($id = null)
     {
-        if (is_numeric($id)){
-            $parcours = $this->get('doctrine')
-                ->getRepository("MilleEtangsRandonneesBundle:Parcours")
+        if (!is_null($id)){
+            $itineary = $this->get('doctrine_mongodb')
+                ->getRepository("MilleEtangsRandonneesBundle:Itineary")
                 ->findOneById($id)
             ;
+            $form =  $this->get('form.factory')->create("itineary", $itineary);
         }
-        $form =  $this->get('form.factory')->create("parcours", $parcours);
 
         if ("POST" === $this->getRequest()->getMethod()){
             $form->bind($this->getRequest());
-
-            if($form->isValid()){
-                $em = $this->get('doctrine')->getEntityManager();
-                $em->flush();
-
-                $session = $this->getRequest()->getSession();
-                $session->setFlash("succes", "Le parcours a bien été sauvegardé");
-
-                return $this->redirect($this->generateUrl('admin_menu'));
+            $session = $this->getRequest()->getSession();
+            $dm = $this->get('doctrine_mongodb')->getManager();
+            if(!is_null($this->getRequest()->get('delete'))){
+                $dm->remove($itineary);
+                $dm->flush();
+                $session->setFlash("success", "Le parcours a bien été supprimé");
             }
+            else{
+                if($form->isValid()){
+                    $dm->flush();
+                    $session->setFlash("success", "Le parcours a bien été sauvegardé");
+                }
+            }
+
+            return $this->redirect($this->generateUrl('admin_menu'));
         }
 
-        return $this->render("MilleEtangsRandonneesBundle:Security:form_randonnee.html.twig", array(
+        return $this->render("MilleEtangsRandonneesBundle:Security:form_itineary.html.twig", array(
             'form' => $form->createView()
         ));
     }
@@ -130,67 +134,68 @@ class SecurityController extends Controller
 
     }
 
-    public function createActualiteAction()
+    public function createArticleAction()
     {
-        $actualite = new Actualite();
+        $article = new Article();
         
-        $form =  $this->get('form.factory')->create("actualite", $actualite);
+        $form =  $this->get('form.factory')->create("article", $article);
 
         if ("POST" === $this->getRequest()->getMethod()){
             $form->bind($this->getRequest());
 
             if($form->isValid()){
-                $em = $this->get('doctrine')->getEntityManager();
-                $em->persist($actualite);
+                $em = $this->get('doctrine_mongodb')->getManager();
+                $em->persist($article);
                 $em->flush();
 
                 $session = $this->getRequest()->getSession();
-                $session->setFlash("succes", "L'actualité a bien été créée");
+                $session->setFlash("succes", "L'article a bien été créée");
 
                 return $this->redirect($this->generateUrl('admin_menu'));
             }
         }
 
-        return $this->render("MilleEtangsRandonneesBundle:Security:form_actualite.html.twig", array(
+        return $this->render("MilleEtangsRandonneesBundle:Security:form_article.html.twig", array(
             'form' => $form->createView()
         ));
     }
 
-    public function updateActualiteAction($id = null)
+    public function updateArticleAction($id = null)
     {
-        if (is_numeric($id)) {
-            $actualite = $this->get('doctrine')
-                ->getRepository('MilleEtangsRandonneesBundle:Actualite')
+        if (!is_null($id)) {
+            $article = $this->get('doctrine_mongodb')
+                ->getRepository('MilleEtangsRandonneesBundle:Article')
                 ->findOneById($id)
             ;
         }
 
-        if (!$actualite) {
-
-        }
-
-        $form =  $this->get('form.factory')->create("actualite", $actualite);
+        $form =  $this->get('form.factory')->create("article", $article);
 
         if ("POST" === $this->getRequest()->getMethod()){
             $form->bind($this->getRequest());
-
-            if($form->isValid()){
-                $em = $this->get('doctrine')->getEntityManager();
+            $session = $this->getRequest()->getSession();
+            $em = $this->get('doctrine_mongodb')->getManager();
+            if(!is_null($this->getRequest()->get('delete'))){
+                $em->remove($article);
                 $em->flush();
-
-                $session = $this->getRequest()->getSession();
-                $session->setFlash("succes", "L'actualité a bien été sauvegardée");
-
-                return $this->redirect($this->generateUrl('admin_menu'));
+                $session->setFlash("success", "L'actualité a bien été supprimé");
             }
+            else{
+                if($form->isValid()){
+                    $em->flush();
+                    $session->setFlash("success", "L'actualité a bien été sauvegardée");
+                }
+            }
+            
+            return $this->redirect($this->generateUrl('admin_menu'));
         }
 
-        return $this->render("MilleEtangsRandonneesBundle:Security:form_actualite.html.twig", array(
+        return $this->render("MilleEtangsRandonneesBundle:Security:form_article.html.twig", array(
             'form' => $form->createView()
         ));
     }
 
-    public function uploadPictureAction()
+    /*public function uploadPictureAction()
     {
         $image = new Image();
         $form =  $this->get('form.factory')->create("image", $image);
@@ -204,7 +209,7 @@ class SecurityController extends Controller
                 $em->flush();
 
                 $session = $this->getRequest()->getSession();
-                $session->setFlash("succes", "L'image' a bien été uploadée : " . $image->getWebPath());
+                $session->setFlash("succes", "L'image a bien été uploadée : " . $image->getWebPath());
 
                 return $this->redirect($this->generateUrl('admin_menu'));
             }
@@ -213,5 +218,5 @@ class SecurityController extends Controller
         return $this->render("MilleEtangsRandonneesBundle:Security:form_image.html.twig", array(
             'form' => $form->createView()
         ));
-    }
+    }*/
 }

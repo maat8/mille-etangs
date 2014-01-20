@@ -3,23 +3,25 @@
 {% block body %}
 <h2>Administation</h2>
 
-<p class="alert alert-success">{{ app.session.getFlash('succes') }}</p>
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">{{ flashMessage }}</div>
+{% endfor %}
 
-<div class="alert alert-danger">{{ app.session.getFlash('erreur') }}</div>
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-danger">{{ flashMessage }}</div>
+{% endfor %}
 
 <h3>Gestion des articles</h3>
 <ul>
-	{% for actu in actualites %}
-		<li><a href="{{ path('update_actualite', {id: actu.getId()}) }}">{{ actu.getNom() }}</a></li>
+	{% for article in articles %}
+		<li><a href="{{ path('update_article', {id: article.getId()}) }}">{{ article.getName() }}</a></li>
 	{% endfor %}
-	<li><a href="{{ path('create_actualite') }}">Ajouter un article</a></li>
 </ul>
 
 <h3>Gestion des parcours</h3>
 <ul>
-	{% for rando in randonnees %}
-		<li><a href="{{ path('update_randonnee', {id: rando.getId()}) }}">{{ rando.getNom() }}</a></li>
+	{% for itineary in itinearies %}
+		<li><a href="{{ path('update_itineary', {id: itineary.getId()}) }}">{{ itineary.getName() }}</a></li>
 	{% endfor %}
-	<li><a href="{{ path('create_randonnee') }}">Ajouter un parcours</a></li>
 </ul>
 {% endblock %}
