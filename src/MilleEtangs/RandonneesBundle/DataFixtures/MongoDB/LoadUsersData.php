@@ -1,13 +1,13 @@
 <?php
 
-namespace MilleEtangs\RandonneesBundle\DataFixtures\ORM;
+namespace MilleEtangs\RandonneesBundle\DataFixtures\MongoDB;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-use MilleEtangs\RandonneesBundle\Entity\User;
+use MilleEtangs\RandonneesBundle\Document\User;
 
 class LoadUsersData implements FixtureInterface, ContainerAwareInterface
 {
@@ -17,7 +17,7 @@ class LoadUsersData implements FixtureInterface, ContainerAwareInterface
 	{
 		$admin = new User();
 		$admin->setUsername("admin");
-		$this->setPassword($admin, "coco");
+		$this->setPassword($admin, "pouet");
 
 		$manager->persist($admin);
 		$manager->flush();
