@@ -146,9 +146,18 @@ aside#sidebar div.sidebar_block span.sidebar_title{
 aside#sidebar .sidebar_content{
 }
 
-aside#sidebar .sidebar_content a{
+aside#sidebar .sidebar_content a.sidebar_button{
+    font-size: 13px;
     text-decoration: none;
-    color:black;
+    color: white;
+    display: block;
+    margin: 0;
+    padding: 0;
+    padding-top:3px;
+    background: url('/images/button_sidebloc.png') top left no-repeat;
+    width: 160px;
+    height: 45px;
+    text-align: center;
 }
 
 /* Content */
