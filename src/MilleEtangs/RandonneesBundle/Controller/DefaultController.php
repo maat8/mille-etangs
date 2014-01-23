@@ -137,7 +137,8 @@ class DefaultController extends Controller
             if(!is_null($itineary)){
                 $response = new Response();
                 $response->headers->set('Content-Type', "application/gpx+xml");
-                $response->headers->set('filename', $itineary->getName().'.gpx');
+                $response->headers->set('Content-Disposition', 'attachment; filename="'.$itineary->getName().'.gpx"');
+                $response->sendHeaders();
                 $response->setContent($itineary->getGpx()->getBytes());
 
                 print $itineary->getGpx()->getBytes();

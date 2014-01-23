@@ -108,6 +108,7 @@ class SecurityController extends Controller
                 ->getRepository("MilleEtangsRandonneesBundle:Itineary")
                 ->findOneById($id)
             ;
+            $itineary->setGpx(null);    
             $form =  $this->get('form.factory')->create("itineary", $itineary);
         }
 
@@ -124,12 +125,9 @@ class SecurityController extends Controller
                 if($form->isValid()){
                     $gpx = $this->getRequest()->files->get('itineary');
                     if(array_key_exists('gpx', $gpx) && is_object($gpx['gpx'])){
-                        echo file_get_contents($gpx['gpx']->getPathName());
                         $itineary->setGpx($gpx['gpx']->getPathName());
                     }
-                    var_dump($itineary);
                     $dm->flush();
-                    die();
                     $session->setFlash("success", "Le parcours a bien été sauvegardé");
                 }
             }
