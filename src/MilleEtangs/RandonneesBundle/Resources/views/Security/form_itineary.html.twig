@@ -10,7 +10,7 @@ tinyMCE.init({
 });
 </script>
 
-<form action="" method="POST" class="form-horizontal">
+<form action="" method="POST" {{ form_enctype(form) }} class="form-horizontal">
     <div class="form-group">
         {{ form_errors(form.name) }}
         {{ form_label(form.name) }}
@@ -63,6 +63,12 @@ tinyMCE.init({
         {{ form_errors(form.endomondo_link) }}
         {{ form_label(form.endomondo_link) }}
         {{ form_widget(form.endomondo_link, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_errors(form.gpx) }}
+        {{ form_label(form.gpx) }}
+        {{ form_widget(form.gpx, {'attr': {'class': 'form-control'}}) }}
     </div>
 
     <div class="form-group">

@@ -80,6 +80,11 @@ class SecurityController extends Controller
             $form->bind($this->getRequest());
 
             if($form->isValid()){
+                $gpx = $this->getRequest()->files->get('itineary');
+                if(array_key_exists('gpx', $gpx) && is_object($gpx['gpx'])){
+                    $itineary->setGpx($gpx['gpx']->getPathName());
+                }
+
                 $dm = $this->get('doctrine_mongodb')->getManager();
                 $dm->persist($itineary);
                 $dm->flush();
@@ -117,7 +122,14 @@ class SecurityController extends Controller
             }
             else{
                 if($form->isValid()){
+                    $gpx = $this->getRequest()->files->get('itineary');
+                    if(array_key_exists('gpx', $gpx) && is_object($gpx['gpx'])){
+                        echo file_get_contents($gpx['gpx']->getPathName());
+                        $itineary->setGpx($gpx['gpx']->getPathName());
+                    }
+                    var_dump($itineary);
                     $dm->flush();
+                    die();
                     $session->setFlash("success", "Le parcours a bien été sauvegardé");
                 }
             }
@@ -128,11 +140,6 @@ class SecurityController extends Controller
         return $this->render("MilleEtangsRandonneesBundle:Security:form_itineary.html.twig", array(
             'form' => $form->createView()
         ));
-    }
-
-    public function deleteRandonneeAction()
-    {
-
     }
 
     public function createArticleAction()
@@ -175,15 +182,15 @@ class SecurityController extends Controller
         if ("POST" === $this->getRequest()->getMethod()){
             $form->bind($this->getRequest());
             $session = $this->getRequest()->getSession();
-            $em = $this->get('doctrine_mongodb')->getManager();
+            $dm = $this->get('doctrine_mongodb')->getManager();
             if(!is_null($this->getRequest()->get('delete'))){
-                $em->remove($article);
-                $em->flush();
+                $dm->remove($article);
+                $dm->flush();
                 $session->setFlash("success", "L'actualité a bien été supprimé");
             }
             else{
                 if($form->isValid()){
-                    $em->flush();
+                    $dm->flush();
                     $session->setFlash("success", "L'actualité a bien été sauvegardée");
                 }
             }

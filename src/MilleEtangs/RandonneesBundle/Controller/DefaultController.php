@@ -22,13 +22,17 @@ class DefaultController extends Controller
 
     public function itineariesAction($type = null)
     {
-        $itinearies = $this->get('doctrine_mongodb')
-            ->getRepository('MilleEtangsRandonneesBundle:Itineary')
-            ->findAllByType($type);
+        $repository = $this->get('doctrine_mongodb')
+            ->getRepository('MilleEtangsRandonneesBundle:Itineary');
 
-    	return $this->render("MilleEtangsRandonneesBundle:Default:itinearies_{$type}.html.twig", array(
+        if($type == "hike" || $type == "bike")
+            $itinearies = $repository->findAllByType($type);
+        else
+            $itinearies = $repository->findAll();
+
+        return $this->render("MilleEtangsRandonneesBundle:Default:itinearies.html.twig", array(
             'itinearies' => $itinearies
-        ));	
+        )); 
     }
 
     public function itinearyAction($slug)
@@ -112,9 +116,34 @@ class DefaultController extends Controller
                 ->findOneById($id);
 
             if(!is_null($image)){                
-                header('Content-type: '.$image->getMimeType().';');
-                print $image->getFile()->getBytes();
+                $response = new Response();
+                $response->headers->set('Content-Type', $image->getMimeType());
+                $response->setContent($image->getFile()->getBytes());
+                
+                return $response;
             }
         }
+
+        return new Response('Not Found', 404);
+    }
+
+    public function downloadGpxAction($id = null)
+    {
+        if(!is_null($id)){
+            $itineary = $this->get('doctrine_mongodb')
+                ->getRepository('MilleEtangsRandonneesBundle:Itineary')
+                ->findOneById($id);
+
+            if(!is_null($itineary)){
+                $response = new Response();
+                $response->headers->set('Content-Type', "application/gpx+xml");
+                $response->headers->set('filename', $itineary->getName().'.gpx');
+                $response->setContent($itineary->getGpx()->getBytes());
+
+                print $itineary->getGpx()->getBytes();
+            }
+        }
+
+        return new Response('Not Found', 404);
     }
 }

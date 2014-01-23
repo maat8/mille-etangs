@@ -5,7 +5,7 @@ namespace MilleEtangs\RandonneesBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 /**
- * @ODM\Document
+ * @ODM\Document(collection="images")
  */
 class Image
 {

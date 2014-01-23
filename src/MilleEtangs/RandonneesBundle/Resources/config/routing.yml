@@ -44,7 +44,15 @@ render_image:
     pattern: /images/{id}
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:renderImage}
 
-itinearies_type:    
+download_gpx:
+    pattern: /gpx/{id}
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:downloadGpx}
+
+itinearies:
+    pattern:  /randonnees
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:itinearies }
+
+itinearies_type:
     pattern:  /randonnees/{type}
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:itinearies }
 

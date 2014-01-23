@@ -11,51 +11,56 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Itineary extends BaseDocument
 {
     /**
-     * @ODM\Field(type="string")
+     * @ODM\String
      */
     protected $teaser;
 
     /**
-     * @ODM\Field(type="string")
+     * @ODM\String
      */
     protected $access;
 
     /**
-     * @ODM\Field(type="string")
+     * @ODM\String
      */
     protected $description;
 
     /**
-     * @ODM\Field(type="int")
+     * @ODM\Int
      * @Assert\Min(0)
      */
     protected $bikeLength = 0;
 
     /**
-     * @ODM\Field(type="int")
+     * @ODM\Int
      * @Assert\Min(0)
      */
     protected $hikeLength = 0;
 
     /**
-     * @ODM\Field(type="int")
+     * @ODM\Int
      * @Assert\Min(0)
      */
     protected $distance = 0;
 
     /**
-     * @ODM\Field(type="int")
+     * @ODM\Int
      * @Assert\Min(0)
      */
     protected $incline = 0;
 
     /**
-     * @ODM\Field(type="string")
+     * @ODM\String
      */
     protected $endomondoLink;
 
+    /**
+     * @ODM\File
+     */
+    protected $gpx;
+
     /** 
-     * @ODM\Field(type="boolean")
+     * @ODM\Boolean
     */
     protected $published;
 
@@ -264,5 +269,27 @@ class Itineary extends BaseDocument
     public function getPublished()
     {
         return $this->published;
+    }
+
+    /**
+     * Set gpx
+     *
+     * @param file $gpx
+     * @return self
+     */
+    public function setGpx($gpx)
+    {
+        $this->gpx = $gpx;
+        return $this;
+    }
+
+    /**
+     * Get gpx
+     *
+     * @return file $gpx
+     */
+    public function getGpx()
+    {
+        return $this->gpx;
     }
 }
