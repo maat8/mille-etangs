@@ -12,32 +12,32 @@ use MilleEtangs\RandonneesBundle\Document\Itineary;
 use MilleEtangs\RandonneesBundle\Document\Article;
 use MilleEtangs\RandonneesBundle\Document\Image;
 
-class SecurityController extends Controller 
+class SecurityController extends Controller
 {
-	public function loginAction()
-	{
-		$form = $this->get('form.factory')->createNamed('', 'login');
+    public function loginAction()
+    {
+        $form = $this->get('form.factory')->createNamed('', 'login');
 
-		if ($error = $this->getErrorMessage()){
-			$form->addError(new FormError($error));
-		}
+        if ($error = $this->getErrorMessage()) {
+            $form->addError(new FormError($error));
+        }
 
-		return $this->render("MilleEtangsRandonneesBundle:Security:login.html.twig", array(
-			'form' => $form->createView()
-		));
-	}
+        return $this->render("MilleEtangsRandonneesBundle:Security:login.html.twig", array(
+            'form' => $form->createView()
+        ));
+    }
 
-	public function loginCheckAction()
-	{
-		throw new \RuntimeException("This method should not be called");
-	}
+    public function loginCheckAction()
+    {
+        throw new \RuntimeException("This method should not be called");
+    }
 
-	public function logoutAction()
-	{
-		throw new \RuntimeException("This method should not be called");
-	}
+    public function logoutAction()
+    {
+        throw new \RuntimeException("This method should not be called");
+    }
 
-	protected function getErrorMessage()
+    protected function getErrorMessage()
     {
         $request = $this->getRequest();
 
@@ -57,7 +57,7 @@ class SecurityController extends Controller
 
     public function menuAction()
     {
-    	$itinearies = $this->get('doctrine_mongodb')
+        $itinearies = $this->get('doctrine_mongodb')
             ->getRepository('MilleEtangsRandonneesBundle:Itineary')
             ->findAll();
 
@@ -65,23 +65,23 @@ class SecurityController extends Controller
             ->getRepository('MilleEtangsRandonneesBundle:Article')
             ->findAll();
 
-    	return $this->render("MilleEtangsRandonneesBundle:Security:menu.html.twig", array(
-    		'articles' => $articles,
+        return $this->render("MilleEtangsRandonneesBundle:Security:menu.html.twig", array(
+            'articles' => $articles,
             'itinearies' => $itinearies
-    	));
+        ));
     }
 
     public function createItinearyAction()
     {
-    	$itineary = new Itineary();
-    	$form =  $this->get('form.factory')->create("itineary", $itineary);
+        $itineary = new Itineary();
+        $form =  $this->get('form.factory')->create("itineary", $itineary);
 
-        if ("POST" === $this->getRequest()->getMethod()){
+        if ("POST" === $this->getRequest()->getMethod()) {
             $form->bind($this->getRequest());
 
-            if($form->isValid()){
+            if ($form->isValid()) {
                 $gpx = $this->getRequest()->files->get('itineary');
-                if(array_key_exists('gpx', $gpx) && is_object($gpx['gpx'])){
+                if (array_key_exists('gpx', $gpx) && is_object($gpx['gpx'])) {
                     $itineary->setGpx($gpx['gpx']->getPathName());
                 }
 
@@ -103,28 +103,27 @@ class SecurityController extends Controller
 
     public function updateItinearyAction($id = null)
     {
-        if (!is_null($id)){
+        if (!is_null($id)) {
             $itineary = $this->get('doctrine_mongodb')
                 ->getRepository("MilleEtangsRandonneesBundle:Itineary")
                 ->findOneById($id)
             ;
-            $itineary->setGpx(null);    
+            $itineary->setGpx(null);
             $form =  $this->get('form.factory')->create("itineary", $itineary);
         }
 
-        if ("POST" === $this->getRequest()->getMethod()){
+        if ("POST" === $this->getRequest()->getMethod()) {
             $form->bind($this->getRequest());
             $session = $this->getRequest()->getSession();
             $dm = $this->get('doctrine_mongodb')->getManager();
-            if(!is_null($this->getRequest()->get('delete'))){
+            if (!is_null($this->getRequest()->get('delete'))) {
                 $dm->remove($itineary);
                 $dm->flush();
                 $session->setFlash("success", "Le parcours a bien été supprimé");
-            }
-            else{
-                if($form->isValid()){
+            } else {
+                if ($form->isValid()) {
                     $gpx = $this->getRequest()->files->get('itineary');
-                    if(array_key_exists('gpx', $gpx) && is_object($gpx['gpx'])){
+                    if (array_key_exists('gpx', $gpx) && is_object($gpx['gpx'])) {
                         $itineary->setGpx($gpx['gpx']->getPathName());
                     }
                     $dm->flush();
@@ -146,10 +145,10 @@ class SecurityController extends Controller
         
         $form =  $this->get('form.factory')->create("article", $article);
 
-        if ("POST" === $this->getRequest()->getMethod()){
+        if ("POST" === $this->getRequest()->getMethod()) {
             $form->bind($this->getRequest());
 
-            if($form->isValid()){
+            if ($form->isValid()) {
                 $em = $this->get('doctrine_mongodb')->getManager();
                 $em->persist($article);
                 $em->flush();
@@ -177,17 +176,16 @@ class SecurityController extends Controller
 
         $form =  $this->get('form.factory')->create("article", $article);
 
-        if ("POST" === $this->getRequest()->getMethod()){
+        if ("POST" === $this->getRequest()->getMethod()) {
             $form->bind($this->getRequest());
             $session = $this->getRequest()->getSession();
             $dm = $this->get('doctrine_mongodb')->getManager();
-            if(!is_null($this->getRequest()->get('delete'))){
+            if (!is_null($this->getRequest()->get('delete'))) {
                 $dm->remove($article);
                 $dm->flush();
                 $session->setFlash("success", "L'actualité a bien été supprimé");
-            }
-            else{
-                if($form->isValid()){
+            } else {
+                if ($form->isValid()) {
                     $dm->flush();
                     $session->setFlash("success", "L'actualité a bien été sauvegardée");
                 }
@@ -206,9 +204,9 @@ class SecurityController extends Controller
         $image = new Image();
         $form =  $this->get('form.factory')->create("image", $image);
 
-        if ("POST" === $this->getRequest()->getMethod()){
+        if ("POST" === $this->getRequest()->getMethod()) {
             $form->bind($this->getRequest());
-            if($form->isValid()){
+            if ($form->isValid()) {
                 $dm = $this->get('doctrine_mongodb')->getManager();
                 $upload = $this->getRequest()->files->get('image');
                 $image = new Image();

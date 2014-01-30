@@ -6,16 +6,15 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-
 class ParcoursType extends AbstractType
 {
-	const CUSTOMER_CLASS = 'MilleEtangs\RandonneesBundle\Entity\Parcours';
+    const CUSTOMER_CLASS = 'MilleEtangs\RandonneesBundle\Entity\Parcours';
 
-	public function buildForm(FormBuilderInterface $builder, array $options)
-	{
-		$builder
-			->add('id', 'hidden')
-			->add('nom', 'text')
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('id', 'hidden')
+            ->add('nom', 'text')
             ->add('teaser', 'textarea', array('required' => false))
             ->add('acces', 'textarea', array('required' => false))
             ->add('description', 'textarea', array('required' => false))
@@ -27,17 +26,17 @@ class ParcoursType extends AbstractType
             ->add('endomondo_link', 'text', array('required' => false))
             ->add('publie', 'checkbox', array('required' => false))
         ;
-	}
+    }
 
-	public function setDefaultOptions(OptionsResolverInterface $resolver)
-	{
-		$resolver->setDefaults(array(
-			'data_class' => self::CUSTOMER_CLASS
-		));
-	}
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => self::CUSTOMER_CLASS
+        ));
+    }
 
-	public function getName()
-	{
-		return 'parcours';
-	}
+    public function getName()
+    {
+        return 'parcours';
+    }
 }

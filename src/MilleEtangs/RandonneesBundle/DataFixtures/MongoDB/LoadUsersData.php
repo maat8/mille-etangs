@@ -11,19 +11,19 @@ use MilleEtangs\RandonneesBundle\Document\User;
 
 class LoadUsersData implements FixtureInterface, ContainerAwareInterface
 {
-	protected $container;
+    protected $container;
 
-	public function load(ObjectManager $manager)
-	{
-		$admin = new User();
-		$admin->setUsername("admin");
-		$this->setPassword($admin, "coco");
+    public function load(ObjectManager $manager)
+    {
+        $admin = new User();
+        $admin->setUsername("admin");
+        $this->setPassword($admin, "coco");
 
-		$manager->persist($admin);
-		$manager->flush();
-	}
+        $manager->persist($admin);
+        $manager->flush();
+    }
 
-	protected function setPassword(User $user, $password)
+    protected function setPassword(User $user, $password)
     {
         $factory = $this->container->get('security.encoder_factory');
         $encoder = $factory->getEncoder($user);
@@ -33,6 +33,6 @@ class LoadUsersData implements FixtureInterface, ContainerAwareInterface
 
     public function setContainer(ContainerInterface $container = null)
     {
-    	$this->container = $container;
+        $this->container = $container;
     }
 }

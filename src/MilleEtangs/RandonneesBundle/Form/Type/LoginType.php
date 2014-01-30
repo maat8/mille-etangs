@@ -9,16 +9,16 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class LoginType extends AbstractType
 {
 
-	public function buildForm(FormBuilderInterface $builder, array $options)
-	{
-		$builder
-			->add('_username', 'text')
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('_username', 'text')
             ->add('_password', 'password')
         ;
-	}
+    }
 
-	public function getName()
-	{
-		return "login";
-	}
+    public function getName()
+    {
+        return "login";
+    }
 }

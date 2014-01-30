@@ -9,11 +9,14 @@ use MilleEtangs\RandonneesBundle\Document\Article;
 
 class LoadArticleData implements FixtureInterface
 {
-	public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager)
     {
         $article = new Article();
         $article->setName('Mille pas aux Mille Etangs');
-        $article->setContent("La 12ème édition des randonnées Mille pas aux Mille étangs se dérouleront du 27 avril au 22 juin 2014 dans les villages de la Vallée du Breuchin, de Servance et de Saint Bresson. Pour chaque événement, deux parcours seront proposés : un petit de 8 à 10 km et un autre de 16 à 20 km.
+        $article->setContent(
+            "La 12ème édition des randonnées Mille pas aux Mille étangs se dérouleront du 27 avril au 22 juin 2014
+            dans les villages de la Vallée du Breuchin, de Servance et de Saint Bresson. 
+            Pour chaque événement, deux parcours seront proposés : un petit de 8 à 10 km et un autre de 16 à 20 km.
             <ul>
                 <li>dimanche 27 avril au départ de Servance</li>
                 <li>jeudi 1er mai au départ de Amage</li>
@@ -28,7 +31,9 @@ class LoadArticleData implements FixtureInterface
                 <li>dimanche 15 juin au départ de la Rosière</li>
                 <li>dimanche 22 juin au départ de la Bruyère</li>
             </ul>
-            Pour d'autres informations, vous pouvez contacter l'<a href='http://www.ot-faucogney.fr/' target='_blank'>Office de Tourisme de Faucogney</a>");
+            Pour d'autres informations, vous pouvez contacter 
+            l'<a href='http://www.ot-faucogney.fr/' target='_blank'>Office de Tourisme de Faucogney</a>"
+        );
 
         $manager->persist($article);
         $manager->flush();

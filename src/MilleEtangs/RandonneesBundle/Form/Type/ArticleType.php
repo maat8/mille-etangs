@@ -8,27 +8,27 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ArticleType extends AbstractType
 {
-	const CUSTOMER_CLASS = 'MilleEtangs\RandonneesBundle\Document\Article';
+    const CUSTOMER_CLASS = 'MilleEtangs\RandonneesBundle\Document\Article';
 
-	public function buildForm(FormBuilderInterface $builder, array $options)
-	{
-		$builder
-			->add('id', 'hidden')
-			->add('name', 'text')
-            ->add('content', 'textarea', array('required' => false))
-            ->add('publication', 'date')
-        ;
-	}
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('id', 'hidden')
+            ->add('name', 'text')
+               ->add('content', 'textarea', array('required' => false))
+               ->add('publication', 'date')
+           ;
+    }
 
-	public function setDefaultOptions(OptionsResolverInterface $resolver)
-	{
-		$resolver->setDefaults(array(
-			'data_class' => self::CUSTOMER_CLASS
-		));
-	}
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => self::CUSTOMER_CLASS
+        ));
+    }
 
-	public function getName()
-	{
-		return 'article';
-	}
+    public function getName()
+    {
+        return 'article';
+    }
 }

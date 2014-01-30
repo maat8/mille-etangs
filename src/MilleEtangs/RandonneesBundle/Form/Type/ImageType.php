@@ -8,24 +8,24 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ImageType extends AbstractType
 {
-	const CUSTOMER_CLASS = 'MilleEtangs\RandonneesBundle\Document\Image';
+    const CUSTOMER_CLASS = 'MilleEtangs\RandonneesBundle\Document\Image';
 
-	public function buildForm(FormBuilderInterface $builder, array $options)
-	{
-		$builder	
-			->add('file', 'file')
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('file', 'file')
         ;
-	}
+    }
 
-	public function setDefaultOptions(OptionsResolverInterface $resolver)
-	{
-		$resolver->setDefaults(array(
-			'data_class' => self::CUSTOMER_CLASS
-		));
-	}
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => self::CUSTOMER_CLASS
+        ));
+    }
 
-	public function getName()
-	{
-		return 'image';
-	}
+    public function getName()
+    {
+        return 'image';
+    }
 }

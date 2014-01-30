@@ -38,25 +38,25 @@ class DefaultController extends Controller
 
         return $this->render("MilleEtangsRandonneesBundle:Default:itinearies.html.twig", array(
             'itinearies' => $itinearies
-        )); 
+        ));
     }
 
     public function itinearyAction($slug)
     {
         $itineary = $this->get('doctrine_mongodb')
             ->getRepository('MilleEtangsRandonneesBundle:Itineary')
-            ->findOneBySlug($slug);        
+            ->findOneBySlug($slug);
 
-    	return $this->render('MilleEtangsRandonneesBundle:Default:itineary.html.twig', array(
+        return $this->render('MilleEtangsRandonneesBundle:Default:itineary.html.twig', array(
             'itineary' => $itineary
-        ));	
+        ));
     }
 
     public function articlesAction()
     {
         $articles = $this->get('doctrine_mongodb')
             ->getRepository('MilleEtangsRandonneesBundle:Article')
-            ->findLastPublishedArticles(10);        
+            ->findLastPublishedArticles(10);
 
         return $this->render('MilleEtangsRandonneesBundle:Default:articles.html.twig', array(
             'articles' => $articles
@@ -93,7 +93,8 @@ class DefaultController extends Controller
         return $this->render('MilleEtangsRandonneesBundle:Default:advice.html.twig');
     }
 
-    public function sitemapAction($_format = null){
+    public function sitemapAction($_format = null)
+    {
         $itineariesBike = $this->get('doctrine_mongodb')
             ->getRepository('MilleEtangsRandonneesBundle:Itineary')
             ->findAllBike();
@@ -109,19 +110,20 @@ class DefaultController extends Controller
         ));
     }
 
-    public function rssAction(){
+    public function rssAction()
+    {
         return $this->render("MilleEtangsRandonneesBundle:Default:rss.html.twig", array(
         ));
     }
 
     public function renderImageAction($id = null)
     {
-        if(!is_null($id)){
+        if (!is_null($id)) {
             $image = $this->get('doctrine_mongodb')
                 ->getRepository('MilleEtangsRandonneesBundle:Image')
                 ->findOneById($id);
 
-            if(!is_null($image)){                
+            if (!is_null($image)) {
                 $response = new Response();
                 $response->headers->set('Content-Type', $image->getMimeType());
                 $response->setContent($image->getFile()->getBytes());
@@ -135,12 +137,12 @@ class DefaultController extends Controller
 
     public function downloadGpxAction($id = null)
     {
-        if(!is_null($id)){
+        if (!is_null($id)) {
             $itineary = $this->get('doctrine_mongodb')
                 ->getRepository('MilleEtangsRandonneesBundle:Itineary')
                 ->findOneById($id);
 
-            if(!is_null($itineary)){
+            if (!is_null($itineary)) {
                 $response = new Response();
                 $response->headers->set('Content-Type', "application/gpx+xml");
                 $response->headers->set('Content-Disposition', 'attachment; filename="'.$itineary->getName().'.gpx"');

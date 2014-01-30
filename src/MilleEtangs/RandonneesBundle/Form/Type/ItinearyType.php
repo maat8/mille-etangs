@@ -8,13 +8,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ItinearyType extends AbstractType
 {
-	const CUSTOMER_CLASS = 'MilleEtangs\RandonneesBundle\Document\Itineary';
+    const CUSTOMER_CLASS = 'MilleEtangs\RandonneesBundle\Document\Itineary';
 
-	public function buildForm(FormBuilderInterface $builder, array $options)
-	{
-		$builder
-			->add('id', 'hidden')
-			->add('name', 'text')
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('id', 'hidden')
+            ->add('name', 'text')
             ->add('teaser', 'textarea', array('required' => false))
             ->add('access', 'textarea', array('required' => false))
             ->add('description', 'textarea', array('required' => false))
@@ -26,17 +26,17 @@ class ItinearyType extends AbstractType
             ->add('gpx', 'file', array('required' => false))
             ->add('published', 'checkbox', array('required' => false))
         ;
-	}
+    }
 
-	public function setDefaultOptions(OptionsResolverInterface $resolver)
-	{
-		$resolver->setDefaults(array(
-			'data_class' => self::CUSTOMER_CLASS
-		));
-	}
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => self::CUSTOMER_CLASS
+        ));
+    }
 
-	public function getName()
-	{
-		return 'itineary';
-	}
+    public function getName()
+    {
+        return 'itineary';
+    }
 }

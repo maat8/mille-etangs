@@ -42,8 +42,9 @@ abstract class BaseDocument
      */
     public function preUpdate()
     {
-        if(is_null($this->created))        
+        if (is_null($this->created)) {
             $this->created = time();
+        }
         $this->updated = time();
         $this->slug = $this->generateSlug($this->name);
     }
