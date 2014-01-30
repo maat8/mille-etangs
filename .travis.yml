@@ -9,7 +9,6 @@ services:
     - redis-server
 
 before_install:    
-    - pecl install redis
     - phpenv config-add phpconfig.ini
 
 install:
