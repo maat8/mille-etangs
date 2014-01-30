@@ -1,18 +1,22 @@
 language: php
 php:
     - "5.5"
-    - "5.4"
-    - "5.3"
+    # - "5.4"
+    # - "5.3"
 
 services:
     - mongodb
     - redis-server
 
+before_install:
+    - pecl install mongo
+    - pecl install redis
+    - phpenv config-add phpconfig.ini
+
 install:
     - composer install
 
-before_script: 
-    - phpenv config-add phpconfig.ini
+before_script:
     # - sudo apt-get install apache2 libapache2-mod-fastcgi
     # enable php-fpm
     # - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
@@ -22,7 +26,7 @@ before_script:
     # configure apache virtual hosts
     # - sudo cp -f build/travis-ci-apache /etc/apache2/sites-available/default
     # - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/default
-    - sudo service apache2 restart
+    # - sudo service apache2 restart
 
 script:
     - bin/phpcs --standard=PSR2
