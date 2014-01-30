@@ -11,10 +11,10 @@ services:
 install:
     - composer install
 
-#before_script: 
+before_script: 
+    - phpenv config-add phpconfig.ini
     # - sudo apt-get install apache2 libapache2-mod-fastcgi
     # enable php-fpm
-    # - phpenv config-add phpconfig.ini
     # - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
     # - sudo a2enmod rewrite actions fastcgi alias
     # - echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
@@ -22,7 +22,7 @@ install:
     # configure apache virtual hosts
     # - sudo cp -f build/travis-ci-apache /etc/apache2/sites-available/default
     # - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/default
-    # - sudo service apache2 restart
+    - sudo service apache2 restart
 
 script:
     - bin/phpcs --standard=PSR2
