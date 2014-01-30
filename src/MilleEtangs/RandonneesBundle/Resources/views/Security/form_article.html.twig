@@ -1,19 +1,6 @@
 {% extends "MilleEtangsRandonneesBundle:Security:layout.html.twig" %}
 
-{% block javascripts %}
-	{% javascripts "@MilleEtangsRandonneesBundle/Resources/assets/js/jquery-1.8.0.min.js" %}
-        <script type="text/javascript" src="{{ asset(asset_url) }}"></script>
-    {% endjavascripts %}
-{% endblock %}
-
 {% block body %}
-<script type="text/javascript">
-tinyMCE.init({
-        mode : "textareas",
-        theme : "advanced"
-});
-</script>
-
 <form action="" method="POST" class="form-horizontal">
 
     <div class="form-group">
