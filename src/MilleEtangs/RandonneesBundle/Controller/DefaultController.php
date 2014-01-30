@@ -25,10 +25,16 @@ class DefaultController extends Controller
         $repository = $this->get('doctrine_mongodb')
             ->getRepository('MilleEtangsRandonneesBundle:Itineary');
 
-        if($type == "hike" || $type == "bike")
-            $itinearies = $repository->findAllByType($type);
-        else
-            $itinearies = $repository->findAll();
+        switch($type){
+            case "vtt":
+                $itinearies = $repository->findAllByType("bike");
+                break;
+            case "marche":
+                $itinearies = $repository->findAllByType("hike");
+                break;
+            default:
+                $itinearies = $repository->findAll();
+        }
 
         return $this->render("MilleEtangsRandonneesBundle:Default:itinearies.html.twig", array(
             'itinearies' => $itinearies

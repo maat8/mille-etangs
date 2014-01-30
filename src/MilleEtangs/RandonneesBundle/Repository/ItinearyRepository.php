@@ -9,7 +9,7 @@ class ItinearyRepository extends DocumentRepository
     public function findAllBike()
     {
         return $this->createQueryBuilder("MilleEtangsRandonneesBundle:Itineary")
-            ->where("function() { return this.bike_length > 0; }")
+            ->where("function() { return this.bikeLength > 0; }")
             ->getQuery()
             ->execute()
         ;
@@ -17,7 +17,11 @@ class ItinearyRepository extends DocumentRepository
 
     public function findAllHike()
     {
-        return;
+        return $this->createQueryBuilder("MilleEtangsRandonneesBundle:Itineary")
+            ->where("function() { return this.hikeLength > 0; }")
+            ->getQuery()
+            ->execute()
+        ;
     }
 
     public function findAllByType($type)

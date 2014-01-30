@@ -28,12 +28,14 @@ class Itineary extends BaseDocument
     /**
      * @ODM\Int
      * @Assert\Min(0)
+     * @ODM\Index
      */
     protected $bikeLength = 0;
 
     /**
      * @ODM\Int
      * @Assert\Min(0)
+     * @ODM\Index
      */
     protected $hikeLength = 0;
 
