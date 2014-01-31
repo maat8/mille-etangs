@@ -10,6 +10,7 @@ services:
 
 before_install:    
     - phpenv config-add phpconfig.ini
+    - chmod +x bin/install.sh
 
 install:
     - bin/install.sh
@@ -28,7 +29,7 @@ before_script:
     # - sudo service apache2 restart
 
 script:
-    - php app/console doctrine:mongodb:fixtures:load
+    - php app/console doctrine:mongodb:fixtures:load --env=test
     - bin/phpcs --standard=PSR2
     - phpunit --configuration app/phpunit.xml --coverage-text
 
