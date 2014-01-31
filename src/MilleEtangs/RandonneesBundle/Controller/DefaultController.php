@@ -104,16 +104,27 @@ class DefaultController extends Controller
             ->findAllHike();
 
         $format = $_format ?: "html";
-        return $this->render("MilleEtangsRandonneesBundle:Default:sitemap.{$format}.twig", array(
+        $body = $this->renderView("MilleEtangsRandonneesBundle:Default:sitemap.{$format}.twig", array(
             'itineariesHike' => $itineariesHike,
             'itineariesBike' => $itineariesBike
         ));
+
+        $response = new Response($body);
+        if ($format == "xml") {
+            $response->headers->set('Content-Type', "text/xml");
+        }
+
+        return $response;
     }
 
     public function rssAction()
     {
-        return $this->render("MilleEtangsRandonneesBundle:Default:rss.html.twig", array(
-        ));
+        $body = $this->renderView("MilleEtangsRandonneesBundle:Default:rss.xml.twig", array());
+
+        $response = new Response($body);
+        $response->headers->set('Content-Type', "application/rss+xml");
+        
+        return $response;
     }
 
     public function renderImageAction($id = null)
@@ -149,7 +160,7 @@ class DefaultController extends Controller
                 $response->sendHeaders();
                 $response->setContent($itineary->getGpx()->getBytes());
 
-                print $itineary->getGpx()->getBytes();
+                return $response;
             }
         }
 
