@@ -30,7 +30,7 @@
 	{% endif %}
 
 	{# if(itineary.getGpx() is not null) #}
-		<a href='{{ path('download_gpx', {'id':itineary.getId()}) }}' target="_blank">Télécharger le fichier GPX pour votre GPS</a>
+		<a href='{{ path('download_gpx', {'id':itineary.getId()}) }}' class="gpx" target="_blank">Télécharger le fichier GPX pour votre GPS</a>
 	{# endif #}
 
 {% endblock %}
