@@ -13,7 +13,7 @@ before_install:
     - chmod +x bin/install.sh
 
 install:
-    - composer install
+    - composer install --prefer-source
     - bin/install.sh
 
 before_script:
