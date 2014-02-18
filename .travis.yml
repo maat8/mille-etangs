@@ -32,7 +32,7 @@ before_script:
 script:
     - php app/console doctrine:mongodb:fixtures:load --env=test
     - bin/phpcs -v --standard=PSR2 --extensions=php src/
-    - phpunit --configuration app/phpunit.xml --coverage-text
+    - phpunit --configuration app/phpunit.xml
 
 notifications:
     email: "tuaillon.mathieu@gmail.com"
