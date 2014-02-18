@@ -5,24 +5,26 @@
         "psr-0": { "": "src/" }
     },
     "require": {
-        "php": ">=5.3.3",
-        "symfony/symfony": "2.1.12",
-        "doctrine/orm": "*",
-        "doctrine/doctrine-bundle": "*",
-        "twig/extensions": "dev-master",
+        "php": ">=5.3.8",
+        "symfony/symfony": "2.1.13",
+        "doctrine/orm": ">=2.2.3,<2.5-dev",
+        "doctrine/doctrine-bundle": "1.1.*",
+        "twig/extensions": "1.0.*@dev",
         "symfony/assetic-bundle": "2.1.*",
         "symfony/swiftmailer-bundle": "2.1.*",
         "symfony/monolog-bundle": "2.1.*",
-        "jms/security-extra-bundle": "1.2.*",
-        "jms/di-extra-bundle": "1.1.*",
         "sensio/distribution-bundle": "2.1.*",
         "sensio/framework-extra-bundle": "2.1.*",
         "sensio/generator-bundle": "2.1.*",
+        "jms/security-extra-bundle": "1.2.*",
+        "jms/di-extra-bundle": "1.1.*",
+        "kriswallsmith/assetic": "1.1.*@dev",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
+        "doctrine/mongodb-odm-bundle": "3.0.*@dev",
         "sonata-project/intl-bundle":" 2.1.*",
-        "doctrine/mongodb-odm-bundle": "dev-master",
         "squizlabs/php_codesniffer": "1.*",
-        "phpunit/phpunit": "3.*"
+        "phpunit/phpunit": "3.*",
+        "symm/gisconverter": "master"
     },
     "scripts": {
         "post-install-cmd": [

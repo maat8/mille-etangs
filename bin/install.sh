@@ -8,10 +8,10 @@ mkdir web/uploads
 chmod 777 web/uploads
 
 if [ ! -f "app/config/parameters.yml" ]; then
-cp app/config/parameters.yml-dist app/config/parameters.yml
+cp app/config/parameters.yml.dist app/config/parameters.yml
 fi
 
 ./app/console doctrine:database:drop --force
 ./app/console doctrine:database:create
 ./app/console doctrine:schema:update --force
-./app/console doctrine:fixtures:load
+./app/console doctrine:mongodb:fixtures:load
