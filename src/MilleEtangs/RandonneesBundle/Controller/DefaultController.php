@@ -93,6 +93,11 @@ class DefaultController extends Controller
         return $this->render('MilleEtangsRandonneesBundle:Default:advice.html.twig');
     }
 
+    public function legalAction()
+    {
+        return $this->render('MilleEtangsRandonneesBundle:Default:legal.html.twig');
+    }
+
     public function sitemapAction($_format = null)
     {
         $itineariesBike = $this->get('doctrine_mongodb')
@@ -160,6 +165,25 @@ class DefaultController extends Controller
                 $response->sendHeaders();
                 $response->setContent($itineary->getGpx()->getBytes());
 
+                return $response;
+            }
+        }
+
+        return new Response('Not Found', 404);
+    }
+
+    public function renderKmlAction($id = null)
+    {
+        if (!is_null($id)) {
+            $itineary = $this->get('doctrine_mongodb')
+                ->getRepository('MilleEtangsRandonneesBundle:Itineary')
+                ->findOneById($id);
+
+            if (!is_null($itineary)) {
+                $response = new Response();
+                $response->headers->set('Content-Type', "application/vnd.google-earth.kml+xml");
+                $response->setContent($itineary->getKml()->getBytes());
+                
                 return $response;
             }
         }
