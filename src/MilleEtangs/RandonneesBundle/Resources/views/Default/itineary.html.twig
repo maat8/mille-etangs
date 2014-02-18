@@ -3,6 +3,7 @@
 {% block title %}{{ itineary.getName() }} | {{ parent()}}{% endblock %}
 
 {% block body %}
+<div class="itineary">
 	<h2>{{ itineary.getName() }}</h2>
 
 	<p>{{ itineary.getTeaser()|raw }}</p>
@@ -29,8 +30,41 @@
 		<a href='{{ itineary.getEndomondoLink() }}'>Endomondo</a>
 	{% endif %}
 
-	{# if(itineary.getGpx() is not null) #}
-		<a href='{{ path('download_gpx', {'id':itineary.getId()}) }}' class="gpx" target="_blank">Télécharger le fichier GPX pour votre GPS</a>
-	{# endif #}
+	{# Download link for GPX file #}
+	{% if itineary.getGpx().getSize() > 0 %}
+		<p><a href='{{ path('download_gpx', {'id':itineary.getId()}) }}' class="gpx" target="_blank">Télécharger le fichier GPX pour votre GPS</a></p>
+	{% endif %}
 
+	{# Display GMaps if itineary has a KML file #}
+	{% if itineary.getKml().getSize() > 0 %}	
+    	<script type="text/javascript">
+
+	    function initialize() {
+		  	var mapOptions = {
+		    	zoom: 12,
+		    	center: new google.maps.LatLng(47.838, 6.667),
+		    	scaleControl: true
+		  	};
+
+		  	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+		  	var ctaLayer = new google.maps.KmlLayer({
+    			url: '{{ url('render_kml', {'id':itineary.getId()}) }}'
+			});
+			ctaLayer.setMap(map);
+		}
+
+		function loadScript() {			
+			var script = document.createElement('script');
+			script.type = 'text/javascript';
+		  	script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&' +
+		      'callback=initialize';
+		  	document.body.appendChild(script);
+		}
+
+		window.onload = loadScript;
+    	</script>
+		<div id="map"/>
+	{% endif %}
+</div>	
 {% endblock %}

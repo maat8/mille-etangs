@@ -4,6 +4,7 @@ namespace MilleEtangs\RandonneesBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symm\Gisconverter\Gisconverter as Gisconverter;
 
 /** 
  * @ODM\Document(collection="itinearies", repositoryClass="MilleEtangs\RandonneesBundle\Repository\ItinearyRepository")
@@ -61,10 +62,104 @@ class Itineary extends BaseDocument
      */
     protected $gpx;
 
+    /**
+     * @ODM\File
+     */
+    protected $kml;
+
     /** 
      * @ODM\Boolean
     */
     protected $published;
+
+    // TODO : add tags
+
+    // TODO : add marked (bool)
+
+    // TODO : add difficulty
+
+    /**
+     * @ODM\PrePersist()
+     * @ODM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        parent :: preUpdate();
+
+        // Create KML File from GPX
+        if (is_object($this->gpx)) {
+            try {
+                $kml = Gisconverter::gpxToKml($this->gpx->getBytes());
+                if (!empty($kml)) {
+                    // TODO : generate KML using simplexml
+                    $kml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
+                                '<kml xmlns="http://www.opengis.net/kml/2.2">
+                                    <Document>
+                                    <name></name>
+                                    <description>c</description>
+                                    <Style id="blueLine">
+                                      <LineStyle>
+                                        <color>ffff0000</color>
+                                        <width>4</width>
+                                      </LineStyle>
+                                    </Style>
+                                    <Style id="redLine">
+                                      <LineStyle>
+                                        <color>ff0000ff</color>
+                                        <width>4</width>
+                                      </LineStyle>
+                                    </Style>
+                                    <Style id="greenLine">
+                                      <LineStyle>
+                                        <color>ff009900</color>
+                                        <width>4</width>
+                                      </LineStyle>
+                                    </Style>
+                                    <Style id="orangeLine">
+                                      <LineStyle>
+                                        <color>ff00ccff</color>
+                                        <width>4</width>
+                                      </LineStyle>
+                                    </Style>
+                                    <Style id="pinkLine">
+                                      <LineStyle>
+                                        <color>ffff33ff</color>
+                                        <width>4</width>
+                                      </LineStyle>
+                                    </Style>
+                                    <Style id="brownLine">
+                                      <LineStyle>
+                                        <color>ff66a1cc</color>
+                                        <width>4</width>
+                                      </LineStyle>
+                                    </Style>
+                                    <Style id="purpleLine">
+                                      <LineStyle>
+                                        <color>ffcc00cc</color>
+                                        <width>4</width>
+                                      </LineStyle>
+                                    </Style>
+                                    <Style id="yellowLine">
+                                      <LineStyle>
+                                        <color>ff61f2f2</color>
+                                        <width>4</width>
+                                      </LineStyle>
+                                    </Style>
+                                    <Placemark>
+                                        <name>Name</name>
+                                        <description>Description</description>
+                                        <styleUrl>#blueLine</styleUrl>' .
+                                $kml .
+                                '   </Placemark>
+                                </Document>
+                                </kml>';
+                    $this->kml->setBytes($kml);
+                }
+            } catch (Exception $e) {
+
+            }
+        }
+    }
 
     /**
      * Set description
@@ -293,5 +388,27 @@ class Itineary extends BaseDocument
     public function getGpx()
     {
         return $this->gpx;
+    }
+
+    /**
+     * Set kml
+     *
+     * @param file $kml
+     * @return self
+     */
+    public function setKml($kml)
+    {
+        $this->kml = $kml;
+        return $this;
+    }
+
+    /**
+     * Get kml
+     *
+     * @return file $kml
+     */
+    public function getKml()
+    {
+        return $this->kml;
     }
 }

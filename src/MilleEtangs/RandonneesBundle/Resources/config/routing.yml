@@ -44,8 +44,12 @@ render_image:
     pattern: /images/{id}
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:renderImage}
 
+render_kml:
+    pattern: /kml/{id}.kml
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:renderKml}
+
 download_gpx:
-    pattern: /gpx/{id}
+    pattern: /gpx/{id}.gpx
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:downloadGpx}
 
 itinearies:
@@ -87,6 +91,10 @@ partners:
 advice:    
     pattern:  /conseils
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:advice }
+
+legal:
+    pattern:  /mentions-legales
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:legal }
 
 contact:    
     pattern:  /contact

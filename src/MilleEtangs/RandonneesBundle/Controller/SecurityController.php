@@ -89,8 +89,7 @@ class SecurityController extends Controller
                 $dm->persist($itineary);
                 $dm->flush();
 
-                $session = $this->getRequest()->getSession();
-                $session->setFlash("success", "Le parcours a bien été créé");
+                $this->get('session')->getFlashBag()->set("success", "Le parcours a bien été créé");
 
                 return $this->redirect($this->generateUrl('admin_menu'));
             }
@@ -108,7 +107,9 @@ class SecurityController extends Controller
                 ->getRepository("MilleEtangsRandonneesBundle:Itineary")
                 ->findOneById($id)
             ;
-            $itineary->setGpx(null);
+            if (!is_null($itineary)) {
+                $itineary->setGpx(null);
+            }
             $form =  $this->get('form.factory')->create("itineary", $itineary);
         }
 
@@ -119,7 +120,7 @@ class SecurityController extends Controller
             if (!is_null($this->getRequest()->get('delete'))) {
                 $dm->remove($itineary);
                 $dm->flush();
-                $session->setFlash("success", "Le parcours a bien été supprimé");
+                $this->get('session')->getFlashBag()->set("success", "Le parcours a bien été supprimé");
             } else {
                 if ($form->isValid()) {
                     $gpx = $this->getRequest()->files->get('itineary');
@@ -127,7 +128,7 @@ class SecurityController extends Controller
                         $itineary->setGpx($gpx['gpx']->getPathName());
                     }
                     $dm->flush();
-                    $session->setFlash("success", "Le parcours a bien été sauvegardé");
+                    $this->get('session')->getFlashBag()->set("success", "Le parcours a bien été sauvegardé");
                 }
             }
 
@@ -154,7 +155,7 @@ class SecurityController extends Controller
                 $em->flush();
 
                 $session = $this->getRequest()->getSession();
-                $session->setFlash("success", "L'article a bien été créée");
+                $this->get('session')->getFlashBag()->set("success", "L'article a bien été créée");
 
                 return $this->redirect($this->generateUrl('admin_menu'));
             }
@@ -183,11 +184,11 @@ class SecurityController extends Controller
             if (!is_null($this->getRequest()->get('delete'))) {
                 $dm->remove($article);
                 $dm->flush();
-                $session->setFlash("success", "L'actualité a bien été supprimé");
+                $this->get('session')->getFlashBag()->set("success", "L'actualité a bien été supprimé");
             } else {
                 if ($form->isValid()) {
                     $dm->flush();
-                    $session->setFlash("success", "L'actualité a bien été sauvegardée");
+                    $this->get('session')->getFlashBag()->set("success", "L'actualité a bien été sauvegardée");
                 }
             }
             
@@ -217,7 +218,10 @@ class SecurityController extends Controller
                 $dm->flush();
 
                 $session = $this->getRequest()->getSession();
-                $session->setFlash("success", "L'image a bien été uploadée : " . $image->getId());
+                $this->get('session')->getFlashBag()->set(
+                    "success",
+                    "L'image a bien été uploadée : " . $image->getId()
+                );
 
                 return $this->redirect($this->generateUrl('admin_menu'));
             }
