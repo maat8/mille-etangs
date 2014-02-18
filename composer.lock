@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e31ee93a041f76ce985b578f932ae905",
+    "hash": "8255d95551fe49aa900a149373f90e2f",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1418,12 +1418,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "b3ed716433a142591a436e848e5dd2298acdea51"
+                "reference": "b06601f8b5726ce35dc7c549cc643f15f1277703"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/b3ed716433a142591a436e848e5dd2298acdea51",
-                "reference": "b3ed716433a142591a436e848e5dd2298acdea51",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/b06601f8b5726ce35dc7c549cc643f15f1277703",
+                "reference": "b06601f8b5726ce35dc7c549cc643f15f1277703",
                 "shasum": ""
             },
             "require": {
@@ -1473,7 +1473,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-02-14 05:50:00"
+            "time": "2014-01-30 17:41:07"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1664,12 +1664,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "91646b8bac6cc4db6dc038d7d4cfe7901cdc6354"
+                "reference": "fd67d0929d3c71bf348cfe3b6950c4f0aeecd077"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/91646b8bac6cc4db6dc038d7d4cfe7901cdc6354",
-                "reference": "91646b8bac6cc4db6dc038d7d4cfe7901cdc6354",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/fd67d0929d3c71bf348cfe3b6950c4f0aeecd077",
+                "reference": "fd67d0929d3c71bf348cfe3b6950c4f0aeecd077",
                 "shasum": ""
             },
             "require": {
@@ -1733,7 +1733,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-02-14 06:58:40"
+            "time": "2014-02-02 09:06:50"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2681,12 +2681,9 @@
 
     ],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "twig/extensions": 20,
-        "kriswallsmith/assetic": 20,
-        "doctrine/doctrine-fixtures-bundle": 20,
-        "doctrine/mongodb-odm-bundle": 20
-    },
+    "stability-flags": [
+
+    ],
     "platform": {
         "php": ">=5.3.8"
     },
