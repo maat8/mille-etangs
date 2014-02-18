@@ -13,8 +13,8 @@ before_install:
     - chmod +x bin/install.sh
 
 install:
-    - bin/install.sh
     - composer install
+    - bin/install.sh
 
 before_script:
     # - sudo apt-get install apache2 libapache2-mod-fastcgi
