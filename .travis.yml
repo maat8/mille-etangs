@@ -13,6 +13,7 @@ before_install:
     - chmod +x bin/install.sh
 
 install:
+    - cp app/config/parameters.yml.dist app/config/parameters.yml
     - composer install --prefer-source
     - bin/install.sh
 
