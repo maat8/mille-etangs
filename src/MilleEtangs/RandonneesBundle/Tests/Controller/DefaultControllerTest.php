@@ -43,7 +43,7 @@ class DefaultControllerTest extends WebTestCase
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
 
-        $gpx_uri = $crawler->filter(".gpx")->link()->getUri();
+        //$gpx_uri = $crawler->filter(".gpx")->link()->getUri();
     }
 
     public function testRss()
