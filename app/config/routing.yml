@@ -1,6 +1,10 @@
-MilleEtangsRandonneesBundle:
+Website:
     resource: "@MilleEtangsRandonneesBundle/Resources/config/routing.yml"
     prefix:   /
+
+SecuredArea:
+    resource: "@MilleEtangsRandonneesBundle/Resources/config/routing_secured.yml"
+    prefix:   /secured
 
 # Internal routing configuration to handle ESI
 #_internal:

@@ -1,40 +1,3 @@
-# Security
-login:
-    pattern: /secured/login
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:login }
-
-login_check:
-    pattern: /secured/login_check
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:loginCheck }
-
-logout:
-    pattern: /secured/logout
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:logout }
-
-admin_menu:
-    pattern: /secured/menu
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:menu }
-
-create_itineary:
-    pattern: /secured/itineary/create
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:createItineary }
-
-update_itineary:
-    pattern: /secured/itineary/update/{id}
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:updateItineary }
-
-create_article:
-    pattern: /secured/articles/create
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:createArticle }
-
-update_article:
-    pattern: /secured/articles/update/{id}
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:updateArticle }
-
-upload_image:
-    pattern: /secured/upload_image
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:uploadImage}
-
 # Website
 home:
     pattern:  /
@@ -43,26 +6,6 @@ home:
 render_image:
     pattern: /images/{id}
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:renderImage}
-
-render_kml:
-    pattern: /kml/{id}.kml
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:renderKml}
-
-download_gpx:
-    pattern: /gpx/{id}.gpx
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:downloadGpx}
-
-itinearies:
-    pattern:  /randonnees
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:itinearies }
-
-itinearies_type:
-    pattern:  /randonnees/{type}
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:itinearies }
-
-itineary:    
-    pattern:  /randonnee/{slug}
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:itineary }
 
 milleEtangs:    
     pattern:  /les-mille-etangs
@@ -113,3 +56,23 @@ sitemap_xml:
 rss:    
     pattern:  /rss.xml
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:rss }
+
+render_kml:
+    pattern: /kml/{id}.kml
+    defaults: { _controller: MilleEtangsRandonneesBundle:Itinearies:renderKml}
+
+download_gpx:
+    pattern: /gpx/{id}.gpx
+    defaults: { _controller: MilleEtangsRandonneesBundle:Itinearies:downloadGpx}
+
+itinearies:
+    pattern:  /randonnees
+    defaults: { _controller: MilleEtangsRandonneesBundle:Itinearies:itinearies }
+
+itinearies_type:
+    pattern:  /randonnees/{type}
+    defaults: { _controller: MilleEtangsRandonneesBundle:Itinearies:itinearies }
+
+itineary:    
+    pattern:  /randonnee/{slug}
+    defaults: { _controller: MilleEtangsRandonneesBundle:Itinearies:itineary }
