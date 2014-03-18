@@ -10,6 +10,9 @@ web/bundles/*
 web/js/*
 web/css/*
 
+# Configuration files
+#app/config/parameters.yml
+
 # Composer
 composer.phar
 
