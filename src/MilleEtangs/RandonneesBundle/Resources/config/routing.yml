@@ -17,7 +17,7 @@ events:
 
 articles:    
     pattern:  /articles
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:articles }
+    defaults: { _controller: MilleEtangsRandonneesBundle:Articles:articles }
 
 accomodations:    
     pattern:  /hebergement
@@ -45,17 +45,17 @@ contact:
 
 sitemap:    
     pattern:  /sitemap
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:sitemap }
+    defaults: { _controller: MilleEtangsRandonneesBundle:Sitemap:sitemap }
 
 sitemap_xml:    
     pattern:  /sitemap.{_format}
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:sitemap }
+    defaults: { _controller: MilleEtangsRandonneesBundle:Sitemap:sitemap }
     requirements:
       _format:  html|xml
 
 rss:    
     pattern:  /rss.xml
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:rss }
+    defaults: { _controller: MilleEtangsRandonneesBundle:Articles:rss }
 
 render_kml:
     pattern: /kml/{id}.kml
