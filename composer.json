@@ -23,10 +23,10 @@
         "jms/security-extra-bundle": "1.2.*",
         "jms/di-extra-bundle": "1.1.*",
         "kriswallsmith/assetic": "1.1.*",
-        "sonata-project/intl-bundle":" 2.1.*",
+        "sonata-project/intl-bundle":" 2.1.2",
         "squizlabs/php_codesniffer": "1.*",
         "phpunit/phpunit": "3.*",
-        "symm/gisconverter": "master"
+        "symm/gisconverter": "1.0.2"
     },
     "scripts": {
         "post-install-cmd": [
