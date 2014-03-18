@@ -3,9 +3,6 @@
 namespace MilleEtangs\RandonneesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-
-use MilleEtangs\RandonneesBundle\Entity\Actualite;
 
 class DefaultController extends Controller
 {

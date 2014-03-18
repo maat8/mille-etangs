@@ -155,7 +155,7 @@ class Itineary extends BaseDocument
                                 </kml>';
                     $this->kml->setBytes($kml);
                 }
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
 
             }
         }

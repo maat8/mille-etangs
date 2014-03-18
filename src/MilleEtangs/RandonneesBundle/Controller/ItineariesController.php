@@ -5,8 +5,6 @@ namespace MilleEtangs\RandonneesBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-use MilleEtangs\RandonneesBundle\Entity\Itineary;
-
 class ItineariesController extends Controller
 {
     public function itineariesAction($type = null)
