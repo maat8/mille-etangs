@@ -115,7 +115,6 @@ class SecurityController extends Controller
 
         if ("POST" === $this->getRequest()->getMethod()) {
             $form->bind($this->getRequest());
-            $session = $this->getRequest()->getSession();
             $dm = $this->get('doctrine_mongodb')->getManager();
             if (!is_null($this->getRequest()->get('delete'))) {
                 $dm->remove($itineary);
@@ -154,7 +153,6 @@ class SecurityController extends Controller
                 $em->persist($article);
                 $em->flush();
 
-                $session = $this->getRequest()->getSession();
                 $this->get('session')->getFlashBag()->set("success", "L'article a bien été créée");
 
                 return $this->redirect($this->generateUrl('admin_menu'));
@@ -179,7 +177,6 @@ class SecurityController extends Controller
 
         if ("POST" === $this->getRequest()->getMethod()) {
             $form->bind($this->getRequest());
-            $session = $this->getRequest()->getSession();
             $dm = $this->get('doctrine_mongodb')->getManager();
             if (!is_null($this->getRequest()->get('delete'))) {
                 $dm->remove($article);
@@ -216,8 +213,7 @@ class SecurityController extends Controller
                 $image->setMimeType($upload['file']->getMimeType());
                 $dm->persist($image);
                 $dm->flush();
-
-                $session = $this->getRequest()->getSession();
+                                
                 $this->get('session')->getFlashBag()->set(
                     "success",
                     "L'image a bien été uploadée : " . $image->getId()
