@@ -6,6 +6,7 @@
     },
     "require": {
         "php": ">=5.3.8",
+        "ext-mongo": ">=1.2.12,<1.6-dev",
         "symfony/symfony": "2.1.13",
         "doctrine/orm": ">=2.2.3,<2.5",
         "doctrine/doctrine-bundle": "1.1.*",
