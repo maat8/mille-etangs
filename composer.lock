@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "a5626a390e15317c743ec32d9f859782",
+    "hash": "4f1d2f034226646906be7a2cc832f0b2",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2091,17 +2091,17 @@
         },
         {
             "name": "sonata-project/intl-bundle",
-            "version": "2.1.x-dev",
+            "version": "2.1.0",
             "target-dir": "Sonata/IntlBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "8226a28087927bdc7e3bfacdd6dc0ae0c2459ae3"
+                "reference": "bc03518a982c5fe726cf5657d7c653b14f9bf9e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/8226a28087927bdc7e3bfacdd6dc0ae0c2459ae3",
-                "reference": "8226a28087927bdc7e3bfacdd6dc0ae0c2459ae3",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/bc03518a982c5fe726cf5657d7c653b14f9bf9e9",
+                "reference": "bc03518a982c5fe726cf5657d7c653b14f9bf9e9",
                 "shasum": ""
             },
             "require": {
@@ -2113,6 +2113,12 @@
                 "twig/twig": "*"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.0": "2.0.x-dev",
+                    "dev-master": "2.1.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Sonata\\IntlBundle": ""
@@ -2142,7 +2148,7 @@
                 "sonata",
                 "time"
             ],
-            "time": "2013-08-23 14:14:49"
+            "time": "2013-02-25 13:36:22"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -2536,7 +2542,7 @@
         },
         {
             "name": "symm/gisconverter",
-            "version": "dev-master",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symm/gisconverter.git",

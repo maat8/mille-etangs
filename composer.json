@@ -1,6 +1,7 @@
 {
-    "name": "symfony/framework-standard-edition",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "name": "maat8/mille-etangs",
+    "description": "Randonnées aux Mille Etangs",
+    "license": "proprietary",
     "autoload": {
         "psr-0": { "": "src/" }
     },
@@ -23,7 +24,7 @@
         "jms/security-extra-bundle": "1.2.*",
         "jms/di-extra-bundle": "1.1.*",
         "kriswallsmith/assetic": "1.1.*",
-        "sonata-project/intl-bundle":" 2.1.2",
+        "sonata-project/intl-bundle":" 2.1.0",
         "squizlabs/php_codesniffer": "1.*",
         "phpunit/phpunit": "3.*",
         "symm/gisconverter": "1.0.2"
