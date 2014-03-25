@@ -39,25 +39,6 @@ class ItineariesController extends Controller
         ));
     }
 
-    public function renderImageAction($id = null)
-    {
-        if (!is_null($id)) {
-            $image = $this->get('doctrine_mongodb')
-                ->getRepository('MilleEtangsRandonneesBundle:Image')
-                ->findOneById($id);
-
-            if (!is_null($image)) {
-                $response = new Response();
-                $response->headers->set('Content-Type', $image->getMimeType());
-                $response->setContent($image->getFile()->getBytes());
-                
-                return $response;
-            }
-        }
-
-        return new Response('Not Found', 404);
-    }
-
     public function downloadGpxAction($id = null)
     {
         if (!is_null($id)) {
