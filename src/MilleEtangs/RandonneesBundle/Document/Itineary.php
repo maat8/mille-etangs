@@ -70,13 +70,22 @@ class Itineary extends BaseDocument
     /** 
      * @ODM\Boolean
     */
+    protected $marked;
+
+    /**
+     * @ODM\Int
+     * @Assert\Range(min=1, max=3)
+     */
+    protected $difficulty;
+
+    /**
+     * @ODM\Boolean
+    */
     protected $published;
 
     // TODO : add tags
 
-    // TODO : add marked (bool)
-
-    // TODO : add difficulty
+    // TODO : add comments
 
     /**
      * @ODM\PrePersist()
@@ -361,11 +370,57 @@ class Itineary extends BaseDocument
     /**
      * Get published
      *
-     * @return integer 
+     * @return integer
      */
     public function getPublished()
     {
         return $this->published;
+    }
+
+    /**
+     * Set marked
+     *
+     * @param integer $marked
+     * @return Itineary
+     */
+    public function setMarked($marked)
+    {
+        $this->marked = $marked;
+
+        return $this;
+    }
+
+    /**
+     * Get marked
+     *
+     * @return integer
+     */
+    public function getMarked()
+    {
+        return $this->marked;
+    }
+
+    /**
+     * Set difficulty
+     *
+     * @param integer $difficulty
+     * @return Itineary
+     */
+    public function setDifficulty($difficulty)
+    {
+        $this->difficulty = $difficulty;
+
+        return $this;
+    }
+
+    /**
+     * Get difficulty
+     *
+     * @return integer
+     */
+    public function getDifficulty()
+    {
+        return $this->difficulty;
     }
 
     /**

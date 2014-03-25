@@ -24,6 +24,12 @@ class ItinearyType extends AbstractType
             ->add('distance', 'text')
             ->add('endomondo_link', 'text', array('required' => false))
             ->add('gpx', 'file', array('required' => false))
+            ->add('marked', 'checkbox', array('required' => false))
+            ->add('difficulty', 'choice', array('required' => false, 'choices' => array(
+                1 => 1,
+                2 => 2,
+                3 => 3,
+            )))
             ->add('published', 'checkbox', array('required' => false))
         ;
     }
