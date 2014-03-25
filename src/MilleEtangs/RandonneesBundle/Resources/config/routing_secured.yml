@@ -24,11 +24,11 @@ update_itineary:
     defaults: { _controller: MilleEtangsRandonneesBundle:Security:updateItineary }
 
 create_article:
-    pattern: /articles/create
+    pattern: /article/create
     defaults: { _controller: MilleEtangsRandonneesBundle:Security:createArticle }
 
 update_article:
-    pattern: /articles/update/{id}
+    pattern: /article/update/{id}
     defaults: { _controller: MilleEtangsRandonneesBundle:Security:updateArticle }
 
 upload_image:
