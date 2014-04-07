@@ -7,10 +7,12 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class SitemapControllerTest extends WebTestCase
 {
     private $client;
+    private $router;
 
     public function setUp()
     {
         $this->client = static::createClient();
+        $this->router = $this->client->getContainer()->get('router');
     }
 
     public function testSitemap()
