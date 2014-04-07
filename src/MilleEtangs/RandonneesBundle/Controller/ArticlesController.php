@@ -13,14 +13,14 @@ class ArticlesController extends Controller
             ->getRepository('MilleEtangsRandonneesBundle:Article')
             ->findLastPublishedArticles(10);
 
-        return $this->render('MilleEtangsRandonneesBundle:Default:articles.html.twig', array(
+        return $this->render('MilleEtangsRandonneesBundle:Articles:articles.html.twig', array(
             'articles' => $articles
         ));
     }
 
     public function rssAction()
     {
-        $body = $this->renderView("MilleEtangsRandonneesBundle:Default:rss.xml.twig", array());
+        $body = $this->renderView("MilleEtangsRandonneesBundle:Articles:rss.xml.twig", array());
 
         $response = new Response($body);
         $response->headers->set('Content-Type', "application/rss+xml");

@@ -4,6 +4,7 @@ namespace MilleEtangs\RandonneesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use MilleEtangs\RandonneesBundle\Document\Comment;
 
 class ItineariesController extends Controller
 {
@@ -23,7 +24,7 @@ class ItineariesController extends Controller
                 $itinearies = $repository->findAll();
         }
 
-        return $this->render("MilleEtangsRandonneesBundle:Default:itinearies.html.twig", array(
+        return $this->render("MilleEtangsRandonneesBundle:Itinearies:itinearies.html.twig", array(
             'itinearies' => $itinearies
         ));
     }
@@ -34,8 +35,12 @@ class ItineariesController extends Controller
             ->getRepository('MilleEtangsRandonneesBundle:Itineary')
             ->findOneBySlug($slug);
 
-        return $this->render('MilleEtangsRandonneesBundle:Default:itineary.html.twig', array(
-            'itineary' => $itineary
+        $comment = new Comment();
+        $form_comment =  $this->get('form.factory')->create("comment", $comment);
+
+        return $this->render('MilleEtangsRandonneesBundle:Itinearies:itineary.html.twig', array(
+            'itineary' => $itineary,
+            'form_comment' => $form_comment->createView()
         ));
     }
 

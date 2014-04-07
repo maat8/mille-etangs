@@ -7,9 +7,8 @@
 	<meta name="description" content="Parcours de randonnées et aux Mille Etangs" />
  	<meta name="keywords" content="randonnées, randonnée, randos, mille étangs, 1000 étangs, étangs, vosges saonoises, itinéraires, parcours, balades, vtt, vélo, vélo tout terrain, marche, randonneurs, marcheurs, cheval, faucogney, mélisey, servance" />
  	<meta name="robots" content="follow,index" />
-	{% block stylesheets %}
-	{% endblock %}
 
+	{% block stylesheets %}{% endblock %}
 	{% include "MilleEtangsRandonneesBundle::stylesheets.html.twig" %}
 </head>
  
@@ -21,10 +20,8 @@
                     {% set route = app.request.get('_route') %}
                     <li class="{% if route == "home" %}active{% endif %}"><a href="{{ path("home") }}">accueil</a></li>
                     <li class="{% if route == "articles" %}active{% endif %}"><a href="{{ path("articles") }}">actualités</a></li>
-                    <li class=""><a href="{{ path("itinearies") }}">randonnées</a></li>
-                    <li class="{% if route == "milleEtangs" %}active{% endif %}"><a href="{{ path("milleEtangs") }}">les mille étangs</a></li>
-                    {# <li class=""><a href="{{ path("itinearies_type", {'type':"marche"}) }}">à pied</a></li>
-                    <li class=""><a href="{{ path("itinearies_type", {'type':"vtt"}) }}">à vtt</a></li> #}
+                    <li class="{% if route == "itinearies" %}active{% endif %}"><a href="{{ path("itinearies") }}">randonnées</a></li>
+                    <li class="{% if route == "mille_etangs" %}active{% endif %}"><a href="{{ path("mille_etangs") }}">les mille étangs</a></li>
                 </ul>
             </nav>
             <div id="header_title"><p></strong><a href="{{ path("home") }}">Randonnées aux<br />Mille Étangs</a></strong><p></div>
@@ -95,7 +92,7 @@
             <ul>
                 <li><a href="{{ path("home") }}">Accueil</a></li>
                 <li><a href="{{ path("articles") }}">Actualités</a></li>
-                <li><a href="{{ path("milleEtangs") }}">Les Milles étangs</a></li>
+                <li><a href="{{ path("mille_etangs") }}">Les Milles étangs</a></li>
                 <li><a href="{{ path("itinearies_type", {'type':"vtt"}) }}">Randonnées en VTT</a></li>
                 <li><a href="{{ path("itinearies_type", {'type':"marche"}) }}">Randonnées à pied</a></li>
             </ul>

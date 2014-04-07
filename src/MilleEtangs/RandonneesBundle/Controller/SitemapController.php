@@ -19,7 +19,7 @@ class SitemapController extends Controller
             ->findAllHike();
 
         $format = $_format ?: "html";
-        $body = $this->renderView("MilleEtangsRandonneesBundle:Default:sitemap.{$format}.twig", array(
+        $body = $this->renderView("MilleEtangsRandonneesBundle:Sitemap:sitemap.{$format}.twig", array(
             'itineariesHike' => $itineariesHike,
             'itineariesBike' => $itineariesBike
         ));

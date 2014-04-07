@@ -1,0 +1,5 @@
+<div>
+	<h3>{{ article.getName() }}</h3>
+	<small>{{ article.getPublication() | format_date }}</small><br/>
+	{{ article.getContent()|raw }}
+</div>

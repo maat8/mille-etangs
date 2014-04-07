@@ -66,5 +66,7 @@
     	</script>
 		<div id="map"/>
 	{% endif %}
+
+	{% include "MilleEtangsRandonneesBundle:Comment:form_comment.html.twig" with {"form":form_comment} only %}
 </div>	
 {% endblock %}
