@@ -7,7 +7,7 @@ render_image:
     pattern: /images/{id}
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:renderImage}
 
-milleEtangs:    
+mille_etangs:    
     pattern:  /les-mille-etangs
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:milleEtangs }
 
