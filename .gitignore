@@ -19,3 +19,8 @@ composer.phar
 # bin links created by composer dependances
 bin/phpcs
 bin/phpunit
+bin/pdepend
+bin/phpmd
+
+# Temp files
+*.php~
