@@ -29,4 +29,13 @@ set :writable_dirs, ["app/cache", "app/logs"]
 set :keep_releases,  3
 after "deploy", "deploy:cleanup"
 
-#logger.level = Logger::MAX_LEVEL
+# perform tasks after deploying
+after "deploy" do
+  # clear the cache
+  run "cd /srv/www/randos.maat8.fr/current && php app/console cache:clear"
+
+  # dump assets (if using assetic)
+  run "cd /srv/www/randos.maat8.fr/current && php app/console assetic:dump"
+end
+
+logger.level = Logger::MAX_LEVEL
