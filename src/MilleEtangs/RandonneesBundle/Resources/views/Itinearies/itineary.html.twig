@@ -31,12 +31,12 @@
 	{% endif %}
 
 	{# Download link for GPX file #}
-	{% if itineary.getGpx().getSize() > 0 %}
-		<p><a href='{{ path('download_gpx', {'id':itineary.getId()}) }}' class="gpx" target="_blank">Télécharger le fichier GPX pour votre GPS</a></p>
+	{% if itineary.getGpx() is not null and itineary.getGpx().getFile().getSize() > 0 %}
+		<p><a href='{{ path('download_gpx', {'slug':itineary.getSlug()}) }}' class="gpx" target="_blank">Télécharger le fichier GPX pour votre GPS</a></p>
 	{% endif %}
 
 	{# Display GMaps if itineary has a KML file #}
-	{% if itineary.getKml().getSize() > 0 %}	
+	{% if itineary.getKml() is not null and itineary.getKml().getFile().getSize() > 0 %}	
     	<script type="text/javascript">
 
 	    function initialize() {
@@ -49,7 +49,7 @@
 		  	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
 		  	var ctaLayer = new google.maps.KmlLayer({
-    			url: '{{ url('render_kml', {'id':itineary.getId()}) }}'
+    			url: '{{ url('render_kml', {'slug':itineary.getSlug()}) }}'
 			});
 			ctaLayer.setMap(map);
 		}
@@ -67,6 +67,6 @@
 		<div id="map"/>
 	{% endif %}
 
-	{% include "MilleEtangsRandonneesBundle:Comment:form_comment.html.twig" with {"form":form_comment} only %}
+	{# include "MilleEtangsRandonneesBundle:Comment:form_comment.html.twig" with {"form":form_comment} only #}
 </div>	
 {% endblock %}
