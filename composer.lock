@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "4f1d2f034226646906be7a2cc832f0b2",
+    "hash": "6f44af065acc59789dc4f0b69472ee84",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -83,12 +83,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "36c4eee5051629524389da376ba270f15765e49f"
+                "reference": "bb9b55b17bed5923c9446c8158a92623d39480c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/36c4eee5051629524389da376ba270f15765e49f",
-                "reference": "36c4eee5051629524389da376ba270f15765e49f",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/bb9b55b17bed5923c9446c8158a92623d39480c6",
+                "reference": "bb9b55b17bed5923c9446c8158a92623d39480c6",
                 "shasum": ""
             },
             "require": {
@@ -118,7 +118,7 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Wage",
+                    "name": "Jonathan H. Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/",
                     "role": "Creator"
@@ -149,7 +149,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2013-12-18 17:21:03"
+            "time": "2014-03-27 11:06:41"
         },
         {
             "name": "doctrine/collections",
@@ -679,12 +679,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb.git",
-                "reference": "ac63fdf9847a5ec6d44721526623e8bddaa25fe6"
+                "reference": "1a9b001a97256208e0fc4970305cd48208d5b78c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/mongodb/zipball/ac63fdf9847a5ec6d44721526623e8bddaa25fe6",
-                "reference": "ac63fdf9847a5ec6d44721526623e8bddaa25fe6",
+                "url": "https://api.github.com/repos/doctrine/mongodb/zipball/1a9b001a97256208e0fc4970305cd48208d5b78c",
+                "reference": "1a9b001a97256208e0fc4970305cd48208d5b78c",
                 "shasum": ""
             },
             "require": {
@@ -720,7 +720,7 @@
                     "homepage": "http://avalanche123.com"
                 },
                 {
-                    "name": "Jonathan H. Wage",
+                    "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/",
                     "role": "Creator"
@@ -743,7 +743,7 @@
                 "mongodb",
                 "persistence"
             ],
-            "time": "2014-01-09 21:24:02"
+            "time": "2014-03-28 19:22:22"
         },
         {
             "name": "doctrine/mongodb-odm",
@@ -751,12 +751,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb-odm.git",
-                "reference": "c25f282adccac62f9f70c36727e3520d2f4be70f"
+                "reference": "88231384d051630b9b280a8513e3070961c8eed7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/c25f282adccac62f9f70c36727e3520d2f4be70f",
-                "reference": "c25f282adccac62f9f70c36727e3520d2f4be70f",
+                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/88231384d051630b9b280a8513e3070961c8eed7",
+                "reference": "88231384d051630b9b280a8513e3070961c8eed7",
                 "shasum": ""
             },
             "require": {
@@ -765,7 +765,7 @@
                 "doctrine/collections": "~1.1",
                 "doctrine/common": "2.4.*",
                 "doctrine/inflector": "~1.0",
-                "doctrine/mongodb": "~1.1",
+                "doctrine/mongodb": ">=1.1.5,<2.0",
                 "php": ">=5.3.2",
                 "symfony/console": "~2.0"
             },
@@ -821,7 +821,7 @@
                 "odm",
                 "persistence"
             ],
-            "time": "2014-03-13 15:48:42"
+            "time": "2014-04-02 15:18:54"
         },
         {
             "name": "doctrine/mongodb-odm-bundle",
@@ -830,12 +830,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineMongoDBBundle.git",
-                "reference": "3b0b678497a3536cf85b2679d179c0a8a6f96690"
+                "reference": "ba17a288ae0f2f2cb4ef1bac667710a5f3b7151e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMongoDBBundle/zipball/3b0b678497a3536cf85b2679d179c0a8a6f96690",
-                "reference": "3b0b678497a3536cf85b2679d179c0a8a6f96690",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMongoDBBundle/zipball/ba17a288ae0f2f2cb4ef1bac667710a5f3b7151e",
+                "reference": "ba17a288ae0f2f2cb4ef1bac667710a5f3b7151e",
                 "shasum": ""
             },
             "require": {
@@ -892,7 +892,7 @@
                 "persistence",
                 "symfony"
             ],
-            "time": "2014-03-17 23:33:24"
+            "time": "2014-04-03 20:22:59"
         },
         {
             "name": "doctrine/orm",
@@ -900,12 +900,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "a949e87ca88299cde368d2b574740753526b62c9"
+                "reference": "9d36e855c009c6b1bca450dff1c1211196b02df7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/a949e87ca88299cde368d2b574740753526b62c9",
-                "reference": "a949e87ca88299cde368d2b574740753526b62c9",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/9d36e855c009c6b1bca450dff1c1211196b02df7",
+                "reference": "9d36e855c009c6b1bca450dff1c1211196b02df7",
                 "shasum": ""
             },
             "require": {
@@ -968,7 +968,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-02-09 14:45:36"
+            "time": "2014-03-23 15:38:05"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -1411,6 +1411,80 @@
                 "logging"
             ],
             "time": "2012-08-29 11:53:20"
+        },
+        {
+            "name": "pdepend/pdepend",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pdepend/pdepend.git",
+                "reference": "a7166dfd097a7010e36d16e0a5ee6d51afe9bea2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/a7166dfd097a7010e36d16e0a5ee6d51afe9bea2",
+                "reference": "a7166dfd097a7010e36d16e0a5ee6d51afe9bea2",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/config": "@stable",
+                "symfony/dependency-injection": "@stable",
+                "symfony/filesystem": "@stable"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "@stable",
+                "squizlabs/php_codesniffer": "@stable"
+            },
+            "bin": [
+                "src/bin/pdepend"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "PDepend\\": "src/main/php/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Official version of pdepend to be handled with Composer",
+            "time": "2014-03-19 22:21:06"
+        },
+        {
+            "name": "phpmd/phpmd",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpmd/phpmd.git",
+                "reference": "7d03a50e937811970751697ad1aea33a1089d66f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/7d03a50e937811970751697ad1aea33a1089d66f",
+                "reference": "7d03a50e937811970751697ad1aea33a1089d66f",
+                "shasum": ""
+            },
+            "require": {
+                "pdepend/pdepend": "*",
+                "php": ">=5.3.0"
+            },
+            "bin": [
+                "src/bin/phpmd"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "../../pdepend/pdepend/src/main/php",
+                "src/main/php"
+            ],
+            "description": "Official version of PHPMD handled with Composer.",
+            "time": "2012-12-14 12:25:09"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -2628,12 +2702,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "dab8d90755a7c1a54cd20be5098f5b5bf3346d9b"
+                "reference": "c8366374d9d531029a6b031528b552c37e1b2e66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/dab8d90755a7c1a54cd20be5098f5b5bf3346d9b",
-                "reference": "dab8d90755a7c1a54cd20be5098f5b5bf3346d9b",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/c8366374d9d531029a6b031528b552c37e1b2e66",
+                "reference": "c8366374d9d531029a6b031528b552c37e1b2e66",
                 "shasum": ""
             },
             "require": {
@@ -2677,7 +2751,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-03-15 10:50:05"
+            "time": "2014-03-30 17:23:57"
         }
     ],
     "packages-dev": [
