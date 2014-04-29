@@ -5,6 +5,7 @@ namespace MilleEtangs\RandonneesBundle\Tests\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class SecurityControllerTest extends WebTestCase
 {
@@ -19,6 +20,21 @@ class SecurityControllerTest extends WebTestCase
 
     public function testLogIn()
     {
+        $crawler = $this->client->request('GET', $this->router->generate('login'));
+
+        $form = $crawler->selectButton('login')->form(array(
+            '_username' => "admin",
+            '_password' => "coco",
+        ));
+
+        $this->client->submit($form);
+        $crawler = $this->client->followRedirect();
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+    }
+
+    public function testMenu()
+    {
         $this->logIn();
         $crawler = $this->client->request('GET', $this->router->generate('admin_menu'));
 
@@ -30,11 +46,20 @@ class SecurityControllerTest extends WebTestCase
     {
         $this->logIn();
         $crawler = $this->client->request('GET', $this->router->generate('create_itineary'));
-        $form = $crawler->selectButton('save')->form(array(
-            'itineary[name]' => "Randonnée Test 0"
-        ));
 
-        // TODO : add GPX upload
+        $kernel = $this->client->getKernel();
+        $path = $kernel->locateResource('@MilleEtangsRandonneesBundle/Resources/tests/Plateau_des_Grilloux.gpx');
+
+        $gpx = new UploadedFile(
+            $path,
+            "Plateau_des_Grilloux.gpx"
+        );
+
+        $itineary_name = "Test" . uniqid();
+        $form = $crawler->selectButton('save')->form(array(
+            'itineary[name]' => $itineary_name,
+            'itineary[gpx]' => $gpx
+        ));
 
         $this->client->submit($form);
         $crawler = $this->client->followRedirect();
@@ -42,6 +67,12 @@ class SecurityControllerTest extends WebTestCase
         $this->assertTrue($this->client->getResponse()->isSuccessful());
         $this->assertGreaterThan(0, $crawler->filter('div.alert-success')->count());
         $this->assertGreaterThan(0, $crawler->filter('html:contains("Randonnée Test 0")')->count());
+
+        $link = $crawler->selectLink("{$itineary_name}")->link();
+        $client->click($link);
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $this->assertGreaterThan(0, $crawler->filter('div.alert-success')->count());
     }
 
     public function testCreateArticle()

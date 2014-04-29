@@ -25,10 +25,14 @@ class ItineariesControllerTest extends WebTestCase
 
     public function testItineary()
     {
-        $crawler = $this->client->request('GET', '/randonnee/circuit-de-la-mer');
+        $crawler = $this->client->request('GET', $route = $this->router->generate(
+            'itineary',
+            array('slug' => "circuit-de-la-mer")
+        ));
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
 
         //$gpx_uri = $crawler->filter(".gpx")->link()->getUri();
+        // TODO : check gpx & kml
     }
 }
