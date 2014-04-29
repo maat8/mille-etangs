@@ -5,6 +5,7 @@ namespace MilleEtangs\RandonneesBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use MilleEtangs\RandonneesBundle\Document\Comment;
+use MilleEtangs\RandonneesBundle\Document\Trace;
 
 class ItineariesController extends Controller
 {
@@ -44,19 +45,20 @@ class ItineariesController extends Controller
         ));
     }
 
-    public function downloadGpxAction($id = null)
+    public function downloadGpxAction($slug = null)
     {
-        if (!is_null($id)) {
+        if (!is_null($slug)) {
             $itineary = $this->get('doctrine_mongodb')
                 ->getRepository('MilleEtangsRandonneesBundle:Itineary')
-                ->findOneById($id);
+                ->findOneBySlug($slug);
 
             if (!is_null($itineary)) {
                 $response = new Response();
                 $response->headers->set('Content-Type', "application/gpx+xml");
-                $response->headers->set('Content-Disposition', 'attachment; filename="'.$itineary->getName().'.gpx"');
-                $response->sendHeaders();
-                $response->setContent($itineary->getGpx()->getBytes());
+                $filename = $itineary->getName().'.gpx';
+                $response->headers->set('Content-Disposition', "attachment;filename=\"{$filename}\"");
+                $response->setContent($itineary->getGpx()->getFile()->getBytes());
+                $response->send();
 
                 return $response;
             }
@@ -65,17 +67,17 @@ class ItineariesController extends Controller
         return new Response('Not Found', 404);
     }
 
-    public function renderKmlAction($id = null)
+    public function renderKmlAction($slug = null)
     {
-        if (!is_null($id)) {
+        if (!is_null($slug)) {
             $itineary = $this->get('doctrine_mongodb')
                 ->getRepository('MilleEtangsRandonneesBundle:Itineary')
-                ->findOneById($id);
+                ->findOneBySlug($slug);
 
             if (!is_null($itineary)) {
                 $response = new Response();
                 $response->headers->set('Content-Type', "application/vnd.google-earth.kml+xml");
-                $response->setContent($itineary->getKml()->getBytes());
+                $response->setContent($itineary->getKml()->getFile()->getBytes());
                 
                 return $response;
             }

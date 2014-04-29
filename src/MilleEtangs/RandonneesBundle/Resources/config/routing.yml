@@ -58,11 +58,11 @@ rss:
     defaults: { _controller: MilleEtangsRandonneesBundle:Articles:rss }
 
 render_kml:
-    pattern: /kml/{id}.kml
+    pattern: /kml/{slug}.kml
     defaults: { _controller: MilleEtangsRandonneesBundle:Itinearies:renderKml}
 
 download_gpx:
-    pattern: /gpx/{id}.gpx
+    pattern: /gpx/{slug}.gpx
     defaults: { _controller: MilleEtangsRandonneesBundle:Itinearies:downloadGpx}
 
 itinearies:

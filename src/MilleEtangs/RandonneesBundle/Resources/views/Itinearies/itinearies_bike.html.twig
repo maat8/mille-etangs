@@ -5,11 +5,19 @@
 {% block body %}
 	<h2>Randonnées VTT</h2>
 
-	<ul>
+	<table>
+        <thead>
+            <tr></tr>
+        </thead>
+        <tbody>
 	{% for itineary in itinearies %}
-		<li><a href="{{ path('itineary', {'slug': itineary.getSlug()}) }}">{{ itineary.getName() }}</a></li>
+		<tr>
+            <td><a href="{{ path('itineary', {'slug': itineary.getSlug()}) }}">{{ itineary.getName() }}</a></td>
+            <td>{{ itineary.getIncline() }}</td>
+        </tr>
 	{% else %}
-		<li>Il n'y a pas de randonnées actuellement !</li>
+		Il n'y a pas de randonnées actuellement !
 	{% endfor %}
-	</ul>
+        <tbody>
+	</table>
 {% endblock %}

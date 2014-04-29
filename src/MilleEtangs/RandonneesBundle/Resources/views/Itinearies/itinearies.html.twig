@@ -5,13 +5,22 @@
 {% block body %}
 	<h1>Randonnées</h1>
 
-	<ul>
-	{% for itineary in itinearies %}
-		<li><a href="{{ path('itineary', {'slug': itineary.getSlug()}) }}">{{ itineary.getName() }}</a></li>
-	{% else %}
-		<li>Il n'y a pas de randonnées actuellement !</li>
-	{% endfor %}
-	</ul>
+	<table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Circuit</td>
+                <td>Dénivelé</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for itineary in itinearies %}
+            <tr>
+                <td><a href="{{ path('itineary', {'slug': itineary.getSlug()}) }}">{{ itineary.getName() }}</a></td>
+                <td>{{ itineary.getIncline() }}</td>
+            </tr>
+        {% endfor %}
+        <tbody>
+    </table>
 
     <p class="disclaimer">
     Les parcours non balisés proposés par le site Randonnées aux Mille Etangs n'ont pas fait l'objet d'une étude cadastrale. Il est donc possible que ceux ci empruntent des propriétés privées.

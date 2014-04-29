@@ -5,6 +5,9 @@ namespace MilleEtangs\RandonneesBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symm\Gisconverter\Gisconverter as Gisconverter;
+use MilleEtangs\RandonneesBundle\Document\Comment;
+use MilleEtangs\RandonneesBundle\Document\Trace;
+use Doctrine\MongoDB\GridFSFile;
 
 /** 
  * @ODM\Document(collection="itinearies", repositoryClass="MilleEtangs\RandonneesBundle\Repository\ItinearyRepository")
@@ -58,12 +61,12 @@ class Itineary extends BaseDocument
     protected $endomondoLink;
 
     /**
-     * @ODM\File
+     * @ODM\ReferenceOne(targetDocument="Trace", simple=true, orphanRemoval=true, cascade={"all"})
      */
     protected $gpx;
 
     /**
-     * @ODM\File
+     * @ODM\ReferenceOne(targetDocument="Trace", simple=true, orphanRemoval=true, cascade={"all"})
      */
     protected $kml;
 
@@ -83,22 +86,23 @@ class Itineary extends BaseDocument
     */
     protected $published;
 
+    /**
+     * @ODM\EmbedMany(targetDocument="Comment")
+    */
+    protected $comments = array();
+
     // TODO : add tags
 
-    // TODO : add comments
-
-    /**
-     * @ODM\PrePersist()
-     * @ODM\PreUpdate()
-     */
-    public function preUpdate()
+    public function __construct()
     {
-        parent :: preUpdate();
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
-        // Create KML File from GPX
+    public function generateKmlFromGpx()
+    {
         if (is_object($this->gpx)) {
             try {
-                $kml = Gisconverter::gpxToKml($this->gpx->getBytes());
+                $kml = Gisconverter::gpxToKml($this->gpx->getFile()->getBytes());
                 if (!empty($kml)) {
                     // TODO : generate KML using simplexml
                     $kml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
@@ -162,10 +166,17 @@ class Itineary extends BaseDocument
                                 '   </Placemark>
                                 </Document>
                                 </kml>';
-                    $this->kml->setBytes($kml);
+
+                    //return $kml;
+                    $trace_kml = new Trace();
+                    $kml_file = new GridFSFile();
+                    $kml_file->setBytes($kml);
+                    $trace_kml->setFile($kml_file);
+                    $this->setKml($trace_kml);
                 }
             } catch (\Exception $e) {
-
+                var_dump($e);
+                die("Error while generating KML");
             }
         }
     }
@@ -426,7 +437,7 @@ class Itineary extends BaseDocument
     /**
      * Set gpx
      *
-     * @param file $gpx
+     * @param Trace $gpx
      * @return self
      */
     public function setGpx($gpx)
@@ -438,7 +449,7 @@ class Itineary extends BaseDocument
     /**
      * Get gpx
      *
-     * @return file $gpx
+     * @return Trace $gpx
      */
     public function getGpx()
     {
@@ -448,7 +459,7 @@ class Itineary extends BaseDocument
     /**
      * Set kml
      *
-     * @param file $kml
+     * @param Trace $kml
      * @return self
      */
     public function setKml($kml)
@@ -460,10 +471,40 @@ class Itineary extends BaseDocument
     /**
      * Get kml
      *
-     * @return file $kml
+     * @return Trace $kml
      */
     public function getKml()
     {
         return $this->kml;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param Document\Comment $comment
+     */
+    public function addComment(Comment $comment)
+    {
+        $this->comments[] = $comment;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param Document\Comment $comment
+     */
+    public function removeComment(Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return Doctrine\Common\Collections\Collection $comments
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

@@ -81,6 +81,12 @@ tinyMCE.init({
         {{ form_errors(form.gpx) }}
         {{ form_label(form.gpx) }}
         {{ form_widget(form.gpx, {'attr': {'class': 'form-control'}}) }}
+        {% if itineary is defined and itineary.getGpx() is not null and itineary.getGpx().getFile().getSize() > 0 %}
+            <a href='{{ path('download_gpx', {'slug':itineary.getSlug()}) }}' class="gpx" target="_blank">Voir le fichier GPX</a>
+        {% endif %}
+        {% if itineary is defined and itineary.getKml() is not null and itineary.getKml().getFile().getSize() > 0 %}
+            <a href='{{ path('render_kml', {'slug':itineary.getSlug()}) }}' class="gpx" target="_blank">Voir le fichier KML</a>
+        {% endif %}
     </div>
 
     <div class="form-group">

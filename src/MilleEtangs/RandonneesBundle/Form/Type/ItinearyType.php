@@ -23,7 +23,10 @@ class ItinearyType extends AbstractType
             ->add('incline', 'text')
             ->add('distance', 'text')
             ->add('endomondo_link', 'text', array('required' => false))
-            ->add('gpx', 'file', array('required' => false))
+            ->add('gpx', 'file', array(
+                'required' => false,
+                'data_class' => "MilleEtangs\RandonneesBundle\Document\Trace"
+            ))
             ->add('marked', 'checkbox', array('required' => false))
             ->add('difficulty', 'choice', array('required' => false, 'choices' => array(
                 1 => 1,

@@ -5,12 +5,12 @@ namespace MilleEtangs\RandonneesBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Security\Core\SecurityContext;
-
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use MilleEtangs\RandonneesBundle\Document\Itineary;
 use MilleEtangs\RandonneesBundle\Document\Article;
 use MilleEtangs\RandonneesBundle\Document\Image;
+use MilleEtangs\RandonneesBundle\Document\Trace;
 
 class SecurityController extends Controller
 {
@@ -102,14 +102,13 @@ class SecurityController extends Controller
 
     public function updateItinearyAction($id = null)
     {
+        $itineary = null;
         if (!is_null($id)) {
             $itineary = $this->get('doctrine_mongodb')
                 ->getRepository("MilleEtangsRandonneesBundle:Itineary")
                 ->findOneById($id)
             ;
-            if (!is_null($itineary)) {
-                $itineary->setGpx(null);
-            }
+
             $form =  $this->get('form.factory')->create("itineary", $itineary);
         }
 
@@ -124,7 +123,13 @@ class SecurityController extends Controller
                 if ($form->isValid()) {
                     $gpx = $this->getRequest()->files->get('itineary');
                     if (array_key_exists('gpx', $gpx) && is_object($gpx['gpx'])) {
-                        $itineary->setGpx($gpx['gpx']->getPathName());
+                        $trace_gpx = new Trace();
+                        $trace_gpx->setFile($gpx['gpx']->getPathName());
+                        $itineary->setGpx($trace_gpx);
+                        $dm->flush();
+
+                        $itineary->generateKmlFromGpx();
+                        $dm->persist($itineary);
                     }
                     $dm->flush();
                     $this->get('session')->getFlashBag()->set("success", "Le parcours a bien été sauvegardé");
@@ -135,7 +140,8 @@ class SecurityController extends Controller
         }
 
         return $this->render("MilleEtangsRandonneesBundle:Security:form_itineary.html.twig", array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'itineary' => $itineary
         ));
     }
 
