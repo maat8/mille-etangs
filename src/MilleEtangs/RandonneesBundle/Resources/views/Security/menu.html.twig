@@ -12,14 +12,14 @@
 {% endfor %}
 
 <h3>Gestion des articles</h3>
-<ul>
+<ul class="articles">
 	{% for article in articles %}
 		<li><a href="{{ path('update_article', {id: article.getId()}) }}">{{ article.getName() }}</a></li>
 	{% endfor %}
 </ul>
 
 <h3>Gestion des parcours</h3>
-<ul>
+<ul class="itinearies">
 	{% for itineary in itinearies %}
 		<li><a href="{{ path('update_itineary', {id: itineary.getId()}) }}">{{ itineary.getName() }}</a></li>
 	{% endfor %}
