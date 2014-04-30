@@ -3,6 +3,7 @@
 namespace MilleEtangs\RandonneesBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\DomCrawler\Crawler;
 
 class ItineariesControllerTest extends WebTestCase
 {
@@ -18,7 +19,10 @@ class ItineariesControllerTest extends WebTestCase
     public function testItinearies()
     {
         $crawler = $this->client->request('GET', $this->router->generate('itinearies'));
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $this->assertTrue($crawler->filter('html:contains("Randonnées")')->count() > 0);
 
+        $crawler = $this->client->request('GET', $this->router->generate('itinearies', array('type' => "vtt")));
         $this->assertTrue($this->client->getResponse()->isSuccessful());
         $this->assertTrue($crawler->filter('html:contains("Randonnées")')->count() > 0);
     }
@@ -31,8 +35,40 @@ class ItineariesControllerTest extends WebTestCase
         ));
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
+    }
 
-        //$gpx_uri = $crawler->filter(".gpx")->link()->getUri();
-        // TODO : check gpx & kml
+    public function testItinearyGpx()
+    {
+        $crawler = $this->client->request('GET', $route = $this->router->generate(
+            'download_gpx',
+            array('slug' => "circuit-de-la-mer")
+        ));
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $this->assertEquals($crawler->filter('gpx')->count(), 1);
+
+        $crawler = $this->client->request('GET', $route = $this->router->generate(
+            'download_gpx',
+            array('slug' => "")
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+        $this->assertEquals($this->client->getResponse()->getStatusCode(), 404);
+    }
+
+    public function testItinearyKml()
+    {
+        $crawler = $this->client->request('GET', $route = $this->router->generate(
+            'render_kml',
+            array('slug' => "circuit-de-la-mer")
+        ));
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $this->assertEquals($crawler->filter('kml')->count(), 1);
+
+        $crawler = $this->client->request('GET', $route = $this->router->generate(
+            'render_kml',
+            array('slug' => "")
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+        $this->assertEquals($this->client->getResponse()->getStatusCode(), 404);
     }
 }

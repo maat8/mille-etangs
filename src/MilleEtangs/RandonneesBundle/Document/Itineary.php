@@ -167,7 +167,6 @@ class Itineary extends BaseDocument
                                 </Document>
                                 </kml>';
 
-                    //return $kml;
                     $trace_kml = new Trace();
                     $kml_file = new GridFSFile();
                     $kml_file->setBytes($kml);
@@ -175,8 +174,7 @@ class Itineary extends BaseDocument
                     $this->setKml($trace_kml);
                 }
             } catch (\Exception $e) {
-                var_dump($e);
-                die("Error while generating KML");
+
             }
         }
     }

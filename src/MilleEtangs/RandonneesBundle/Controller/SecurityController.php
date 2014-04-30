@@ -75,14 +75,20 @@ class SecurityController extends Controller
     {
         $itineary = new Itineary();
         $form =  $this->get('form.factory')->create("itineary", $itineary);
-
+        $dm = $this->get('doctrine_mongodb')->getManager();
         if ("POST" === $this->getRequest()->getMethod()) {
             $form->bind($this->getRequest());
 
             if ($form->isValid()) {
                 $gpx = $this->getRequest()->files->get('itineary');
                 if (array_key_exists('gpx', $gpx) && is_object($gpx['gpx'])) {
-                    $itineary->setGpx($gpx['gpx']->getPathName());
+                    $trace_gpx = new Trace();
+                    $trace_gpx->setFile($gpx['gpx']->getPathName());
+                    $itineary->setGpx($trace_gpx);
+                    $dm->persist($itineary);
+                    $dm->flush();
+
+                    $itineary->generateKmlFromGpx();
                 }
 
                 $dm = $this->get('doctrine_mongodb')->getManager();

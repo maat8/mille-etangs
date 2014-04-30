@@ -25,7 +25,10 @@ class DefaultControllerTest extends WebTestCase
 
     public function testRenderImage()
     {
-        $crawler = $this->client->request('GET', $this->router->generate('home'));
+        $crawler = $this->client->request('GET', $this->router->generate('render_image', array('id' => null)));
+
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+        $this->assertEquals($this->client->getResponse()->getStatusCode(), 404);
     }
 
     public function testMilleEtangs()

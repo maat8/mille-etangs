@@ -66,10 +66,10 @@ class SecurityControllerTest extends WebTestCase
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
         $this->assertGreaterThan(0, $crawler->filter('div.alert-success')->count());
-        $this->assertGreaterThan(0, $crawler->filter('html:contains("Randonnée Test 0")')->count());
+        $this->assertGreaterThan(0, $crawler->filter('html:contains("'.$itineary_name.'")')->count());
 
         $link = $crawler->selectLink("{$itineary_name}")->link();
-        $client->click($link);
+        $this->client->click($link);
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
         $this->assertGreaterThan(0, $crawler->filter('div.alert-success')->count());
@@ -96,7 +96,23 @@ class SecurityControllerTest extends WebTestCase
         $this->logIn();
         $crawler = $this->client->request('GET', $this->router->generate('upload_image'));
 
-        // TODO
+        $kernel = $this->client->getKernel();
+        $path = $kernel->locateResource('@MilleEtangsRandonneesBundle/Resources/tests/logo.png');
+
+        $image = new UploadedFile(
+            $path,
+            "logo.png"
+        );
+
+        $form = $crawler->selectButton('upload')->form(array(
+            'image[file]' => $image
+        ));
+
+        $this->client->submit($form);
+        $crawler = $this->client->followRedirect();
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $this->assertGreaterThan(0, $crawler->filter('div.alert-success')->count());
     }
 
     private function logIn()

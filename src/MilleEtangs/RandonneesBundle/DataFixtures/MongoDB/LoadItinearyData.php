@@ -6,6 +6,7 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use MilleEtangs\RandonneesBundle\Document\Itineary;
+use MilleEtangs\RandonneesBundle\Document\Trace;
 
 class LoadItinearyData implements FixtureInterface
 {
@@ -20,6 +21,14 @@ class LoadItinearyData implements FixtureInterface
         $itineary->setBikeLength(120);
         $itineary->setDistance(17000);
         $itineary->setPublished(true);
+
+        $trace_gpx = new Trace();
+        $trace_gpx->setFile("src/MilleEtangs/RandonneesBundle/Resources/tests/Plateau_des_Grilloux.gpx");
+        $itineary->setGpx($trace_gpx);
+        $manager->persist($itineary);
+        $manager->flush();
+
+        $itineary->generateKmlFromGpx();
 
         $manager->persist($itineary);
         $manager->flush();
