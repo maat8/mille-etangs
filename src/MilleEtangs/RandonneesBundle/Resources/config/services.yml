@@ -18,3 +18,7 @@ services:
         class: MilleEtangs\RandonneesBundle\Form\Type\ImageType
         tags:
             - {name: form.type, alias: image}
+    form_comment:
+        class: MilleEtangs\RandonneesBundle\Form\Type\CommentType
+        tags:
+            - {name: form.type, alias: comment}
