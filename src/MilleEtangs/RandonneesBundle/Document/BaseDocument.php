@@ -16,12 +16,12 @@ abstract class BaseDocument
     protected $id;
 
     /**
-     * @ODM\Field(type="string")
+     * @ODM\String
      */
     protected $name;
 
     /**
-     * @ODM\Field(type="string")
+     * @ODM\String
      */
     protected $slug;
 
