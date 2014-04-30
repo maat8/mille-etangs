@@ -39,6 +39,7 @@ class ItineariesControllerTest extends WebTestCase
 
     public function testItinearyGpx()
     {
+        ob_start();
         $crawler = $this->client->request('GET', $route = $this->router->generate(
             'download_gpx',
             array('slug' => "circuit-de-la-mer")
@@ -52,10 +53,12 @@ class ItineariesControllerTest extends WebTestCase
         ));
         $this->assertFalse($this->client->getResponse()->isSuccessful());
         $this->assertEquals($this->client->getResponse()->getStatusCode(), 404);
+        ob_end_clean();
     }
 
     public function testItinearyKml()
     {
+        ob_start();
         $crawler = $this->client->request('GET', $route = $this->router->generate(
             'render_kml',
             array('slug' => "circuit-de-la-mer")
@@ -70,5 +73,6 @@ class ItineariesControllerTest extends WebTestCase
         ));
         $this->assertFalse($this->client->getResponse()->isSuccessful());
         $this->assertEquals($this->client->getResponse()->getStatusCode(), 404);
+        ob_end_clean();
     }
 }
