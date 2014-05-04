@@ -22,3 +22,7 @@ services:
         class: MilleEtangs\RandonneesBundle\Form\Type\CommentType
         tags:
             - {name: form.type, alias: comment}
+    mille_etangs.twig.itineary_extension:
+        class: MilleEtangs\RandonneesBundle\Twig\ItinearyExtension
+        tags:
+            - { name: twig.extension }
