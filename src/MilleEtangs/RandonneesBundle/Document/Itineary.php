@@ -5,9 +5,10 @@ namespace MilleEtangs\RandonneesBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symm\Gisconverter\Gisconverter as Gisconverter;
+use Doctrine\MongoDB\GridFSFile;
+use GeoJson\Geometry\Point;
 use MilleEtangs\RandonneesBundle\Document\Comment;
 use MilleEtangs\RandonneesBundle\Document\Trace;
-use Doctrine\MongoDB\GridFSFile;
 
 /** 
  * @ODM\Document(collection="itinearies", repositoryClass="MilleEtangs\RandonneesBundle\Repository\ItinearyRepository")
@@ -91,7 +92,10 @@ class Itineary extends BaseDocument
     */
     protected $comments = array();
 
-    // TODO : add tags
+    /**
+     * @ODM\EmbedOne(targetDocument="Point")
+     */
+    protected $start;
 
     public function __construct()
     {
