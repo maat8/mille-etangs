@@ -5,18 +5,22 @@
 {% block body %}
 	<h1>Randonnées</h1>
 
-	<table class="table table-hover">
+	<table class="table">
         <thead>
             <tr>
-                <td>Circuit</td>
-                <td>Dénivelé</td>
+                <th>Circuit</th>
+                <th>Distance</th>
+                <th>Dénivelé</th>
+                <th>Difficulté</th>
             </tr>
         </thead>
         <tbody>
         {% for itineary in itinearies %}
             <tr>
                 <td><a href="{{ path('itineary', {'slug': itineary.getSlug()}) }}">{{ itineary.getName() }}</a></td>
-                <td>{{ itineary.getIncline() }}</td>
+                <td>{{ itineary.getDistance() | distance }}</td>
+                <td>{{ itineary.getIncline() | incline }}</td>
+                <td>{{ itineary.getDifficulty() | difficulty }}</td>
             </tr>
         {% endfor %}
         <tbody>
