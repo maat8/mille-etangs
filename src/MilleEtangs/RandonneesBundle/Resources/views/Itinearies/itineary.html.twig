@@ -4,17 +4,27 @@
 
 {% block body %}
 <div class="itineary">
+		
 	<h2>{{ itineary.getName() }}</h2>
 
 	<p>{{ itineary.getTeaser()|raw }}</p>
 
-	<h5>Accès</h5>
-	<p>{{ itineary.getAccess()|raw }}</p>
-
-	<h5>Description</h5>
-	<p>{{ itineary.getDescription()|raw }}</p>
-
-	<p>Distance <strong>{{ (itineary.getDistance()/1000) }} km</strong></p>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Distance</th>
+				<th>Dénivelé</th>
+				<th>Difficulté</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{ itineary.getDistance() | distance }}</td>
+				<td>{{ itineary.getIncline() | incline }}</td>
+				<td>{{ itineary.getDifficulty() | difficulty }}</td>
+			</tr>
+		</tbody>
+	</table>
 
 	{% if itineary.getBikeLength() > 0 %}
 		<p>Durée VTT <strong>{{ itineary.getBikeLength() }} minutes</strong></p>
@@ -22,17 +32,6 @@
 
 	{% if itineary.getHikeLength() > 0 %}
 		<p>Durée à pied <strong>{{ itineary.getHikeLength() }} min</strong></p>
-	{% endif %}
-
-	<p>Dénivelé positif <strong>{{ itineary.getIncline() }} m</strong></p>
-
-	{% if(itineary.getEndomondoLink() is not null) %}
-		<a href='{{ itineary.getEndomondoLink() }}'>Endomondo</a>
-	{% endif %}
-
-	{# Download link for GPX file #}
-	{% if itineary.getGpx() is not null and itineary.getGpx().getFile().getSize() > 0 %}
-		<p><a href='{{ path('download_gpx', {'slug':itineary.getSlug()}) }}' class="gpx" target="_blank">Télécharger le fichier GPX pour votre GPS</a></p>
 	{% endif %}
 
 	{# Display GMaps if itineary has a KML file #}
@@ -64,7 +63,22 @@
 
 		window.onload = loadScript;
     	</script>
-		<div id="map"/>
+		<div id="map"></div>
+	{% endif %}
+
+	<h5>Accès</h5>
+	<p>{{ itineary.getAccess()|raw }}</p>
+
+	<h5>Description</h5>
+	<p>{{ itineary.getDescription()|raw }}</p>
+
+	{% if(itineary.getEndomondoLink() is not null) %}
+		<a href='{{ itineary.getEndomondoLink() }}'>Endomondo</a>
+	{% endif %}
+
+	{# Download link for GPX file #}
+	{% if itineary.getGpx() is not null and itineary.getGpx().getFile().getSize() > 0 %}
+		<p><a href='{{ path('download_gpx', {'slug':itineary.getSlug()}) }}' class="gpx" target="_blank">Télécharger le fichier GPX pour votre GPS</a></p>
 	{% endif %}
 
 	{# include "MilleEtangsRandonneesBundle:Comment:form_comment.html.twig" with {"form":form_comment} only #}
