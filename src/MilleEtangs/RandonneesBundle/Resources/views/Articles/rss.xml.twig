@@ -1,1 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?> <rss
+version="2.0"
+xmlns:content="http://purl.org/rss/1.0/modules/content/"
+xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:atom="http://www.w3.org/2005/Atom"
+xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+>
+<channel>
+<title>Randonnées aux 1000 étangs</title>
+<atom:link href="{{ url('rss', {}, true) }}" rel="self" type="application/rss+xml"/>
+<link>{{ url('home') }}</link>
+<description/>
+<lastBuildDate>{{ "now"|date('r') }}</lastBuildDate>
+<language>fr-FR</language>
+<sy:updatePeriod>daily</sy:updatePeriod>
+<sy:updateFrequency>1</sy:updateFrequency>
+{% for article in articles %}
+<item>
+    <title>{{ article.getName() }}</title>
+    <guid isPermaLink="false">{{ url('article', {'slug':article.getSlug()}) }}</guid>
+    <link>{{ url('article', {'slug':article.getSlug()}) }}</link>
+    <comments>{{ url('article', {'slug':article.getSlug()}) }}#comments</comments>
+    <pubDate>{{ article.getPublication()|date('r') }}</pubDate>
+    <description><![CDATA[{{ article.getContent()|raw() }}]]></description>
+</item>
+{% endfor %}
+</channel>
+</rss>

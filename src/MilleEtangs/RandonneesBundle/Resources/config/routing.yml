@@ -19,6 +19,10 @@ articles:
     pattern:  /articles
     defaults: { _controller: MilleEtangsRandonneesBundle:Articles:articles }
 
+article:    
+    pattern:  /article/{slug}
+    defaults: { _controller: MilleEtangsRandonneesBundle:Articles:article }
+
 accomodations:    
     pattern:  /hebergement
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:accomodations }

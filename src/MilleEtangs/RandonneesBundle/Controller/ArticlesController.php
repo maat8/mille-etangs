@@ -18,13 +18,27 @@ class ArticlesController extends Controller
         ));
     }
 
+    public function articleAction($slug)
+    {
+        $article = $this->get('doctrine_mongodb')
+            ->getRepository('MilleEtangsRandonneesBundle:Article')
+            ->findOneBySlug($slug);
+
+        return $this->render('MilleEtangsRandonneesBundle:Articles:article.html.twig', array(
+            'article' => $article
+        ));
+    }
+
     public function rssAction()
     {
-        $body = $this->renderView("MilleEtangsRandonneesBundle:Articles:rss.xml.twig", array());
+        $articles = $this->get('doctrine_mongodb')
+            ->getRepository('MilleEtangsRandonneesBundle:Article')
+            ->findLastPublishedArticles(10);
 
-        $response = new Response($body);
-        $response->headers->set('Content-Type', "application/rss+xml");
-        
-        return $response;
+        $body = $this->renderView("MilleEtangsRandonneesBundle:Articles:rss.xml.twig", array(
+            'articles' => $articles
+        ));
+
+        return new Response($body, 200, array('Content-Type' => 'application/rss+xml; charset=utf-8'));
     }
 }

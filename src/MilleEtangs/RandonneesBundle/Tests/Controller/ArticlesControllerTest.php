@@ -28,6 +28,6 @@ class ArticlesControllerTest extends WebTestCase
         $crawler = $this->client->request('GET', $this->router->generate('rss'));
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
-        $this->assertTrue($this->client->getResponse()->headers->contains('Content-Type', 'application/rss+xml'));
+        $this->assertTrue($this->client->getResponse()->headers->contains('Content-Type', 'application/rss+xml; charset=utf-8'));
     }
 }
