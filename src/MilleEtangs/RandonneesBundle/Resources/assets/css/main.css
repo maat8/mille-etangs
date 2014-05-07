@@ -242,6 +242,10 @@ div#home_news {
     position:relative;
 }
 
+div#home_news h3 {
+    margin-top: 0;
+}
+
 div#home_news img.news_background{
     border: 2px solid #412613;
 }
@@ -255,7 +259,7 @@ div#home_news div.news_text{
     height:99%;
     border-left: 3px solid #fff;
     background-color: #fff;
-    opacity: 0.6;
+    opacity: 0.8;
     text-align: justify;
 }
 
