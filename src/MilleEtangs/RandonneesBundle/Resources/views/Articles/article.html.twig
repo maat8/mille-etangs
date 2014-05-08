@@ -3,9 +3,9 @@
 {% block title %}{{ article.getName() }} | {{ parent()}}{% endblock %}
 
 {% block body %}
-<div>
+<div class="article">
+    <small>{{ article.getPublication() | format_date }}</small>
 	<h3>{{ article.getName() }}</h3>
-	<small>{{ article.getPublication() | format_date }}</small><br/>
-	{{ article.getContent()|raw }}
+	<div class="text">{{ article.getContent()|raw }}</div>
 </div>
 {% endblock %}

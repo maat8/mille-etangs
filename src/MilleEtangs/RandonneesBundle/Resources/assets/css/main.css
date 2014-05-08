@@ -242,8 +242,32 @@ div#home_news {
     position:relative;
 }
 
-div#home_news h3 {
-    margin-top: 0;
+div#home_news h3 {    
+}
+
+div.article h3 {
+    padding-left:12px;
+    padding-top: 12px;
+    margin-top: 0px;
+}
+
+div.article small {
+    display:block;
+    float:left;
+    width:48px;
+    color:white;
+    font-weight: bold;
+    background-color: #422615;
+    padding:5px 5px;
+    text-align: center;
+    line-height: 1.1;
+    margin-right: 15px;
+}
+
+div.article div.text{
+    clear:both;
+    margin-top: 20px;
+    text-align: justify;
 }
 
 div#home_news img.news_background{
