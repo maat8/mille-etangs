@@ -6,7 +6,6 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symm\Gisconverter\Gisconverter as Gisconverter;
 use Doctrine\MongoDB\GridFSFile;
-use GeoJson\Geometry\Point as GeoJsonPoint;
 use MilleEtangs\RandonneesBundle\Document\Comment;
 use MilleEtangs\RandonneesBundle\Document\Trace;
 

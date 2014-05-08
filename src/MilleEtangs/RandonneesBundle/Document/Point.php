@@ -4,6 +4,8 @@ namespace MilleEtangs\RandonneesBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
+// Use GeoJson\Geometry\Point instead ?
+
 /** 
  * @ODM\EmbeddedDocument
  */
