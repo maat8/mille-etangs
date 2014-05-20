@@ -137,13 +137,31 @@ aside#sidebar{
 aside#sidebar div.sidebar_block{
     margin-bottom: 20px;
     border-radius:2px;
+    clear:both;
 }
 
 aside#sidebar div.sidebar_block span.sidebar_title{
     color:#000;
 }
+    
+aside#sidebar img.sidebar_pic {
+    float:left;
+    display:block;
+    height: 180px;
+    width: 90px;
+    border: 2px solid #412613;
+}
+
+aside#sidebar a.sidebar_pic_link {
+    padding:0;
+}
 
 aside#sidebar .sidebar_content{
+    float:left;
+    margin-left: 5px;
+    text-align:justify;
+    padding: 5px;
+    width: 160px;
 }
 
 aside#sidebar .sidebar_content a.sidebar_button{
@@ -151,11 +169,12 @@ aside#sidebar .sidebar_content a.sidebar_button{
     text-decoration: none;
     color: white;
     display: block;
-    margin: 0;
+    margin: auto;
+    margin-top:11px;
     padding: 0;
     padding-top:3px;
     background: url('/images/button_sidebloc.png') top left no-repeat;
-    width: 160px;
+    width: 140px;
     height: 45px;
     text-align: center;
 }
