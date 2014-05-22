@@ -36,6 +36,10 @@ class ItineariesController extends Controller
             ->getRepository('MilleEtangsRandonneesBundle:Itineary')
             ->findOneBySlug($slug);
 
+        if (is_null($itineary))
+            throw $this->createNotFoundException('Cet itinéraire n\'existe pas');
+
+
         $comment = new Comment();
         $form_comment =  $this->get('form.factory')->create("comment", $comment);
 
