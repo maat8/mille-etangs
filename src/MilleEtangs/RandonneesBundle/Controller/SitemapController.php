@@ -10,18 +10,18 @@ class SitemapController extends Controller
     
     public function sitemapAction($_format = null)
     {
-        $itineariesBike = $this->get('doctrine_mongodb')
+        $itinearies = $this->get('doctrine_mongodb')
             ->getRepository('MilleEtangsRandonneesBundle:Itineary')
-            ->findAllBike();
+            ->findAll();
 
-        $itineariesHike = $this->get('doctrine_mongodb')
-            ->getRepository('MilleEtangsRandonneesBundle:Itineary')
-            ->findAllHike();
+        $articles = $this->get('doctrine_mongodb')
+            ->getRepository('MilleEtangsRandonneesBundle:Article')
+            ->findLastPublishedArticles(1);
 
         $format = $_format ?: "html";
         $body = $this->renderView("MilleEtangsRandonneesBundle:Sitemap:sitemap.{$format}.twig", array(
-            'itineariesHike' => $itineariesHike,
-            'itineariesBike' => $itineariesBike
+            'itinearies' => $itinearies,
+            'article' => $articles->getNext()
         ));
 
         $response = new Response($body);
