@@ -10,7 +10,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $articles = $this->get('doctrine_mongodb')->getRepository('MilleEtangsRandonneesBundle:Article')
-            ->findLastPublishedArticles(1);
+            ->findLastPublishedArticles(3);
 
         return $this->render('MilleEtangsRandonneesBundle:Default:index.html.twig', array(
             'articles' => $articles
