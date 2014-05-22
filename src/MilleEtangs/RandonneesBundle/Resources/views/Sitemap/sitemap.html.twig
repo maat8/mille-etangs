@@ -13,16 +13,9 @@
 	<li><a href="{{ path('contact') }}">Contact</a></li>
 </ul>
 
-<h3><a href="{{ path('itinearies_type', {'type':'bike'} )}}">Randonnées VTT</a></h3>
+<h3><a href="{{ path('itinearies_type', {'type':'bike'} )}}">Randonnées</a></h3>
 <ul>
-	{% for itineary in itineariesBike %}
-		<li><a href="{{ path('itineary', {'slug':itineary.getSlug()}) }}">{{ itineary.getName() }}</a></li>
-	{% endfor %}
-</ul>
-
-<h3><a href="{{ path('itinearies_type', {'type':'hike'} )}}">Randonnées à pied</a></h3>
-<ul>
-	{% for itineary in itineariesHike %}
+	{% for itineary in itinearies %}
 		<li><a href="{{ path('itineary', {'slug':itineary.getSlug()}) }}">{{ itineary.getName() }}</a></li>
 	{% endfor %}
 </ul>
