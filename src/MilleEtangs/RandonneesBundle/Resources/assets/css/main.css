@@ -273,11 +273,11 @@ div.article h3 {
 div.article small {
     display:block;
     float:left;
-    width:48px;
+    width:46px;
     color:white;
     font-weight: bold;
     background-color: #422615;
-    padding:5px 5px;
+    padding:5px 6px;
     text-align: center;
     line-height: 1.1;
     margin-right: 15px;
