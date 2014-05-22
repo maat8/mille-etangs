@@ -19,6 +19,7 @@ set :webserver_user, "www-data"
 
 set :use_composer, true
 set :update_vendors, true
+set :vendors_mode, "upgrade"
 set :dump_assetic_assets, true
 
 set :shared_files, ["app/config/parameters.yml"]
