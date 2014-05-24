@@ -17,8 +17,8 @@
         <h2>Actualités</h2>
         {% for article in articles %}
             {% include "MilleEtangsRandonneesBundle:Articles:view.html.twig" with {"article":article} only %}
+            <hr />
         {% endfor %}
-        <hr />
         <a href="{{ path("articles") }}" class="link_all_articles">Voir toutes les actualités</a>
     </div>
     <div id="home_links">
