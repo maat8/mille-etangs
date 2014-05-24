@@ -1,7 +1,5 @@
-{% stylesheets output="css/all.css"
-    "@MilleEtangsRandonneesBundle/Resources/assets/css/bootstrap.min.css"
-    "@MilleEtangsRandonneesBundle/Resources/assets/css/main.css"
-    "@MilleEtangsRandonneesBundle/Resources/assets/css/desktop.less"
+{% stylesheets filter="?uglifycss"
+    "@MilleEtangsRandonneesBundle/Resources/assets/css/main.less"
     "@MilleEtangsRandonneesBundle/Resources/assets/css/desktop.less"
 %}
     <link href="{{ asset(asset_url) }}" rel="stylesheet" />
