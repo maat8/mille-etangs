@@ -13,7 +13,7 @@ before_install:
     - chmod +x bin/install.sh
     - npm install less
     - npm install uglify-js
-    - npm install uglify-css
+    - npm install uglifycss
 
 install:
     - cp app/config/parameters.yml.dist app/config/parameters.yml
