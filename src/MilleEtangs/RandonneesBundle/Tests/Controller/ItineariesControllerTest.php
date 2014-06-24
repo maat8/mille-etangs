@@ -49,7 +49,7 @@ class ItineariesControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', $route = $this->router->generate(
             'download_gpx',
-            array('slug' => "")
+            array('slug' => 1)
         ));
         $this->assertFalse($this->client->getResponse()->isSuccessful());
         $this->assertEquals($this->client->getResponse()->getStatusCode(), 404);
@@ -69,7 +69,7 @@ class ItineariesControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', $route = $this->router->generate(
             'render_kml',
-            array('slug' => "")
+            array('slug' => 1)
         ));
         $this->assertFalse($this->client->getResponse()->isSuccessful());
         $this->assertEquals($this->client->getResponse()->getStatusCode(), 404);
