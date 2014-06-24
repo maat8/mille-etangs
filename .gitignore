@@ -21,6 +21,8 @@ bin/phpcs
 bin/phpunit
 bin/pdepend
 bin/phpmd
+bin/doctrine-dbal
+bin/sql-formatter
 
 # Temp files
 *.php~
