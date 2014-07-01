@@ -468,5 +468,5 @@ class Itineary extends BaseDocument
     public function getKml()
     {
         return $this->kml;
-    }   
+    }
 }

@@ -10,7 +10,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class ArticleAdmin extends Admin
 {
 
-	protected function configureFormFields(FormMapper $formMapper)
+    protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('name', 'text')
@@ -26,12 +26,12 @@ class ArticleAdmin extends Admin
             ->add('slug')
             ->add('publication')
             ->add('_action', 'actions', array(
-	            'actions' => array(
-	                'show' => array(),
-	                'edit' => array(),
-	                'delete' => array(),
-	            )
-	        ))
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
         ;
     }
 }

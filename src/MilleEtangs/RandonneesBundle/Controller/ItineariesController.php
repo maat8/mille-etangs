@@ -63,7 +63,7 @@ class ItineariesController extends Controller
             }
         }
 
-        return new Response('Not Found', 404);
+        // return new Response('Not Found', 404);
     }
 
     public function renderKmlAction($slug = null)

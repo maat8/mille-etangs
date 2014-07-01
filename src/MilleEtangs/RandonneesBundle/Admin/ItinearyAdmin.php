@@ -11,7 +11,7 @@ use MilleEtangs\RandonneesBundle\Document\Trace;
 class ItinearyAdmin extends Admin
 {
 
-	protected function configureFormFields(FormMapper $formMapper)
+    protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('name', 'text')
@@ -35,16 +35,17 @@ class ItinearyAdmin extends Admin
             ->add('slug')
             ->add('created', 'timestamp')
             ->add('_action', 'actions', array(
-	            'actions' => array(
-	                'show' => array(),
-	                'edit' => array(),
-	                'delete' => array(),
-	            )
-	        ))
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
         ;
     }
 
-    public function create($object) {
+    public function create($object)
+    {
         if (!is_null($object->getGpx())) {
             $trace_gpx = new Trace();
             $trace_gpx->setFile($object->getGpx()->getPathName());
@@ -57,7 +58,8 @@ class ItinearyAdmin extends Admin
         $this->getModelManager()->update($object);
     }
 
-    public function update($object) {
+    public function update($object)
+    {
         if (!is_null($object->getGpx())) {
             $trace_gpx = new Trace();
             $trace_gpx->setFile($object->getGpx()->getPathName());
