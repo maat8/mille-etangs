@@ -13,15 +13,11 @@ class ArticleAdmin extends Admin
 	protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('text', 'text')
-            ->add('body')
+            ->add('name', 'text')
+            ->add('content', 'textarea')
+            ->add('publication', 'date')
         ;
     }
-
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-    }
-
     
     protected function configureListFields(ListMapper $listMapper)
     {

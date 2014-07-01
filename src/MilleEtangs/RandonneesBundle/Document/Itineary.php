@@ -8,6 +8,7 @@ use Symm\Gisconverter\Gisconverter as Gisconverter;
 use Doctrine\MongoDB\GridFSFile;
 use MilleEtangs\RandonneesBundle\Document\Comment;
 use MilleEtangs\RandonneesBundle\Document\Trace;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /** 
  * @ODM\Document(collection="itinearies", repositoryClass="MilleEtangs\RandonneesBundle\Repository\ItinearyRepository")
@@ -467,5 +468,5 @@ class Itineary extends BaseDocument
     public function getKml()
     {
         return $this->kml;
-    }
+    }   
 }

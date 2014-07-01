@@ -4,7 +4,6 @@ namespace MilleEtangs\RandonneesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use MilleEtangs\RandonneesBundle\Document\Comment;
 use MilleEtangs\RandonneesBundle\Document\Trace;
 
 class ItineariesController extends Controller
@@ -40,12 +39,8 @@ class ItineariesController extends Controller
             throw $this->createNotFoundException('Cet itinéraire n\'existe pas');
         }
 
-        $comment = new Comment();
-        $form_comment =  $this->get('form.factory')->create("comment", $comment);
-
         return $this->render('MilleEtangsRandonneesBundle:Itinearies:itineary.html.twig', array(
-            'itineary' => $itineary,
-            'form_comment' => $form_comment->createView()
+            'itineary' => $itineary
         ));
     }
 
