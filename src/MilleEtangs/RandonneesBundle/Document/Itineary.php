@@ -87,19 +87,9 @@ class Itineary extends BaseDocument
     protected $published;
 
     /**
-     * @ODM\EmbedMany(targetDocument="Comment")
-    */
-    protected $comments = array();
-
-    /**
      * @ODM\EmbedOne(targetDocument="Point")
      */
     protected $start;
-
-    public function __construct()
-    {
-        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     public function generateKmlFromGpx()
     {
@@ -477,35 +467,5 @@ class Itineary extends BaseDocument
     public function getKml()
     {
         return $this->kml;
-    }
-
-    /**
-     * Add comment
-     *
-     * @param Document\Comment $comment
-     */
-    public function addComment(Comment $comment)
-    {
-        $this->comments[] = $comment;
-    }
-
-    /**
-     * Remove comment
-     *
-     * @param Document\Comment $comment
-     */
-    public function removeComment(Comment $comment)
-    {
-        $this->comments->removeElement($comment);
-    }
-
-    /**
-     * Get comments
-     *
-     * @return Doctrine\Common\Collections\Collection $comments
-     */
-    public function getComments()
-    {
-        return $this->comments;
     }
 }
