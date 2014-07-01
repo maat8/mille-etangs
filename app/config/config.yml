@@ -1,10 +1,11 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: admin.yml }
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale% }
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -39,20 +40,6 @@ assetic:
         uglifycss:
             bin: /usr/local/bin/uglifycss
 
-# Doctrine Configuration
-doctrine:
-    dbal:
-        driver:   %database_driver%
-        host:     %database_host%
-        port:     %database_port%
-        dbname:   %database_name%
-        user:     %database_user%
-        password: %database_password%
-        charset:  UTF8
-    orm:
-        auto_generate_proxy_classes: %kernel.debug%
-        auto_mapping: true
-
 doctrine_mongodb:
   connections:
     default:
@@ -64,3 +51,16 @@ doctrine_mongodb:
       mappings:
         MilleEtangsRandonneesBundle: ~
       metadata_cache_driver: array
+
+sonata_admin:
+    title:      Mille étangs    
+
+services:
+    sonata.admin.article:
+        class: MilleEtangs\RandonneesBundle\Admin\ArticleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: "Content", label: "Article" }
+        arguments:
+            - ~
+            - MilleEtangs\RandonneesBundle\Document\Article
+            - ~
