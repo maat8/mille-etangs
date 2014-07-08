@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <title>Randonnées aux 1000 étangs</title>
-    {% stylesheets "@MilleEtangsRandonneesBundle/Resources/assets/css/desktop.less" %}
+    {% stylesheets "@MilleEtangsRandonneesBundle/Resources/assets/less/desktop.less" %}
         <link href="{{ asset(asset_url) }}" rel="stylesheet" />
     {% endstylesheets %}
 </head>
@@ -48,7 +48,7 @@
     {% block body %}{% endblock %}
     </div>
 
-    {% javascripts "@MilleEtangsRandonneesBundle/Resources/assets/js/jquery-1.8.0.min.js" "@MilleEtangsRandonneesBundle/Resources/assets/js/bootstrap.min.js" %}
+    {% javascripts "@MilleEtangsRandonneesBundle/Resources/assets/js/jquery-1.8.0.min.js" %}
     <script type="text/javascript" src="{{ asset(asset_url) }}"></script>
     {% endjavascripts %}
 
