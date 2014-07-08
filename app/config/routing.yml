@@ -4,7 +4,7 @@ Website:
 
 SecuredArea:
     resource: "@MilleEtangsRandonneesBundle/Resources/config/routing_secured.yml"
-    prefix:   /secured
+    prefix:   /admin
 
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
