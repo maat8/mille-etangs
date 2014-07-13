@@ -33,7 +33,7 @@ class DefaultController extends Controller
             }
         }
 
-        return new Response('Not Found', 404);
+        throw $this->createNotFoundException("Le fichier n'existe pas");
     }
 
     public function eventsAction()
