@@ -1,6 +1,3 @@
-parameters:
-#    mille_etangs_randonnees.example.class: MilleEtangs\RandonneesBundle\Example
-
 services:
     form_login:
         class: MilleEtangs\RandonneesBundle\Form\Type\LoginType

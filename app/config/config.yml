@@ -53,7 +53,7 @@ doctrine_mongodb:
       metadata_cache_driver: array
 
 sonata_admin:
-    title:      Mille étangs    
+    title:      Mille étangs
 
 services:
     sonata.admin.article:
