@@ -62,8 +62,8 @@ class ItineariesController extends Controller
                 return $response;
             }
         }
-
-        // return new Response('Not Found', 404);
+        
+        throw $this->createNotFoundException("Le fichier n'existe pas");
     }
 
     public function renderKmlAction($slug = null)
@@ -81,7 +81,7 @@ class ItineariesController extends Controller
                 return $response;
             }
         }
-
-        return new Response('Not Found', 404);
+        
+        throw $this->createNotFoundException("Le fichier n'existe pas");
     }
 }
