@@ -1,0 +1,12 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="//cdn.ckeditor.com/4.4.2/standard/ckeditor.js"></script>
+	<script src="//cdn.ckeditor.com/4.4.2/standard/adapters/jquery.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	$("textarea").ckeditor();
+    });
+    </script>
+{% endblock %}
