@@ -17,14 +17,9 @@
     <div class="container">
         <header id="banner" class="row">
             <div id="header_title" class="col-md-4 col-xs-12"><p></strong><a href="{{ path("home") }}">Randonnées aux Mille Étangs</a></strong><p></div>
+
             <nav class="col-md-7 col-md-offset-1 col-xs-12">
-                <ul>
-                    {% set route = app.request.get('_route') %}
-                    <li class="{% if route == "home" %}active{% endif %}"><a href="{{ path("home") }}">accueil</a></li>
-                    <li class="{% if route == "articles" %}active{% endif %}"><a href="{{ path("articles") }}">actualités</a></li>
-                    <li class="{% if route == "itinearies" or route == "itineary" %}active{% endif %}"><a href="{{ path("itinearies") }}">randonnées</a></li>
-                    <li class="{% if route == "mille_etangs" %}active{% endif %}"><a href="{{ path("mille_etangs") }}">les mille étangs</a></li>
-                </ul>
+                {{ knp_menu_render('MilleEtangsRandonneesBundle:Builder:mainMenu') }}
             </nav>
         </header>
 

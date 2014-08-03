@@ -56,6 +56,13 @@ sonata_admin:
     title:      Mille étangs
     templates:
         layout:  MilleEtangsRandonneesBundle:Security:sonata_admin_base_layout.html.twig
+
+knp_menu:
+    twig:
+        template: knp_menu.html.twig
+    templating: false
+    default_renderer: twig
+
 services:
     sonata.admin.article:
         class: MilleEtangs\RandonneesBundle\Admin\ArticleAdmin
