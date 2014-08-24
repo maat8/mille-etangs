@@ -51,7 +51,7 @@ class ItineariesController extends Controller
                 ->getRepository('MilleEtangsRandonneesBundle:Itineary')
                 ->findOneBySlug($slug);
 
-            if (!is_null($itineary)) {
+            if (!is_null($itineary) && !is_null($itineary->getGpx())) {
                 $response = new Response();
                 $response->headers->set('Content-Type', "application/gpx+xml");
                 $filename = $itineary->getName().'.gpx';
