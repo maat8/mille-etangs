@@ -63,6 +63,12 @@ knp_menu:
     templating: false
     default_renderer: twig
 
+jms_di_extra:
+    locations:
+        all_bundles: false
+        bundles: [MilleEtangsBundle]
+        directories: ["%kernel.root_dir%/../src"]
+
 services:
     sonata.admin.article:
         class: MilleEtangs\RandonneesBundle\Admin\ArticleAdmin

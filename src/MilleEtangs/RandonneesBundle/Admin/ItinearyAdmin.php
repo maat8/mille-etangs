@@ -15,16 +15,16 @@ class ItinearyAdmin extends Admin
     {
         $formMapper
             ->add('name', 'text')
-            ->add('teaser', 'textarea')
-            ->add('access', 'textarea')
+            ->add('teaser', 'textarea', array('required' => false))
+            ->add('access', 'textarea', array('required' => false))
             ->add('description', 'textarea')
             ->add('bikeLength')
             ->add('hikeLength')
             ->add('distance')
             ->add('incline')
-            ->add('endomondoLink')
-            ->add('marked')
-            ->add('gpx', 'file', array('data_class' => "MilleEtangs\RandonneesBundle\Document\Trace"))
+            ->add('endomondoLink', null, array('required' => false))
+            ->add('marked', null, array('required' => false))
+            ->add('gpx', 'file')
         ;
     }
     
@@ -47,28 +47,32 @@ class ItinearyAdmin extends Admin
     public function create($object)
     {
         if (!is_null($object->getGpx())) {
-            $trace_gpx = new Trace();
-            $trace_gpx->setFile($object->getGpx()->getPathName());
-            $object->setGpx($trace_gpx);
+            $traceConverter = $this->getConfigurationPool()->getContainer()->get('trace_converter');
+            try {
+                $traceConverter->generateTracesFromFile($object->getGpx());
+                $object->setGpx($traceConverter->getGpx());
+                $object->setKml($traceConverter->getKml());
+            } catch (\Exception $e) {
+                // TODO
+            }
         }
 
         parent::create($object);
-
-        $object->generateKmlFromGpx();
-        $this->getModelManager()->update($object);
     }
 
     public function update($object)
     {
         if (!is_null($object->getGpx())) {
-            $trace_gpx = new Trace();
-            $trace_gpx->setFile($object->getGpx()->getPathName());
-            $object->setGpx($trace_gpx);
+            $traceConverter = $this->getConfigurationPool()->getContainer()->get('trace_converter');
+            try {
+                $traceConverter->generateTracesFromFile($object->getGpx());
+                $object->setGpx($traceConverter->getGpx());
+                $object->setKml($traceConverter->getKml());
+            } catch (\Exception $e) {
+                // TODO
+            }
         }
 
-        parent::create($object);
-
-        $object->generateKmlFromGpx();
         $this->getModelManager()->update($object);
     }
 }

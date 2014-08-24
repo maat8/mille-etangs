@@ -4,11 +4,7 @@ namespace MilleEtangs\RandonneesBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symm\Gisconverter\Gisconverter as Gisconverter;
-use Doctrine\MongoDB\GridFSFile;
 use MilleEtangs\RandonneesBundle\Document\Comment;
-use MilleEtangs\RandonneesBundle\Document\Trace;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /** 
  * @ODM\Document(collection="itinearies", repositoryClass="MilleEtangs\RandonneesBundle\Repository\ItinearyRepository")
@@ -62,7 +58,8 @@ class Itineary extends BaseDocument
     protected $endomondoLink;
 
     /**
-     * @ODM\ReferenceOne(targetDocument="Trace", simple=true, orphanRemoval=true, cascade={"all"})
+     * Cannot embed document having q GridFS file : https://github.com/doctrine/mongodb-odm/issues/911
+     * @ODM\ReferenceOne(targetDocument="Trace", simple=true, orphanRemoval=true, cascade={"all"})     
      */
     protected $gpx;
 
@@ -91,87 +88,6 @@ class Itineary extends BaseDocument
      * @ODM\EmbedOne(targetDocument="Point")
      */
     protected $start;
-
-    public function generateKmlFromGpx()
-    {
-        if (is_object($this->gpx)) {
-            try {
-                $kml = Gisconverter::gpxToKml($this->gpx->getFile()->getBytes());
-                if (!empty($kml)) {
-                    // TODO : generate KML using simplexml
-                    $kml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
-                                '<kml xmlns="http://www.opengis.net/kml/2.2">
-                                    <Document>
-                                    <name></name>
-                                    <description>c</description>
-                                    <Style id="blueLine">
-                                      <LineStyle>
-                                        <color>ffff0000</color>
-                                        <width>4</width>
-                                      </LineStyle>
-                                    </Style>
-                                    <Style id="redLine">
-                                      <LineStyle>
-                                        <color>ff0000ff</color>
-                                        <width>4</width>
-                                      </LineStyle>
-                                    </Style>
-                                    <Style id="greenLine">
-                                      <LineStyle>
-                                        <color>ff009900</color>
-                                        <width>4</width>
-                                      </LineStyle>
-                                    </Style>
-                                    <Style id="orangeLine">
-                                      <LineStyle>
-                                        <color>ff00ccff</color>
-                                        <width>4</width>
-                                      </LineStyle>
-                                    </Style>
-                                    <Style id="pinkLine">
-                                      <LineStyle>
-                                        <color>ffff33ff</color>
-                                        <width>4</width>
-                                      </LineStyle>
-                                    </Style>
-                                    <Style id="brownLine">
-                                      <LineStyle>
-                                        <color>ff66a1cc</color>
-                                        <width>4</width>
-                                      </LineStyle>
-                                    </Style>
-                                    <Style id="purpleLine">
-                                      <LineStyle>
-                                        <color>ffcc00cc</color>
-                                        <width>4</width>
-                                      </LineStyle>
-                                    </Style>
-                                    <Style id="yellowLine">
-                                      <LineStyle>
-                                        <color>ff61f2f2</color>
-                                        <width>4</width>
-                                      </LineStyle>
-                                    </Style>
-                                    <Placemark>
-                                        <name>Name</name>
-                                        <description>Description</description>
-                                        <styleUrl>#blueLine</styleUrl>' .
-                                $kml .
-                                '   </Placemark>
-                                </Document>
-                                </kml>';
-
-                    $trace_kml = new Trace();
-                    $kml_file = new GridFSFile();
-                    $kml_file->setBytes($kml);
-                    $trace_kml->setFile($kml_file);
-                    $this->setKml($trace_kml);
-                }
-            } catch (\Exception $e) {
-
-            }
-        }
-    }
 
     /**
      * Set description

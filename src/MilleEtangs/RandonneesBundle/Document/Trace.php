@@ -6,7 +6,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /** 
- * @ODM\Document(collection="traces") 
+ * @ODM\Document(collection="traces")
  */
 class Trace
 {
@@ -31,36 +31,115 @@ class Trace
     /** @ODM\Field */
     protected $md5;
 
-    public function __construct($content = null)
-    {
-        if (!is_null($content)) {
-            file_put_contents($file = tempnam(sys_get_temp_dir(), "trace"), $content);
-            $this->setFile($file);
-        }
-    }
-
+    /**
+     * Gets the value of id.
+     *
+     * @return mixed
+     */
     public function getId()
     {
         return $this->id;
     }
 
-    public function setName($name)
+    /**
+     * Sets the value of id.
+     *
+     * @param mixed $id the id 
+     *
+     * @return self
+     */
+    protected function setId($id)
     {
-        $this->name = $name;
+        $this->id = $id;
+
+        return $this;
     }
 
+    /**
+     * Gets the value of name.
+     *
+     * @return mixed
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * Sets the value of name.
+     *
+     * @param mixed $name the name 
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of file.
+     *
+     * @return mixed
+     */
     public function getFile()
     {
         return $this->file;
     }
 
+    /**
+     * Sets the value of file.
+     *
+     * @param mixed $file the file
+     *
+     * @return self
+     */
     public function setFile($file)
     {
         $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of uploadDate.
+     *
+     * @return mixed
+     */
+    public function getUploadDate()
+    {
+        return $this->uploadDate;
+    }
+
+    /**
+     * Gets the value of length.
+     *
+     * @return mixed
+     */
+    public function getLength()
+    {
+        return $this->length;
+    }
+
+    /**
+     * Gets the value of chunkSize.
+     *
+     * @return mixed
+     */
+    public function getChunkSize()
+    {
+        return $this->chunkSize;
+    }
+
+    /**
+     * Gets the value of md5.
+     *
+     * @return mixed
+     */
+    public function getMd5()
+    {
+        return $this->md5;
     }
 }
