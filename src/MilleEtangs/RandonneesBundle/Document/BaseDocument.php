@@ -62,7 +62,7 @@ abstract class BaseDocument
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -78,7 +78,7 @@ abstract class BaseDocument
     public function setId($id)
     {
         $this->id = $id;
-    
+
         return $this;
     }
 
@@ -91,14 +91,14 @@ abstract class BaseDocument
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -108,7 +108,7 @@ abstract class BaseDocument
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
@@ -124,7 +124,7 @@ abstract class BaseDocument
     public function setSlug($slug)
     {
         $this->slug = $slug;
-    
+
         return $this;
     }
 
@@ -137,14 +137,14 @@ abstract class BaseDocument
     public function setCreated($created)
     {
         $this->created = $created;
-    
+
         return $this;
     }
 
     /**
      * Get created
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -160,14 +160,14 @@ abstract class BaseDocument
     public function setUpdated($updated)
     {
         $this->updated = $updated;
-    
+
         return $this;
     }
 
     /**
      * Get updated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdated()
     {

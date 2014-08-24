@@ -5,7 +5,7 @@ namespace MilleEtangs\RandonneesBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/** 
+/**
  * @ODM\Document(collection="articles", repositoryClass="MilleEtangs\RandonneesBundle\Repository\ArticleRepository")
  */
 class Article extends BaseDocument
@@ -15,7 +15,7 @@ class Article extends BaseDocument
      */
     protected $content;
 
-    /** 
+    /**
      * @ODM\Field(type="date")
      * @ODM\Index
     */
@@ -35,14 +35,14 @@ class Article extends BaseDocument
     public function setContent($content)
     {
         $this->content = $content;
-    
+
         return $this;
     }
 
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
@@ -58,7 +58,7 @@ class Article extends BaseDocument
     public function setPublication($publication = null)
     {
         $this->publication = $publication;
-    
+
         return $this;
     }
 

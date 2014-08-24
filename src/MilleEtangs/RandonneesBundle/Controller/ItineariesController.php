@@ -62,7 +62,7 @@ class ItineariesController extends Controller
                 return $response;
             }
         }
-        
+
         throw $this->createNotFoundException("Le fichier n'existe pas");
     }
 
@@ -77,11 +77,11 @@ class ItineariesController extends Controller
                 $response = new Response();
                 $response->headers->set('Content-Type', "application/vnd.google-earth.kml+xml");
                 $response->setContent($itineary->getKml()->getFile()->getBytes());
-                
+
                 return $response;
             }
         }
-        
+
         throw $this->createNotFoundException("Le fichier n'existe pas");
     }
 }

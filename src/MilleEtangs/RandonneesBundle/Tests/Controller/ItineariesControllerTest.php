@@ -15,7 +15,7 @@ class ItineariesControllerTest extends WebTestCase
         $this->client = static::createClient();
         $this->router = $this->client->getContainer()->get('router');
     }
-    
+
     public function testItinearies()
     {
         $crawler = $this->client->request('GET', $this->router->generate('itinearies'));

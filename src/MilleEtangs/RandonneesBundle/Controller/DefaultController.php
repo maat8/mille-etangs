@@ -28,7 +28,7 @@ class DefaultController extends Controller
                 $response = new Response();
                 $response->headers->set('Content-Type', $image->getMimeType());
                 $response->setContent($image->getFile()->getBytes());
-                
+
                 return $response;
             }
         }

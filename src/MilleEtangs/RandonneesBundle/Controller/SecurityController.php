@@ -154,7 +154,7 @@ class SecurityController extends Controller
     public function createArticleAction()
     {
         $article = new Article();
-        
+
         $form =  $this->get('form.factory')->create("article", $article);
 
         if ("POST" === $this->getRequest()->getMethod()) {
@@ -200,7 +200,7 @@ class SecurityController extends Controller
                     $this->get('session')->getFlashBag()->set("success", "L'actualité a bien été sauvegardée");
                 }
             }
-            
+
             return $this->redirect($this->generateUrl('admin_menu'));
         }
 
@@ -225,7 +225,7 @@ class SecurityController extends Controller
                 $image->setMimeType($upload['file']->getMimeType());
                 $dm->persist($image);
                 $dm->flush();
-                                
+
                 $this->get('session')->getFlashBag()->set(
                     "success",
                     "L'image a bien été uploadée : " . $image->getId()

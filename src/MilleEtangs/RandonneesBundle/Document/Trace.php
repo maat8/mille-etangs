@@ -5,7 +5,7 @@ namespace MilleEtangs\RandonneesBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-/** 
+/**
  * @ODM\Document(collection="traces")
  */
 class Trace
@@ -44,7 +44,7 @@ class Trace
     /**
      * Sets the value of id.
      *
-     * @param mixed $id the id 
+     * @param mixed $id the id
      *
      * @return self
      */
@@ -68,7 +68,7 @@ class Trace
     /**
      * Sets the value of name.
      *
-     * @param mixed $name the name 
+     * @param mixed $name the name
      *
      * @return self
      */

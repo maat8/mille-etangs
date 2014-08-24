@@ -7,35 +7,35 @@ render_image:
     pattern: /images/{id}
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:renderImage}
 
-mille_etangs:    
+mille_etangs:
     pattern:  /les-mille-etangs
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:milleEtangs }
 
-events:    
+events:
     pattern:  /evenements
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:events }
 
-articles:    
+articles:
     pattern:  /articles
     defaults: { _controller: MilleEtangsRandonneesBundle:Articles:articles }
 
-article:    
+article:
     pattern:  /article/{slug}
     defaults: { _controller: MilleEtangsRandonneesBundle:Articles:article }
 
-accomodations:    
+accomodations:
     pattern:  /hebergement
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:accomodations }
 
-restaurants:    
+restaurants:
     pattern:  /restauration
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:restaurants }
 
-partners:    
+partners:
     pattern:  /partenaires
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:partners }
 
-advice:    
+advice:
     pattern:  /conseils
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:advice }
 
@@ -43,21 +43,21 @@ legal:
     pattern:  /mentions-legales
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:legal }
 
-contact:    
+contact:
     pattern:  /contact
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:contact }
 
-sitemap:    
+sitemap:
     pattern:  /sitemap
     defaults: { _controller: MilleEtangsRandonneesBundle:Sitemap:sitemap }
 
-sitemap_xml:    
+sitemap_xml:
     pattern:  /sitemap.{_format}
     defaults: { _controller: MilleEtangsRandonneesBundle:Sitemap:sitemap }
     requirements:
       _format:  html|xml
 
-rss:    
+rss:
     pattern:  /rss.xml
     defaults: { _controller: MilleEtangsRandonneesBundle:Articles:rss }
 
@@ -77,6 +77,6 @@ itinearies_type:
     pattern:  /randonnees/{type}
     defaults: { _controller: MilleEtangsRandonneesBundle:Itinearies:itinearies }
 
-itineary:    
+itineary:
     pattern:  /randonnee/{slug}
     defaults: { _controller: MilleEtangsRandonneesBundle:Itinearies:itineary }

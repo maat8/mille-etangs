@@ -6,7 +6,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Symfony\Component\Validator\Constraints as Assert;
 use MilleEtangs\RandonneesBundle\Document\Comment;
 
-/** 
+/**
  * @ODM\Document(collection="itinearies", repositoryClass="MilleEtangs\RandonneesBundle\Repository\ItinearyRepository")
  */
 class Itineary extends BaseDocument
@@ -59,7 +59,7 @@ class Itineary extends BaseDocument
 
     /**
      * Cannot embed document having q GridFS file : https://github.com/doctrine/mongodb-odm/issues/911
-     * @ODM\ReferenceOne(targetDocument="Trace", simple=true, orphanRemoval=true, cascade={"all"})     
+     * @ODM\ReferenceOne(targetDocument="Trace", simple=true, orphanRemoval=true, cascade={"all"})
      */
     protected $gpx;
 
@@ -68,7 +68,7 @@ class Itineary extends BaseDocument
      */
     protected $kml;
 
-    /** 
+    /**
      * @ODM\Boolean
     */
     protected $marked;
@@ -98,14 +98,14 @@ class Itineary extends BaseDocument
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -121,14 +121,14 @@ class Itineary extends BaseDocument
     public function setEndomondoLink($endomondoLink)
     {
         $this->endomondoLink = $endomondoLink;
-    
+
         return $this;
     }
 
     /**
      * Get endomondoLink
      *
-     * @return string 
+     * @return string
      */
     public function getEndomondoLink()
     {
@@ -144,14 +144,14 @@ class Itineary extends BaseDocument
     public function setBikeLength($bikeLength)
     {
         $this->bikeLength = $bikeLength;
-    
+
         return $this;
     }
 
     /**
      * Get bikeLength
      *
-     * @return integer 
+     * @return integer
      */
     public function getBikeLength()
     {
@@ -167,14 +167,14 @@ class Itineary extends BaseDocument
     public function setDistance($distance)
     {
         $this->distance = $distance;
-    
+
         return $this;
     }
 
     /**
      * Get distance
      *
-     * @return integer 
+     * @return integer
      */
     public function getDistance()
     {
@@ -190,14 +190,14 @@ class Itineary extends BaseDocument
     public function setIncline($incline)
     {
         $this->incline = $incline;
-    
+
         return $this;
     }
 
     /**
      * Get incline
      *
-     * @return integer 
+     * @return integer
      */
     public function getIncline()
     {
@@ -213,14 +213,14 @@ class Itineary extends BaseDocument
     public function setTeaser($teaser)
     {
         $this->teaser = $teaser;
-    
+
         return $this;
     }
 
     /**
      * Get teaser
      *
-     * @return string 
+     * @return string
      */
     public function getTeaser()
     {
@@ -236,14 +236,14 @@ class Itineary extends BaseDocument
     public function setAccess($access)
     {
         $this->access = $access;
-    
+
         return $this;
     }
 
     /**
      * Get acces
      *
-     * @return string 
+     * @return string
      */
     public function getAccess()
     {
@@ -259,14 +259,14 @@ class Itineary extends BaseDocument
     public function setHikeLength($hikeLength)
     {
         $this->hikeLength = $hikeLength;
-    
+
         return $this;
     }
 
     /**
      * Get hikeLength
      *
-     * @return integer 
+     * @return integer
      */
     public function getHikeLength()
     {
@@ -282,7 +282,7 @@ class Itineary extends BaseDocument
     public function setPublished($published)
     {
         $this->published = $published;
-    
+
         return $this;
     }
 

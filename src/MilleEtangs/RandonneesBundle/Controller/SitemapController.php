@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SitemapController extends Controller
 {
-    
+
     public function sitemapAction($_format = null)
     {
         $itinearies = $this->get('doctrine_mongodb')

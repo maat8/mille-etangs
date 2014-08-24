@@ -11,7 +11,7 @@ services:
         class: MilleEtangs\RandonneesBundle\Form\Type\ArticleType
         tags:
             - {name: form.type, alias: article}
-    form_image: 
+    form_image:
         class: MilleEtangs\RandonneesBundle\Form\Type\ImageType
         tags:
             - {name: form.type, alias: image}

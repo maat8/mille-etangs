@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="itineary">
-		
+
 	<h2>{{ itineary.getName() }}</h2>
 
 	<p>{{ itineary.getTeaser()|raw }}</p>
@@ -35,7 +35,7 @@
 	{% endif %}
 
 	{# Display GMaps if itineary has a KML file #}
-	{% if itineary.getKml() is not null and itineary.getKml().getFile().getSize() > 0 %}	
+	{% if itineary.getKml() is not null and itineary.getKml().getFile().getSize() > 0 %}
     	<script type="text/javascript">
 
 	    function initialize() {
@@ -53,7 +53,7 @@
 			ctaLayer.setMap(map);
 		}
 
-		function loadScript() {			
+		function loadScript() {
 			var script = document.createElement('script');
 			script.type = 'text/javascript';
 		  	script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&' +
@@ -82,5 +82,5 @@
 	{% endif %}
 
 	{# include "MilleEtangsRandonneesBundle:Comment:form_comment.html.twig" with {"form":form_comment} only #}
-</div>	
+</div>
 {% endblock %}

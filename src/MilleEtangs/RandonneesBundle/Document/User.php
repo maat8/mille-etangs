@@ -5,13 +5,13 @@ namespace MilleEtangs\RandonneesBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-/** 
+/**
  * @ODM\Document(collection="users")
  */
 class User implements UserInterface
 {
     /**
-     * @ODM\Id     
+     * @ODM\Id
      */
     protected $id;
 
@@ -68,7 +68,7 @@ class User implements UserInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -84,7 +84,7 @@ class User implements UserInterface
     public function setUsername($username)
     {
         $this->username = $username;
-    
+
         return $this;
     }
 
@@ -104,14 +104,14 @@ class User implements UserInterface
     public function setPasswordSalt($passwordSalt)
     {
         $this->passwordSalt = $passwordSalt;
-    
+
         return $this;
     }
 
     /**
      * Get passwordSalt
      *
-     * @return string 
+     * @return string
      */
     public function getPasswordSalt()
     {

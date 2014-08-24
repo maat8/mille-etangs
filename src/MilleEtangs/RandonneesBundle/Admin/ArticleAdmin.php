@@ -18,7 +18,7 @@ class ArticleAdmin extends Admin
             ->add('publication', 'date')
         ;
     }
-    
+
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
