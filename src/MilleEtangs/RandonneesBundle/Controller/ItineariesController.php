@@ -73,7 +73,7 @@ class ItineariesController extends Controller
                 ->getRepository('MilleEtangsRandonneesBundle:Itineary')
                 ->findOneBySlug($slug);
 
-            if (!is_null($itineary)) {
+            if (!is_null($itineary) && !is_null($itineary->getKml())) {
                 $response = new Response();
                 $response->headers->set('Content-Type', "application/vnd.google-earth.kml+xml");
                 $response->setContent($itineary->getKml()->getFile()->getBytes());
