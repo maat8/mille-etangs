@@ -18,7 +18,7 @@ set :use_sudo, false
 set :webserver_user, "www-data"
 
 set :use_composer, true
-set :update_vendors, true
+set :update_vendors, false
 set :vendors_mode, "upgrade"
 set :dump_assetic_assets, true
 
