@@ -16,55 +16,55 @@ use MilleEtangs\RandonneesBundle\Document\Trace;
  */
 class TraceConverter
 {
-	private $dm;
+    private $dm;
 
-	private $file;
-	private $gpx;
-	private $kml;
+    private $file;
+    private $gpx;
+    private $kml;
 
-	/**
+    /**
      * @DI\InjectParams({
      *     "dm" = @DI\Inject("doctrine.odm.mongodb.document_manager")
      * })
      */
-	public function __construct($dm)
-	{
-		$this->dm = $dm;
-	}
+    public function __construct($dm)
+    {
+        $this->dm = $dm;
+    }
 
-	public function getGpx()
-	{
-		return $this->gpx;
-	}
+    public function getGpx()
+    {
+        return $this->gpx;
+    }
 
-	public function getKml()
-	{
-		return $this->kml;
-	}
+    public function getKml()
+    {
+        return $this->kml;
+    }
 
-	public function generateTracesFromFile(UploadedFile $file)
-	{
-		$this->file = $file;
-		$type = $file->getClientOriginalExtension();
+    public function generateTracesFromFile(UploadedFile $file)
+    {
+        $this->file = $file;
+        $type = $file->getClientOriginalExtension();
 
-		switch($type) {
-			case 'gpx':
-				$this->gpx = new Trace();
-				$this->gpx->setFile($this->file->getPathName());
-				$this->dm->persist($this->gpx);
-				$this->dm->flush();
-				$this->generateKmlFromGpx();
-				break;
-			case 'kml':
-				// TODO
-				break;
-			default:
-				throw \Exception("Format not supported");
-		}
-	}
+        switch($type) {
+            case 'gpx':
+                $this->gpx = new Trace();
+                $this->gpx->setFile($this->file->getPathName());
+                $this->dm->persist($this->gpx);
+                $this->dm->flush();
+                $this->generateKmlFromGpx();
+                break;
+            case 'kml':
+                // TODO
+                break;
+            default:
+                throw \Exception("Format not supported");
+        }
+    }
 
-	public function generateKmlFromGpx()
-	{
+    public function generateKmlFromGpx()
+    {
         $kml = Gisconverter::gpxToKml(file_get_contents($this->file));
         if (!empty($kml)) {
             // TODO : generate KML using simplexml
@@ -134,11 +134,11 @@ class TraceConverter
             $kml_file = new GridFSFile();
             $kml_file->setBytes($kml);
             $this->kml->setFile($kml_file);
-        }        
-	}
+        }
+    }
 
-	public function generateGpxFromKml()
-	{
-		// TODO
-	}
+    public function generateGpxFromKml()
+    {
+        // TODO
+    }
 }

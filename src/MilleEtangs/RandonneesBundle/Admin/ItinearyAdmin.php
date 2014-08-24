@@ -24,7 +24,10 @@ class ItinearyAdmin extends Admin
             ->add('incline')
             ->add('endomondoLink', null, array('required' => false))
             ->add('marked', null, array('required' => false))
-            ->add('gpx', 'file')
+            ->add('gpx', 'file', array(
+                'data_class' => 'MilleEtangs\RandonneesBundle\Document\Trace',
+                'required' => false
+            ))
         ;
     }
     
@@ -57,7 +60,7 @@ class ItinearyAdmin extends Admin
             }
         }
 
-        parent::create($object);
+        return parent::create($object);
     }
 
     public function update($object)
@@ -73,6 +76,6 @@ class ItinearyAdmin extends Admin
             }
         }
 
-        $this->getModelManager()->update($object);
+        return $this->getModelManager()->update($object);
     }
 }
