@@ -29,10 +29,6 @@
         <loc>{{ url }}{{ path('restaurants') }}</loc>
         <changefreq>monthly</changefreq>
     </url>
-    <url>
-        <loc>{{ url }}{{ path('contact') }}</loc>
-        <changefreq>monthly</changefreq>
-    </url>
     {% for itineary in itinearies %}
 	    <url>
 	        <loc>{{ url }}{{ path('itineary', {'slug':itineary.getSlug()}) }}</loc>

@@ -4,17 +4,22 @@ namespace MilleEtangs\RandonneesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DefaultController extends Controller
 {
+    /**
+     * @Template
+     */
     public function indexAction()
     {
         $articles = $this->get('doctrine_mongodb')->getRepository('MilleEtangsRandonneesBundle:Article')
             ->findLastPublishedArticles(3);
 
-        return $this->render('MilleEtangsRandonneesBundle:Default:index.html.twig', array(
+        return array(
             'articles' => $articles
-        ));
+        );
     }
 
     public function renderImageAction($id = null)
@@ -25,6 +30,7 @@ class DefaultController extends Controller
                 ->findOneById($id);
 
             if (!is_null($image)) {
+                // TODO use BinaryFileResponse
                 $response = new Response();
                 $response->headers->set('Content-Type', $image->getMimeType());
                 $response->setContent($image->getFile()->getBytes());
@@ -36,38 +42,59 @@ class DefaultController extends Controller
         throw $this->createNotFoundException("Le fichier n'existe pas");
     }
 
+    /**
+     * @Template
+     */
     public function eventsAction()
     {
-        return $this->render('MilleEtangsRandonneesBundle:Default:events.html.twig');
+        return array();
     }
 
+    /**
+     * @Template
+     */
     public function accomodationsAction()
     {
-        return $this->render('MilleEtangsRandonneesBundle:Default:accomodations.html.twig');
+        return array();
     }
 
+    /**
+     * @Template
+     */
     public function restaurantsAction()
     {
-        return $this->render('MilleEtangsRandonneesBundle:Default:restaurants.html.twig');
+        return array();
     }
 
+    /**
+     * @Template
+     */
     public function milleEtangsAction()
     {
-        return $this->render('MilleEtangsRandonneesBundle:Default:mille_etangs.html.twig');
+        return array();
     }
 
+    /**
+     * @Template
+     */
     public function partnersAction()
     {
-        return $this->render('MilleEtangsRandonneesBundle:Default:partners.html.twig');
+        return array();
     }
 
+    /**
+     * @Template
+     */
     public function adviceAction()
     {
-        return $this->render('MilleEtangsRandonneesBundle:Default:advice.html.twig');
+        return array();
     }
 
+    /**
+     * @Template
+     */
     public function legalAction()
     {
-        return $this->render('MilleEtangsRandonneesBundle:Default:legal.html.twig');
+        return array();
     }
 }

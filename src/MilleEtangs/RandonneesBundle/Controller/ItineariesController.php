@@ -4,10 +4,15 @@ namespace MilleEtangs\RandonneesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use MilleEtangs\RandonneesBundle\Document\Trace;
 
 class ItineariesController extends Controller
 {
+    /**
+     * @Template
+     */
     public function itineariesAction($type = null)
     {
         $repository = $this->get('doctrine_mongodb')
@@ -24,11 +29,14 @@ class ItineariesController extends Controller
                 $itinearies = $repository->findAll();
         }
 
-        return $this->render("MilleEtangsRandonneesBundle:Itinearies:itinearies.html.twig", array(
+        return array(
             'itinearies' => $itinearies
-        ));
+        );
     }
 
+    /**
+     * @Template
+     */
     public function itinearyAction($slug)
     {
         $itineary = $this->get('doctrine_mongodb')
@@ -39,9 +47,9 @@ class ItineariesController extends Controller
             throw $this->createNotFoundException('Cet itinéraire n\'existe pas');
         }
 
-        return $this->render('MilleEtangsRandonneesBundle:Itinearies:itineary.html.twig', array(
+        return array(
             'itineary' => $itineary
-        ));
+        );
     }
 
     public function downloadGpxAction($slug = null)
@@ -52,6 +60,7 @@ class ItineariesController extends Controller
                 ->findOneBySlug($slug);
 
             if (!is_null($itineary) && !is_null($itineary->getGpx())) {
+                // TODO use BinaryFileResponse
                 $response = new Response();
                 $response->headers->set('Content-Type', "application/gpx+xml");
                 $filename = $itineary->getName().'.gpx';
@@ -74,6 +83,7 @@ class ItineariesController extends Controller
                 ->findOneBySlug($slug);
 
             if (!is_null($itineary) && !is_null($itineary->getKml())) {
+                // TODO use BinaryFileResponse
                 $response = new Response();
                 $response->headers->set('Content-Type', "application/vnd.google-earth.kml+xml");
                 $response->setContent($itineary->getKml()->getFile()->getBytes());
