@@ -1,0 +1,7 @@
+knp_disqus:
+    api_key: %knp_disqus.api_key%
+    secret_key: %knp_disqus.secret_key%
+    forums:
+        articles:
+            shortname: %knp_disqus.articles.shortname%
+            # cache: 

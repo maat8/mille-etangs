@@ -1,7 +1,8 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: admin.yml }
+    - { resource: bundles/sonata.yml }
+    - { resource: bundles/disqus.yml }
 
 framework:
     #esi:             ~

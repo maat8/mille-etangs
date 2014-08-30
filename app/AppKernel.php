@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Sonata\DoctrineMongoDBAdminBundle\SonataDoctrineMongoDBAdminBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\AopBundle\JMSAopBundle(),
+            new Knp\Bundle\DisqusBundle\KnpDisqusBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
