@@ -7,7 +7,7 @@
 
 	<h2>{{ itineary.getName() }}</h2>
 
-	<p>{{ itineary.getTeaser()|raw }}</p>
+	<p>{% autoescape 'html' %}{{ itineary.getTeaser()|raw }}{% endautoescape %}</p>
 
 	<table class="table">
 		<thead>
@@ -67,10 +67,10 @@
 	{% endif %}
 
 	<h5>Accès</h5>
-	<p>{{ itineary.getAccess()|raw }}</p>
+	<p>{% autoescape 'html' %}{{ itineary.getAccess()|raw }}{% endautoescape %}</p>
 
 	<h5>Description</h5>
-	<p>{{ itineary.getDescription()|raw }}</p>
+	<p>{% autoescape 'html' %}{{ itineary.getDescription()|raw }}{% endautoescape %}</p>
 
 	{% if(itineary.getEndomondoLink() is not null) %}
 		<a href='{{ itineary.getEndomondoLink() }}'>Endomondo</a>
