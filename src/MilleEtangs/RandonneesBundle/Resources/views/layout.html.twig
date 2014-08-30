@@ -14,27 +14,29 @@
 </head>
 
 <body id="index">
-    <header id="banner" class="container">
-        <nav class="navbar navbar-inverse navbar-static-top visible-xs" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">Randonnées aux Mille Étangs</a>
-            </div>
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-inverse navbar-static-top visible-xs" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Randonnées aux Mille Étangs</a>
+                </div>
 
-            <div class="collapse navbar-collapse">
-            {{ knp_menu_render('MilleEtangsRandonneesBundle:Builder:mainMenu') }}
-            </div>
-        </nav>
+                <div class="collapse navbar-collapse">
+                {{ knp_menu_render('MilleEtangsRandonneesBundle:Builder:mainMenu') }}
+                </div>
+            </nav>
 
-        <div id="header_title" class="col-md-4 hidden-xs"><p><strong><a href="{{ path("home") }}">Randonnées aux Mille Étangs</a></strong></p></div>
-        <nav class="col-md-7 col-md-offset-1 hidden-xs">
-            {{ knp_menu_render('MilleEtangsRandonneesBundle:Builder:mainMenu') }}
-        </nav>
+            <div id="header_title" class="col-md-4 hidden-xs"><p><strong><a href="{{ path("home") }}">Randonnées aux Mille Étangs</a></strong></p></div>
+            <nav class="col-md-7 col-md-offset-1 hidden-xs">
+                {{ knp_menu_render('MilleEtangsRandonneesBundle:Builder:mainMenu') }}
+            </nav>
+        </div>
     </header>
 
     <div id="precontent" class="container">
@@ -49,9 +51,9 @@
         </section>
 
         <aside id="sidebar" class="col-md-3 hidden-xs">
-            {% block sidebar_block1 %}
+            {% block sidebar_block0 %}
             <div class="sidebar_block">
-                <h6>Conseils</h6>
+                <h5>Conseils</h5>
                 <a href="{{ path("advice") }}" class="sidebar_pic_link">
                     <img class="sidebar_pic" src="{{ asset('images/ico_conseils.jpg') }}" alt="Conseils" />
                 </a>
@@ -59,7 +61,15 @@
                     Avant de vous aventurer en randonnée, vérifiez les conseils d'usage afin de profiter d'une sortie en toute sécurité
                     <a href="{{ path("advice") }}" class="sidebar_button">Charte du<br />randonneur</a>
                 </div>
+                <div class="clearfix">
             </div>
+            {% endblock %}
+
+            {% block sidebar_block1 %}
+                <div class="sidebar_block">
+                    <h5>Météo</h5>
+                    <iframe src="http://www.meteoblue.com/fr/france/meteo-faucogney-et-la-mer/widget?&pictoicon=1&maxtemperature=1&mintemperature=1&uv=1&v=2" scrolling="0" frameborder="0" height="250px"></iframe>
+                </div>
             {% endblock %}
 
             {% block sidebar_block2 %}
@@ -99,41 +109,39 @@
             {% endblock %}
         </aside>
     </div>
-    <div class="clear"></div>
+    <div class="clearfix"></div>
 
     <footer>
-        <div class="row">
-            <div id="footer_logo" class="hidden-xs col-md-3">
-            </div>
-            <div id="footer_mentions" class="col-md-3">
-                <ul>
-                    <li><a href="#top">Haut de la page</a></li>
-                    <li>Randonnées aux Mille Étangs</li>
-                    <li>Tous droits réservés 2012 - 2013</li>
-                    <li><a href="{{ path("legal") }}">Mentions légales</a></li>
-                    <li><a href="{{ path("sitemap") }}">Plan de site</a></li>
-                </ul>
-            </div>
-            <div id="footer_menu" class="col-xs-12 col-md-3">
-                <ul>
-                    <li><a href="{{ path("home") }}">Accueil</a></li>
-                    <li><a href="{{ path("articles") }}">Actualités</a></li>
-                    <li><a href="{{ path("mille_etangs") }}">Les Milles étangs</a></li>
-                    <li><a href="{{ path("itinearies_type", {'type':"vtt"}) }}">Randonnées en VTT</a></li>
-                    <li><a href="{{ path("itinearies_type", {'type':"marche"}) }}">Randonnées à pied</a></li>
-                </ul>
-            </div>
-            <div id="footer_social" class="col-xs-12 col-md-3">
-                <span>Restez connectés</span>
-                <ul>
-                    <li><a href="#" class="facebook"></a></li>
-                    <li><a href="#" class="twitter"></a></li>
-                    <li class="clearfix"><a href="#" class="googleplus"></a></li>
-                    <li><a href="{{ path("rss") }}" class="rss"></a></li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
+        <div id="footer_logo" class="hidden-xs col-md-3">
         </div>
+        <div id="footer_mentions" class="col-md-3">
+            <ul>
+                <li><a href="#top">Haut de la page</a></li>
+                <li>Randonnées aux Mille Étangs</li>
+                <li>Tous droits réservés 2012 - 2013</li>
+                <li><a href="{{ path("legal") }}">Mentions légales</a></li>
+                <li><a href="{{ path("sitemap") }}">Plan de site</a></li>
+            </ul>
+        </div>
+        <div id="footer_menu" class="col-xs-12 col-md-3">
+            <ul>
+                <li><a href="{{ path("home") }}">Accueil</a></li>
+                <li><a href="{{ path("articles") }}">Actualités</a></li>
+                <li><a href="{{ path("mille_etangs") }}">Les Milles étangs</a></li>
+                <li><a href="{{ path("itinearies_type", {'type':"vtt"}) }}">Randonnées en VTT</a></li>
+                <li><a href="{{ path("itinearies_type", {'type':"marche"}) }}">Randonnées à pied</a></li>
+            </ul>
+        </div>
+        <div id="footer_social" class="col-xs-12 col-md-3">
+            <span>Restez connectés</span>
+            <ul>
+                <li><a href="#" class="facebook"></a></li>
+                <li><a href="#" class="twitter"></a></li>
+                <li class="clearfix"><a href="#" class="googleplus"></a></li>
+                <li><a href="{{ path("rss") }}" class="rss"></a></li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
     </footer>
 
 {% include "MilleEtangsRandonneesBundle::javascripts.html.twig" %}
