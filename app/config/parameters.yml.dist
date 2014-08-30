@@ -7,4 +7,4 @@ parameters:
     mailer_password:   ~
 
     locale:            fr
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    secret:            f40c4406cef81fedb959ce1494db4dd13247f20e
