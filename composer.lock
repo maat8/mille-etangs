@@ -4,7 +4,11 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "hash": "a9bc2d544d8b9723fd7608ff6a0d09cb",
+=======
+    "hash": "dd2271c3aba1f7706b2d99037967f874",
+>>>>>>> Use redis to store sessions
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -968,6 +972,7 @@
             "time": "2014-08-20 14:18:27"
         },
         {
+<<<<<<< HEAD
             "name": "friendsofsymfony/rest-bundle",
             "version": "dev-master",
             "target-dir": "FOS/RestBundle",
@@ -1079,6 +1084,29 @@
             "autoload": {
                 "psr-0": {
                     "Imagine": "lib/"
+=======
+            "name": "drak/native-session",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/drak/NativeSession.git",
+                "reference": "f2b14ad483605a8d4b898c260bec7512347ca600"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/drak/NativeSession/zipball/f2b14ad483605a8d4b898c260bec7512347ca600",
+                "reference": "f2b14ad483605a8d4b898c260bec7512347ca600",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/http-foundation": ">=2.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Drak": ""
+>>>>>>> Use redis to store sessions
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1087,6 +1115,7 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
                     "name": "Bulat Shakirzyanov",
                     "email": "mallluhuct@gmail.com",
                     "homepage": "http://avalanche123.com"
@@ -1101,6 +1130,16 @@
                 "image processing"
             ],
             "time": "2014-08-26 11:26:34"
+=======
+                    "name": "Karma Dordrak",
+                    "email": "drak@zikula.org",
+                    "homepage": "http://zikula.org",
+                    "role": "OO & PSR-4 migration"
+                }
+            ],
+            "description": "Native session handlers for Symfony2",
+            "time": "2013-03-11 11:07:59"
+>>>>>>> Use redis to store sessions
         },
         {
             "name": "jdorn/sql-formatter",
