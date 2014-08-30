@@ -8,3 +8,7 @@ parameters:
 
     locale:            fr
     secret:            f40c4406cef81fedb959ce1494db4dd13247f20e
+
+    knp_disqus.api_key:    none
+    knp_disqus.secret_key:    none
+    knp_disqus.articles.shortname:    "randos1000etangs"
