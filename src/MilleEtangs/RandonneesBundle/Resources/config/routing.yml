@@ -43,10 +43,6 @@ legal:
     pattern:  /mentions-legales
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:legal }
 
-contact:
-    pattern:  /contact
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:contact }
-
 sitemap:
     pattern:  /sitemap
     defaults: { _controller: MilleEtangsRandonneesBundle:Sitemap:sitemap }
