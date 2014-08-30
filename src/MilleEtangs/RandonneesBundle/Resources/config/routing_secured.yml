@@ -15,22 +15,6 @@ admin_menu:
     pattern: /menu
     defaults: { _controller: MilleEtangsRandonneesBundle:Security:menu }
 
-create_itineary:
-    pattern: /itineary/create
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:createItineary }
-
-update_itineary:
-    pattern: /itineary/update/{id}
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:updateItineary }
-
-create_article:
-    pattern: /article/create
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:createArticle }
-
-update_article:
-    pattern: /article/update/{id}
-    defaults: { _controller: MilleEtangsRandonneesBundle:Security:updateArticle }
-
 upload_image:
     pattern: /upload_image
     defaults: { _controller: MilleEtangsRandonneesBundle:Security:uploadImage}
