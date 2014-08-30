@@ -19,10 +19,9 @@ composer.phar
 # bin links created by composer dependances
 bin/phpcs
 bin/phpunit
-bin/pdepend
-bin/phpmd
 bin/doctrine-dbal
 bin/sql-formatter
+bin/security-checker
 
 # Temp files
 *.php~

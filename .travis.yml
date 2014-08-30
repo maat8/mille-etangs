@@ -23,6 +23,7 @@ script:
     - php app/console doctrine:mongodb:fixtures:load --env=test
     - bin/phpcs -v --standard=PSR2 --extensions=php src/
     - phpunit --configuration app/phpunit.xml
+    - php bin/security-checker security:check composer.lock
 
 notifications:
     email: "tuaillon.mathieu@gmail.com"

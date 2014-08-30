@@ -32,7 +32,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "~3",
-        "squizlabs/php_codesniffer": "1.*"
+        "squizlabs/php_codesniffer": "1.*",
+        "sensiolabs/security-checker": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
