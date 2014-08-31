@@ -15,3 +15,19 @@ services:
         class: MilleEtangs\RandonneesBundle\Twig\CommonExtension
         tags:
             - { name: twig.extension }
+    sonata.admin.article:
+        class: MilleEtangs\RandonneesBundle\Admin\ArticleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: "Contenu", label: "Article" }
+        arguments:
+            - ~
+            - MilleEtangs\RandonneesBundle\Document\Article
+            - ~
+    sonata.admin.itineary:
+        class: MilleEtangs\RandonneesBundle\Admin\ItinearyAdmin
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: "Contenu", label: "Itinéraire" }
+        arguments:
+            - ~
+            - MilleEtangs\RandonneesBundle\Document\Itineary
+            - ~
