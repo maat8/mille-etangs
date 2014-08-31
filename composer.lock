@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4dd618ac77ab73ef30ce1244b62374df",
+    "hash": "b597dfc13b691eecefda0389ea75b89d",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2413,16 +2413,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "2.3.x-dev",
+            "version": "v2.3.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "2c9496bc77f6f46b644ad742e0658b480b6357f8"
+                "reference": "75e07e6bde6391a6f49c8546a43740c80ac1b06b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/2c9496bc77f6f46b644ad742e0658b480b6357f8",
-                "reference": "2c9496bc77f6f46b644ad742e0658b480b6357f8",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/75e07e6bde6391a6f49c8546a43740c80ac1b06b",
+                "reference": "75e07e6bde6391a6f49c8546a43740c80ac1b06b",
                 "shasum": ""
             },
             "require": {
@@ -2504,12 +2504,14 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 },
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
                 }
             ],
             "description": "The Symfony PHP framework",
@@ -2517,7 +2519,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-08-30 07:46:13"
+            "time": "2014-07-15 14:20:44"
         },
         {
             "name": "symm/gisconverter",
