@@ -9,7 +9,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use MilleEtangs\RandonneesBundle\Document\Itineary;
-use MilleEtangs\RandonneesBundle\Document\Trace;
 
 class LoadItinearyData implements FixtureInterface, ContainerAwareInterface
 {

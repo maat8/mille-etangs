@@ -5,12 +5,7 @@ namespace MilleEtangs\RandonneesBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Security\Core\SecurityContext;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-
-use MilleEtangs\RandonneesBundle\Document\Itineary;
-use MilleEtangs\RandonneesBundle\Document\Article;
 use MilleEtangs\RandonneesBundle\Document\Image;
-use MilleEtangs\RandonneesBundle\Document\Trace;
 
 class SecurityController extends Controller
 {

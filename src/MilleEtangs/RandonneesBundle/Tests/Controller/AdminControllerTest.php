@@ -64,7 +64,8 @@ class AdminControllerTest extends WebTestCase
         $itineary_name = "Test" . uniqid();
         $form = $crawler->selectButton('btn_create_and_list')->form();
 
-        $uniqid = end(explode("=", $form->getUri()));
+        $parts = explode("=", $form->getUri());
+        $uniqid = end($parts);
 
         $form->setValues(array(
             "{$uniqid}[name]" => $itineary_name,
