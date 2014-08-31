@@ -3,23 +3,15 @@ services:
         class: MilleEtangs\RandonneesBundle\Form\Type\LoginType
         tags:
             - {name: form.type, alias: login}
-    form_itineary:
-        class: MilleEtangs\RandonneesBundle\Form\Type\ItinearyType
-        tags:
-            - {name: form.type, alias: itineary}
-    form_article:
-        class: MilleEtangs\RandonneesBundle\Form\Type\ArticleType
-        tags:
-            - {name: form.type, alias: article}
     form_image:
         class: MilleEtangs\RandonneesBundle\Form\Type\ImageType
         tags:
             - {name: form.type, alias: image}
-    form_comment:
-        class: MilleEtangs\RandonneesBundle\Form\Type\CommentType
-        tags:
-            - {name: form.type, alias: comment}
     mille_etangs.twig.itineary_extension:
         class: MilleEtangs\RandonneesBundle\Twig\ItinearyExtension
+        tags:
+            - { name: twig.extension }
+    mille_etangs.twig.common_extension:
+        class: MilleEtangs\RandonneesBundle\Twig\CommonExtension
         tags:
             - { name: twig.extension }

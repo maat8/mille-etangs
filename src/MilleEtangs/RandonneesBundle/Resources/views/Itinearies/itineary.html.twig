@@ -7,7 +7,7 @@
 
 	<h2>{{ itineary.getName() }}</h2>
 
-	<p>{% autoescape 'html' %}{{ itineary.getTeaser()|raw }}{% endautoescape %}</p>
+	<p>{{ itineary.getTeaser()|html }}</p>
 
 	<table class="table">
 		<thead>
@@ -67,10 +67,10 @@
 	{% endif %}
 
 	<h5>Accès</h5>
-	<p>{% autoescape 'html' %}{{ itineary.getAccess()|raw }}{% endautoescape %}</p>
+	<p>{{ itineary.getAccess()|html }}</p>
 
 	<h5>Description</h5>
-	<p>{% autoescape 'html' %}{{ itineary.getDescription()|raw }}{% endautoescape %}</p>
+	<p>{{ itineary.getDescription()|html }}</p>
 
 	{% if(itineary.getEndomondoLink() is not null) %}
 		<a href='{{ itineary.getEndomondoLink() }}'>Endomondo</a>
@@ -80,7 +80,5 @@
 	{% if itineary.getGpx() is not null and itineary.getGpx().getFile().getSize() > 0 %}
 		<p><a href='{{ path('download_gpx', {'slug':itineary.getSlug()}) }}' class="gpx" target="_blank">Télécharger le fichier GPX pour votre GPS</a></p>
 	{% endif %}
-
-	{# include "MilleEtangsRandonneesBundle:Comment:form_comment.html.twig" with {"form":form_comment} only #}
 </div>
 {% endblock %}
