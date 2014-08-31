@@ -48,7 +48,10 @@ class AdminControllerTest extends WebTestCase
     public function testCreateItineary()
     {
         $this->logIn();
-        $crawler = $this->client->request('GET', $this->router->generate('admin_milleetangs_randonnees_itineary_create'));
+        $crawler = $this->client->request(
+            'GET',
+            $this->router->generate('admin_milleetangs_randonnees_itineary_create')
+        );
 
         $kernel = $this->client->getKernel();
         $path = $kernel->locateResource('@MilleEtangsRandonneesBundle/Resources/tests/Plateau_des_Grilloux.gpx');
