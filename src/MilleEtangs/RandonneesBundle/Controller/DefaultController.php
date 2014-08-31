@@ -4,7 +4,6 @@ namespace MilleEtangs\RandonneesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DefaultController extends Controller
@@ -30,7 +29,6 @@ class DefaultController extends Controller
                 ->findOneById($id);
 
             if (!is_null($image)) {
-                // TODO use BinaryFileResponse
                 $response = new Response();
                 $response->headers->set('Content-Type', $image->getMimeType());
                 $response->setContent($image->getFile()->getBytes());

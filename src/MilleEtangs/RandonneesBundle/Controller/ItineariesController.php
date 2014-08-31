@@ -4,7 +4,6 @@ namespace MilleEtangs\RandonneesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use MilleEtangs\RandonneesBundle\Document\Trace;
 
@@ -60,7 +59,6 @@ class ItineariesController extends Controller
                 ->findOneBySlug($slug);
 
             if (!is_null($itineary) && !is_null($itineary->getGpx())) {
-                // TODO use BinaryFileResponse
                 $response = new Response();
                 $response->headers->set('Content-Type', "application/gpx+xml");
                 $filename = $itineary->getName().'.gpx';
@@ -83,7 +81,6 @@ class ItineariesController extends Controller
                 ->findOneBySlug($slug);
 
             if (!is_null($itineary) && !is_null($itineary->getKml())) {
-                // TODO use BinaryFileResponse
                 $response = new Response();
                 $response->headers->set('Content-Type', "application/vnd.google-earth.kml+xml");
                 $response->setContent($itineary->getKml()->getFile()->getBytes());
