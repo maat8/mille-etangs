@@ -25,6 +25,8 @@ class SecurityController extends Controller
     public function loginCheckAction()
     {
         throw new \RuntimeException("This method should not be called");
+
+        return $this->redirect($this->generateUrl('sonata_admin_dashboard'));
     }
 
     public function logoutAction()
