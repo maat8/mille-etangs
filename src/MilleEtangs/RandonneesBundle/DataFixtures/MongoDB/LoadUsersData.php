@@ -5,7 +5,6 @@ namespace MilleEtangs\RandonneesBundle\DataFixtures\MongoDB;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAware;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 use MilleEtangs\RandonneesBundle\Document\User;
 
