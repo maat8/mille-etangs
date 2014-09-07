@@ -29,3 +29,5 @@ set :writable_dirs, ["app/cache", "app/logs"]
 
 set :keep_releases,  3
 after "deploy", "deploy:cleanup"
+
+logger.level = Logger::MAX_LEVEL
