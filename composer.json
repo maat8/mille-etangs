@@ -30,7 +30,7 @@
         "knplabs/knp-menu-bundle": "~2.0",
         "knplabs/knp-disqus-bundle": "~1.1",
         "jms/di-extra-bundle": "~1.4",
-        "sonata-project/media-bundle": "dev-master",
+        "sonata-project/media-bundle": "~2.2",
         "drak/native-session": "~1.0"
     },
     "require-dev": {
