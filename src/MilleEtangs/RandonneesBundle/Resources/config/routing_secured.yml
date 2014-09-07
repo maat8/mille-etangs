@@ -8,15 +8,23 @@ login:
 login_check:
     pattern: /login_check
     defaults: { _controller: MilleEtangsRandonneesBundle:Security:loginCheck }
+    requirements:
+        _method:  POST
 
 logout:
     pattern: /logout
     defaults: { _controller: MilleEtangsRandonneesBundle:Security:logout }
+    requirements:
+        _method:  GET
 
 admin_menu:
     pattern: /menu
     defaults: { _controller: MilleEtangsRandonneesBundle:Security:menu }
+    requirements:
+        _method:  GET
 
 upload_image:
     pattern: /upload_image
     defaults: { _controller: MilleEtangsRandonneesBundle:Security:uploadImage}
+    requirements:
+        _method:  GET|POST
