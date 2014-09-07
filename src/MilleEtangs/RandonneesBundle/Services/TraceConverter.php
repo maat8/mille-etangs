@@ -56,7 +56,6 @@ class TraceConverter
                 $this->generateKmlFromGpx();
                 break;
             case 'kml':
-                // TODO
                 break;
             default:
                 throw \Exception("Format not supported");
@@ -67,7 +66,6 @@ class TraceConverter
     {
         $kml = Gisconverter::gpxToKml(file_get_contents($this->file));
         if (!empty($kml)) {
-            // TODO : generate KML using simplexml
             $kml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
                         '<kml xmlns="http://www.opengis.net/kml/2.2">
                             <Document>
