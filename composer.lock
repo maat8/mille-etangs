@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a125b661d31556e21934bcd5b3356cfa",
+    "hash": "8e29f1069da573c68beecaea254fe65e",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -4366,7 +4366,6 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "sonata-project/media-bundle": 20,
         "sensiolabs/security-checker": 20
     },
     "prefer-stable": false,
