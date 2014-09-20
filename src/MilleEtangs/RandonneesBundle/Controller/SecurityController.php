@@ -22,6 +22,11 @@ class SecurityController extends Controller
         ));
     }
 
+    public function loginCheck()
+    {
+        return $this->redirect('login');
+    }
+
     public function logoutAction()
     {
         throw new \RuntimeException("This method should not be called");
