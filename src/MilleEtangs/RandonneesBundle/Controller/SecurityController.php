@@ -22,7 +22,7 @@ class SecurityController extends Controller
         ));
     }
 
-    public function loginCheck()
+    public function loginCheckAction()
     {
         return $this->redirect('login');
     }
