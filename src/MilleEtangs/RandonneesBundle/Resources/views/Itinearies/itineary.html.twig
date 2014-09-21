@@ -15,6 +15,7 @@
 				<th>Distance</th>
 				<th>Dénivelé</th>
 				<th>Difficulté</th>
+				<th>Balisé</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -22,6 +23,7 @@
 				<td>{{ itineary.getDistance() | distance }}</td>
 				<td>{{ itineary.getIncline() | incline }}</td>
 				<td>{{ itineary.getDifficulty() | difficulty }}</td>
+				<td>{{ itineary.getMarked() ? "Oui" : "Non" }}</td>
 			</tr>
 		</tbody>
 	</table>

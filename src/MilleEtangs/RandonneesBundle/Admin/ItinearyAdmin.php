@@ -26,6 +26,7 @@ class ItinearyAdmin extends Admin
                 'data_class' => 'MilleEtangs\RandonneesBundle\Document\Trace',
                 'required' => false
             ))
+            ->add('published', null, array('required' => false))
         ;
     }
 

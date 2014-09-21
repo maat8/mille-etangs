@@ -16,16 +16,7 @@ class ItineariesController extends Controller
         $repository = $this->get('doctrine_mongodb')
             ->getRepository('MilleEtangsRandonneesBundle:Itineary');
 
-        switch($type){
-            case "vtt":
-                $itinearies = $repository->findAllByType("bike");
-                break;
-            case "marche":
-                $itinearies = $repository->findAllByType("hike");
-                break;
-            default:
-                $itinearies = $repository->findAll();
-        }
+        $itinearies = $repository->findAll();
 
         return array(
             'itinearies' => $itinearies
