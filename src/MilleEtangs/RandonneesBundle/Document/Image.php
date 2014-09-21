@@ -31,6 +31,11 @@ class Image
     protected $mimeType;
 
     /**
+     * @ODM\String
+     */
+    protected $title;
+
+    /**
      * Get id
      *
      * @return id $id
@@ -104,5 +109,27 @@ class Image
     public function getMimeType()
     {
         return $this->mimeType;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return title $title
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

@@ -34,3 +34,11 @@ services:
             - ~
             - MilleEtangs\RandonneesBundle\Document\Itineary
             - ~
+    sonata.admin.image:
+        class: MilleEtangs\RandonneesBundle\Admin\ImageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: "Média", label: "Image" }
+        arguments:
+            - ~
+            - MilleEtangs\RandonneesBundle\Document\Image
+            - ~
