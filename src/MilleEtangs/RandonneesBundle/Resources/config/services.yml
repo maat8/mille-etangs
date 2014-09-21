@@ -1,25 +1,44 @@
 services:
+    session.handler.redis:
+        class: Drak\NativeSession\NativeRedisSessionHandler
+        arguments: [tcp://localhost:6379?timeout=2]
     form_login:
         class: MilleEtangs\RandonneesBundle\Form\Type\LoginType
         tags:
             - {name: form.type, alias: login}
-    form_itineary:
-        class: MilleEtangs\RandonneesBundle\Form\Type\ItinearyType
-        tags:
-            - {name: form.type, alias: itineary}
-    form_article:
-        class: MilleEtangs\RandonneesBundle\Form\Type\ArticleType
-        tags:
-            - {name: form.type, alias: article}
     form_image:
         class: MilleEtangs\RandonneesBundle\Form\Type\ImageType
         tags:
             - {name: form.type, alias: image}
-    form_comment:
-        class: MilleEtangs\RandonneesBundle\Form\Type\CommentType
-        tags:
-            - {name: form.type, alias: comment}
     mille_etangs.twig.itineary_extension:
         class: MilleEtangs\RandonneesBundle\Twig\ItinearyExtension
         tags:
             - { name: twig.extension }
+    mille_etangs.twig.common_extension:
+        class: MilleEtangs\RandonneesBundle\Twig\CommonExtension
+        tags:
+            - { name: twig.extension }
+    sonata.admin.article:
+        class: MilleEtangs\RandonneesBundle\Admin\ArticleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: "Contenu", label: "Article" }
+        arguments:
+            - ~
+            - MilleEtangs\RandonneesBundle\Document\Article
+            - ~
+    sonata.admin.itineary:
+        class: MilleEtangs\RandonneesBundle\Admin\ItinearyAdmin
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: "Contenu", label: "Itinéraire" }
+        arguments:
+            - ~
+            - MilleEtangs\RandonneesBundle\Document\Itineary
+            - ~
+    sonata.admin.image:
+        class: MilleEtangs\RandonneesBundle\Admin\ImageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: "Média", label: "Image" }
+        arguments:
+            - ~
+            - MilleEtangs\RandonneesBundle\Document\Image
+            - ~

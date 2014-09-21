@@ -4,7 +4,6 @@ namespace MilleEtangs\RandonneesBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Symfony\Component\Validator\Constraints as Assert;
-use MilleEtangs\RandonneesBundle\Document\Comment;
 
 /**
  * @ODM\Document(collection="itinearies", repositoryClass="MilleEtangs\RandonneesBundle\Repository\ItinearyRepository")

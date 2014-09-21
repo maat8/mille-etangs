@@ -25,7 +25,7 @@ class DefaultControllerTest extends WebTestCase
 
     public function testRenderImage()
     {
-        $crawler = $this->client->request('GET', $this->router->generate('render_image', array('id' => 1)));
+        $this->client->request('GET', $this->router->generate('render_image', array('id' => 1)));
 
         $this->assertFalse($this->client->getResponse()->isSuccessful());
         $this->assertEquals($this->client->getResponse()->getStatusCode(), 404);
@@ -41,42 +41,42 @@ class DefaultControllerTest extends WebTestCase
 
     public function testEvents()
     {
-        $crawler = $this->client->request('GET', $this->router->generate('events'));
+        $this->client->request('GET', $this->router->generate('events'));
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
     }
 
     public function testAccomodations()
     {
-        $crawler = $this->client->request('GET', $this->router->generate('accomodations'));
+        $this->client->request('GET', $this->router->generate('accomodations'));
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
     }
 
     public function testRestaurants()
     {
-        $crawler = $this->client->request('GET', $this->router->generate('restaurants'));
+        $this->client->request('GET', $this->router->generate('restaurants'));
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
     }
 
     public function testPartners()
     {
-        $crawler = $this->client->request('GET', $this->router->generate('partners'));
+        $this->client->request('GET', $this->router->generate('partners'));
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
     }
 
     public function testAdvice()
     {
-        $crawler = $this->client->request('GET', $this->router->generate('advice'));
+        $this->client->request('GET', $this->router->generate('advice'));
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
     }
 
     public function testLegal()
     {
-        $crawler = $this->client->request('GET', $this->router->generate('legal'));
+        $this->client->request('GET', $this->router->generate('legal'));
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
     }

@@ -7,8 +7,7 @@ use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-// TODO : rewrite tests once Sonata Admin is installed
-class SecurityControllerTest // extends WebTestCase
+class AdminControllerTest extends WebTestCase
 {
     private $client;
     private $router;
@@ -34,19 +33,25 @@ class SecurityControllerTest // extends WebTestCase
         $this->assertTrue($this->client->getResponse()->isSuccessful());
     }
 
-    public function testMenu()
+    public function testDashboard()
     {
         $this->logIn();
-        $crawler = $this->client->request('GET', $this->router->generate('admin_menu'));
+        $crawler = $this->client->request('GET', $this->router->generate('sonata_admin_dashboard'));
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
-        $this->assertGreaterThan(0, $crawler->filter('html:contains("Administation")')->count());
+        $this->assertGreaterThan(0, $crawler->filter('html:contains("Article")')->count());
+        $this->assertGreaterThan(0, $crawler->filter('html:contains("Itinéraire")')->count());
+        $this->assertGreaterThan(0, $crawler->filter('html:contains("Ajouter")')->count());
+        $this->assertGreaterThan(0, $crawler->filter('html:contains("Liste")')->count());
     }
 
     public function testCreateItineary()
     {
         $this->logIn();
-        $crawler = $this->client->request('GET', $this->router->generate('create_itineary'));
+        $crawler = $this->client->request(
+            'GET',
+            $this->router->generate('admin_milleetangs_randonnees_itineary_create')
+        );
 
         $kernel = $this->client->getKernel();
         $path = $kernel->locateResource('@MilleEtangsRandonneesBundle/Resources/tests/Plateau_des_Grilloux.gpx');
@@ -57,63 +62,27 @@ class SecurityControllerTest // extends WebTestCase
         );
 
         $itineary_name = "Test" . uniqid();
-        $form = $crawler->selectButton('save')->form(array(
-            'itineary[name]' => $itineary_name,
-            'itineary[gpx]' => $gpx
+        $form = $crawler->selectButton('btn_create_and_list')->form();
+
+        $parts = explode("=", $form->getUri());
+        $uniqid = end($parts);
+
+        $form->setValues(array(
+            "{$uniqid}[name]" => $itineary_name,
+            "{$uniqid}[description]" => "Description",
+            "{$uniqid}[gpx]" => $gpx
         ));
 
         $this->client->submit($form);
         $crawler = $this->client->followRedirect();
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
-        $this->assertGreaterThan(0, $crawler->filter('div.alert-success')->count());
         $this->assertGreaterThan(0, $crawler->filter('html:contains("'.$itineary_name.'")')->count());
 
         $link = $crawler->selectLink("{$itineary_name}")->link();
         $this->client->click($link);
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
-        $this->assertGreaterThan(0, $crawler->filter('div.alert-success')->count());
-    }
-
-    public function testCreateArticle()
-    {
-        $this->logIn();
-        $crawler = $this->client->request('GET', $this->router->generate('create_article'));
-        $form = $crawler->selectButton('save')->form(array(
-            'article[name]' => "Article Test 0"
-        ));
-
-        $this->client->submit($form);
-        $crawler = $this->client->followRedirect();
-
-        $this->assertTrue($this->client->getResponse()->isSuccessful());
-        $this->assertGreaterThan(0, $crawler->filter('div.alert-success')->count());
-        $this->assertGreaterThan(0, $crawler->filter('html:contains("Article Test 0")')->count());
-    }
-
-    public function testUploadImage()
-    {
-        $this->logIn();
-        $crawler = $this->client->request('GET', $this->router->generate('upload_image'));
-
-        $kernel = $this->client->getKernel();
-        $path = $kernel->locateResource('@MilleEtangsRandonneesBundle/Resources/tests/logo.png');
-
-        $image = new UploadedFile(
-            $path,
-            "logo.png"
-        );
-
-        $form = $crawler->selectButton('upload')->form(array(
-            'image[file]' => $image
-        ));
-
-        $this->client->submit($form);
-        $crawler = $this->client->followRedirect();
-
-        $this->assertTrue($this->client->getResponse()->isSuccessful());
-        $this->assertGreaterThan(0, $crawler->filter('div.alert-success')->count());
     }
 
     private function logIn()

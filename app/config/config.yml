@@ -19,6 +19,7 @@ framework:
     trusted_proxies: ['127.0.0.1']
     session:
         name:        randos
+        handler_id:  session.handler.redis
 
 # Twig Configuration
 twig:
@@ -70,21 +71,3 @@ jms_di_extra:
         all_bundles: false
         bundles: [MilleEtangsBundle]
         directories: ["%kernel.root_dir%/../src"]
-
-services:
-    sonata.admin.article:
-        class: MilleEtangs\RandonneesBundle\Admin\ArticleAdmin
-        tags:
-            - { name: sonata.admin, manager_type: doctrine_mongodb, group: "Contenu", label: "Article" }
-        arguments:
-            - ~
-            - MilleEtangs\RandonneesBundle\Document\Article
-            - ~
-    sonata.admin.itineary:
-        class: MilleEtangs\RandonneesBundle\Admin\ItinearyAdmin
-        tags:
-            - { name: sonata.admin, manager_type: doctrine_mongodb, group: "Contenu", label: "Itinéraire" }
-        arguments:
-            - ~
-            - MilleEtangs\RandonneesBundle\Document\Itineary
-            - ~

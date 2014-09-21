@@ -3,7 +3,6 @@
 namespace MilleEtangs\RandonneesBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ODM\Document(collection="traces")

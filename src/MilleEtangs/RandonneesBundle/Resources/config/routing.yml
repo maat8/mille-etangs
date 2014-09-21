@@ -2,77 +2,114 @@
 home:
     pattern:  /
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:index }
+    requirements:
+        _method:  GET
 
 render_image:
     pattern: /images/{id}
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:renderImage}
+    requirements:
+        _method:  GET
 
 mille_etangs:
     pattern:  /les-mille-etangs
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:milleEtangs }
+    requirements:
+        _method:  GET
 
 events:
     pattern:  /evenements
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:events }
+    requirements:
+        _method:  GET
 
 articles:
     pattern:  /articles
     defaults: { _controller: MilleEtangsRandonneesBundle:Articles:articles }
+    requirements:
+        _method:  GET
 
 article:
     pattern:  /article/{slug}
     defaults: { _controller: MilleEtangsRandonneesBundle:Articles:article }
+    requirements:
+        _method:  GET
 
 accomodations:
     pattern:  /hebergement
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:accomodations }
+    requirements:
+        _method:  GET
 
 restaurants:
     pattern:  /restauration
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:restaurants }
+    requirements:
+        _method:  GET
 
 partners:
     pattern:  /partenaires
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:partners }
+    requirements:
+        _method:  GET
 
 advice:
     pattern:  /conseils
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:advice }
+    requirements:
+        _method:  GET
 
 legal:
     pattern:  /mentions-legales
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:legal }
+    requirements:
+        _method:  GET
 
 sitemap:
     pattern:  /sitemap
     defaults: { _controller: MilleEtangsRandonneesBundle:Sitemap:sitemap }
+    requirements:
+        _method:  GET
 
 sitemap_xml:
     pattern:  /sitemap.{_format}
     defaults: { _controller: MilleEtangsRandonneesBundle:Sitemap:sitemap }
     requirements:
-      _format:  html|xml
+        _method:  GET
+        _format:  html|xml
 
 rss:
     pattern:  /rss.xml
     defaults: { _controller: MilleEtangsRandonneesBundle:Articles:rss }
+    requirements:
+        _method:  GET
 
 render_kml:
     pattern: /kml/{slug}.kml
     defaults: { _controller: MilleEtangsRandonneesBundle:Itinearies:renderKml}
+    requirements:
+        _method:  GET
 
 download_gpx:
     pattern: /gpx/{slug}.gpx
     defaults: { _controller: MilleEtangsRandonneesBundle:Itinearies:downloadGpx}
+    requirements:
+        _method:  GET
 
 itinearies:
     pattern:  /randonnees
     defaults: { _controller: MilleEtangsRandonneesBundle:Itinearies:itinearies }
+    requirements:
+        _method:  GET
 
 itinearies_type:
     pattern:  /randonnees/{type}
     defaults: { _controller: MilleEtangsRandonneesBundle:Itinearies:itinearies }
+    requirements:
+        _method:  GET
 
 itineary:
     pattern:  /randonnee/{slug}
     defaults: { _controller: MilleEtangsRandonneesBundle:Itinearies:itineary }
+    requirements:
+        _method:  GET

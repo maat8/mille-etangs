@@ -6,7 +6,7 @@
 <div class="article">
     <small>{{ article.getPublication() | format_date }}</small>
 	<h3>{{ article.getName() }}</h3>
-	<div class="text">{{ article.getContent()|raw }}</div>
+	<div class="text">{{ article.getContent()|html }}</div>
 	<div class="comments">
 		{{ knp_disqus_render('articles',{'identifier': path('article', {'slug': article.getSlug()})}) }}
     </div>

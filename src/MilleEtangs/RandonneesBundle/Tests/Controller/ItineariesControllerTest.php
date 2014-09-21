@@ -3,7 +3,6 @@
 namespace MilleEtangs\RandonneesBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\DomCrawler\Crawler;
 
 class ItineariesControllerTest extends WebTestCase
 {
@@ -29,7 +28,7 @@ class ItineariesControllerTest extends WebTestCase
 
     public function testItineary()
     {
-        $crawler = $this->client->request('GET', $route = $this->router->generate(
+        $this->client->request('GET', $this->router->generate(
             'itineary',
             array('slug' => "circuit-de-la-mer")
         ));
@@ -40,14 +39,14 @@ class ItineariesControllerTest extends WebTestCase
     public function testItinearyGpx()
     {
         ob_start();
-        $crawler = $this->client->request('GET', $route = $this->router->generate(
+        $crawler = $this->client->request('GET', $this->router->generate(
             'download_gpx',
             array('slug' => "circuit-de-la-mer")
         ));
         $this->assertTrue($this->client->getResponse()->isSuccessful());
         $this->assertEquals($crawler->filter('gpx')->count(), 1);
 
-        $crawler = $this->client->request('GET', $route = $this->router->generate(
+        $this->client->request('GET', $this->router->generate(
             'download_gpx',
             array('slug' => 1)
         ));
@@ -59,7 +58,7 @@ class ItineariesControllerTest extends WebTestCase
     public function testItinearyKml()
     {
         ob_start();
-        $crawler = $this->client->request('GET', $route = $this->router->generate(
+        $crawler = $this->client->request('GET', $this->router->generate(
             'render_kml',
             array('slug' => "circuit-de-la-mer")
         ));
@@ -67,7 +66,7 @@ class ItineariesControllerTest extends WebTestCase
         $this->assertTrue($this->client->getResponse()->isSuccessful());
         $this->assertEquals($crawler->filter('kml')->count(), 1);
 
-        $crawler = $this->client->request('GET', $route = $this->router->generate(
+        $this->client->request('GET', $this->router->generate(
             'render_kml',
             array('slug' => 1)
         ));

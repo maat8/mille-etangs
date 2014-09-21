@@ -25,7 +25,7 @@ class ArticlesControllerTest extends WebTestCase
 
     public function testRss()
     {
-        $crawler = $this->client->request('GET', $this->router->generate('rss'));
+        $this->client->request('GET', $this->router->generate('rss'));
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
         $this->assertTrue(

@@ -23,7 +23,7 @@ xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
     <link>{{ url('article', {'slug':article.getSlug()}) }}</link>
     <comments>{{ url('article', {'slug':article.getSlug()}) }}#comments</comments>
     <pubDate>{{ article.getPublication()|date('r') }}</pubDate>
-    <description><![CDATA[{{ article.getContent()|raw() }}]]></description>
+    <description><![CDATA[{{ article.getContent()|html }}]]></description>
 </item>
 {% endfor %}
 </channel>
