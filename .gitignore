@@ -1,5 +1,6 @@
 # Bootstrap
 app/bootstrap*
+src/MilleEtangs/RandonneesBundle/Resources/public/components/*
 
 # Symfony directories
 vendor/*
