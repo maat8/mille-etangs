@@ -1,32 +1,26 @@
 {% extends 'MilleEtangsRandonneesBundle::layout.html.twig' %}
 
 {% block precontent %}
-    <div id="home_news" class="hidden-xs">
-        <img class="news_background" src="/images/mille_etangs.jpg" />
-        <div class="news_text">
-        	<div>
-                <a href="{{ path('itineary', {'slug':'le-tour-de-la-mer'}) }}"><h3>Circuit de la Mer</h3></a>
-                <p>Découvrez les Mille Etangs en parcourant le plateau en passant par les villages de La Mer et de Beulotte Saint Laurent.</p>
-            </div>
+    <div id="home-news" class="hidden-xs">
+        <div class="news-text">
+            <a href="{{ path('itineary', {'slug':'le-tour-de-la-mer'}) }}"><h3>Circuit de la Mer</h3></a>
+            <p>Découvrez les Mille Etangs en parcourant le plateau en passant par les villages de La Mer et de Beulotte Saint Laurent.</p>
         </div>
     </div>
 {% endblock %}
 
 {% block body %}
-    <div id="home_text">
-        <h2>Actualités</h2>
+    <div class="col-md-12">
+        <h2>Dernières actualités</h2>
+        <div class="col-md-4 col-sm-12">
         {% for article in articles %}
             {% include "MilleEtangsRandonneesBundle:Articles:view.html.twig" with {"article":article} only %}
             <hr />
         {% endfor %}
-        <a href="{{ path("articles") }}" class="link_all_articles">Voir toutes les actualités</a>
+        </div>
     </div>
-    <div id="home_links">
-        <div id="home_mille_etangs">
-        </div>
-        <div id="home_vtt">
-        </di>
-        <div id="home_randonnees">
-        </div>
+
+    <div class="col-md-12">
+        <a href="{{ path("articles") }}" class="green">Voir toutes les actualités</a>
     </div>
 {% endblock %}

@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Sonata\DoctrineMongoDBAdminBundle\SonataDoctrineMongoDBAdminBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\AopBundle\JMSAopBundle(),
+            new Sp\BowerBundle\SpBowerBundle(),
             new Knp\Bundle\DisqusBundle\KnpDisqusBundle(),
         );
 

@@ -1,0 +1,9 @@
+{
+    "name": "mille-etangs-randonnees-bundle",
+    "dependencies": {
+        "jquery": "~1.11",
+        "components-font-awesome": "~4",
+        "bootstrap": "~3",
+        "isotope": "~2"
+    }
+}
