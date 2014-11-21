@@ -21,7 +21,7 @@ class LoadItinearyData extends ContainerAware implements FixtureInterface
             'Découvrez les Mille Etangs en parcourant le plateau depuis le village de La Mer.'
         );
         $itineary->setAccess('A partir de Faucogney, prenez ...');
-        $itineary->setMoutainBikeLength(120);
+        $itineary->setMountainBikeLength(120);
         $itineary->setDistance(17000);
         $itineary->setDifficulty(2);
         $itineary->setPublished(true);
