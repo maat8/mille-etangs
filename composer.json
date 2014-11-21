@@ -9,7 +9,7 @@
         "php": ">=5.3.8",
         "ext-mongo": ">=1.2.12,<1.6-dev",
         "ext-redis": "*",
-        "symfony/symfony": "2.3.19",
+        "symfony/symfony": "2.3.*",
         "symfony/assetic-bundle": "2.3.*",
         "symfony/monolog-bundle": "2.3.*",
         "doctrine/doctrine-bundle": "~1.3",
