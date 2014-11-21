@@ -10,6 +10,7 @@ services:
 before_install:    
     - phpenv config-add phpconfig.ini
     - chmod +x bin/install.sh
+    - npm install bower
     - npm install less
     - npm install uglify-js
     - npm install uglifycss
