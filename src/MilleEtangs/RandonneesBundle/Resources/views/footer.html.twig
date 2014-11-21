@@ -1,17 +1,14 @@
 <footer>
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-8">
         <ul>
             <li><a href="{{ path("home") }}">Accueil</a></li>
             <li><a href="{{ path("articles") }}">Actualités</a></li>
             <li><a href="{{ path("mille_etangs") }}">Les Milles étangs</a></li>
-            <li><a href="{{ path("itinearies_type", {'type':"vtt"}) }}">Randonnées en VTT</a></li>
-            <li><a href="{{ path("itinearies_type", {'type':"marche"}) }}">Randonnées à pied</a></li>
             <li><a href="{{ path("legal") }}">Mentions légales</a></li>
             <li><a href="{{ path("sitemap") }}">Plan de site</a></li>
         </ul>
     </div>
     <div class="col-sm-12 col-md-4">
-        <span>Restez connectés</span>
         <ul>
             <li><a><i class="fa fa-2x fa-facebook"></i></a></li>
             <li><a><i class="fa fa-2x fa-twitter"></i></a></li>
@@ -19,7 +16,7 @@
             <li><a href="{{ path("rss") }}"><i class="fa fa-2x fa-rss"></i></a></li>
         </ul>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 text-center">
         Randonnées aux Mille Étangs - Tous droits réservés 2012 - {{ date()|format_date("Y") }}
     </div>
     <div class="clearfix"></div>

@@ -28,8 +28,8 @@
 		</tbody>
 	</table>
 
-	{% if itineary.getBikeLength() > 0 %}
-		<p>Durée VTT <strong>{{ itineary.getBikeLength() }} minutes</strong></p>
+	{% if itineary.getMountainBikeLength() > 0 %}
+		<p>Durée VTT <strong>{{ itineary.getMountainBikeLength() }} minutes</strong></p>
 	{% endif %}
 
 	{% if itineary.getHikeLength() > 0 %}

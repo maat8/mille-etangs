@@ -4,31 +4,15 @@
 
 {% block body %}
 	<h1>Randonnées</h1>
-
-	<table class="table">
-        <thead>
-            <tr>
-                <th>Circuit</th>
-                <th>Distance</th>
-                <th>Dénivelé</th>
-                <th>Difficulté</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for itineary in itinearies %}
-            <tr>
-                <td><a href="{{ path('itineary', {'slug': itineary.getSlug()}) }}">{{ itineary.getName() }}</a></td>
-                <td>{{ itineary.getDistance() | distance }}</td>
-                <td>{{ itineary.getIncline() | incline }}</td>
-                <td>{{ itineary.getDifficulty() | difficulty }}</td>
-                <td>{{ itineary.getMarked() }}</td>
-            </tr>
-        {% endfor %}
-        <tbody>
-    </table>
+	
+    <div class="itinearies">
+    {% for itineary in itinearies %}
+        {% include "MilleEtangsRandonneesBundle:Itinearies:view.html.twig" with {"itineary":itineary} only %}
+    {% endfor %}
 
     <p class="disclaimer">
     Les parcours non balisés proposés par le site Randonnées aux Mille Etangs n'ont pas fait l'objet d'une étude cadastrale. Il est donc possible que ceux ci empruntent des propriétés privées.
     Le fait d'emprunter ces circuits relève donc de la responsabilité individuelle des usagers et Randonnées aux Mille Etangs se dégage de toute responsabilité concernant d'éventuels incidents pouvant survenir sur les circuits proposés. Consultez les <a href="{{ path('legal') }}">mentions légales</a> pour en savoir plus.
     Avant de partir en randonnée, n'oubliez pas de consulter nos <a href="{{ path('advice') }}">conseils</a> !</p>
+    </div>
 {% endblock %}

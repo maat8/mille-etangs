@@ -1,5 +1,5 @@
+@import "../../public/components/bootstrap/less/bootstrap.less";
 @import "../../public/components/components-font-awesome/less/font-awesome.less";
-@fa-font-path: "/bundles/milleetangsrandonnees/components/components-font-awesome/fonts";
 
 @custom_green: rgb(49, 152, 123);
 @custom_black: rgb(35, 35, 35);
@@ -27,6 +27,13 @@ body {
         text-transform: uppercase;
     }
 
+    h5 {
+        .text-center;
+        margin:10px 30%;
+        padding:10px 0;
+        border-bottom: 1px solid @custom_green;
+    }
+
     a {
         outline: 0;
     }
@@ -49,30 +56,43 @@ body {
     p {margin-bottom: 1.143em;}
     * p:last-child {margin-bottom: 0;}
 
+    .btn {
+        .text-center;
+        border-radius: 0;
+    }
+
     section#content {
         display:block;    
         margin-bottom:20px;
-        padding:10px;        
+        padding: 10px 0;        
     }
 
     aside#prefooter {
-        background-color: @custom_green;
+        background-color: white; // @custom_green;
     }
 
     footer{
     	background-color: @custom_black;
-        padding-top:25px;
+        color:white;
+        padding:25px 0;
 
         ul {
             list-style: none outside none;
+            padding: 5px 0;
+        }
+
+        ul li {
+            display: inline;
+            margin:10px 10px;
+
+            &:first-child {
+                margin-left: 0;
+            }
         }
 
         a, a:link, :visited {
             text-decoration: none;
-        }
-
-        .fa {
-            color: white;
+            color:white;
         }
     }
 
@@ -105,12 +125,42 @@ body {
         }
     }
 
+    .bg-green {
+        background-color: @custom_green;
+        color: white !important;
+    }
+
     .green {
         color: @custom_green;
     }
 
     .black {
         color: @custom_black;
+    }
+
+    .weather iframe {
+        display:block;
+        height:250px;
+        width:220px;
+        margin: auto;
+    }
+
+    .itinearies .fa {
+        .bg-green;
+        border-radius: 50%;
+        padding: 10px;
+
+        &.fa-difficulty-1 {
+            background-color: green;
+        }
+
+        &.fa-difficulty-2 {
+            background-color: orange;
+        }
+
+        &.fa-difficulty-3 {
+            background-color: red;
+        }
     }
 
     .itineary #map {

@@ -1,0 +1,39 @@
+<a href="{{ path('itineary', {'slug': itineary.getSlug()}) }}">
+    <div>
+        <h6>{{ itineary.getName() }}</h6>
+
+        <div>
+        
+            <i class="fa fa-trophy fa-difficulty-{{ itineary.getDifficulty() }}" title="Difficulté : {{ itineary.getDifficulty()|difficulty }}"></i>
+
+            {# Hike icon #}
+            {% if itineary.getHikeLength() > 0 %}
+                <i class="fa fa-male" title="Marche"></i>
+            {% endif %}
+
+            {# Bycicle icon #}
+            {% if itineary.getRoadBikeLength() > 0 %}
+                <i class="fa fa-road" title="Vélo de route"></i>
+            {% endif %}
+
+            {# Mountain bike icon #}
+            {% if itineary.getMountainBikeLength() > 0 %}
+                <i class="fa fa-bicycle" title="VTT"></i>
+            {% endif %}
+
+            {# Flagged icon #}
+            {% if itineary.getMarked() %}
+                <i class="fa fa-flag" title="Balisé"></i>
+            {% endif %}
+
+            {# {% if itineary.getKml() is not null and itineary.getKml().getFile().getSize() > 0 %} #}
+                <i class="fa fa-location-arrow" title="Parcours GPS"></i>
+            {# {% endif %} #}
+        </div>
+        <div>
+            {{ itineary.getDistance() | distance }}
+            <i class="fa fa-area-chart" title="Dénivellé"></i> {{ itineary.getIncline() | incline }}
+        </div>
+    </div>
+</a>
+                

@@ -57,22 +57,19 @@
 
     <aside id="prefooter" class="col-md-12">
         {% block sidebar_block0 %}
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-4 col-md-offset-1 col-sm-12">
             <h5>Conseils</h5>
-            <a href="{{ path("advice") }}" class="sidebar_pic_link">
-                <img class="sidebar-pic" src="{{ asset('images/ico_conseils.jpg') }}" alt="Conseils" />
-            </a>
-            <div class="sidebar-content">
-                Avant de vous aventurer en randonnée, vérifiez les conseils d'usage afin de profiter d'une sortie en toute sécurité
-                <a href="{{ path("advice") }}" class="sidebar-button">Charte du<br />randonneur</a>
+            <div class="text-center">
+                <p class="">Avant de vous aventurer en randonnée, vérifiez les conseils d'usage afin de profiter d'une sortie en toute sécurité</p>
+                <a href="{{ path("advice") }}" class="btn bg-green">Charte du randonneur</a>
             </div>
         </div>
         {% endblock %}
 
         {% block sidebar_block1 %}
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-4 col-md-offset-2 col-sm-12 weather">
                 <h5>Météo</h5>
-                <iframe src="http://www.meteoblue.com/fr/france/meteo-faucogney-et-la-mer/widget?&pictoicon=1&maxtemperature=1&mintemperature=1&uv=1&v=2" scrolling="0" frameborder="0" height="250px"></iframe>
+                <iframe src="http://www.meteoblue.com/fr/france/meteo-faucogney-et-la-mer/widget?&pictoicon=1&maxtemperature=1&mintemperature=1&uv=1&v=2" scrolling="0" frameborder="0"></iframe>
             </div>
         {% endblock %}
     </aside>
