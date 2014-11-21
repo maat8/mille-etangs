@@ -16,10 +16,12 @@ class ItinearyAdmin extends Admin
             ->add('teaser', 'textarea', array('required' => false))
             ->add('access', 'textarea', array('required' => false))
             ->add('description', 'textarea')
-            ->add('bikeLength')
+            ->add('mountainBikeLength')
+            ->add('roadBikeLength')
             ->add('hikeLength')
             ->add('distance')
             ->add('incline')
+            ->add('difficulty')
             ->add('endomondoLink', null, array('required' => false))
             ->add('marked', null, array('required' => false))
             ->add('gpx', 'file', array(
