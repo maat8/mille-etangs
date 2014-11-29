@@ -5,36 +5,12 @@
 {% block body %}
 <div class="itineary">
 
-	<h2>{{ itineary.getName() }}</h2>
-
-	<p>{{ itineary.getTeaser()|html }}</p>
-
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Distance</th>
-				<th>Dénivelé</th>
-				<th>Difficulté</th>
-				<th>Balisé</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>{{ itineary.getDistance() | distance }}</td>
-				<td>{{ itineary.getIncline() | incline }}</td>
-				<td>{{ itineary.getDifficulty() | difficulty }}</td>
-				<td>{{ itineary.getMarked() }}</td>
-			</tr>
-		</tbody>
-	</table>
-
-	{% if itineary.getMountainBikeLength() > 0 %}
-		<p>Durée VTT <strong>{{ itineary.getMountainBikeLength() }} minutes</strong></p>
-	{% endif %}
-
-	{% if itineary.getHikeLength() > 0 %}
-		<p>Durée à pied <strong>{{ itineary.getHikeLength() }} min</strong></p>
-	{% endif %}
+	<div class="teaser">
+		<div class="container">
+			<h2>{{ itineary.getName() }}</h2>
+			<p>{{ itineary.getTeaser()|html }}</p>
+		</div>
+	</div>
 
 	{# Display GMaps if itineary has a KML file #}
 	{% if itineary.getKml() is not null and itineary.getKml().getFile().getSize() > 0 %}
@@ -68,19 +44,70 @@
 		<div id="map"></div>
 	{% endif %}
 
-	<h5>Accès</h5>
-	<p>{{ itineary.getAccess()|html }}</p>
+	<div class="container">
+		<div class="col-xs-12 col-md-3 col-md-offset-1">
+			<h5>Caractéristiques</h5>
+			<table>
+				<tr>
+					<td>Distance</td>
+					<td class="text-right">{{ itineary.getDistance() | distance }}</td>
+				</tr>
+				<tr>
+					<td>Dénivellé</td>
+					<td class="text-right">{{ itineary.getIncline() | incline }}</td>
+				</tr>
+				<tr>
+					<td>Difficulté</td>
+					<td class="text-right">{{ itineary.getDifficulty() | difficulty }}</td>
+				</tr>
+				<tr>
+					<td>Balisé</td>
+					<td class="text-right">{{ itineary.getMarked()|displayBoolean }}</td>
+				</tr>
 
-	<h5>Description</h5>
-	<p>{{ itineary.getDescription()|html }}</p>
+				{% if itineary.getMountainBikeLength() > 0 %}
+					<tr>
+						<td>Durée VTT</td>
+						<td class="text-right">{{ itineary.getMountainBikeLength() }} minutes</td>
+					</tr>
+				{% endif %}
 
-	{% if(itineary.getEndomondoLink() is not null) %}
-		<a href='{{ itineary.getEndomondoLink() }}'>Endomondo</a>
-	{% endif %}
+				{% if itineary.getHikeLength() > 0 %}
+					<tr>
+						<td>Durée à pied</td>
+						<td class="text-right">{{ itineary.getHikeLength() }} minutes</td>
+					</tr>
+				{% endif %}
 
-	{# Download link for GPX file #}
-	{% if itineary.getGpx() is not null and itineary.getGpx().getFile().getSize() > 0 %}
-		<p><a href='{{ path('download_gpx', {'slug':itineary.getSlug()}) }}' class="gpx" target="_blank">Télécharger le fichier GPX pour votre GPS</a></p>
-	{% endif %}
+				{# Download link for GPX file #}
+				{% if itineary.getGpx() is not null and itineary.getGpx().getFile().getSize() > 0 %}
+					<tr>
+						<td colspan="2">
+							<a href='{{ path('download_gpx', {'slug':itineary.getSlug()}) }}' class="gpx" target="_blank">
+							<i class="fa fa-location-arrow" title="Tracé GPS"></i>
+							Téléchargez le tracé GPS
+							</a>
+						</td>
+					</tr>
+				{% endif %}
+
+				{% if(itineary.getEndomondoLink() is not null) %}
+					<tr>
+						<td colspan="2">
+							<a href='{{ itineary.getEndomondoLink() }}'>Endomondo</a>
+						</td>
+					</tr>
+				{% endif %}
+
+			</table>
+		</div>
+		<div class="col-xs-12 col-md-5 col-md-offset-2">
+			<h5>Accès</h5>
+			<p>{{ itineary.getAccess()|html }}</p>
+
+			<h5>Description</h5>
+			<p>{{ itineary.getDescription()|html }}</p>
+		</div>
+	</div>
 </div>
 {% endblock %}
