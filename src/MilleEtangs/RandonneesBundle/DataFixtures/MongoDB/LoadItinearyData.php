@@ -22,8 +22,10 @@ class LoadItinearyData extends ContainerAware implements FixtureInterface
         );
         $itineary->setAccess('A partir de Faucogney, prenez ...');
         $itineary->setMountainBikeLength(120);
+        $itineary->setMountainBikeLength(240);
         $itineary->setDistance(17000);
-        $itineary->setDifficulty(2);
+        $itineary->setMarked(true);
+        $itineary->setDifficulty(1);
         $itineary->setPublished(true);
 
         $file = new UploadedFile(
@@ -35,6 +37,16 @@ class LoadItinearyData extends ContainerAware implements FixtureInterface
         $traceConverter->generateTracesFromFile($file);
         $itineary->setGpx($traceConverter->getGpx());
         $itineary->setKml($traceConverter->getKml());
+
+        $manager->persist($itineary);
+        $manager->flush();
+
+        $itineary = new Itineary();
+        $itineary->setName('Le plateau des grilloux');
+        $itineary->setMountainBikeLength(60);
+        $itineary->setDistance(11000);
+        $itineary->setDifficulty(2);
+        $itineary->setPublished(true);
 
         $manager->persist($itineary);
         $manager->flush();

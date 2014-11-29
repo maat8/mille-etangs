@@ -2,17 +2,87 @@
 
 {% block title %}Randonnées | {{ parent()}}{% endblock %}
 
-{% block body %}
-	<h1>Randonnées</h1>
-	
-    <div class="itinearies">
-    {% for itineary in itinearies %}
-        {% include "MilleEtangsRandonneesBundle:Itinearies:view.html.twig" with {"itineary":itineary} only %}
-    {% endfor %}
+{% block javascript %}
+    <script type="text/javascript">
+        var $container;
+        $(document).ready(function(){
+            $container = $('.itinearies').isotope({
+                itemSelector: '.itineary',
+                layoutMode: 'fitRows',
+                getSortData: {
+                    distance: function( itemElem ) {
+                        var distance = $( itemElem ).attr('data-distance');
+                        return parseFloat( distance.replace( /[\(\)]/g, '') );
+                    },
+                    incline: function( itemElem ) {
+                        var incline = $( itemElem ).attr('data-incline');
+                        return parseFloat( incline.replace( /[\(\)]/g, '') );
+                    },
+                    published: function( itemElem ) {
+                        var published = $( itemElem ).attr('data-published');
+                        return parseFloat( published.replace( /[\(\)]/g, '') );
+                    }
+              }
+            });
+            $('#filters a').on( 'click', function() {
+                var filterValue = $(this).attr('data-filter');
+                $container.isotope({ filter: filterValue });
+            });
+            $('#sort a').on( 'click', function() {
+                var filterValue = $(this).attr('data-sort-by');
+                $container.isotope({ sort: filterValue });
+            });
+        });
+    </script>
+{% endblock %}
 
-    <p class="disclaimer">
-    Les parcours non balisés proposés par le site Randonnées aux Mille Etangs n'ont pas fait l'objet d'une étude cadastrale. Il est donc possible que ceux ci empruntent des propriétés privées.
-    Le fait d'emprunter ces circuits relève donc de la responsabilité individuelle des usagers et Randonnées aux Mille Etangs se dégage de toute responsabilité concernant d'éventuels incidents pouvant survenir sur les circuits proposés. Consultez les <a href="{{ path('legal') }}">mentions légales</a> pour en savoir plus.
-    Avant de partir en randonnée, n'oubliez pas de consulter nos <a href="{{ path('advice') }}">conseils</a> !</p>
+{% block body %}
+    <div class="container">
+        <h1>Randonnées</h1>
+
+        <div class="itinearies container">
+            <div id="filters" class="col-xs-12 hidden-xs">
+                <a href="javascript:void(0);" class="col-sm-3" data-filter="*">
+                    <i class="fa fa-undo" title="Balisé"></i> Voir tout
+                </a>
+                {# <a href="javascript:void(0);" data-filter=".itineary-mountainbike"> #}
+                {#     VTT #}
+                {# </a> #}
+                {# <a href="javascript:void(0);" data-filter=".itineary-hike"> #}
+                {#     Marche #}
+                {# </a> #}
+                <a href="javascript:void(0);" class="col-sm-3" data-filter=".itineary-marked">
+                    <i class="fa fa-flag" title="Balisé"></i> Balisé
+                </a>
+                <a href="javascript:void(0);" class="col-sm-3" data-filter=".itineary-marked">
+                    <i class="fa fa-location-arrow" title="Tracé GPS"></i> Tracé GPS
+                </a>
+            </div>
+
+            <div id="sorts" class="col-sm-12 hidden">
+                <a href="javascript:void(0);" class="col-sm-3" data-sort-by="published">
+                    <i class="fa fa-calendar" title="Date de publication"></i> Date de publication
+                </a>
+                <a href="javascript:void(0);" class="col-sm-3" data-sort-by="distance">
+                    <i class="fa fa-area-chart" title="Distance"></i> Distance
+                </a>
+                <a href="javascript:void(0);" class="col-sm-3" data-sort-by="incline">
+                    <i class="fa fa-line-chart" title="Dénivellé"></i> Dénivellé
+                </a>
+            </div>
+
+            <div class="col-sm-12">
+            {% for itineary in itinearies %}
+                {% include "MilleEtangsRandonneesBundle:Itinearies:view.html.twig" with {"itineary":itineary} only %}
+            {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <p class="disclaimer">
+            Les parcours non balisés proposés par le site Randonnées aux Mille Etangs n'ont pas fait l'objet d'une étude cadastrale. Il est donc possible que ceux ci empruntent des propriétés privées.
+            Le fait d'emprunter ces circuits relève donc de la responsabilité individuelle des usagers et Randonnées aux Mille Etangs se dégage de toute responsabilité concernant d'éventuels incidents pouvant survenir sur les circuits proposés. Consultez les <a href="{{ path('legal') }}">mentions légales</a> pour en savoir plus.
+            Avant de partir en randonnée, n'oubliez pas de consulter nos <a href="{{ path('advice') }}">conseils</a> !</p>
+        </div>
     </div>
 {% endblock %}
