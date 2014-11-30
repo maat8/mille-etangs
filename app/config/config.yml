@@ -75,5 +75,6 @@ jms_di_extra:
 
 # Bower
 sp_bower:
+    bin: /usr/local/bin/bower
     bundles:
         MilleEtangsRandonneesBundle: ~
