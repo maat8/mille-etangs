@@ -5,3 +5,13 @@
 %}
     <script type="text/javascript" src="{{ asset(asset_url) }}"></script>
 {% endjavascripts %}
+
+<!--[if lt IE 9]>
+    {% javascripts filter="?uglifyjs2" output="js/ie8.js"
+        "@MilleEtangsRandonneesBundle/Resources/public/components/respond/src/respond.js"
+        "@MilleEtangsRandonneesBundle/Resources/public/components/html5shiv/dist/html5shiv.js"
+
+    %}
+        <script type="text/javascript" src="{{ asset(asset_url) }}"></script>
+    {% endjavascripts %}    
+<![endif]-->
