@@ -2,8 +2,6 @@
 
 namespace MilleEtangs\RandonneesBundle\Twig;
 
-use MilleEtangs\RandonneesBundle\Document\Itineary;
-
 class ItinearyExtension extends \Twig_Extension
 {
     public function getFilters()
