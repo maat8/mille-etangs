@@ -12,14 +12,14 @@
 {% block body %}
     <div class="col-md-12">
         <h2>Dernières actualités</h2>
-        <div class="col-md-4 col-sm-12">
         {% for article in articles %}
+            <div class="col-md-4 col-sm-12">
             {% include "MilleEtangsRandonneesBundle:Articles:view.html.twig" with {"article":article} only %}
+            </div>
         {% endfor %}
-        </div>
     </div>
 
-    <div class="col-md-12 text-center">
+    <div class="col-md-12 text-center top15">
         <a href="{{ path("articles") }}" class="green">Voir toutes les actualités</a>
     </div>
 {% endblock %}
