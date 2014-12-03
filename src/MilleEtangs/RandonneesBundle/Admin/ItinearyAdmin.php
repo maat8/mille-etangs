@@ -16,10 +16,12 @@ class ItinearyAdmin extends Admin
             ->add('teaser', 'textarea', array('required' => false))
             ->add('access', 'textarea', array('required' => false))
             ->add('description', 'textarea')
-            ->add('bikeLength')
-            ->add('hikeLength')
+            ->add('mountainBikeLength', null, array('required' => false))
+            ->add('roadBikeLength', null, array('required' => false))
+            ->add('hikeLength', null, array('required' => false))
             ->add('distance')
             ->add('incline')
+            ->add('difficulty')
             ->add('endomondoLink', null, array('required' => false))
             ->add('marked', null, array('required' => false))
             ->add('gpx', 'file', array(
@@ -50,31 +52,23 @@ class ItinearyAdmin extends Admin
     {
         if (!is_null($object->getGpx())) {
             $traceConverter = $this->getConfigurationPool()->getContainer()->get('trace_converter');
-            try {
-                $traceConverter->generateTracesFromFile($object->getGpx());
-                $object->setGpx($traceConverter->getGpx());
-                $object->setKml($traceConverter->getKml());
-            } catch (\Exception $e) {
-                // TODO
-            }
+            $traceConverter->generateTracesFromFile($object->getGpx());
+            $object->setGpx($traceConverter->getGpx());
+            $object->setKml($traceConverter->getKml());
         }
 
         return parent::create($object);
     }
 
-    public function update($object)
+    public function preUpdate($object)
     {
         if (!is_null($object->getGpx())) {
             $traceConverter = $this->getConfigurationPool()->getContainer()->get('trace_converter');
-            try {
-                $traceConverter->generateTracesFromFile($object->getGpx());
-                $object->setGpx($traceConverter->getGpx());
-                $object->setKml($traceConverter->getKml());
-            } catch (\Exception $e) {
-                // TODO
-            }
+            $traceConverter->generateTracesFromFile($object->getGpx());
+            $object->setGpx($traceConverter->getGpx());
+            $object->setKml($traceConverter->getKml());
+        } else {
+            // Keep old GPX
         }
-
-        return $this->getModelManager()->update($object);
     }
 }

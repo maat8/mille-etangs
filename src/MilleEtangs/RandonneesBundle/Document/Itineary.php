@@ -30,7 +30,14 @@ class Itineary extends BaseDocument
      * @Assert\Range(min=0)
      * @ODM\Index
      */
-    protected $bikeLength = 0;
+    protected $mountainBikeLength = 0;
+
+    /**
+     * @ODM\Int
+     * @Assert\Range(min=0)
+     * @ODM\Index
+     */
+    protected $roadBikeLength = 0;
 
     /**
      * @ODM\Int
@@ -57,7 +64,7 @@ class Itineary extends BaseDocument
     protected $endomondoLink;
 
     /**
-     * Cannot embed document having q GridFS file : https://github.com/doctrine/mongodb-odm/issues/911
+     * Cannot embed document having a GridFS file : https://github.com/doctrine/mongodb-odm/issues/911
      * @ODM\ReferenceOne(targetDocument="Trace", simple=true, orphanRemoval=true, cascade={"all"})
      */
     protected $gpx;
@@ -135,26 +142,49 @@ class Itineary extends BaseDocument
     }
 
     /**
-     * Set bikeLength
+     * Set mountainBikeLength
      *
-     * @param integer $bikeLength
+     * @param integer $mountainBikeLength
      * @return Itineary
      */
-    public function setBikeLength($bikeLength)
+    public function setMountainBikeLength($mountainBikeLength)
     {
-        $this->bikeLength = $bikeLength;
+        $this->mountainBikeLength = $mountainBikeLength;
 
         return $this;
     }
 
     /**
-     * Get bikeLength
+     * Get mountainBikeLength
      *
      * @return integer
      */
-    public function getBikeLength()
+    public function getMountainBikeLength()
     {
-        return $this->bikeLength;
+        return $this->mountainBikeLength;
+    }
+
+    /**
+     * Set roadBikeLength
+     *
+     * @param integer $RoadbikeLength
+     * @return Itineary
+     */
+    public function setRoadBikeLength($roadBikeLength)
+    {
+        $this->roadBikeLength = $roadBikeLength;
+
+        return $this;
+    }
+
+    /**
+     * Get roadBikeLength
+     *
+     * @return integer
+     */
+    public function getRoadBikeLength()
+    {
+        return $this->roadBikeLength;
     }
 
     /**

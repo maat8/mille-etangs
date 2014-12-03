@@ -8,6 +8,7 @@ class CommonExtension extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFilter('html', array($this, 'html'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFilter('displayBoolean', array($this, 'displayBoolean'))
         );
     }
 
@@ -19,5 +20,10 @@ class CommonExtension extends \Twig_Extension
     public function getName()
     {
         return 'common_extension';
+    }
+
+    public function displayBoolean($boolean)
+    {
+        return ($boolean) ? "Oui" : "Non";
     }
 }

@@ -52,7 +52,7 @@ class TraceConverter
                 $this->gpx = new Trace();
                 $this->gpx->setFile($this->file->getPathName());
                 $this->dm->persist($this->gpx);
-                $this->dm->flush();
+                // Do not flush here : we could be setting gpx/kml itineary fields
                 $this->generateKmlFromGpx();
                 break;
             case 'kml':

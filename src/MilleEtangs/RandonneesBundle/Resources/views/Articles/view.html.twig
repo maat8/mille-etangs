@@ -1,5 +1,5 @@
 <div class="article">
     <small>{{ article.getPublication() | format_date() }}</small>
 	<h3><a href="{{ path('article', {'slug':article.getSlug()}) }}">{{ article.getName() }}</a></h3>
-	<div class="text">{{ article.getContent()|html }}</div>
+	<div class="text">{{ article.getContent()|striptags|truncate(250)|html }}</div>
 </div>

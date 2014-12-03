@@ -5,6 +5,7 @@ namespace MilleEtangs\RandonneesBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 
 class DefaultController extends Controller
 {
@@ -21,6 +22,9 @@ class DefaultController extends Controller
         );
     }
 
+    /**
+     * @Cache(expires="tomorrow")
+     */
     public function renderImageAction($id = null)
     {
         if (!is_null($id)) {

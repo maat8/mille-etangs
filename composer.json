@@ -9,7 +9,7 @@
         "php": ">=5.3.8",
         "ext-mongo": ">=1.2.12,<1.6-dev",
         "ext-redis": "*",
-        "symfony/symfony": "2.3.19",
+        "symfony/symfony": "2.3.*",
         "symfony/assetic-bundle": "2.3.*",
         "symfony/monolog-bundle": "2.3.*",
         "doctrine/doctrine-bundle": "~1.3",
@@ -23,14 +23,14 @@
         "kriswallsmith/assetic": "1.1.*",
         "sonata-project/intl-bundle":"~2.1",
         "symm/gisconverter": "1.0.2",
-        "twbs/bootstrap": "~3.2",
         "sonata-project/admin-bundle": "~2.3",
         "sonata-project/core-bundle": "~2.2",
         "sonata-project/doctrine-mongodb-admin-bundle": "~2.3", 
         "knplabs/knp-menu-bundle": "~2.0",
         "knplabs/knp-disqus-bundle": "~1.1",
         "jms/di-extra-bundle": "~1.4",
-        "drak/native-session": "~1.0"
+        "drak/native-session": "~1.0",
+        "sp/bower-bundle": "~0.11@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "~3",
@@ -42,19 +42,22 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sp\\BowerBundle\\Composer\\ScriptHandler::bowerInstall"
         ],
         "post-update-cmd": [
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sp\\BowerBundle\\Composer\\ScriptHandler::bowerInstall"
         ]
     },
     "config": {
         "bin-dir": "bin"
     },
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web"

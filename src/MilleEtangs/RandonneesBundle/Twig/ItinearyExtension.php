@@ -9,7 +9,7 @@ class ItinearyExtension extends \Twig_Extension
         return array(
             new \Twig_SimpleFilter('distance', array($this, 'distanceFilter')),
             new \Twig_SimpleFilter('incline', array($this, 'inclineFilter')),
-            new \Twig_SimpleFilter('difficulty', array($this, 'difficultyFilter')),
+            new \Twig_SimpleFilter('difficulty', array($this, 'difficultyFilter'))
         );
     }
 
@@ -38,6 +38,36 @@ class ItinearyExtension extends \Twig_Extension
         $difficulty = (array_key_exists($number, $difficulties)) ? $difficulties[$number] : "";
 
         return $difficulty;
+    }
+
+    public function getFunctions()
+    {
+        return array(
+            new \Twig_SimpleFunction('generateCssClass', array($this, 'generateCssClass'))
+        );
+    }
+
+    public function generateCssClass($itineary)
+    {
+        $classes = array();
+
+        if ($itineary->getMarked()) {
+            $classes[] = "itineary-marked";
+        }
+
+        if ($itineary->getMountainBikeLength() > 0) {
+            $classes[] = "itineary-mountainbike";
+        }
+
+        if ($itineary->getRoadBikeLength() > 0) {
+            $classes[] = "itineary-roadbike";
+        }
+
+        if ($itineary->getHikeLength() > 0) {
+            $classes[] = "itineary-hike";
+        }
+
+        return implode(" ", $classes);
     }
 
     public function getName()

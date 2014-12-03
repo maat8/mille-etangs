@@ -10,6 +10,7 @@
  	<meta name="robots" content="follow,index" />
 
 	{% block stylesheets %}{% endblock %}
+
 	{% include "MilleEtangsRandonneesBundle::stylesheets.html.twig" %}
 </head>
 
@@ -32,119 +33,56 @@
                 </div>
             </nav>
 
-            <div id="header_title" class="col-md-4 hidden-xs"><p><strong><a href="{{ path("home") }}">Randonnées aux Mille Étangs</a></strong></p></div>
+            <div id="header-title" class="col-md-4 hidden-xs">
+                <p><strong><a href="{{ path("home") }}">Randonnées aux<br />Mille Étangs</a></strong></p>
+            </div>
             <nav class="col-md-7 col-md-offset-1 hidden-xs">
                 {{ knp_menu_render('MilleEtangsRandonneesBundle:Builder:mainMenu') }}
             </nav>
         </div>
     </header>
 
-    <div id="precontent" class="container">
-        {% block precontent %}{% endblock %}
-    </div>
-
-    <div class="container">
-        <section id="content" class="col-md-9">
-        {% block body %}
-            404 - Vous êtes perdus ! <a href="{{ path("home") }}">Cliquez ici pour retourner à l'accueil</a>.
-        {% endblock %}
-        </section>
-
-        <aside id="sidebar" class="col-md-3 hidden-xs">
-            {% block sidebar_block0 %}
-            <div class="sidebar_block">
-                <h5>Conseils</h5>
-                <a href="{{ path("advice") }}" class="sidebar_pic_link">
-                    <img class="sidebar_pic" src="{{ asset('images/ico_conseils.jpg') }}" alt="Conseils" />
-                </a>
-                <div class="sidebar_content">
-                    Avant de vous aventurer en randonnée, vérifiez les conseils d'usage afin de profiter d'une sortie en toute sécurité
-                    <a href="{{ path("advice") }}" class="sidebar_button">Charte du<br />randonneur</a>
-                </div>
-                <div class="clearfix">
-            </div>
-            {% endblock %}
-
-            {% block sidebar_block1 %}
-                <div class="sidebar_block">
-                    <h5>Météo</h5>
-                    <iframe src="http://www.meteoblue.com/fr/france/meteo-faucogney-et-la-mer/widget?&pictoicon=1&maxtemperature=1&mintemperature=1&uv=1&v=2" scrolling="0" frameborder="0" height="250px"></iframe>
-                </div>
-            {% endblock %}
-
-            {% block sidebar_block2 %}
-                {# Google Adsense #}
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- Randos 1000 etangs 2 -->
-                <ins class="adsbygoogle"
-                     style="display:inline-block;width:300px;height:250px"
-                     data-ad-client="ca-pub-5206307313726600"
-                     data-ad-slot="8880126416"></ins>
-                <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            {% endblock %}
-
-            {% block sidebar_block3 %}
-            {# <div class="sidebar_block">
-                <div class="sidebar_block">
-                    <h6>Hébergement</h6>
-                    <div class="sidebar_content">
-                        Lorem ipsum
-                        <a href="{{ path("accomodations") }}" class="sidebar_button">Découvrez gîtes et hébergements locaux</a>
-
-                    </div>
-                </div>
-            </div>#}
-            {% endblock %}
-
-            {% block sidebar_block4 %}
-            {#<div class="sidebar_block">
-                <h6>Restauration</h6>
-                <div class="sidebar_content">
-                    Lorem ipsum
-                    <a href="{{ path("restaurants") }}" class="sidebar_button">Découvrez auberges et restaurants locaux</a>
-                </div>
-            </div>#}
-            {% endblock %}
-        </aside>
-    </div>
     <div class="clearfix"></div>
 
-    <footer>
-        <div id="footer_logo" class="hidden-xs col-md-3">
-        </div>
-        <div id="footer_mentions" class="col-md-3">
-            <ul>
-                <li><a href="#top">Haut de la page</a></li>
-                <li>Randonnées aux Mille Étangs</li>
-                <li>Tous droits réservés 2012 - 2013</li>
-                <li><a href="{{ path("legal") }}">Mentions légales</a></li>
-                <li><a href="{{ path("sitemap") }}">Plan de site</a></li>
-            </ul>
-        </div>
-        <div id="footer_menu" class="col-xs-12 col-md-3">
-            <ul>
-                <li><a href="{{ path("home") }}">Accueil</a></li>
-                <li><a href="{{ path("articles") }}">Actualités</a></li>
-                <li><a href="{{ path("mille_etangs") }}">Les Milles étangs</a></li>
-                <li><a href="{{ path("itinearies_type", {'type':"vtt"}) }}">Randonnées en VTT</a></li>
-                <li><a href="{{ path("itinearies_type", {'type':"marche"}) }}">Randonnées à pied</a></li>
-            </ul>
-        </div>
-        <div id="footer_social" class="col-xs-12 col-md-3">
-            <span>Restez connectés</span>
-            <ul>
-                <li><a href="#" class="facebook"></a></li>
-                <li><a href="#" class="twitter"></a></li>
-                <li class="clearfix"><a href="#" class="googleplus"></a></li>
-                <li><a href="{{ path("rss") }}" class="rss"></a></li>
-            </ul>
-        </div>
+    <div id="precontent">
+        {% block precontent %}{% endblock %}
         <div class="clearfix"></div>
-    </footer>
+    </div>
+
+    <div class="clearfix"></div>
+    
+    <section id="content" class="col-md-12 container-fluid">
+    {% block body %}
+        404 - Vous êtes perdus ! <a href="{{ path("home") }}">Cliquez ici pour retourner à l'accueil</a>.
+    {% endblock %}
+    </section>
+
+    <aside id="prefooter" class="col-md-12">
+        {% block sidebar_block0 %}
+        <div class="col-md-4 col-md-offset-1 col-sm-12">
+            <h5>Conseils</h5>
+            <div class="text-center">
+                <p class="">Avant de vous aventurer en randonnée, vérifiez les conseils d'usage afin de profiter d'une sortie en toute sécurité</p>
+                <a href="{{ path("advice") }}" class="btn bg-green">Charte du randonneur</a>
+            </div>
+        </div>
+        {% endblock %}
+
+        {% block sidebar_block1 %}
+            <div class="col-md-4 col-md-offset-2 col-sm-12 weather">
+                <h5>Météo</h5>
+                <iframe src="http://www.meteoblue.com/fr/france/meteo-faucogney-et-la-mer/widget?&pictoicon=1&maxtemperature=1&mintemperature=1&uv=1&v=2" scrolling="0" frameborder="0"></iframe>
+            </div>
+        {% endblock %}
+    </aside>
+
+    <div class="clearfix"></div>
+
+    {% include "MilleEtangsRandonneesBundle::footer.html.twig" %} 
 
 {% include "MilleEtangsRandonneesBundle::javascripts.html.twig" %}
+
+{% block javascript %}{% endblock %}
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
