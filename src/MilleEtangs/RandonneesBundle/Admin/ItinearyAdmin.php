@@ -52,13 +52,9 @@ class ItinearyAdmin extends Admin
     {
         if (!is_null($object->getGpx())) {
             $traceConverter = $this->getConfigurationPool()->getContainer()->get('trace_converter');
-            try {
-                $traceConverter->generateTracesFromFile($object->getGpx());
-                $object->setGpx($traceConverter->getGpx());
-                $object->setKml($traceConverter->getKml());
-            } catch (\Exception $e) {
-                // TODO
-            }
+            $traceConverter->generateTracesFromFile($object->getGpx());
+            $object->setGpx($traceConverter->getGpx());
+            $object->setKml($traceConverter->getKml());
         }
 
         return parent::create($object);
@@ -68,12 +64,11 @@ class ItinearyAdmin extends Admin
     {
         if (!is_null($object->getGpx())) {
             $traceConverter = $this->getConfigurationPool()->getContainer()->get('trace_converter');
-            
             $traceConverter->generateTracesFromFile($object->getGpx());
             $object->setGpx($traceConverter->getGpx());
             $object->setKml($traceConverter->getKml());
         } else {
-            // TODO : Do not overwrite GPX file
+            // Keep old GPX
         }
     }
 }

@@ -64,7 +64,7 @@ class Itineary extends BaseDocument
     protected $endomondoLink;
 
     /**
-     * Cannot embed document having q GridFS file : https://github.com/doctrine/mongodb-odm/issues/911
+     * Cannot embed document having a GridFS file : https://github.com/doctrine/mongodb-odm/issues/911
      * @ODM\ReferenceOne(targetDocument="Trace", simple=true, orphanRemoval=true, cascade={"all"})
      */
     protected $gpx;
