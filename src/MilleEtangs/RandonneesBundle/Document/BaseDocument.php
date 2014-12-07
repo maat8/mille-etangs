@@ -3,6 +3,7 @@
 namespace MilleEtangs\RandonneesBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ODM\MappedSuperclass
@@ -22,6 +23,7 @@ abstract class BaseDocument
 
     /**
      * @ODM\String
+     * @Gedmo\Slug(fields={"name"})
      */
     protected $slug;
 
@@ -34,30 +36,6 @@ abstract class BaseDocument
      * @ODM\Field(type="timestamp")
      */
     protected $updated;
-
-    /**
-     * @ODM\PrePersist()
-     * @ODM\PreUpdate()
-     */
-    public function preUpdate()
-    {
-        if (is_null($this->created)) {
-            $this->created = time();
-        }
-        $this->updated = time();
-        $this->slug = $this->generateSlug($this->name);
-    }
-
-    protected function generateSlug($string)
-    {
-        $string = html_entity_decode(
-            preg_replace('/&([a-zA-Z])(uml|acute|grave|circ|tilde|cedil|ring);/', '$1', htmlentities($string))
-        );
-        $string = strtolower($string);
-        $string = trim(preg_replace('/[^0-9a-zA-Z]+/', '-', $string));
-
-        return $string;
-    }
 
     /**
      * Get id

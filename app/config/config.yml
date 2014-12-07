@@ -78,3 +78,8 @@ sp_bower:
     # bin: /usr/local/bin/bower
     bundles:
         MilleEtangsRandonneesBundle: ~
+
+stof_doctrine_extensions:
+    mongodb:
+        default:
+            sluggable: true
