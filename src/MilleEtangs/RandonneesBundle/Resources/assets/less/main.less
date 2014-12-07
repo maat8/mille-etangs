@@ -134,6 +134,11 @@ body {
         color: white !important;
     }
 
+    .bg-grey {
+        background-color: @custom_grey;
+        color: white !important;
+    }
+
     .green {
         color: @custom_green;
     }
@@ -199,6 +204,10 @@ body {
         padding: 10px;
         border-radius: 50%;
         display:inline;
+
+        &.fa-disabled {
+            .bg-grey;
+        }
 
         &.fa-difficulty-1 {
             background-color: green;

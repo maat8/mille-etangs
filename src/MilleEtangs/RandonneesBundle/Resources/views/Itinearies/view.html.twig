@@ -24,10 +24,14 @@
                     {# Flagged icon #}
                     {% if itineary.getMarked() %}
                         <i class="fa fa-flag" title="Balisé"></i>
+                    {% else %}
+                        <i class="fa fa-flag fa-disabled" title="Non balisé"></i>
                     {% endif %}
 
                     {% if itineary.getKml() is not null and itineary.getKml().getFile().getSize() > 0 %}
                         <i class="fa fa-location-arrow" title="Tracé GPS"></i>
+                    {% else %}
+                        <i class="fa fa-location-arrow fa-disabled" title="Aucun tracé GPS"></i>
                     {% endif %}
                 </div>
                 <div>
