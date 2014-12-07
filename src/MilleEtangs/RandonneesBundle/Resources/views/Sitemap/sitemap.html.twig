@@ -3,20 +3,21 @@
 {% block title %}Plan du site | {{ parent()}}{% endblock %}
 
 {% block body %}
-<h2>Plan du site</h2>
-
-<ul>
-	<li><a href="{{ path('home') }}">Accueil</a></li>
-	<li><a href="{{ path('mille_etangs') }}">Les mille étangs</a></li>
-	<li><a href="{{ path('accomodations') }}">Hébergement</a></li>
-	<li><a href="{{ path('restaurants') }}">Restauration</a></li>
-</ul>
-
-<h3><a href="{{ path('itinearies_type', {'type':'bike'} )}}">Randonnées</a></h3>
-<ul>
-	{% for itineary in itinearies %}
-		<li><a href="{{ path('itineary', {'slug':itineary.getSlug()}) }}">{{ itineary.getName() }}</a></li>
-	{% endfor %}
-</ul>
-
+<div class="container">
+    <h2 class="text-left">Plan du site</h2>
+    
+    <ul>
+    	<li><a href="{{ path('home') }}">Accueil</a></li>
+    	<li><a href="{{ path('mille_etangs') }}">Les mille étangs</a></li>
+    	<li><a href="{{ path('accomodations') }}">Hébergement</a></li>
+    	<li><a href="{{ path('restaurants') }}">Restauration</a></li>
+    </ul>
+    
+    <h3 class="text-left"><a href="{{ path('itinearies_type', {'type':'bike'} )}}">Randonnées</a></h3>
+    <ul>
+    	{% for itineary in itinearies %}
+    		<li><a href="{{ path('itineary', {'slug':itineary.getSlug()}) }}">{{ itineary.getName() }}</a></li>
+    	{% endfor %}
+    </ul>
+</div>
 {% endblock %}
