@@ -7,13 +7,15 @@ home:
 
 render_image:
     pattern: /images/{id}
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:renderImage}
+    defaults: { _controller: MilleEtangsRandonneesBundle:Default:renderImage }
     requirements:
         _method:  GET
 
 mille_etangs:
     pattern:  /les-mille-etangs
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:milleEtangs }
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: 'MilleEtangsRandonneesBundle:Default:milleEtangs.html.twig'
     requirements:
         _method:  GET
 
@@ -55,13 +57,17 @@ partners:
 
 advice:
     pattern:  /conseils
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:advice }
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: 'MilleEtangsRandonneesBundle:Default:advice.html.twig'
     requirements:
         _method:  GET
 
 legal:
     pattern:  /mentions-legales
-    defaults: { _controller: MilleEtangsRandonneesBundle:Default:legal }
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: 'MilleEtangsRandonneesBundle:Default:legal.html.twig'
     requirements:
         _method:  GET
 

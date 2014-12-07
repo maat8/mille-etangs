@@ -71,31 +71,7 @@ class DefaultController extends Controller
     /**
      * @Template
      */
-    public function milleEtangsAction()
-    {
-        return array();
-    }
-
-    /**
-     * @Template
-     */
     public function partnersAction()
-    {
-        return array();
-    }
-
-    /**
-     * @Template
-     */
-    public function adviceAction()
-    {
-        return array();
-    }
-
-    /**
-     * @Template
-     */
-    public function legalAction()
     {
         return array();
     }
