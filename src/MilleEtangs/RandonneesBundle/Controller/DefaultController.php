@@ -11,6 +11,7 @@ class DefaultController extends Controller
 {
     /**
      * @Template
+     * @Cache(expires="1 hour")
      */
     public function indexAction()
     {

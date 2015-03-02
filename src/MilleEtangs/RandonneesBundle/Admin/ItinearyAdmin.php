@@ -26,7 +26,8 @@ class ItinearyAdmin extends Admin
             ->add('marked', null, array('required' => false))
             ->add('gpx', 'file', array(
                 'data_class' => 'MilleEtangs\RandonneesBundle\Document\Trace',
-                'required' => false
+                'required' => false,
+                'mapped' => false
             ))
             ->add('published', null, array('required' => false))
         ;
@@ -50,25 +51,25 @@ class ItinearyAdmin extends Admin
 
     public function create($object)
     {
-        if (!is_null($object->getGpx())) {
-            $traceConverter = $this->getConfigurationPool()->getContainer()->get('trace_converter');
-            $traceConverter->generateTracesFromFile($object->getGpx());
-            $object->setGpx($traceConverter->getGpx());
-            $object->setKml($traceConverter->getKml());
-        }
+        $this->updateTrace($object);
 
         return parent::create($object);
     }
 
     public function preUpdate($object)
     {
-        if (!is_null($object->getGpx())) {
+        $this->updateTrace($object);
+    }
+
+    private function updateTrace($object)
+    {
+        $upload = ($this->getForm()->get('gpx')->getData());
+        if (!is_null($upload)) {
             $traceConverter = $this->getConfigurationPool()->getContainer()->get('trace_converter');
-            $traceConverter->generateTracesFromFile($object->getGpx());
+            $traceConverter->generateTracesFromFile($upload);
             $object->setGpx($traceConverter->getGpx());
             $object->setKml($traceConverter->getKml());
-        } else {
-            // Keep old GPX
+            $object->setStart($traceConverter->getStart());
         }
     }
 }

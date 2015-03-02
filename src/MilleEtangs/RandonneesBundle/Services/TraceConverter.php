@@ -8,8 +8,9 @@ use JMS\DiExtraBundle\Annotation\Service;
 use Doctrine\MongoDB\GridFSFile;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-use Symm\Gisconverter\Gisconverter as Gisconverter;
+use Symm\Gisconverter\Gisconverter;
 use MilleEtangs\RandonneesBundle\Document\Trace;
+use MilleEtangs\RandonneesBundle\Document\Point;
 
 /**
  * @Service("trace_converter")
@@ -21,6 +22,7 @@ class TraceConverter
     private $file;
     private $gpx;
     private $kml;
+    private $start;
 
     /**
      * @DI\InjectParams({
@@ -40,6 +42,11 @@ class TraceConverter
     public function getKml()
     {
         return $this->kml;
+    }
+
+    public function getStart()
+    {
+        return $this->start;
     }
 
     public function generateTracesFromFile(UploadedFile $file)
@@ -66,77 +73,71 @@ class TraceConverter
     {
         $kml = Gisconverter::gpxToKml(file_get_contents($this->file));
         if (!empty($kml)) {
-            $kml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
+            /*$kml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
                         '<kml xmlns="http://www.opengis.net/kml/2.2">
                             <Document>
                             <name></name>
                             <description>c</description>
-                            <Style id="blueLine">
-                              <LineStyle>
-                                <color>ffff0000</color>
-                                <width>4</width>
-                              </LineStyle>
-                            </Style>
-                            <Style id="redLine">
-                              <LineStyle>
-                                <color>ff0000ff</color>
-                                <width>4</width>
-                              </LineStyle>
-                            </Style>
                             <Style id="greenLine">
                               <LineStyle>
-                                <color>ff009900</color>
-                                <width>4</width>
-                              </LineStyle>
-                            </Style>
-                            <Style id="orangeLine">
-                              <LineStyle>
-                                <color>ff00ccff</color>
-                                <width>4</width>
-                              </LineStyle>
-                            </Style>
-                            <Style id="pinkLine">
-                              <LineStyle>
-                                <color>ffff33ff</color>
-                                <width>4</width>
-                              </LineStyle>
-                            </Style>
-                            <Style id="brownLine">
-                              <LineStyle>
-                                <color>ff66a1cc</color>
-                                <width>4</width>
-                              </LineStyle>
-                            </Style>
-                            <Style id="purpleLine">
-                              <LineStyle>
-                                <color>ffcc00cc</color>
-                                <width>4</width>
-                              </LineStyle>
-                            </Style>
-                            <Style id="yellowLine">
-                              <LineStyle>
-                                <color>ff61f2f2</color>
+                                <color>31987bff</color>
                                 <width>4</width>
                               </LineStyle>
                             </Style>
                             <Placemark>
                                 <name>Name</name>
                                 <description>Description</description>
-                                <styleUrl>#blueLine</styleUrl>' .
+                                <styleUrl>#greenLine</styleUrl>' .
                         $kml .
                         '   </Placemark>
                         </Document>
-                        </kml>';
+                        </kml>';*/
+
+            // Generate KML file content
+            $kml = simplexml_load_string(
+                '<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
+                '<kml>
+                    <Document>
+                    <name></name>
+                    <description>c</description>
+                    <Style id="greenLine">
+                      <LineStyle>
+                        <color>31987bff</color>
+                        <width>4</width>
+                      </LineStyle>
+                    </Style>
+                    <Placemark>
+                        <name>Name</name>
+                        <description>Description</description>
+                        <styleUrl>#greenLine</styleUrl>' .
+                $kml .
+                '   </Placemark>
+                </Document>
+                </kml>'
+            );
 
             $this->kml = new Trace();
             $kml_file = new GridFSFile();
-            $kml_file->setBytes($kml);
+            $kml_file->setBytes($kml->asXML());
             $this->kml->setFile($kml_file);
+
+            // $trace  = simplexml_load_file($this->file);
+
+            // Get start point
+            $lineString = $kml->xpath("//kml/Document/Placemark/LineString/coordinates");
+            list($points) = explode(" ", $lineString[0]->__toString());
+            $points = explode(",", $points);
+            $this->start = new Point(
+                (float) $points[0],
+                (float) $points[1]
+            );
+
+            // Add xmlns="http://www.opengis.net/kml/2.2"
         }
     }
 
     public function generateGpxFromKml()
     {
-        // TODO
+        throw new \Exception("GPX to KML conversion not supported yet");
     }
 }

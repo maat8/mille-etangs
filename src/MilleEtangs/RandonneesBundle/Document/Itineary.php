@@ -414,4 +414,28 @@ class Itineary extends BaseDocument
     {
         return $this->kml;
     }
+
+    /**
+     * Gets the value of start.
+     *
+     * @return mixed
+     */
+    public function getStart()
+    {
+        return $this->start;
+    }
+
+    /**
+     * Sets the value of start.
+     *
+     * @param mixed $start the start
+     *
+     * @return self
+     */
+    public function setStart($start)
+    {
+        $this->start = $start;
+
+        return $this;
+    }
 }
