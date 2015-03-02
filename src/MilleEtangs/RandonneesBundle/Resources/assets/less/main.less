@@ -65,6 +65,11 @@ body {
         margin-top: 15px;
     }
 
+    header > .container {
+        padding-left:0;
+        padding-right:0;
+    }
+
     section#content {
         display:block;    
         margin-bottom:20px;
@@ -201,12 +206,13 @@ body {
 
     .itinearies .fa, .itineary .fa {
         .bg-green;
+        opacity: 1;
         padding: 10px;
         border-radius: 50%;
         display:inline;
 
         &.fa-disabled {
-            .bg-grey;
+            background-color: #d8d8d8;
         }
 
         &.fa-difficulty-1 {

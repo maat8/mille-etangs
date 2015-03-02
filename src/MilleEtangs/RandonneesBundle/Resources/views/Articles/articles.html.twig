@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="articles container">
-        <h2>Actualités</h2>
+        <h2 class="text-left">Actualités</h2>
         {% for article in articles %}
             {% include "MilleEtangsRandonneesBundle:Articles:view.html.twig" with {"article":article} only %}
         {% endfor %}
