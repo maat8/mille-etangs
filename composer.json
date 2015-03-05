@@ -7,7 +7,7 @@
     },
     "require": {
         "php": ">=5.3.8",
-        "ext-mongo": ">=1.2.12,<1.6-dev",
+        "ext-mongo": ">=1.2.12,<1.7-dev",
         "ext-redis": "*",
         "symfony/symfony": "2.3.*",
         "symfony/assetic-bundle": "2.3.*",
