@@ -31,7 +31,6 @@
         "knplabs/knp-disqus-bundle": "~1.1",
         "jms/di-extra-bundle": "~1.4",
         "drak/native-session": "~1.0",
-        "sp/bower-bundle": "~0.11@dev",
         "liip/imagine-bundle": "~1.2",
         "jmikola/geojson": "~1.0"
     },
@@ -45,15 +44,13 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sp\\BowerBundle\\Composer\\ScriptHandler::bowerInstall"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ],
         "post-update-cmd": [
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sp\\BowerBundle\\Composer\\ScriptHandler::bowerInstall"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ]
     },
     "config": {

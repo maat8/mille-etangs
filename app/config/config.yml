@@ -73,13 +73,18 @@ jms_di_extra:
         bundles: [MilleEtangsBundle]
         directories: ["%kernel.root_dir%/../src"]
 
-# Bower
-sp_bower:
-    # bin: /usr/local/bin/bower
-    bundles:
-        MilleEtangsRandonneesBundle: ~
-
 stof_doctrine_extensions:
     mongodb:
         default:
             sluggable: true
+
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+    filter_sets:
+        cache: ~
+        my_thumb:
+            quality: 85
+            filters:
+                thumbnail: { size: [120, 90], mode: outbound }

@@ -26,3 +26,6 @@ bin/security-checker
 
 # Temp files
 *.php~
+
+# NPM
+bower_components/*
