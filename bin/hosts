@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+
+IP=`sudo docker inspect -f '{{ .NetworkSettings.IPAddress }}' ${1}`
+HOST=$2
+
+[ -z "$HOST" ] && exit 1;
+
+sudo sed -i "s/.*\s${HOST}$/${IP} ${HOST}/" /etc/hosts
+
+grep -P "\s${HOST}$" /etc/hosts > /dev/null || sudo -- sh -c "echo \"${IP} ${HOST}\" >> /etc/hosts"
+
+
+
+grep -P "^${IP} ${HOST}$" /etc/hosts > /dev/null
+
+if [ $? -eq 0 ]; then
+    echo "Set host: ${IP} ${HOST}"
+else
+    echo "Fail to update the host file with: ${IP} ${HOST}"
+fi
