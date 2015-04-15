@@ -2,31 +2,7 @@ step=-----------------------
 project=randos1000etangs
 host=randos1000etangs.dev
 sf=app/console
-compose=sudo docker-compose -p $(project)
-
-
-# HELP MENU
-all: help
-help:
-	@echo ""
-	@echo "-- Help Menu"
-	@echo ""
-	@echo "   1.  make requirements         - Install requirements"
-	@echo "   2.  make install              - Install $(project)"
-	@echo "   3.  make update               - Update $(project)"
-	@echo "   4.  make start                - Start $(project)"
-	@echo "   5.  make stop                 - Stop $(project)"
-	@echo "   6.  make restart              - Stop and start $(project)"
-	@echo "   7.  make state                - Etat $(project)"
-	@echo "   8.  make cc                   - Cache clear"
-	@echo "   9.  make tests                - Launch tests"
-	@echo "   10. make cs                   - Launch check style coke"
-	@echo "   11. make assets               - Install assets"
-	@echo "   18. make composer-install     - Install vendor"
-	@echo "   19. make composer-update      - Update vendor"
-	@echo "   20. make bash                 - Launch bash $(project)"
-	@echo ""
-
+compose=docker-compose -p $(project)
 
 # REQUIREMENT
 install-docker:
@@ -44,32 +20,10 @@ install-compose:
 
 requirements: install-docker install-compose
 
-
-# CACHE
-cache-clear:
-	@echo "$(step) Clear cache dev $(step)"
-	@$(compose) run --rm web $(sf) cache:clear --no-warmup --env=dev
-	#@$(compose) run --rm web $(sf) apc:clear
-
-cache-clear-test:
-	@echo "$(step) Clear cache test $(step)"
-	@$(compose) run --rm web $(sf) cache:clear --no-warmup --env=test
-	#@$(compose) run --rm web $(sf) apc:clear --env=test
-
-cc: cache-clear
-cctest: cache-clear-test
-
-
-# Assetic
+# ASSETS
 assets:
 	@echo "$(step) Installation assets dev $(step)"
 	@$(compose) run --rm web $(sf) assets:install --symlink
-
-assets-test:
-	@echo "$(step) Installation assets test $(step)"
-	@$(compose) run --rm web $(sf) assets:install --symlink
-	@$(compose) run --rm web $(sf) assetic:dump --env=prod
-
 
 # DATABASE
 fixtures:
@@ -77,8 +31,7 @@ fixtures:
 	@$(compose) run --rm web \
 		$(sf) doctrine:mongodb:fixtures:load
 
-
-# VENDOR
+# VENDORS
 vendor-install: composer-install npm-install bower-install
 
 composer-install:
@@ -98,8 +51,6 @@ npm-install:
 phpunit:
 	@sudo fig run --rm web bin/phpunit -c app/
 
-tests: cctest cs phpunit
-
 
 # HOSTS
 host-dev:
@@ -114,9 +65,7 @@ build: remove
 	@echo "$(step) Building images docker $(step)"
 	@$(compose) build
 
-install: remove build start host-dev composer-install  fixtures assets cache-clear install-pre-commit
-
-install-test: remove build up composer-install assets-test cache-clear-test
+install: remove build start host-dev composer-install fixtures assets
 
 update: install
 
