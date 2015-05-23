@@ -6,6 +6,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 /**
  * @ODM\EmbeddedDocument
+ * http://blog.mongodb.org/post/53751481851/2dsphere-geojson-and-doctrine-mongodb
  */
 class Point
 {

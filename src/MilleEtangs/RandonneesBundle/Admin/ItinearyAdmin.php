@@ -13,6 +13,9 @@ class ItinearyAdmin extends Admin
     {
         $formMapper
             ->add('name', 'text')
+            ->add('image', 'sonata_type_model', array(
+                'required' => false,
+            ))
             ->add('teaser', 'textarea', array('required' => false))
             ->add('access', 'textarea', array('required' => false))
             ->add('description', 'textarea')

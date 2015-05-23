@@ -81,7 +81,7 @@ class Itineary extends BaseDocument
 
     /**
      * @ODM\Int
-     * @Assert\Range(min=1, max=3)
+     * @Assert\Range(min=1, max=4)
      */
     protected $difficulty;
 
@@ -94,6 +94,11 @@ class Itineary extends BaseDocument
      * @ODM\EmbedOne(targetDocument="Point")
      */
     protected $start;
+
+    /**
+     * @ODM\ReferenceOne(targetDocument="Image")
+     */
+    protected $image;
 
     /**
      * Set description
@@ -435,6 +440,30 @@ class Itineary extends BaseDocument
     public function setStart($start)
     {
         $this->start = $start;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of image.
+     *
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Sets the value of image.
+     *
+     * @param mixed $image the image
+     *
+     * @return self
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
 
         return $this;
     }

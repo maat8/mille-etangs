@@ -1,7 +1,7 @@
 services:
     session.handler.redis:
         class: Drak\NativeSession\NativeRedisSessionHandler
-        arguments: [tcp://localhost:6379?timeout=2]
+        arguments: [tcp://redis:6379?timeout=2]
     form_login:
         class: MilleEtangs\RandonneesBundle\Form\Type\LoginType
         tags:
