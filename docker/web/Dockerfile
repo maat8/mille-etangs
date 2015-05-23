@@ -29,8 +29,7 @@ RUN apt-get update -qq && apt-get install -qqy --force-yes \
     php5-gd \
     php5-mongo \
     php5-redis \
-    php5-fpm \
-    redis-server
+    php5-fpm
 
 # Nginx
 RUN \

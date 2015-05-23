@@ -8,12 +8,16 @@ web:
         - "./var/logs/web:/var/log/nginx"
     links:
         - db
+        - redis
 
 db:
     image: mongo:3.0
     command: mongod --smallfiles
     volumes:
         - "./data/db:/data/db"
+
+redis:
+    image: redis
 
 composer:
     image: composer/composer
