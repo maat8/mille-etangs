@@ -19,7 +19,6 @@ framework:
     trusted_proxies: ['127.0.0.1']
     session:
         name:        randos
-        handler_id:  session.handler.redis
 
 # Twig Configuration
 twig:

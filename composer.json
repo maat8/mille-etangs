@@ -30,7 +30,6 @@
         "knplabs/knp-menu-bundle": "~2.0",
         "knplabs/knp-disqus-bundle": "~1.1",
         "jms/di-extra-bundle": "~1.4",
-        "drak/native-session": "~1.0",
         "liip/imagine-bundle": "~1.2",
         "jmikola/geojson": "~1.0"
     },
