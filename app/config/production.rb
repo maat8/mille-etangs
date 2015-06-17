@@ -30,4 +30,13 @@ set :writable_dirs, ["app/cache", "app/logs"]
 set :keep_releases,  3
 after "deploy", "deploy:cleanup"
 
-logger.level = Logger::MAX_LEVEL
+before 'symfony:assetic:dump', 'bower:install'
+
+namespace :bower do
+    desc 'Run bower install'
+    task :install do
+      capifony_pretty_print "--> Installing bower components"
+      invoke_command "sh -c 'cd #{latest_release} && bower install --verbose'"
+      capifony_puts_ok
+    end
+end
