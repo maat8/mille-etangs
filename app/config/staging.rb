@@ -36,7 +36,7 @@ namespace :bower do
     desc 'Run bower install'
     task :install do
       capifony_pretty_print "--> Installing bower components"
-      invoke_command "sh -c 'cd #{latest_release} && bower install --quiet'"
+      invoke_command "sh -c 'cd #{latest_release} && bower install --verbose'"
       capifony_puts_ok
     end
 end
