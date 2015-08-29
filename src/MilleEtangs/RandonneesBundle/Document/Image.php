@@ -135,6 +135,6 @@ class Image
 
     public function __toString()
     {
-        return $this->title;
+        return (string) $this->title;
     }
 }
