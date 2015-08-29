@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symm\Gisconverter\Gisconverter;
 use MilleEtangs\RandonneesBundle\Document\Trace;
 use MilleEtangs\RandonneesBundle\Document\Point;
+use MilleEtangs\RandonneesBundle\Document\Itineary;
 
 /**
  * @Service("trace_converter")
@@ -19,6 +20,7 @@ class TraceConverter
 {
     private $dm;
 
+    private $itineary;
     private $file;
     private $gpx;
     private $kml;
@@ -49,8 +51,10 @@ class TraceConverter
         return $this->start;
     }
 
-    public function generateTracesFromFile(UploadedFile $file)
+    public function generateTracesFromFile(Itineary $itineary, UploadedFile $file)
     {
+        $this->itineary = $itineary;
+
         $this->file = $file;
         $type = $file->getClientOriginalExtension();
 
@@ -73,43 +77,41 @@ class TraceConverter
     {
         $kml = Gisconverter::gpxToKml(file_get_contents($this->file));
         if (!empty($kml)) {
-            /*$kml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
-                        '<kml xmlns="http://www.opengis.net/kml/2.2">
-                            <Document>
-                            <name></name>
-                            <description>c</description>
-                            <Style id="greenLine">
-                              <LineStyle>
-                                <color>31987bff</color>
-                                <width>4</width>
-                              </LineStyle>
-                            </Style>
-                            <Placemark>
-                                <name>Name</name>
-                                <description>Description</description>
-                                <styleUrl>#greenLine</styleUrl>' .
-                        $kml .
-                        '   </Placemark>
-                        </Document>
-                        </kml>';*/
-
             // Generate KML file content
             $kml = simplexml_load_string(
                 '<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
                 '<kml>
                     <Document>
-                    <name></name>
-                    <description>c</description>
-                    <Style id="greenLine">
+                    <name>'.$this->itineary->getName().'</name>
+                    <description>'.$this->itineary->getDescription().'</description>
+                    <Style id="difficulty1">
                       <LineStyle>
-                        <color>31987bff</color>
+                        <color>ff1e8d5b</color>
+                        <width>4</width>
+                      </LineStyle>
+                    </Style>
+                    <Style id="difficulty2">
+                      <LineStyle>
+                        <color>ff924f00</color>
+                        <width>4</width>
+                      </LineStyle>
+                    </Style>
+                    <Style id="difficulty3">
+                      <LineStyle>
+                        <color>ff0303c5</color>
+                        <width>4</width>
+                      </LineStyle>
+                    </Style>
+                    <Style id="difficulty4">
+                      <LineStyle>
+                        <color>50000000</color>
                         <width>4</width>
                       </LineStyle>
                     </Style>
                     <Placemark>
-                        <name>Name</name>
-                        <description>Description</description>
-                        <styleUrl>#greenLine</styleUrl>' .
+                        <name></name>
+                        <description></description>
+                        <styleUrl>difficulty'.$this->itineary->getDifficulty().'</styleUrl>' .
                 $kml .
                 '   </Placemark>
                 </Document>
@@ -120,8 +122,6 @@ class TraceConverter
             $kml_file = new GridFSFile();
             $kml_file->setBytes($kml->asXML());
             $this->kml->setFile($kml_file);
-
-            // $trace  = simplexml_load_file($this->file);
 
             // Get start point
             $lineString = $kml->xpath("//kml/Document/Placemark/LineString/coordinates");

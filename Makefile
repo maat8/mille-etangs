@@ -49,8 +49,10 @@ npm-install:
 
 # TESTS
 phpunit:
-	@sudo fig run --rm web bin/phpunit -c app/
+	@$(compose) run --rm web php app/console cache:clear --env=test
+	@$(compose) run --rm web bin/phpunit -c app
 
+tests: fixtures phpunit
 
 # HOSTS
 host-dev:
