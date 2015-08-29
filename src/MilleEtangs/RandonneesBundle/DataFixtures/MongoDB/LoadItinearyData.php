@@ -34,7 +34,7 @@ class LoadItinearyData extends ContainerAware implements FixtureInterface
         );
 
         $traceConverter = $this->container->get('trace_converter');
-        $traceConverter->generateTracesFromFile($file);
+        $traceConverter->generateTracesFromFile($itineary, $file);
         $itineary->setGpx($traceConverter->getGpx());
         $itineary->setKml($traceConverter->getKml());
 

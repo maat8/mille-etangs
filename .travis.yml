@@ -1,7 +1,9 @@
 language: php
 php:
-    - 5.5
     - 5.6
+    # - 7
+
+sudo: false
 
 services:
     - mongodb
@@ -19,9 +21,11 @@ install:
     - cp app/config/parameters.yml.dist app/config/parameters.yml
     - composer install --dev --prefer-source
     - bin/install.sh
+    - bower install
 
 script:
     - php app/console doctrine:mongodb:fixtures:load --env=test
+    - php app/console cache:clear
     - bin/phpcs -v --standard=PSR2 --extensions=php src/
     - app/console twig:lint @MilleEtangsRandonneesBundle
     - phpunit --configuration app/phpunit.xml

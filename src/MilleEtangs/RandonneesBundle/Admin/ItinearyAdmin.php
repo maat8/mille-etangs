@@ -69,7 +69,7 @@ class ItinearyAdmin extends Admin
         $upload = ($this->getForm()->get('gpx')->getData());
         if (!is_null($upload)) {
             $traceConverter = $this->getConfigurationPool()->getContainer()->get('trace_converter');
-            $traceConverter->generateTracesFromFile($upload);
+            $traceConverter->generateTracesFromFile($object, $upload);
             $object->setGpx($traceConverter->getGpx());
             $object->setKml($traceConverter->getKml());
             $object->setStart($traceConverter->getStart());

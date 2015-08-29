@@ -9,12 +9,12 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
  */
 class Place extends BaseDocument
 {
-	/**
+    /**
      * @ODM\EmbedOne(targetDocument="Point")
      */
-	protected $point;
+    protected $point;
 
-	/**
+    /**
      * @ODM\Field(type="string")
      */
     protected $description;
