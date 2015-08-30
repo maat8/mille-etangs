@@ -135,6 +135,6 @@ class Image
 
     public function __toString()
     {
-        return (string) $this->title;
+        return (null === $this->title) ? "" : (string) $this->getTitle();
     }
 }
