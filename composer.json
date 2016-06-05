@@ -30,7 +30,8 @@
         "knplabs/knp-disqus-bundle": "~1.1",
         "jms/di-extra-bundle": "~1.4",
         "liip/imagine-bundle": "~1.2",
-        "jmikola/geojson": "~1.0"
+        "jmikola/geojson": "~1.0",
+        "incenteev/composer-parameter-handler": "^2.1"
     },
     "require-dev": {
         "phpunit/phpunit": "~3",
