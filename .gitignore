@@ -29,6 +29,7 @@ bin/security-checker
 
 # NPM
 bower_components/*
+npm-debug.log
 
 # Database files
 data/*
