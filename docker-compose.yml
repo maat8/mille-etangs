@@ -28,7 +28,7 @@ composer:
     net: "host"
 
 builder:
-    image: dockerfile/nodejs-bower-gulp
+    image: zolweb/nodejs-bower-gulp
     working_dir: /src
     volumes:
         - .:/src
