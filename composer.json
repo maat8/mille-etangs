@@ -8,7 +8,7 @@
     "require": {
         "php": ">=5.3.8",
         "ext-mongo": ">=1.2.12",
-        "symfony/symfony": "2.3.*",
+        "symfony/symfony": "2.7.*",
         "symfony/assetic-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.3",
         "doctrine/doctrine-bundle": "~1.3",
