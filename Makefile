@@ -79,10 +79,12 @@ npm-install:
 
 # TESTS
 phpunit:
+	@$(compose) run --rm web \
+		$(sf) doctrine:mongodb:fixtures:load -n --env=test
 	@$(compose) run --rm web php app/console cache:clear --env=test
 	@$(compose) run --rm web bin/phpunit -c app
 
-tests: fixtures phpunit
+tests: phpunit
 
 # HOSTS
 host-dev:
