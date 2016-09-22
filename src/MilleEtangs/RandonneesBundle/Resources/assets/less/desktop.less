@@ -1,90 +1,77 @@
 @media (min-width: @screen-sm-min) {
-	body {
-		header {
-	        height:110px;
+    body {
+        header {
+            height: 100px;
+            clear: both;
 
-	        div#header-title a {
-	            font-size: 2em;
-	            line-height: 1;
-	            color: black;
-	            display: block;
-	            margin: 0.8em 0 .6em .2em;
-	            text-decoration: none;
-	            font-weight: 500;
-	        }
+            nav {
+                .navbar-header {
+                    padding: 25px 0;
 
-	        div#header-title a:active {
-               background-color: @custom_green;
-	        }
+                    .navbar-brand{
+                        float: left;
+                        font-size: 22px;
+                        font-weight: 600;
+                    }
+                }
 
-			div#header-title{
-			    // background:url('/images/logo.png') no-repeat center left;
-			    padding:10px 0; // 0 160px;
-			}
+                ul.navbar-nav {
+                    list-style: none outside none;
+                    margin-left: 12%;
+                    padding: 15px 0 0;
 
-			nav {
-				// height:100%;
-			}
+                    li {
+                        display: inline;
+                        float: left;
+                        margin: 0;
 
-			nav ul {
-	            list-style: none outside none;
-	            margin: 0 auto;
-	            padding:0;
-	            height:100%;
-	        }
+                        a {
+                            color: @custom_black;
+                            padding: 25px 2em;
+                            font-weight: 600;
+                            font-size:14px;
+                            text-decoration: none;
+                            text-transform: uppercase;
+                        }
 
-	        nav li {
-	            display: inline;
-	            float: left;
-	            margin: 0;
-	            height:100%;
-	            padding: 30px 0;
-	        }
+                        &.current {
+                            background-color: @custom_green;
 
-	        nav ul li.current {
-	        	background-color: @custom_green;
-	        }
+                            a {
+                                color: white;
+                                text-shadow: none !important;
+                            }
+                        }
 
-	        nav ul li.current a{
-	            color:white;
-	            text-shadow: none !important;
-	            text-align: center;
-	        }
+                        &:hover {
+                            background-color: @custom_green;
+                            transition: all 1s;
+                        }
 
-	        nav a{
-	        	color: @custom_black;
-	        	font-weight: 600;
-	            display: block;
-	            padding: 5px 2em;
-	            text-decoration: none;
-	            font-size:14px;
-	            text-transform: uppercase;
-	        }
+                        a:hover {
+                            background: none !important;
+                        }
+                    }
+                }
+            }
+        }
 
-	        nav li a:hover {
-	        	background-color: white !important;	        	
-	        }
-	        nav li.current a:hover {
-	        	background-color: @custom_green !important;
-	        }
-		}
+        div#home-news {
+            height: 417px;
+            padding-top: 125px;
+            background: url(/images/mille_etangs.jpg) no-repeat center;            
 
-		div#home-news {
-	        height: 417px;
-	        padding-top: 125px;
-	        background: url(/images/mille_etangs.jpg) no-repeat center;	        
+            div.news-text{
+                margin:auto;
+                padding:20px;
+                background-color: white;
+                opacity: 0.6;
+                width:400px;
+            }
+        }
 
-	        div.news-text{
-	            margin:auto;
-	            padding:20px;
-	            background-color: white;
-	            opacity: 0.6;
-	            width:400px;
-	        }
-	    }
-
-	    div#precontent img{
-	        width:100%;
-	    }
-	}
+        div#precontent img{
+            width:100%;
+        }
+    }
 }
