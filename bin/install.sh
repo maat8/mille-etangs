@@ -11,4 +11,4 @@ if [ ! -f "app/config/parameters.yml" ]; then
 cp app/config/parameters.yml.dist app/config/parameters.yml
 fi
 
-./app/console doctrine:mongodb:fixtures:load
+./app/console doctrine:mongodb:fixtures:load -n

@@ -1,44 +1,75 @@
+# ================================================================================
+# NON ROOT USER MANAGEMENT
+# ================================================================================
+
+ifeq "$(shell whoami )" "root"
+	CONTAINER_USERNAME = root
+	CONTAINER_GROUPNAME = root
+	HOMEDIR = /root
+	CREATE_USER_COMMAND =
+else
+	CONTAINER_USERNAME = dummy
+	CONTAINER_GROUPNAME = dummy
+	HOMEDIR = /home/$(CONTAINER_USERNAME)
+	GROUP_ID = $(shell id -g)
+	USER_ID = $(shell id -u)
+	CREATE_USER_COMMAND = \
+		groupadd -f -g $(GROUP_ID) $(CONTAINER_GROUPNAME) && \
+		useradd -u $(USER_ID) -g $(CONTAINER_GROUPNAME) $(CONTAINER_USERNAME) && \
+		mkdir -p $(HOMEDIR) &&
+endif
+
+AUTHORIZE_HOME_DIR_COMMAND = chown -R $(CONTAINER_USERNAME):$(CONTAINER_GROUPNAME) $(HOMEDIR) &&
+EXECUTE_AS = sudo -E -u $(CONTAINER_USERNAME) HOME=$(HOMEDIR)
+
+ADD_SSH_ACCESS_COMMAND = \
+  mkdir -p $(HOMEDIR)/.ssh && \
+  test -e /var/tmp/id && cp /var/tmp/id $(HOMEDIR)/.ssh/id_rsa ; \
+  test -e /var/tmp/known_hosts && cp /var/tmp/known_hosts $(HOMEDIR)/.ssh/known_hosts ; \
+  test -e $(HOMEDIR)/.ssh/id_rsa && chmod 600 $(HOMEDIR)/.ssh/id_rsa ; \
+  setfacl -R -m u:$(CONTAINER_USERNAME):rwx /var/www > /dev/null 2> /dev/null || true ; \
+  setfacl -dR -m u:$(CONTAINER_USERNAME):rwx /var/www > /dev/null 2> /dev/null || true ;
+
+USER_CMD=$(CREATE_USER_COMMAND) $(ADD_SSH_ACCESS_COMMAND) $(AUTHORIZE_HOME_DIR_COMMAND) $(EXECUTE_AS)
+
 step=-----------------------
 project=randos1000etangs
 host=randos1000etangs.dev
 sf=app/console
 compose=docker-compose -p $(project)
+WEB_DOCKER_CMD=$(compose) run --rm web bash -ci
 
-# REQUIREMENT
-install-docker:
-	@echo "$(step) Installing docker $(step)"
-	@sudo apt-get update
-	@sudo apt-get install docker.io
-	@curl -sSL https://get.docker.com/ubuntu/ | sudo sh
-	@source /etc/bash_completion.d/docker.io
+# COMMON
+cache-clear:
+	@$(WEB_DOCKER_CMD) '$(sf) cache:clear'
+	@$(WEB_DOCKER_CMD) '$(sf) cache:warmup'
 
-install-compose:
-	@echo "$(step) Installing docker-compose $(step)"
-	@curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /tmp/docker-compose
-	@sudo mv /tmp/docker-compose /usr/local/bin/docker-compose
-	@chmod +x /usr/local/bin/docker-compose
-
-requirements: install-docker install-compose
+cc: cache-clear
 
 # ASSETS
 assets:
 	@echo "$(step) Installation assets dev $(step)"
-	@$(compose) run --rm web $(sf) assets:install --symlink
+	@$(WEB_DOCKER_CMD) '$(sf) assets:install --symlink'
 
 # DATABASE
 fixtures:
 	@echo "$(step) Installing fixtures $(step)"
 	@$(compose) run --rm web \
-		$(sf) doctrine:mongodb:fixtures:load
+		$(sf) doctrine:mongodb:fixtures:load -n
 
 # VENDORS
+bash:
+	@$(compose) run --rm web bash
+
 vendor-install: composer-install npm-install bower-install
 
 composer-install:
-	@$(compose) run --rm composer install -n --prefer-dist --ignore-platform-reqs
+	@$(compose) run --rm composer bash -ci '\
+		$(USER_CMD) composer install $(composer_options) --ignore-platform-reqs --no-interaction --prefer-dist $(COMMAND_ARGS)'
 
 composer-update:
-	@$(compose) run --rm composer update -n --prefer-dist --ignore-platform-reqs
+	@$(compose) run --rm composer bash -ci '\
+		$(USER_CMD) composer update --ignore-platform-reqs --no-interaction --prefer-dist $(COMMAND_ARGS)'
 
 bower-install:
 	@$(compose) run --rm builder bower --allow-root install
@@ -46,13 +77,14 @@ bower-install:
 npm-install:
 	@$(compose) run --rm builder npm install --loglevel info
 
-
 # TESTS
 phpunit:
+	@$(compose) run --rm web \
+		$(sf) doctrine:mongodb:fixtures:load -n --env=test
 	@$(compose) run --rm web php app/console cache:clear --env=test
 	@$(compose) run --rm web bin/phpunit -c app
 
-tests: fixtures phpunit
+tests: phpunit
 
 # HOSTS
 host-dev:
@@ -90,7 +122,3 @@ state:
 remove: stop
 	@echo "$(step) Remove $(project) $(step)"
 	@$(compose) rm --force
-
-bash:
-	@echo "$(step) Bash $(project) $(step)"
-	@$(compose) run --rm web bash

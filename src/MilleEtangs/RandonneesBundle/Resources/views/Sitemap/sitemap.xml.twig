@@ -6,7 +6,9 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
         <loc>{{ url }}</loc>
-        <lastmod>{{ article.getPublication() | date('c') }}</lastmod>
+        {% if article is not null %}
+            <lastmod>{{ article.getPublication() | date('c') }}</lastmod>
+        {% endif %}
         <changefreq>daily</changefreq>
     </url>
     <url>

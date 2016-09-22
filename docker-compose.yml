@@ -5,7 +5,6 @@ web:
     domainname: randos1000etangs.dev
     volumes:
         - ".:/var/www"
-        - "./var/logs/web:/var/log/nginx"
     links:
         - db
         - redis
@@ -20,7 +19,7 @@ redis:
     image: redis
 
 composer:
-    image: composer/composer
+    image: maat8/php7-composer
     working_dir: /src
     volumes:
         - /var/tmp/composer/cache:/root/.composer/cache

@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:14.04.5
 
 # Install Requirements
 RUN apt-get update -qq && apt-get install -qqy \
@@ -63,8 +63,8 @@ RUN apt-get update -qq && apt-get install -qqy --force-yes \
 RUN npm install less
 
 # Logs
-RUN mkdir -p /var/log/nginx \
-    && chown -R www-data:www-data /var/log/nginx
+# RUN mkdir -p /var/log/nginx \
+#     && chown -R www-data:www-data /var/log/nginx
 
 # Alias
 RUN echo "alias sf='php app/console'" >> /root/.bashrc
@@ -72,9 +72,7 @@ RUN echo "alias sf='php app/console'" >> /root/.bashrc
 # Sources
 WORKDIR /var/www
 
-VOLUME ["var/log/nginx", "/var/log/nginx"]
-
-# Expose ports
+# Expose port
 EXPOSE 80
 
 # Default command

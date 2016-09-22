@@ -9,6 +9,8 @@ class ItineariesControllerTest extends WebTestCase
     private $client;
     private $router;
 
+    protected $itineary = "le-tour-de-la-mer";
+
     public function setUp()
     {
         $this->client = static::createClient();
@@ -30,7 +32,7 @@ class ItineariesControllerTest extends WebTestCase
     {
         $this->client->request('GET', $this->router->generate(
             'itineary',
-            array('slug' => "circuit-de-la-mer")
+            array('slug' => $this->itineary)
         ));
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
@@ -39,39 +41,45 @@ class ItineariesControllerTest extends WebTestCase
     public function testItinearyGpx()
     {
         ob_start();
+
+        // Success
         $crawler = $this->client->request('GET', $this->router->generate(
             'download_gpx',
-            array('slug' => "circuit-de-la-mer")
+            array('slug' => $this->itineary)
         ));
         $this->assertTrue($this->client->getResponse()->isSuccessful());
-        $this->assertEquals($crawler->filter('gpx')->count(), 1);
 
-        $this->client->request('GET', $this->router->generate(
+        // No file must return a 404
+        $this->client->request('GET', $url = $this->router->generate(
             'download_gpx',
             array('slug' => 1)
         ));
+
         $this->assertFalse($this->client->getResponse()->isSuccessful());
-        $this->assertEquals($this->client->getResponse()->getStatusCode(), 404);
+
         ob_end_clean();
     }
 
     public function testItinearyKml()
     {
         ob_start();
+
+        // Success
         $crawler = $this->client->request('GET', $this->router->generate(
             'render_kml',
-            array('slug' => "circuit-de-la-mer")
+            array('slug' => $this->itineary)
         ));
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
         $this->assertEquals($crawler->filter('kml')->count(), 1);
 
+        // No file must return a 404
         $this->client->request('GET', $this->router->generate(
             'render_kml',
-            array('slug' => 1)
+            array('slug' =>1)
         ));
         $this->assertFalse($this->client->getResponse()->isSuccessful());
-        $this->assertEquals($this->client->getResponse()->getStatusCode(), 404);
+
         ob_end_clean();
     }
 }

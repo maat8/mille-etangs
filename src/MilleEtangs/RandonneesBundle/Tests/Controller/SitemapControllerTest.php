@@ -19,6 +19,6 @@ class SitemapControllerTest extends WebTestCase
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
         $this->assertTrue($this->client->getResponse()->headers->contains('Content-Type', 'text/xml; charset=UTF-8'));
-        $this->assertTrue($crawler->filterXpath("//urlset")->count() > 0);
+        $this->assertTrue($crawler->filter("default|urlset")->count() > 0);
     }
 }

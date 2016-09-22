@@ -16,7 +16,7 @@ class LoadItinearyData extends ContainerAware implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $itineary = new Itineary();
-        $itineary->setName('Circuit de la mer');
+        $itineary->setName('Le tour de la Mer');
         $itineary->setTeaser(
             'Découvrez les Mille Etangs en parcourant le plateau depuis le village de La Mer.'
         );
