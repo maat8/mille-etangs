@@ -24,7 +24,7 @@ install:
     - bower install
 
 script:
-    - php app/console doctrine:mongodb:fixtures:load --env=test
+    - php app/console doctrine:mongodb:fixtures:load -n --env=test
     - php app/console cache:clear
     - bin/phpcs -v --standard=PSR2 --extensions=php src/
     - app/console twig:lint @MilleEtangsRandonneesBundle
