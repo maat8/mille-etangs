@@ -5,6 +5,7 @@ namespace MilleEtangs\RandonneesBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class ItineariesController extends Controller
 {
@@ -80,5 +81,21 @@ class ItineariesController extends Controller
         }
 
         throw $this->createNotFoundException("Le fichier n'existe pas");
+    }
+
+    /**
+     * @Route("/carte")
+     * @Template
+     */
+    public function mapAction()
+    {
+        $itinearies = $this
+            ->get('doctrine_mongodb')
+            ->getRepository('MilleEtangsRandonneesBundle:Itineary')
+            ->findAll();
+
+        return array(
+            'itinearies' => $itinearies
+        );
     }
 }

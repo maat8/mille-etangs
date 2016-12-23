@@ -43,14 +43,14 @@ class ItineariesControllerTest extends WebTestCase
         ob_start();
 
         // Success
-        $crawler = $this->client->request('GET', $this->router->generate(
+        $this->client->request('GET', $this->router->generate(
             'download_gpx',
             array('slug' => $this->itineary)
         ));
         $this->assertTrue($this->client->getResponse()->isSuccessful());
 
         // No file must return a 404
-        $this->client->request('GET', $url = $this->router->generate(
+        $this->client->request('GET', $this->router->generate(
             'download_gpx',
             array('slug' => 1)
         ));

@@ -1,4 +1,9 @@
-# Website
+# Controllers
+controllers:
+    resource: "@MilleEtangsRandonneesBundle/Controller"
+    type:     annotation
+
+# TODO : move to controllers
 home:
     pattern:  /
     defaults: { _controller: MilleEtangsRandonneesBundle:Default:index }

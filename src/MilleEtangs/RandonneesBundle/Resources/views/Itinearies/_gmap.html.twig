@@ -1,0 +1,9 @@
+{% macro trace(itineary) %}
+    var ctaLayer = new google.maps.KmlLayer({
+        url: '{{ url('render_kml', {'slug':itineary.getSlug()}) }}'
+    });
+    ctaLayer.setMap(map); 
+{% endmacro %}
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJn_PIgpZq7FdiiAdXwP5JBjIiTUjeIcA&callback=initialize" async defer></script>
+<div id="map"></div>

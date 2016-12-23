@@ -1,0 +1,23 @@
+{% extends 'MilleEtangsRandonneesBundle::layout.html.twig' %}
+
+{% block title %}Carte | {{ parent()}}{% endblock %}
+
+{% block body %}
+    <script type="text/javascript">
+        var map;
+        function initialize() {
+            var mapOptions = {
+                zoom: 12,
+                center: new google.maps.LatLng(47.838, 6.667),
+                scaleControl: true
+            };
+
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            {% for itineary in itinearies %}
+                {{ trace(itineary) }}
+            {% endfor %}
+        }
+    </script>
+    {% include 'MilleEtangsRandonneesBundle:Itinearies:_gmap.html.twig' %}
+{% endblock %}

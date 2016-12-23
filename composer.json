@@ -3,7 +3,9 @@
     "description": "Randonnées aux Mille Etangs",
     "license": "proprietary",
     "autoload": {
-        "psr-0": { "": "src/" }
+        "psr-4": {
+            "MilleEtangs/RandonneesBundle": "src/"
+        }
     },
     "require": {
         "php": ">=5.3.8",
